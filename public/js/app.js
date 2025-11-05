@@ -1,9 +1,9 @@
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
 const scene=document.querySelector('.scene');
-const leftItems=[...document.querySelectorAll('.left .h-item')];
-const rightItems=[...document.querySelectorAll('.right .h-item')];
-const front=document.querySelector('.device.front');
+const left=[...document.querySelectorAll('.left .h-item')];
+const right=[...document.querySelectorAll('.right .h-item')];
+const hero=document.querySelector('.device.hero');
 const back=document.querySelector('.device.back');
 
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
@@ -15,31 +15,35 @@ function progress(){
   return clamp((v - r.top)/(r.height + v));
 }
 
-// Reveal a list of items sequentially over a range
+// Reveal list smoothly with stagger and slight scale-up
 function revealList(items, t){
-  const n = items.length;
+  const n=items.length, step=1/n;
   items.forEach((el,i)=>{
-    const start = i/n;
-    const local = clamp((t - start) * n);
-    const e = smooth(local);
-    el.style.opacity = e;
-    el.style.transform = `translateY(${lerp(16,0,e)}px)`;
+    const start=i*step;
+    const local=smooth(clamp((t - start)/step));
+    el.style.opacity=local;
+    el.style.transform=`translateY(${lerp(22,0,local)}px) scale(${lerp(.98,1,local)})`;
   });
 }
 
 function render(){
   const p=progress();
-  // First half (0..0.5): front view + reveal left
-  const tLeft = clamp(p / 0.5);
-  revealList(leftItems, tLeft);
-  front.style.opacity = String(1 - clamp((p-0.45)/0.1)); // start fading near mid
-  back.style.opacity  = String(clamp((p-0.45)/0.1));     // fade in near mid
-  front.style.transform = `translateY(${lerp(4,-4,tLeft)}px) scale(${lerp(1.0,0.98,tLeft)})`;
-  back.style.transform  = `translateY(${lerp(8,0,tLeft)}px) scale(${lerp(0.98,1.0,tLeft)})`;
+  // 0..0.5: show left; prepare swap
+  const tLeft=clamp(p/0.5);
+  revealList(left,tLeft);
 
-  // Second half (0.5..1): back view + reveal right
-  const tRight = clamp((p-0.5)/0.5);
-  revealList(rightItems, tRight);
+  // Crossfade HERO -> BACK around 0.5 with a 0.12 band
+  const band=0.12;
+  const f=clamp((p-0.5+band)/band);   // 0 at 0.5-band, 1 at 0.5
+  const g=clamp((p-0.5)/band);        // 0 at 0.5, 1 at 0.5+band
+  hero.style.opacity=String(1 - g);
+  hero.style.transform=`translateY(${lerp(4,-4,tLeft)}px) scale(${lerp(1.0,.985,tLeft)})`;
+  back.style.opacity=String(g);
+  back.style.transform=`translateY(${lerp(8,0,g)}px) scale(${lerp(.985,1.0,g)})`;
+
+  // 0.5..1: reveal right on back view
+  const tRight=clamp((p-0.5)/0.5);
+  revealList(right,tRight);
 
   requestAnimationFrame(render);
 }
