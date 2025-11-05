@@ -1,48 +1,53 @@
 // Footer year
-const y = document.getElementById('year'); if (y) y.textContent = String(new Date().getFullYear());
+const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
-const scene = document.querySelector('.scene');
-const imgs = [document.querySelector('.img0'), document.querySelector('.img1'), document.querySelector('.img2')];
-const lines0 = Array.from(document.querySelectorAll('.l0'));
-const lines1 = Array.from(document.querySelectorAll('.l1'));
-const lines2 = Array.from(document.querySelectorAll('.l2'));
+const scene=document.querySelector('.scene');
+const imgs=[...document.querySelectorAll('.device-stage .device')]; // img0, img1, img2
+const blocks=[...document.querySelectorAll('.copy .block')]; // b0, b1, b2
 
-function lerp(a,b,t){ return a + (b-a)*t; }
-function clamp(x, a=0, b=1){ return Math.min(b, Math.max(a, x)); }
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
 
+// p in [0..1] across scene + scrollspace
 function progress(){
-  const rect = scene.getBoundingClientRect();
-  const view = window.innerHeight;
-  const total = rect.height + view;
-  return clamp((view - rect.top) / total);
+  const r=scene.getBoundingClientRect(), v=innerHeight;
+  return clamp((v - r.top)/(r.height + v));
 }
 
-function show(els, t){
-  els.forEach(el => {
-    el.style.opacity = t;
-    el.style.transform = `translateY(${lerp(18,0,t)}px)`;
-  });
+function sectionT(p, start, end){
+  // Map p to 0..1 within [start,end]
+  return clamp((p - start)/(end - start));
 }
 
 function render(){
   const p = progress();
-  // Image crossfade
-  const t1 = clamp(p / 0.45);
-  const t2 = clamp((p - 0.45) / 0.45);
 
-  imgs[0].style.opacity = String(1 - t1);
-  imgs[0].style.transform = `translateY(${lerp(10, -6, t1)}px) scale(${lerp(1.0, 0.98, t1)})`;
+  // Phases: 0-0.33, 0.33-0.66, 0.66-1.0
+  const tA = sectionT(p, 0.00, 0.33);
+  const tB = sectionT(p, 0.33, 0.66);
+  const tC = sectionT(p, 0.66, 1.00);
 
-  imgs[1].style.opacity = String(p<0.45 ? t1 : 1 - t2*0.4);
-  imgs[1].style.transform = `translateY(${lerp(20, -8, t1)}px) scale(${lerp(0.98, 1.0, t1)})`;
+  // Images crossfade per phase
+  // A: img0 -> img1
+  imgs[0].style.opacity = String(1 - tA);
+  imgs[0].style.transform = `translateY(${lerp(10,-6,tA)}px) scale(${lerp(1.0,0.98,tA)})`;
 
-  imgs[2].style.opacity = String(t2);
-  imgs[2].style.transform = `translateY(${lerp(30, 0, t2)}px) scale(${lerp(0.97, 1.0, t2)})`;
+  imgs[1].style.opacity = String(tA<1 ? tA : 1 - tB*0.6);
+  imgs[1].style.transform = `translateY(${lerp(20,-8,tA)}px) scale(${lerp(0.98,1.0,tA)})`;
 
-  // Text
-  show(lines0, clamp(1 - t1*1.1));
-  show(lines1, clamp(p<0.45 ? t1 : 1 - t2));
-  show(lines2, t2);
+  // B/C: img1 -> img2
+  imgs[2].style.opacity = String(tB);
+  imgs[2].style.transform = `translateY(${lerp(30,0,tB)}px) scale(${lerp(0.97,1.0,tB)})`;
+
+  // Text blocks (only one prominent at a time; each block fades in/out within its phase)
+  const showBlock = (idx, t)=>{
+    const el = blocks[idx];
+    el.style.opacity = t;
+    el.style.transform = `translateY(${lerp(16,0,t)}px)`;
+  };
+  showBlock(0, 1 - tA*1.1);      // A: fade out
+  showBlock(1, tA<1 ? tA : 1 - tB); // B: fade in then out
+  showBlock(2, tB);              // C: fade in
 
   requestAnimationFrame(render);
 }

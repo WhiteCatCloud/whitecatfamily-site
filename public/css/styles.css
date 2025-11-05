@@ -1,44 +1,41 @@
 :root{
   --bg:#fff; --bg-alt:#fafafa; --text:#0a0a0a; --muted:#525252;
-  --line:#e5e7eb; --btn:#000; --btnText:#fff; --shadow:0 10px 40px rgba(0,0,0,.06);
-  --radius:24px; --radius-lg:30px; --radius-pill:999px;
+  --line:#e5e7eb; --shadow:0 10px 40px rgba(0,0,0,.06);
+  --radius:24px; --radius-lg:30px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0; font-family:'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--text); background:var(--bg)}
-img{max-width:100%; display:block}
+body{margin:0; font-family:'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg)}
+img{max-width:100%;display:block}
 
-.container{max-width:1120px; margin:0 auto; padding:0 16px}
+.container{max-width:1120px;margin:0 auto;padding:0 16px}
 .section{padding:72px 0}
-.alt{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sep{border-top:1px solid var(--line)}
-.row{display:flex; gap:12px; align-items:center}
+.row{display:flex;gap:12px;align-items:center}
 .space{justify-content:space-between}
-.nav{display:flex; gap:18px; align-items:center; font-size:14px}
-.nav a{opacity:.8} .nav a:hover{opacity:1}
+.nav{display:flex;gap:18px;align-items:center;font-size:14px}
+.nav a{opacity:.8}.nav a:hover{opacity:1}
 
-.h1{font-size:44px; line-height:1.1; letter-spacing:-.01em; font-weight:700}
+.h1{font-size:42px;line-height:1.12;letter-spacing:-.01em;font-weight:700}
 .lead{font-size:18px}
 .small{font-size:12px}
 .list{line-height:1.7}
-.sticky-head{position:sticky; top:0; z-index:50; backdrop-filter:blur(8px); background:rgba(255,255,255,.9); border-bottom:1px solid var(--line)}
+.sticky-head{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(255,255,255,.9);border-bottom:1px solid var(--line)}
 
 /* Stage */
-.scene{height:220vh; position:relative; background:linear-gradient(180deg,#fff,#f8fafc)}
-.sticky{position:sticky; top:0; height:100vh; display:grid; place-items:center}
-.device-stage{position:relative; width:min(720px, 86vw); aspect-ratio:4/2; display:grid; place-items:center; z-index:1;}
-.device{position:absolute; inset:0; margin:auto; width:88%; height:auto; object-fit:contain;
-  filter:drop-shadow(0 28px 70px rgba(0,0,0,.18)); will-change: transform, opacity}
-.copy{position:absolute; bottom:8%; left:50%; transform:translateX(-50%); width:min(900px,92vw); text-align:center; display:grid; gap:10px; padding:8px 10px; z-index:2;}
-.copy::before{content:""; position:absolute; inset:-18px -22px -22px -22px; z-index:-1;
-  background: radial-gradient(80% 60% at 50% 30%, rgba(255,255,255,.85) 0%, rgba(255,255,255,.55) 60%, rgba(255,255,255,0) 100%);
-  filter: blur(6px); border-radius:24px;}
-.copy .line{opacity:0; transform:translateY(18px); color:#0a0a0a; text-shadow:0 1px 0 rgba(255,255,255,.3)}
+.scene{height:220vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
+.sticky{position:sticky;top:0;height:100vh;display:grid;place-items:center}
+.device-stage{position:relative;width:min(700px,86vw);aspect-ratio:4/2.1;display:grid;place-items:center;z-index:1}
+.device{position:absolute;inset:0;margin:auto;width:88%;height:auto;object-fit:contain;filter:drop-shadow(0 28px 70px rgba(0,0,0,.18));will-change:transform,opacity}
+.copy{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);width:min(900px,92vw);text-align:center;display:grid;gap:8px;padding:8px 10px;z-index:2}
+.copy::before{content:"";position:absolute;inset:-18px -22px -22px -22px;z-index:-1;background:radial-gradient(80% 60% at 50% 30%,rgba(255,255,255,.85) 0%,rgba(255,255,255,.55) 60%,rgba(255,255,255,0) 100%);filter:blur(6px);border-radius:24px}
+.block{opacity:0;transform:translateY(16px)}
 .scrollspace{height:240vh}
 
 /* Responsive */
 @media (max-width:640px){
-  .h1{font-size:34px}
-  .device-stage{width:min(560px, 92vw); aspect-ratio:4/2.4}
+  .h1{font-size:32px}
+  .device-stage{width:min(560px,92vw);aspect-ratio:4/2.4}
   .copy{bottom:6%}
 }
