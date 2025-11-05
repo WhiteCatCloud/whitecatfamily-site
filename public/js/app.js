@@ -1,3 +1,7 @@
+// Keep header visible and start at top
+window.history.scrollRestoration='manual';
+window.scrollTo(0,0);
+
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
 const scene=document.querySelector('.scene');
@@ -30,19 +34,18 @@ function render(){
   const p=progress();
 
   // Intro: visible at start, fades 0.06..0.12
-  const introFade = clamp((p-0.06)/0.06); // 0->1 across 0.06..0.12
+  const introFade = clamp((p-0.06)/0.06);
   intro.style.opacity = String(1 - introFade);
   intro.style.transform = `translateY(${lerp(0,-6,introFade)}px)`;
 
   // HERO appears 0.10..0.25, then holds until swap band
   const heroIn = clamp((p-0.10)/0.15);
-  const heroOut = clamp((p-0.52)/0.12); // start fading at 0.52, done by 0.64
+  const heroOut = clamp((p-0.52)/0.12); // fade 0.52..0.64
   hero.style.opacity = String(heroIn * (1 - heroOut));
   hero.style.transform = `translateY(${lerp(6,-4,heroIn)}px) scale(${lerp(1.0,.985,heroIn)})`;
 
   // Left reveals 0.15..0.52
-  const tLeft = clamp((p-0.15)/(0.37));
-  revealList(left, tLeft);
+  revealList(left, clamp((p-0.15)/0.37));
 
   // Swap to BACK 0.52..0.64
   const tSwap = clamp((p-0.52)/0.12);
@@ -50,8 +53,7 @@ function render(){
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
   // Right reveals 0.64..0.98
-  const tRight = clamp((p-0.64)/(0.34));
-  revealList(right, tRight);
+  revealList(right, clamp((p-0.64)/0.34));
 
   requestAnimationFrame(render);
 }
