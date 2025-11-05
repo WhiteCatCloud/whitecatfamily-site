@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- build-check: WCF-003 -->
+  <!-- build-check: WCF-004 -->
 </head>
 <body>
   <header class="sticky-head">
@@ -22,42 +22,31 @@
     </div>
   </header>
 
-  <!-- Sticky Scrollytelling -->
   <main id="ax3000">
+    <!-- Sticky stage that reacts continuously to scroll progress -->
     <section class="scene">
       <div class="container sticky">
-        <!-- Image stack -->
         <div class="device-stage">
-          <img class="device img-base" src="assets/router-hero.png" alt="White Cat AX3000 — angle" />
-          <img class="device img-front" src="assets/router-front.png" alt="White Cat AX3000 — front" />
-          <img class="device img-io" src="assets/router-io.png" alt="White Cat AX3000 — rear ports" />
+          <img class="device img0" src="assets/router-hero.png" alt="White Cat AX3000 — angle" />
+          <img class="device img1" src="assets/router-front.png" alt="White Cat AX3000 — front" />
+          <img class="device img2" src="assets/router-io.png" alt="White Cat AX3000 — ports" />
         </div>
-        <!-- Copy that changes per step -->
         <div class="copy">
-          <div class="line h1" data-step="0">White Cat AX3000</div>
-          <div class="line lead" data-step="0">Wi‑Fi 6, parental control at the router.</div>
+          <div class="line h1 l0">White Cat AX3000</div>
+          <div class="line lead l0">Wi‑Fi 6. Calm parental control.</div>
 
-          <div class="line h1" data-step="1">Fast where it matters</div>
-          <div class="line lead" data-step="1">AX3000 dual‑band with low‑latency NAT.</div>
+          <div class="line h1 l1">Fast, stable, quiet.</div>
+          <div class="line lead l1">AX3000 dual‑band. Low‑latency NAT.</div>
 
-          <div class="line h1" data-step="2">Set limits once</div>
-          <div class="line lead" data-step="2">Bedtime & study schedules, per device.</div>
-
-          <div class="line h1" data-step="3">Ports that cover you</div>
-          <div class="line lead" data-step="3">1× WAN + 3× LAN — simple and solid.</div>
+          <div class="line h1 l2">Simple ports. Full coverage.</div>
+          <div class="line lead l2">1× WAN + 3× LAN. WPA3 security.</div>
         </div>
       </div>
     </section>
 
-    <!-- Scroll steps (invisible markers) -->
-    <section class="steps">
-      <div class="step" data-step="0"></div>
-      <div class="step" data-step="1"></div>
-      <div class="step" data-step="2"></div>
-      <div class="step" data-step="3"></div>
-    </section>
+    <!-- Scroll space that defines the total animation range -->
+    <section class="scrollspace"></section>
 
-    <!-- Specs summary -->
     <section id="specs" class="section alt">
       <div class="container grid2">
         <ul class="list">
@@ -75,7 +64,7 @@
   </main>
 
   <footer class="sep">
-    <div class="container small muted">© <span id="year"></span> White Cat Cloud Inc. — build WCF-003</div>
+    <div class="container small muted">© <span id="year"></span> White Cat Cloud Inc. — build WCF-004</div>
   </footer>
 
   <script src="js/app.js"></script>
