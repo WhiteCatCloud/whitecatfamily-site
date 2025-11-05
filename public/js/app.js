@@ -2,52 +2,55 @@
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
 const scene=document.querySelector('.scene');
-const imgs=[...document.querySelectorAll('.device-stage .device')]; // img0, img1, img2
-const blocks=[...document.querySelectorAll('.copy .block')]; // b0, b1, b2
+const imgs=[...document.querySelectorAll('.device-stage .device')]; // 0,1,2
+const blocks=[...document.querySelectorAll('.copy .block')];       // 0,1,2
 
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
+const smooth=t=>t*t*(3-2*t); // smoothstep
 
-// p in [0..1] across scene + scrollspace
 function progress(){
   const r=scene.getBoundingClientRect(), v=innerHeight;
   return clamp((v - r.top)/(r.height + v));
 }
 
-function sectionT(p, start, end){
-  // Map p to 0..1 within [start,end]
-  return clamp((p - start)/(end - start));
+// Phase helper with tiny 0.05 crossfade band
+function phase(p){
+  const aEnd=0.40, bEnd=0.80; // 0-0.4, 0.4-0.8, 0.8-1.0
+  if (p < aEnd) return 0;
+  if (p < bEnd) return 1;
+  return 2;
+}
+function band(p, start, end, band=0.05){
+  // returns 0..1 when p is within [start, start+band] or [end-band, end] for crossfade edges
+  if (p < start) return 0;
+  if (p > end) return 1;
+  if (p < start + band) return smooth((p-start)/band);
+  if (p > end - band) return smooth(1 - (p - (end-band))/band);
+  return 1;
 }
 
 function render(){
-  const p = progress();
+  const p=progress();
+  const aEnd=0.40, bEnd=0.80;
 
-  // Phases: 0-0.33, 0.33-0.66, 0.66-1.0
-  const tA = sectionT(p, 0.00, 0.33);
-  const tB = sectionT(p, 0.33, 0.66);
-  const tC = sectionT(p, 0.66, 1.00);
+  // Images: crossfade only near boundaries for clarity
+  const tA = band(p, 0.00, aEnd, 0.06); // img0 dominance
+  const tB = band(p, aEnd, bEnd, 0.06); // img1 dominance
+  const tC = band(p, bEnd, 1.00, 0.06); // img2 dominance
 
-  // Images crossfade per phase
-  // A: img0 -> img1
-  imgs[0].style.opacity = String(1 - tA);
-  imgs[0].style.transform = `translateY(${lerp(10,-6,tA)}px) scale(${lerp(1.0,0.98,tA)})`;
+  imgs[0].style.opacity = String(tA);
+  imgs[0].style.transform = `translateY(${lerp(8,-4,1-tA)}px) scale(${lerp(1.0,0.98,1-tA)})`;
 
-  imgs[1].style.opacity = String(tA<1 ? tA : 1 - tB*0.6);
-  imgs[1].style.transform = `translateY(${lerp(20,-8,tA)}px) scale(${lerp(0.98,1.0,tA)})`;
+  imgs[1].style.opacity = String(tB);
+  imgs[1].style.transform = `translateY(${lerp(12,-6,1-tB)}px) scale(${lerp(0.99,1.0,1-tB)})`;
 
-  // B/C: img1 -> img2
-  imgs[2].style.opacity = String(tB);
-  imgs[2].style.transform = `translateY(${lerp(30,0,tB)}px) scale(${lerp(0.97,1.0,tB)})`;
+  imgs[2].style.opacity = String(tC);
+  imgs[2].style.transform = `translateY(${lerp(16,0,1-tC)}px) scale(${lerp(0.98,1.0,1-tC)})`;
 
-  // Text blocks (only one prominent at a time; each block fades in/out within its phase)
-  const showBlock = (idx, t)=>{
-    const el = blocks[idx];
-    el.style.opacity = t;
-    el.style.transform = `translateY(${lerp(16,0,t)}px)`;
-  };
-  showBlock(0, 1 - tA*1.1);      // A: fade out
-  showBlock(1, tA<1 ? tA : 1 - tB); // B: fade in then out
-  showBlock(2, tB);              // C: fade in
+  // Text: only one block visible per phase, with a small fade at the edges
+  const ph = phase(p);
+  blocks.forEach((b,i)=>b.classList.toggle('show', i===ph));
 
   requestAnimationFrame(render);
 }
