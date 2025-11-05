@@ -1,56 +1,45 @@
-// Footer year
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
 const scene=document.querySelector('.scene');
-const imgs=[...document.querySelectorAll('.device-stage .device')]; // 0,1,2
-const blocks=[...document.querySelectorAll('.copy .block')];       // 0,1,2
+const leftItems=[...document.querySelectorAll('.left .h-item')];
+const rightItems=[...document.querySelectorAll('.right .h-item')];
+const front=document.querySelector('.device.front');
+const back=document.querySelector('.device.back');
 
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
-const smooth=t=>t*t*(3-2*t); // smoothstep
+const smooth=t=>t*t*(3-2*t);
 
 function progress(){
   const r=scene.getBoundingClientRect(), v=innerHeight;
   return clamp((v - r.top)/(r.height + v));
 }
 
-// Phase helper with tiny 0.05 crossfade band
-function phase(p){
-  const aEnd=0.40, bEnd=0.80; // 0-0.4, 0.4-0.8, 0.8-1.0
-  if (p < aEnd) return 0;
-  if (p < bEnd) return 1;
-  return 2;
-}
-function band(p, start, end, band=0.05){
-  // returns 0..1 when p is within [start, start+band] or [end-band, end] for crossfade edges
-  if (p < start) return 0;
-  if (p > end) return 1;
-  if (p < start + band) return smooth((p-start)/band);
-  if (p > end - band) return smooth(1 - (p - (end-band))/band);
-  return 1;
+// Reveal a list of items sequentially over a range
+function revealList(items, t){
+  const n = items.length;
+  items.forEach((el,i)=>{
+    const start = i/n;
+    const local = clamp((t - start) * n);
+    const e = smooth(local);
+    el.style.opacity = e;
+    el.style.transform = `translateY(${lerp(16,0,e)}px)`;
+  });
 }
 
 function render(){
   const p=progress();
-  const aEnd=0.40, bEnd=0.80;
+  // First half (0..0.5): front view + reveal left
+  const tLeft = clamp(p / 0.5);
+  revealList(leftItems, tLeft);
+  front.style.opacity = String(1 - clamp((p-0.45)/0.1)); // start fading near mid
+  back.style.opacity  = String(clamp((p-0.45)/0.1));     // fade in near mid
+  front.style.transform = `translateY(${lerp(4,-4,tLeft)}px) scale(${lerp(1.0,0.98,tLeft)})`;
+  back.style.transform  = `translateY(${lerp(8,0,tLeft)}px) scale(${lerp(0.98,1.0,tLeft)})`;
 
-  // Images: crossfade only near boundaries for clarity
-  const tA = band(p, 0.00, aEnd, 0.06); // img0 dominance
-  const tB = band(p, aEnd, bEnd, 0.06); // img1 dominance
-  const tC = band(p, bEnd, 1.00, 0.06); // img2 dominance
-
-  imgs[0].style.opacity = String(tA);
-  imgs[0].style.transform = `translateY(${lerp(8,-4,1-tA)}px) scale(${lerp(1.0,0.98,1-tA)})`;
-
-  imgs[1].style.opacity = String(tB);
-  imgs[1].style.transform = `translateY(${lerp(12,-6,1-tB)}px) scale(${lerp(0.99,1.0,1-tB)})`;
-
-  imgs[2].style.opacity = String(tC);
-  imgs[2].style.transform = `translateY(${lerp(16,0,1-tC)}px) scale(${lerp(0.98,1.0,1-tC)})`;
-
-  // Text: only one block visible per phase, with a small fade at the edges
-  const ph = phase(p);
-  blocks.forEach((b,i)=>b.classList.toggle('show', i===ph));
+  // Second half (0.5..1): back view + reveal right
+  const tRight = clamp((p-0.5)/0.5);
+  revealList(rightItems, tRight);
 
   requestAnimationFrame(render);
 }
