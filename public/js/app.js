@@ -16,45 +16,41 @@ function progress(){
   return clamp((v - r.top)/(r.height + v));
 }
 
-// Reveal list smoothly with stagger
 function revealList(items, t){
   const n=items.length, step=1/n;
   items.forEach((el,i)=>{
-    const start = i*step;
-    const local = smooth(clamp((t - start)/step));
-    el.style.opacity = local;
-    el.style.transform = `translateY(${lerp(24,0,local)}px) scale(${lerp(.98,1,local)})`;
+    const start=i*step;
+    const local=smooth(clamp((t - start)/step));
+    el.style.opacity=local;
+    el.style.transform=`translateY(${lerp(24,0,local)}px) scale(${lerp(.98,1,local)})`;
   });
 }
 
 function render(){
   const p=progress();
-  // Phases:
-  // 0..0.12 : Intro title
-  // 0.12..0.5 : Fade in HERO and reveal left
-  // 0.5 swap band (0.44..0.56) : HERO -> BACK
-  // 0.56..0.92 : Reveal right on BACK
-  // 0.92..1 : tail before release
 
-  const tIntro = clamp(p/0.12);
-  intro.style.opacity = String(1 - clamp((p-0.06)/0.06)); // fade out around 0.06..0.12
+  // Intro: visible at start, fades 0.06..0.12
+  const introFade = clamp((p-0.06)/0.06); // 0->1 across 0.06..0.12
+  intro.style.opacity = String(1 - introFade);
+  intro.style.transform = `translateY(${lerp(0,-6,introFade)}px)`;
 
-  // HERO presence
-  const tHeroIn = clamp((p-0.12)/0.15);
-  hero.style.opacity = String(tHeroIn * (1 - clamp((p-0.44)/0.12))); // fade in then start fading at 0.44..0.56
-  hero.style.transform = `translateY(${lerp(6,-4,tHeroIn)}px) scale(${lerp(1.0,.985,tHeroIn)})`;
+  // HERO appears 0.10..0.25, then holds until swap band
+  const heroIn = clamp((p-0.10)/0.15);
+  const heroOut = clamp((p-0.52)/0.12); // start fading at 0.52, done by 0.64
+  hero.style.opacity = String(heroIn * (1 - heroOut));
+  hero.style.transform = `translateY(${lerp(6,-4,heroIn)}px) scale(${lerp(1.0,.985,heroIn)})`;
 
-  // Left highlights during 0.12..0.5
-  const tLeft = clamp((p-0.12)/(0.38));
+  // Left reveals 0.15..0.52
+  const tLeft = clamp((p-0.15)/(0.37));
   revealList(left, tLeft);
 
-  // Swap band around 0.5
-  const tSwap = clamp((p-0.44)/0.12); // 0 at 0.44, 1 at 0.56
+  // Swap to BACK 0.52..0.64
+  const tSwap = clamp((p-0.52)/0.12);
   back.style.opacity = String(tSwap);
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
-  // Right highlights during 0.56..0.92
-  const tRight = clamp((p-0.56)/(0.36));
+  // Right reveals 0.64..0.98
+  const tRight = clamp((p-0.64)/(0.34));
   revealList(right, tRight);
 
   requestAnimationFrame(render);
