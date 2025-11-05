@@ -9,15 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- build-check: WCF-019 -->
+  <!-- build-check: WCF-020 -->
 </head>
 <body>
   <header class="fixed-head">
     <div class="container row space">
-      <div class="brand">White Cat Cloud Inc. <span class="ver">— WCF-019</span></div>
+      <div class="brand">White Cat Cloud Inc. <span class="ver">— WCF-020</span></div>
       <nav class="nav">
         <a href="#ax3000">AX3000</a>
-        <a href="#specs">Specs</a>
+        <a href="#tech">Tech</a>
       </nav>
     </div>
   </header>
@@ -54,26 +54,99 @@
       </div>
     </section>
 
+    <!-- Spacer to guarantee sticky release AFTER 6th -->
     <section class="scrollspace"></section>
 
-    <section id="specs" class="section alt">
-      <div class="container grid2">
-        <ul class="list">
-          <li><b>Wi‑Fi</b>: 802.11ax (AX3000), 2.4&nbsp;GHz + 5&nbsp;GHz</li>
-          <li><b>CPU/Chipset</b>: MediaTek MT7981B dual‑core (~1.2–1.3&nbsp;GHz)</li>
-          <li><b>Memory / Flash</b>: 256&nbsp;MB / 128&nbsp;MB</li>
-        </ul>
-        <ul class="list">
-          <li><b>Ports</b>: 1× GbE WAN, 3× GbE LAN</li>
-          <li><b>Power</b>: 12&nbsp;V&nbsp;⎓&nbsp;2&nbsp;A</li>
-          <li><b>Security</b>: WPA2/WPA3, DoH/DoT/VPN mitigation</li>
-        </ul>
+    <!-- TECH SUMMARY (extended) -->
+    <section id="tech" class="section tech">
+      <div class="container">
+        <div class="tech-hero">
+          <div class="tech-copy">
+            <h2>Under the hood.<br/>Built for performance.<br/><span class="muted">Powered by OpenWrt&nbsp;24.10.</span></h2>
+            <p class="lead">MediaTek MT7981B dual‑core @ 1.2&nbsp;GHz. 512&nbsp;MB RAM / 128&nbsp;MB Flash. Wi‑Fi&nbsp;6 (802.11ax) — 600 + 2400&nbsp;Mbps.</p>
+          </div>
+          <div class="chip-wrap">
+            <!-- Self-contained chip SVG with glow -->
+            <svg class="chip" viewBox="0 0 240 240" aria-hidden="true">
+              <defs>
+                <radialGradient id="g" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#66ccff" stop-opacity="0.8"/>
+                  <stop offset="60%" stop-color="#66ccff" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#66ccff" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <circle cx="120" cy="120" r="90" fill="url(#g)">
+                <animate attributeName="r" values="86;94;86" dur="5s" repeatCount="indefinite"/>
+              </circle>
+              <rect x="52" y="52" width="136" height="136" rx="14" ry="14" fill="#0b1b2a" stroke="#7dd3fc" stroke-width="2"/>
+              <rect x="72" y="72" width="96" height="96" rx="10" ry="10" fill="#0f2132" stroke="#38bdf8" stroke-width="1.5"/>
+              <!-- pads -->
+              {% for i in range(8) %}
+              {% endfor %}
+              <!-- simple bus lines -->
+              <g stroke="#7dd3fc" stroke-opacity="0.6">
+                <path d="M72 92 H60" /><path d="M72 108 H56" />
+                <path d="M168 92 H180" /><path d="M168 108 H184" />
+                <path d="M92 168 V180" /><path d="M108 168 V184" />
+                <path d="M132 60 V72" /><path d="M148 56 V72" />
+              </g>
+              <text x="120" y="128" text-anchor="middle" fill="#e0f2fe" font-size="12" font-family="monospace">MT7981B</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="tech-grid">
+          <div class="card observe">
+            <h3>Core hardware</h3>
+            <ul>
+              <li>MediaTek MT7981B dual‑core @ 1.2&nbsp;GHz</li>
+              <li>512&nbsp;MB RAM / 128&nbsp;MB Flash</li>
+              <li>OpenWrt&nbsp;24.10</li>
+              <li>1× GbE WAN + 3× GbE LAN</li>
+            </ul>
+          </div>
+          <div class="card observe">
+            <h3>Key attributes</h3>
+            <ul>
+              <li>Smart firewall, QoS, VPN</li>
+              <li>WPA3 + encrypted DNS (TLS&nbsp;1.3)</li>
+              <li>Guest &amp; IoT isolation</li>
+              <li>IPv6‑native, VLAN‑friendly</li>
+            </ul>
+          </div>
+        </div>
+
+        <details class="card specs observe">
+          <summary>Full technical specs</summary>
+          <div class="specs-grid">
+            <div><b>Chipset</b><span>MediaTek MT7981B</span></div>
+            <div><b>Main Frequency</b><span>1.2&nbsp;GHz</span></div>
+            <div><b>Operating System</b><span>OpenWrt 24.10</span></div>
+            <div><b>Memory / Flash</b><span>512&nbsp;MB / 128&nbsp;MB</span></div>
+            <div><b>Wi‑Fi Standards</b><span>802.11a/b/g/n/ac/ax</span></div>
+            <div><b>Wi‑Fi Speed</b><span>3000&nbsp;Mbps (2.4&nbsp;GHz 600 + 5&nbsp;GHz 2400)</span></div>
+            <div><b>Wi‑Fi Type</b><span>Wireless (Home)</span></div>
+            <div><b>2.4&nbsp;GHz Rate</b><span>600&nbsp;Mbps</span></div>
+            <div><b>Max LAN Rate</b><span>1000&nbsp;Mbps</span></div>
+            <div><b>Wired</b><span>10/100/1000&nbsp;Mbps</span></div>
+            <div><b>WAN</b><span>1× 10/100/1000&nbsp;Mbps</span></div>
+            <div><b>LAN</b><span>3× 10/100/1000&nbsp;Mbps</span></div>
+            <div><b>WPS / WDS</b><span>No / No</span></div>
+            <div><b>Encryption</b><span>WPA2‑PSK, WPA‑PSK, WPA3</span></div>
+            <div><b>Standards</b><span>802.11g/b/n/ac/a/ax</span></div>
+            <div><b>Adapter</b><span>12&nbsp;V 2&nbsp;A</span></div>
+            <div><b>Certifications</b><span>FCC, CE, RoHS</span></div>
+            <div><b>Place of Origin</b><span>Guangdong, China</span></div>
+            <div><b>Status</b><span>New</span></div>
+            <div><b>Brand</b><span>White Cat Cloud</span></div>
+          </div>
+        </details>
       </div>
     </section>
   </main>
 
   <footer class="sep">
-    <div class="container small muted">© <span id="year"></span> White Cat Cloud Inc. — build WCF-019</div>
+    <div class="container small muted">© <span id="year"></span> White Cat Cloud Inc. — build WCF-020</div>
   </footer>
 
   <script src="js/app.js"></script>

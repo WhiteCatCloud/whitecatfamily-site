@@ -15,7 +15,7 @@ function renderOverlay(){
 }
 requestAnimationFrame(renderOverlay);
 
-// Sticky scene
+// Sticky scene logic (timing from WCF-019)
 const scene=document.querySelector('.scene');
 const left=[...document.querySelectorAll('.left .h-item')];
 const right=[...document.querySelectorAll('.right .h-item')];
@@ -43,9 +43,9 @@ function revealList(items, t){
 function renderScene(){
   const p=progress();
 
-  // HERO appears 0.10..0.25; holds; swap later
+  // HERO appears 0.10..0.25; holds; swap at 0.60..0.72
   const heroIn = clamp((p-0.10)/0.15);
-  const heroOut = clamp((p-0.60)/0.12); // swap 0.60..0.72
+  const heroOut = clamp((p-0.60)/0.12);
   hero.style.opacity = String(heroIn * (1 - heroOut));
   hero.style.transform = `translateY(${lerp(6,-4,heroIn)}px) scale(${lerp(1.0,.985,heroIn)})`;
 
@@ -57,10 +57,10 @@ function renderScene(){
   back.style.opacity = String(tSwap);
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
-  // Right reveals earlier 0.68..0.86 (finish sooner)
+  // Right reveals 0.68..0.86
   revealList(right, clamp((p-0.68)/0.18));
 
-  // Long internal tail 0.86..0.99: lock final state so 6th is visible well before release
+  // Long internal tail 0.86..0.99: lock final state
   if (p>0.86){
     right.forEach(el=>{ el.style.opacity='1'; el.style.transform='translateY(0) scale(1)'; });
     back.style.opacity='1'; back.style.transform='translateY(0) scale(1)';
@@ -69,3 +69,26 @@ function renderScene(){
   requestAnimationFrame(renderScene);
 }
 requestAnimationFrame(renderScene);
+
+// Observe cards for reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('show');
+  });
+},{threshold:0.2});
+document.querySelectorAll('.observe').forEach(el => obs.observe(el));
+
+// Chip parallax (subtle) on scroll within tech section
+const tech = document.querySelector('#tech');
+const chip = document.querySelector('.chip');
+function chipParallax(){
+  if (!tech || !chip) return requestAnimationFrame(chipParallax);
+  const r = tech.getBoundingClientRect();
+  const v = window.innerHeight;
+  const t = Math.min(1, Math.max(0, (v - r.top)/(v + r.height))); // 0..1 as section enters
+  const y = (1 - t) * 20; // move up to 20px
+  const s = 1 + t*0.03;   // slight scale up to 1.03
+  chip.style.transform = `translateY(${y}px) scale(${s})`;
+  requestAnimationFrame(chipParallax);
+}
+requestAnimationFrame(chipParallax);
