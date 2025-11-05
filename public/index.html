@@ -3,111 +3,135 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>White Cat AX3000 — White Cat Cloud Inc.</title>
-  <meta name="description" content="White Cat AX3000 router. Calm, smart parental control at the network edge." />
+  <title>White Cat Family — White Cat Cloud Inc.</title>
+  <meta name="description" content="White Cat Halo: calm parental internet, White Cat AX3000 router, White Cat Family app." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- build-check: WCF-021 -->
+  <!-- build-check: WCF-022 -->
 </head>
 <body>
-  <header class="fixed-head">
-    <div class="container row space">
-      <div class="brand">White Cat Cloud Inc. <span class="ver">— WCF-021</span></div>
+  <header class="site-head">
+    <div class="container head-row">
+      <div class="logo">White Cat Family <span class="ver">— WCF-022</span></div>
       <nav class="nav">
-        <a href="#ax3000">AX3000</a>
-        <a href="#tech">Specs</a>
+        <a href="#solution">Solution</a>
+        <a href="#product">Product</a>
+        <a href="#app">App</a>
+        <a href="#about">About</a>
       </nav>
     </div>
   </header>
 
-  <!-- INTRO OVERLAY (persistent) -->
-  <div id="introOverlay" class="intro-overlay">
-    <div class="intro-wrap">
-      <h1 class="intro-title">White Cat AX3000</h1>
-      <p class="intro-tag">Your calm, smart way to manage family internet.</p>
-      <div class="scroll-hint" aria-hidden="true"><span class="arrow">▾</span></div>
-    </div>
-  </div>
+  <main>
+    <section id="solution" class="hero-halo">
+      <div class="halo-bg"><div class="ring"></div></div>
+      <div class="container hero-wrap">
+        <h1>White Cat Halo</h1>
+        <p class="lead">Your family's calm, invisible shield for the digital world.</p>
+        <p class="sub">One ecosystem. One app. One router.</p>
+      </div>
+    </section>
 
-  <main id="ax3000">
-    <!-- Sticky animated scene (unchanged timing from WCF-019) -->
-    <section class="scene">
-      <div class="container sticky threecol">
-        <div class="col highlights left">
-          <div class="h-item"><h3>Wi‑Fi 6 AX3000</h3><p>160&nbsp;MHz channels with OFDMA &amp; MU‑MIMO for smooth 4K streaming and gaming.</p></div>
-          <div class="h-item"><h3>Low‑latency by design</h3><p>Hardware fast‑path and smart QoS keep pings steady even under load.</p></div>
-          <div class="h-item"><h3>Stronger coverage</h3><p>Beamforming with high‑gain antennas helps push signal through real homes.</p></div>
+    <section id="product" class="product">
+      <div class="container product-wrap">
+        <div class="product-head">
+          <h2>White Cat AX3000</h2>
+          <p class="muted">Wi‑Fi 6, calm performance — designed for families.</p>
         </div>
+        <section class="scene">
+          <div class="container sticky threecol">
+            <div class="col highlights left">
+              <div class="h-item"><h3>Wi‑Fi 6 AX3000</h3><p>160&nbsp;MHz + OFDMA &amp; MU‑MIMO for smooth 4K streaming and gaming.</p></div>
+              <div class="h-item"><h3>Low‑latency by design</h3><p>Hardware fast‑path and smart QoS keep pings steady under load.</p></div>
+              <div class="h-item"><h3>Stronger coverage</h3><p>Beamforming with high‑gain antennas for real homes.</p></div>
+            </div>
+            <div class="device-stage">
+              <img class="device hero" src="assets/router-hero.png" alt="White Cat AX3000 — hero angle" />
+              <img class="device back"  src="assets/router-io.png"   alt="White Cat AX3000 — rear ports" />
+            </div>
+            <div class="col highlights right">
+              <div class="h-item"><h3>Wired where it matters</h3><p>1× GbE WAN + 3× GbE LAN for consoles/TV/backhaul.</p></div>
+              <div class="h-item"><h3>Secure by default</h3><p>WPA3, guest &amp; IoT isolation, DNS over TLS&nbsp;1.3 — no snooping.</p></div>
+              <div class="h-item"><h3>Compact &amp; silent</h3><p>Fanless, low‑profile design that blends in and runs quiet.</p></div>
+            </div>
+          </div>
+        </section>
+        <section class="spacer-16"></section>
+        <section class="section tech-only">
+          <div class="tech-head">
+            <svg class="chip" viewBox="0 0 240 240" aria-hidden="true">
+              <defs><radialGradient id="g" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#66ccff" stop-opacity="0.8"/>
+                <stop offset="60%" stop-color="#66ccff" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#66ccff" stop-opacity="0"/>
+              </radialGradient></defs>
+              <circle cx="120" cy="120" r="90" fill="url(#g)">
+                <animate attributeName="r" values="86;94;86" dur="5s" repeatCount="indefinite"/>
+              </circle>
+              <rect x="52" y="52" width="136" height="136" rx="14" ry="14" fill="#0b1b2a" stroke="#7dd3fc" stroke-width="2"/>
+              <rect x="72" y="72" width="96" height="96" rx="10" ry="10" fill="#0f2132" stroke="#38bdf8" stroke-width="1.5"/>
+              <g stroke="#7dd3fc" stroke-opacity="0.6">
+                <path d="M72 92 H60" /><path d="M72 108 H56" />
+                <path d="M168 92 H180" /><path d="M168 108 H184" />
+                <path d="M92 168 V180" /><path d="M108 168 V184" />
+                <path d="M132 60 V72" /><path d="M148 56 V72" />
+              </g>
+              <text x="120" y="128" text-anchor="middle" fill="#e0f2fe" font-size="12" font-family="monospace">MT7981B</text>
+            </svg>
+            <div class="tech-title">
+              <h3>Technical Specifications</h3>
+              <p class="muted">OpenWrt&nbsp;24.10 — 512&nbsp;MB RAM — 128&nbsp;MB Flash</p>
+            </div>
+          </div>
+          <div class="specs-grid clean">
+            <div><b>Chipset</b><span>MediaTek MT7981B</span></div>
+            <div><b>CPU</b><span>Dual‑core @ 1.2&nbsp;GHz</span></div>
+            <div><b>OS</b><span>OpenWrt&nbsp;24.10</span></div>
+            <div><b>Memory (RAM)</b><span>512&nbsp;MB</span></div>
+            <div><b>Flash</b><span>128&nbsp;MB</span></div>
+            <div><b>Wi‑Fi</b><span>802.11 a/b/g/n/ac/ax (Wi‑Fi&nbsp;6)</span></div>
+            <div><b>Rate</b><span>2.4&nbsp;GHz 600 + 5&nbsp;GHz 2400</span></div>
+            <div><b>LAN</b><span>3 × 10/100/1000&nbsp;Mbps</span></div>
+            <div><b>WAN</b><span>1 × 10/100/1000&nbsp;Mbps</span></div>
+            <div><b>Wired</b><span>10/100/1000&nbsp;Mbps</span></div>
+            <div><b>Security</b><span>WPA2‑PSK / WPA‑PSK / WPA3</span></div>
+            <div><b>Power</b><span>12&nbsp;V 2&nbsp;A</span></div>
+          </div>
+        </section>
+      </div>
+    </section>
 
-        <div class="device-stage">
-          <img class="device hero" src="assets/router-hero.png" alt="White Cat AX3000 — hero angle" />
-          <img class="device back"  src="assets/router-io.png"   alt="White Cat AX3000 — rear ports" />
-        </div>
-
-        <div class="col highlights right">
-          <div class="h-item"><h3>Wired where it matters</h3><p>1× Gigabit WAN + 3× Gigabit LAN for reliable consoles, TVs, and backhaul.</p></div>
-          <div class="h-item"><h3>Secure by default</h3><p>WPA3, guest &amp; IoT isolation, and upstream DNS encrypted via TLS&nbsp;1.3 by default — no more snooping.</p></div>
-          <div class="h-item"><h3>Compact &amp; silent</h3><p>Fanless, low‑profile design that blends in and runs whisper‑quiet.</p></div>
+    <section id="app" class="app section">
+      <div class="container app-wrap">
+        <div class="phone"><img src="assets/phone.svg" alt="App preview"/></div>
+        <div class="app-copy">
+          <h2>White Cat Family App</h2>
+          <p class="lead">Control, limits, and insight — from your phone.</p>
+          <div class="qr-row">
+            <div class="qr-block"><img src="assets/qr.svg" alt="QR iOS"/><div class="btn ghost">App Store — Coming Soon</div></div>
+            <div class="qr-block"><img src="assets/qr.svg" alt="QR Android"/><div class="btn ghost">Google Play — Coming Soon</div></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Tiny spacer only -->
-    <section class="spacer-16"></section>
-
-    <!-- TECH SPECIFICATIONS (concise, no duplicates) -->
-    <section id="tech" class="section tech-only">
+    <section id="about" class="about section alt">
       <div class="container">
-        <div class="tech-head">
-          <svg class="chip" viewBox="0 0 240 240" aria-hidden="true">
-            <defs>
-              <radialGradient id="g" cx="50%" cy="50%" r="60%">
-                <stop offset="0%" stop-color="#66ccff" stop-opacity="0.8"/>
-                <stop offset="60%" stop-color="#66ccff" stop-opacity="0.15"/>
-                <stop offset="100%" stop-color="#66ccff" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <circle cx="120" cy="120" r="90" fill="url(#g)">
-              <animate attributeName="r" values="86;94;86" dur="5s" repeatCount="indefinite"/>
-            </circle>
-            <rect x="52" y="52" width="136" height="136" rx="14" ry="14" fill="#0b1b2a" stroke="#7dd3fc" stroke-width="2"/>
-            <rect x="72" y="72" width="96" height="96" rx="10" ry="10" fill="#0f2132" stroke="#38bdf8" stroke-width="1.5"/>
-            <g stroke="#7dd3fc" stroke-opacity="0.6">
-              <path d="M72 92 H60" /><path d="M72 108 H56" />
-              <path d="M168 92 H180" /><path d="M168 108 H184" />
-              <path d="M92 168 V180" /><path d="M108 168 V184" />
-              <path d="M132 60 V72" /><path d="M148 56 V72" />
-            </g>
-            <text x="120" y="128" text-anchor="middle" fill="#e0f2fe" font-size="12" font-family="monospace">MT7981B</text>
-          </svg>
-          <div class="tech-title">
-            <h2>Technical Specifications</h2>
-            <p class="muted">Hardware parameters with OpenWrt&nbsp;24.10</p>
-          </div>
-        </div>
-
-        <div class="specs-grid clean">
-          <div><b>Chipset</b><span>MediaTek MT7981B</span></div>
-          <div><b>CPU</b><span>Dual‑core @ 1.2&nbsp;GHz</span></div>
-          <div><b>Operating System</b><span>OpenWrt&nbsp;24.10</span></div>
-          <div><b>Memory (RAM)</b><span>512&nbsp;MB</span></div>
-          <div><b>Flash</b><span>128&nbsp;MB</span></div>
-          <div><b>Wi‑Fi Standards</b><span>802.11 a/b/g/n/ac/ax (Wi‑Fi&nbsp;6)</span></div>
-          <div><b>Wi‑Fi Speed</b><span>3000&nbsp;Mbps (2.4&nbsp;GHz 600 + 5&nbsp;GHz 2400)</span></div>
-          <div><b>LAN Ports</b><span>3 × 10/100/1000&nbsp;Mbps</span></div>
-          <div><b>WAN Port</b><span>1 × 10/100/1000&nbsp;Mbps</span></div>
-          <div><b>Wired Throughput</b><span>10/100/1000&nbsp;Mbps</span></div>
-          <div><b>Power Adapter</b><span>12&nbsp;V 2&nbsp;A</span></div>
-          <div><b>Encryption</b><span>WPA2‑PSK / WPA‑PSK / WPA3</span></div>
+        <h2>About White Cat Cloud Inc.</h2>
+        <p class="muted">We build calm, human‑friendly internet tools: the White Cat Halo solution, the AX3000 router, and the White Cat Family app.</p>
+        <div class="team">
+          <div class="card"><div class="avatar"></div><div><b>Jaro</b><div class="muted">Founder</div></div></div>
+          <div class="card"><div class="avatar"></div><div><b>—</b><div class="muted">Engineering</div></div></div>
+          <div class="card"><div class="avatar"></div><div><b>—</b><div class="muted">Design</div></div></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="sep">
-    <div class="container small muted">© <span id="year"></span> White Cat Cloud Inc. — build WCF-021</div>
+  <footer class="foot">
+    <div class="container small muted">© <span id="year"></span> White Cat Cloud Inc. — build WCF-022</div>
   </footer>
 
   <script src="js/app.js"></script>
