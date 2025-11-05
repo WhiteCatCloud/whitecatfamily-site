@@ -154,3 +154,15 @@ body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI
 /* Ensure device images render above any overlay */
 .device-stage{ z-index:2 }
 .device{ z-index:2 }
+
+
+/* Subnav centered, same visual weight as main items */
+.subnav{display:none;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sub-row{height:64px;display:flex;align-items:center;justify-content:center}
+.nav.sub{display:flex;gap:24px;font-size:14px}
+.nav.sub a{font-weight:600;text-decoration:none;opacity:.9}
+.show-subnav .subnav{display:block}
+
+/* Ensure router image sits on top and visible */
+.device-stage{ z-index:3 }
+.device{ z-index:3 }

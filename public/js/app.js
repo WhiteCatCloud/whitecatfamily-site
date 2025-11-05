@@ -124,25 +124,18 @@ if (scene){
 })();
 
 
-// Toggle Product subnav without navigation
-(function(){
-  const productLink = [...document.querySelectorAll('.nav a')].find(a => a.textContent.trim() === 'Product');
-  if(!productLink) return;
-  productLink.addEventListener('click', (e)=>{
-    // If link goes to product.html, convert to toggle
-    e.preventDefault();
-    document.body.classList.toggle('show-subnav');
-  });
-})();
 
 
-// Toggle Product subnav without navigation (centered single option)
+// Toggle Product subnav without navigation (works on all pages)
 (function(){
-  const navLinks = document.querySelectorAll('.nav a');
-  const productLink = [...navLinks].find(a => a.textContent.trim() === 'Product');
+  const links = document.querySelectorAll('.nav a');
+  let productLink = null;
+  links.forEach(a => { if (a.textContent.trim().toLowerCase() === 'product') productLink = a; });
   if(!productLink) return;
   productLink.addEventListener('click', (e)=>{
     e.preventDefault();
     document.body.classList.toggle('show-subnav');
+    // Keep header in view
+    window.scrollTo({top:0, behavior:'smooth'});
   });
 })();
