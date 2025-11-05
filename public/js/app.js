@@ -1,8 +1,9 @@
 // Footer year
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
-// Intro fade-out on scroll
+// Intro fade-out starts later (0.08..0.18)
 const introSec=document.querySelector('.intro-hero');
+const introWrap=document.querySelector('.intro-wrap');
 function introProgress(){
   const r=introSec.getBoundingClientRect(), v=innerHeight;
   const t=Math.min(1, Math.max(0, (v - r.top)/v)); // 0 at top, 1 when bottom hits top
@@ -10,12 +11,18 @@ function introProgress(){
 }
 function renderIntro(){
   const t=introProgress();
-  introSec.style.opacity=String(1 - Math.pow(t,1.2)); // ease fade
+  const start=0.08, end=0.18;
+  let o=1;
+  if (t<=start) o=1;
+  else if (t>=end) o=0;
+  else o=1 - (t-start)/(end-start);
+  introWrap.style.opacity=String(o);
+  introWrap.style.transform=`translateY(${(1-o)*-12}px)`;
   requestAnimationFrame(renderIntro);
 }
 requestAnimationFrame(renderIntro);
 
-// Sticky scene logic (WCF-010 timing preserved)
+// Sticky scene logic
 const scene=document.querySelector('.scene');
 const left=[...document.querySelectorAll('.left .h-item')];
 const right=[...document.querySelectorAll('.right .h-item')];
@@ -43,22 +50,22 @@ function revealList(items, t){
 function renderScene(){
   const p=progress();
 
-  // HERO appears 0.10..0.25, then holds until swap band
-  const heroIn = clamp((p-0.10)/0.15);
-  const heroOut = clamp((p-0.52)/0.12);
+  // HERO appears 0.12..0.28; holds until swap
+  const heroIn = clamp((p-0.12)/0.16);
+  const heroOut = clamp((p-0.58)/0.12); // later swap band 0.58..0.70
   hero.style.opacity = String(heroIn * (1 - heroOut));
   hero.style.transform = `translateY(${lerp(6,-4,heroIn)}px) scale(${lerp(1.0,.985,heroIn)})`;
 
-  // Left reveals 0.15..0.52
-  revealList(left, clamp((p-0.15)/0.37));
+  // Left reveals 0.20..0.58
+  revealList(left, clamp((p-0.20)/0.38));
 
-  // Swap to BACK 0.52..0.64
-  const tSwap = clamp((p-0.52)/0.12);
+  // Swap to BACK 0.58..0.70
+  const tSwap = clamp((p-0.58)/0.12);
   back.style.opacity = String(tSwap);
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
-  // Right reveals 0.64..0.98
-  revealList(right, clamp((p-0.64)/0.34));
+  // Right reveals 0.70..0.96
+  revealList(right, clamp((p-0.70)/0.26));
 
   requestAnimationFrame(renderScene);
 }
