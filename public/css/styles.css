@@ -31,7 +31,7 @@ body{padding-top:64px}
 @keyframes bounce{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(6px) }}
 
 /* Sticky scene */
-.scene{height:520vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
+.scene{height:560vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
 .sticky{position:sticky;top:64px;height:calc(100vh - 64px);display:grid;place-items:center}
 .threecol{grid-template-columns:1fr auto 1fr;align-items:center;gap:28px}
 
@@ -44,7 +44,7 @@ body{padding-top:64px}
 .device{position:absolute;inset:0;margin:auto;width:88%;height:auto;object-fit:contain;filter:drop-shadow(0 28px 70px rgba(0,0,0,.18));will-change:opacity,transform}
 .device.back{opacity:0}
 
-.scrollspace{height:360vh}
+.scrollspace{height:420vh} /* extra page scroll after release */
 
 @media (max-width:900px){
   .threecol{grid-template-columns:1fr;gap:16px}

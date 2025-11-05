@@ -57,11 +57,11 @@ function renderScene(){
   back.style.opacity = String(tSwap);
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
-  // Right reveals earlier 0.70..0.88
-  revealList(right, clamp((p-0.70)/0.18));
+  // Right reveals 0.70..0.90 (finish earlier)
+  revealList(right, clamp((p-0.70)/0.20));
 
-  // Internal tail hold 0.88..0.96: keep last state steady (optional subtle lift)
-  if (p>0.88){
+  // Extended internal tail 0.90..0.99: freeze final state
+  if (p>0.90){
     right.forEach(el=>{ el.style.opacity='1'; el.style.transform='translateY(0) scale(1)'; });
     back.style.opacity='1'; back.style.transform='translateY(0) scale(1)';
   }
