@@ -69,3 +69,56 @@ if (scene){
   }
   requestAnimationFrame(renderScene);
 }
+
+
+// Welcome page parallax & lift
+(function(){
+  const hero = document.querySelector('.hero-halo');
+  const ring = document.querySelector('.halo-bg .ring');
+  if (!hero || !ring) return;
+  function onScroll(){
+    const r = hero.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const t = Math.min(1, Math.max(0, (vh - r.top)/vh)); // 0..1 as hero scrolls
+    ring.style.transform = `scale(${0.7 + 0.6*t})`;
+    ring.style.opacity = String(0.15 + 0.75*t);
+    if (t>0.15) hero.classList.add('scrolled'); else hero.classList.remove('scrolled');
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+
+
+// Product picker: animate in + click ripple/fade
+(function(){
+  const menu = document.querySelector('.prod-menu.animate-in');
+  if(!menu) return;
+  const cards = [...menu.querySelectorAll('.prod-card')];
+  // Reveal stagger
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        cards.forEach(c => c.classList.add('show'));
+        io.disconnect();
+      }
+    });
+  },{threshold:.2});
+  io.observe(menu);
+
+  // Click ripple -> fade -> navigate
+  cards.forEach(card => {
+    const href = card.getAttribute('href');
+    if(!href) return;
+    card.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const rect = card.getBoundingClientRect();
+      const rx = (e.clientX - rect.left) + 'px';
+      const ry = (e.clientY - rect.top) + 'px';
+      card.style.setProperty('--rx', rx);
+      card.style.setProperty('--ry', ry);
+      card.classList.add('clicked');
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{ window.location.href = href; }, 220);
+    });
+  });
+})();

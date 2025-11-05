@@ -80,3 +80,49 @@ body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI
 .acc[open] > summary{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#f9fafb)}
 .acc .acc-body{padding:8px 0 0}
 .nav a.active{opacity:1;text-decoration:underline}
+
+
+/* Product picker */
+.prod-menu{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+.prod-card{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;text-decoration:none;color:inherit;transition:transform .2s ease, box-shadow .2s ease}
+.prod-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.06)}
+.prod-card .thumb{width:80px;height:60px;border-radius:10px;background:#f1f5f9;display:grid;place-items:center;overflow:hidden}
+.prod-card .thumb img{width:100%;height:100%;object-fit:contain}
+.prod-card.disabled{opacity:.5;pointer-events:none}
+.prod-card .thumb.placeholder{background:linear-gradient(180deg,#eef2f7,#fff)}
+
+/* Welcome hero subtle lift on scroll */
+.hero-wrap .lift{transition:transform .3s ease, opacity .3s ease}
+.hero-halo.scrolled .lift{transform:translateY(-14px);opacity:.98}
+
+
+/* Picker animation */
+@keyframes cardIn {
+  0% { opacity: 0; transform: translateY(14px) scale(.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.prod-menu.animate-in .prod-card { opacity:0; transform:translateY(14px) scale(.98); }
+.prod-menu.animate-in .prod-card.show { animation: cardIn .4s cubic-bezier(.2,.6,.2,1) forwards; }
+.prod-card:nth-child(1).show{ animation-delay: .05s }
+.prod-card:nth-child(2).show{ animation-delay: .12s }
+.prod-card:nth-child(3).show{ animation-delay: .19s }
+
+/* Click ripple/fade effect */
+.prod-card {
+  position: relative;
+  overflow: hidden;
+}
+.prod-card::after{
+  content:""; position:absolute; width:8px; height:8px; left:var(--rx,50%); top:var(--ry,50%);
+  background:rgba(0,0,0,.08); border-radius:999px; transform:scale(0);
+  transition: transform .35s ease, opacity .45s ease;
+  pointer-events:none;
+}
+.prod-card.clicked::after{
+  transform: scale(60);
+  opacity: 0;
+}
+.fade-out {
+  animation: fadeOut .25s ease forwards;
+}
+@keyframes fadeOut { to { opacity:0; transform: translateY(-6px); filter: blur(2px); } }
