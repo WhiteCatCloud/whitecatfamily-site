@@ -134,3 +134,15 @@ if (scene){
     document.body.classList.toggle('show-subnav');
   });
 })();
+
+
+// Toggle Product subnav without navigation (centered single option)
+(function(){
+  const navLinks = document.querySelectorAll('.nav a');
+  const productLink = [...navLinks].find(a => a.textContent.trim() === 'Product');
+  if(!productLink) return;
+  productLink.addEventListener('click', (e)=>{
+    e.preventDefault();
+    document.body.classList.toggle('show-subnav');
+  });
+})();

@@ -136,3 +136,21 @@ body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI
 .nav.sub .grow{flex:1}
 .nav .ghost{border:1px solid var(--line);padding:6px 10px;border-radius:10px;text-decoration:none}
 .show-subnav .subnav{display:block}
+
+
+/* Subnav: same size as main nav items, centered */
+.subnav{display:none;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sub-row{height:64px;display:flex;align-items:center;justify-content:center}
+.sub-row.center{justify-content:center}
+.nav.sub{display:flex;gap:24px;font-size:14px}
+.nav.sub.center a{font-weight:600}
+.show-subnav .subnav{display:block}
+
+/* Center product title */
+.product-top .container{ text-align:center; padding-top:16px }
+.product-top h1{ margin:0 }
+.product-top .muted{ margin-top:6px }
+
+/* Ensure device images render above any overlay */
+.device-stage{ z-index:2 }
+.device{ z-index:2 }
