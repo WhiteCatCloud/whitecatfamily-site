@@ -122,3 +122,15 @@ if (scene){
     });
   });
 })();
+
+
+// Toggle Product subnav without navigation
+(function(){
+  const productLink = [...document.querySelectorAll('.nav a')].find(a => a.textContent.trim() === 'Product');
+  if(!productLink) return;
+  productLink.addEventListener('click', (e)=>{
+    // If link goes to product.html, convert to toggle
+    e.preventDefault();
+    document.body.classList.toggle('show-subnav');
+  });
+})();
