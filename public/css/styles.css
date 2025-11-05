@@ -20,21 +20,23 @@ img{max-width:100%;display:block}
 .sticky-head{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(255,255,255,.9);border-bottom:1px solid var(--line)}
 
 /* Sticky scene layout */
-.scene{height:260vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
+.scene{height:300vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
 .sticky{position:sticky;top:0;height:100vh;display:grid;place-items:center}
 .threecol{grid-template-columns:1fr auto 1fr;align-items:center;gap:28px}
 .highlights{display:grid;gap:18px;align-self:center}
-.h-item{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.06);transform:translateY(22px) scale(.98);opacity:0}
+.h-item{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.06);transform:translateY(24px) scale(.98);opacity:0}
 .h-item h3{margin:0 0 4px 0;font-size:18px}
 .h-item p{margin:0;color:#505050;font-size:14px}
 
-/* Device */
+/* Device + intro */
 .device-stage{position:relative;width:min(640px,48vw);aspect-ratio:4/2.2;display:grid;place-items:center;z-index:1}
 .device{position:absolute;inset:0;margin:auto;width:88%;height:auto;object-fit:contain;filter:drop-shadow(0 28px 70px rgba(0,0,0,.18));will-change:opacity,transform}
 .device.back{opacity:0}
+.intro{position:absolute;inset:auto 0 40%;display:grid;place-items:center;background:transparent}
+.intro .h1{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:16px;padding:10px 16px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
 
 /* Scroll driver */
-.scrollspace{height:260vh}
+.scrollspace{height:200vh}  /* gives a small tail after last reveal */
 
 /* Responsive */
 @media (max-width:900px){
