@@ -1,7 +1,7 @@
 // Footer year
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
-// Intro overlay opacity; reappears near top
+// Intro overlay fade (reappears near top)
 const overlay=document.getElementById('introOverlay');
 function renderOverlay(){
   const start=120, end=360;
@@ -15,7 +15,7 @@ function renderOverlay(){
 }
 requestAnimationFrame(renderOverlay);
 
-// Sticky scene logic
+// Sticky scene
 const scene=document.querySelector('.scene');
 const left=[...document.querySelectorAll('.left .h-item')];
 const right=[...document.querySelectorAll('.right .h-item')];
@@ -57,11 +57,11 @@ function renderScene(){
   back.style.opacity = String(tSwap);
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
-  // Right reveals 0.70..0.90 (finish earlier)
-  revealList(right, clamp((p-0.70)/0.20));
+  // Right reveals earlier 0.68..0.86 (finish sooner)
+  revealList(right, clamp((p-0.68)/0.18));
 
-  // Extended internal tail 0.90..0.99: freeze final state
-  if (p>0.90){
+  // Long internal tail 0.86..0.99: lock final state so 6th is visible well before release
+  if (p>0.86){
     right.forEach(el=>{ el.style.opacity='1'; el.style.transform='translateY(0) scale(1)'; });
     back.style.opacity='1'; back.style.transform='translateY(0) scale(1)';
   }
