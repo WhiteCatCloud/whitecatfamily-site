@@ -72,3 +72,11 @@ body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI
   .specs-grid.clean{grid-template-columns:1fr}
   .app-wrap{grid-template-columns:1fr}
 }
+
+
+/* Accordion products */
+.acc{border:1px solid var(--line);border-radius:14px;margin:12px 0;background:#fff;overflow:hidden}
+.acc > summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.acc[open] > summary{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#f9fafb)}
+.acc .acc-body{padding:8px 0 0}
+.nav a.active{opacity:1;text-decoration:underline}
