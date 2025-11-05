@@ -31,7 +31,7 @@ body{padding-top:64px}
 @keyframes bounce{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(6px) }}
 
 /* Sticky scene */
-.scene{height:460vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
+.scene{height:520vh;position:relative;background:linear-gradient(180deg,#fff,#f8fafc)}
 .sticky{position:sticky;top:64px;height:calc(100vh - 64px);display:grid;place-items:center}
 .threecol{grid-template-columns:1fr auto 1fr;align-items:center;gap:28px}
 

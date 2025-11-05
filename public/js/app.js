@@ -1,10 +1,10 @@
 // Footer year
 const y=document.getElementById('year'); if (y) y.textContent=String(new Date().getFullYear());
 
-// Intro overlay opacity driven by scrollY; reappears when near top
+// Intro overlay opacity; reappears near top
 const overlay=document.getElementById('introOverlay');
 function renderOverlay(){
-  const start=120, end=360; // full until 120px; fade 120..360px
+  const start=120, end=360;
   const s=window.scrollY;
   let o=1;
   if (s<=start) o=1;
@@ -57,8 +57,14 @@ function renderScene(){
   back.style.opacity = String(tSwap);
   back.style.transform = `translateY(${lerp(8,0,tSwap)}px) scale(${lerp(.985,1.0,tSwap)})`;
 
-  // Right reveals 0.72..0.98
-  revealList(right, clamp((p-0.72)/0.26));
+  // Right reveals earlier 0.70..0.88
+  revealList(right, clamp((p-0.70)/0.18));
+
+  // Internal tail hold 0.88..0.96: keep last state steady (optional subtle lift)
+  if (p>0.88){
+    right.forEach(el=>{ el.style.opacity='1'; el.style.transform='translateY(0) scale(1)'; });
+    back.style.opacity='1'; back.style.transform='translateY(0) scale(1)';
+  }
 
   requestAnimationFrame(renderScene);
 }
