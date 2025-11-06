@@ -275,3 +275,71 @@ document.addEventListener('DOMContentLoaded',()=>{const y=document.getElementByI
   // Initial render
   render();
 })();
+
+
+// WCF-035: side columns + later specs fade
+(function(){
+  const root = document.querySelector('.timeline-root');
+  if(!root) return;
+  const deviceFront = root.querySelector('img.device-front');
+  const deviceBack  = root.querySelector('img.device-back');
+  const leftCol = root.querySelector('.hl-col.left');
+  const rightCol = root.querySelector('.hl-col.right');
+  if(!leftCol || !rightCol) return;
+  const leftH = [...leftCol.querySelectorAll('.hl')];
+  const rightH = [...rightCol.querySelectorAll('.hl')];
+
+  // Hook into same progress variable by recomputing locally (since WCF-034 used local 'p')
+  let p = 0;
+  const clamp = (v,a,b)=>Math.min(b,Math.max(a,v));
+  const smooth = (t)=>t*t*(3-2*t);
+
+  // Attach to wheel/touch again to set p; reuse same handlers by layering a new controller.
+  let touchY=null;
+  function render(){
+    // We can't access WCF-034's stage reference here cleanly, so recompute with query:
+    const stage = root.querySelector('.timeline-stage');
+    const title = root.querySelector('.timeline-title');
+    const specs = root.querySelector('.timeline-specs');
+
+    // Title fade (unchanged thresholds)
+    const tFade = clamp((p - 0.12)/0.10, 0, 1);
+    if(title){ title.style.opacity = String(1 - smooth(tFade)); }
+
+    // Front in
+    const fIn = smooth(clamp((p - 0.18)/0.17, 0, 1));
+    if(deviceFront){ deviceFront.style.opacity = String(fIn); }
+
+    // Left highlights at 0.30/0.38/0.46
+    const leftMarks = [0.30, 0.38, 0.46];
+    leftH.forEach((el,i)=>{
+      const a = smooth(clamp((p - leftMarks[i])/0.08, 0, 1));
+      el.classList.toggle('on', a>0.02); el.style.opacity = String(a);
+    });
+
+    // Crossfade to back 0.56..0.72
+    const cross = smooth(clamp((p - 0.56)/0.16, 0, 1));
+    if(deviceFront){ deviceFront.style.opacity = String(fIn * (1 - cross)); }
+    if(deviceBack){ deviceBack.style.opacity = String(cross); }
+
+    // Right highlights at 0.72/0.80/0.88
+    const rightMarks = [0.72, 0.80, 0.88];
+    rightH.forEach((el,i)=>{
+      const a = smooth(clamp((p - rightMarks[i])/0.08, 0, 1));
+      el.classList.toggle('on', a>0.02); el.style.opacity = String(a);
+    });
+
+    // Specs fade after 0.94 (extra dead travel), 0.94..1.00
+    const specsT = smooth(clamp((p - 0.94)/0.06, 0, 1));
+    if(stage) stage.style.opacity = String(1 - specsT);
+    if(specs){ specs.classList.toggle('show', specsT>0.01); specs.style.opacity = String(specsT); }
+  }
+
+  function step(delta){ const scale=0.0007; p=clamp(p+delta*scale,0,1); render(); }
+  window.addEventListener('wheel', e=>{ e.preventDefault(); step(e.deltaY); }, {passive:false});
+  window.addEventListener('touchstart', e=>{ touchY=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchmove', e=>{ if(touchY==null) return; const dy=touchY-e.touches[0].clientY; touchY=e.touches[0].clientY; step(dy*2); }, {passive:false});
+  window.addEventListener('touchend', ()=>{ touchY=null; }, {passive:true});
+  window.addEventListener('keydown', e=>{ if(e.key==='ArrowDown'||e.key==='ArrowRight') step(120); if(e.key==='ArrowUp'||e.key==='ArrowLeft') step(-120); });
+  render();
+})();
