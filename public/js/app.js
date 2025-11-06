@@ -343,3 +343,64 @@ document.addEventListener('DOMContentLoaded',()=>{const y=document.getElementByI
   window.addEventListener('keydown', e=>{ if(e.key==='ArrowDown'||e.key==='ArrowRight') step(120); if(e.key==='ArrowUp'||e.key==='ArrowLeft') step(-120); });
   render();
 })();
+
+
+// WCF-036: stronger right/left placement and longer buffer before specs
+(function(){
+  const root = document.querySelector('.timeline-root');
+  if(!root) return;
+  const stage = root.querySelector('.timeline-stage');
+  const title = root.querySelector('.timeline-title');
+  const specs = root.querySelector('.timeline-specs');
+  const deviceFront = root.querySelector('img.device-front');
+  const deviceBack  = root.querySelector('img.device-back');
+  const leftH  = [...root.querySelectorAll('.hl-col.left .hl')];
+  const rightH = [...root.querySelectorAll('.hl-col.right .hl')];
+
+  let p = 0;
+  const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+  const smooth=t=>t*t*(3-2*t);
+  function render(){
+    // Title 0..0.22 visible -> fade by 0.22
+    const tFade = clamp((p - 0.12)/0.10, 0, 1);
+    if(title){ title.style.opacity = String(1 - smooth(tFade)); }
+
+    // Front in 0.18..0.35
+    const fIn = smooth(clamp((p - 0.18)/0.17, 0, 1));
+    if(deviceFront){ deviceFront.style.opacity = String(fIn); }
+
+    // Left highlights 0.30/0.38/0.46
+    const leftMarks=[0.30,0.38,0.46];
+    leftH.forEach((el,i)=>{
+      const a = smooth(clamp((p - leftMarks[i])/0.08, 0, 1));
+      el.classList.toggle('on', a>0.02); el.style.opacity=String(a);
+    });
+
+    // Crossfade 0.58..0.76 (later, longer)
+    const cross = smooth(clamp((p - 0.58)/0.18, 0, 1));
+    if(deviceFront){ deviceFront.style.opacity = String(fIn * (1 - cross)); }
+    if(deviceBack){ deviceBack.style.opacity = String(cross); }
+
+    // Right highlights 0.76/0.84/0.92 (ensure right column only)
+    const rightMarks=[0.76,0.84,0.92];
+    rightH.forEach((el,i)=>{
+      const a = smooth(clamp((p - rightMarks[i])/0.08, 0, 1));
+      el.classList.toggle('on', a>0.02); el.style.opacity=String(a);
+    });
+
+    // Longer dead zone; specs 0.975..1.0
+    const specsT = smooth(clamp((p - 0.975)/0.025, 0, 1));
+    if(stage) stage.style.opacity = String(1 - specsT);
+    if(specs){ specs.classList.toggle('show', specsT>0.01); specs.style.opacity = String(specsT); }
+  }
+  function step(delta){ const scale=0.0007; p=clamp(p+delta*scale,0,1); render(); }
+
+  // Control
+  let touchY=null;
+  window.addEventListener('wheel', e=>{ e.preventDefault(); step(e.deltaY); }, {passive:false});
+  window.addEventListener('touchstart', e=>{ touchY=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchmove', e=>{ if(touchY==null) return; const dy=touchY-e.touches[0].clientY; touchY=e.touches[0].clientY; step(dy*2); }, {passive:false});
+  window.addEventListener('touchend', ()=>{ touchY=null; }, {passive:true});
+  window.addEventListener('keydown', e=>{ if(e.key==='ArrowDown'||e.key==='ArrowRight') step(120); if(e.key==='ArrowUp'||e.key==='ArrowLeft') step(-120); });
+  render();
+})();
