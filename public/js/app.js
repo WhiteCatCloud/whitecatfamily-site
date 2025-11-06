@@ -173,3 +173,105 @@ document.addEventListener('DOMContentLoaded',()=>{const y=document.getElementByI
     addEventListener('resize', onScrollProd);
   }
 })();
+
+
+// WCF-034: Scroll-speed-driven timeline (no page scroll)
+(function(){
+  const root = document.querySelector('.timeline-root');
+  if(!root) return;
+
+  // Prevent native scroll on this page
+  document.documentElement.style.height = '100%';
+  document.body.style.height = '100%';
+  document.body.style.overflow = 'hidden';
+
+  const title = root.querySelector('.timeline-title');
+  const deviceFront = root.querySelector('img.device-front');
+  const deviceBack = root.querySelector('img.device-back');
+  const hls = [...root.querySelectorAll('.hl')]; // 6 items
+  const specs = root.querySelector('.timeline-specs');
+
+  let p = 0; // progress 0..1
+  const clamp = (v,a,b)=>Math.min(b,Math.max(a,v));
+  const smooth = (t)=>t*t*(3-2*t); // smoothstep
+
+  function setAlpha(el, a){ if(!el) return; el.style.opacity = String(clamp(a,0,1)); }
+  function setOn(el, on){ if(!el) return; el.classList.toggle('on', !!on); }
+  function setShow(el, on){ if(!el) return; el.classList.toggle('show', !!on); }
+
+  function render(){
+    // Segments:
+    // 0.00-0.12 Title fully visible, 0.12-0.22 fade out
+    const tFade = clamp((p - 0.12)/0.10, 0, 1);
+    setShow(title, true);
+    setAlpha(title, 1 - smooth(tFade));
+
+    // 0.18-0.35 Front fades in
+    const fIn = smooth(clamp((p - 0.18)/0.17, 0, 1));
+    setOn(deviceFront, fIn > 0.02);
+    setAlpha(deviceFront, fIn);
+
+    // 0.28 / 0.36 / 0.44 highlights 1-3
+    const marksL = [0.28, 0.36, 0.44];
+    for(let i=0;i<3;i++){
+      const a = smooth(clamp((p - marksL[i])/0.08, 0, 1));
+      setOn(hls[i], a > 0.02); setAlpha(hls[i], a);
+    }
+
+    // 0.52-0.66 crossfade to back
+    const x = smooth(clamp((p - 0.52)/0.14, 0, 1));
+    setAlpha(deviceFront, (1 - x) * fIn);
+    setOn(deviceBack, x > 0.02);
+    setAlpha(deviceBack, x);
+
+    // 0.66 / 0.74 / 0.82 highlights 4-6
+    const marksR = [0.66, 0.74, 0.82];
+    for(let i=3;i<6;i++){
+      const a = smooth(clamp((p - marksR[i-3])/0.08, 0, 1));
+      setOn(hls[i], a > 0.02); setAlpha(hls[i], a);
+    }
+
+    // 0.90-1.00 fade whole stage out, fade specs in
+    const toSpecs = smooth(clamp((p - 0.90)/0.10, 0, 1));
+    const stage = root.querySelector('.timeline-stage');
+    if(stage){ stage.style.opacity = String(1 - toSpecs); }
+    setShow(specs, toSpecs > 0.01);
+    setAlpha(specs, toSpecs);
+  }
+
+  // Input handling: wheel + touch to control p
+  let touchY = null;
+  function step(delta){
+    // delta > 0 means scroll down
+    const scale = 0.0007; // sensitivity
+    p = clamp(p + delta*scale, 0, 1);
+    render();
+  }
+
+  window.addEventListener('wheel', (e)=>{
+    e.preventDefault();
+    step(e.deltaY);
+  }, {passive:false});
+
+  window.addEventListener('touchstart', (e)=>{
+    touchY = e.touches[0].clientY;
+  }, {passive:true});
+  window.addEventListener('touchmove', (e)=>{
+    if(touchY==null) return;
+    const dy = touchY - e.touches[0].clientY;
+    touchY = e.touches[0].clientY;
+    step(dy*2);
+  }, {passive:false});
+  window.addEventListener('touchend', ()=>{touchY=null;}, {passive:true});
+
+  // Keyboard left/right for testing
+  window.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowDown' || e.key==='ArrowRight') step(120);
+    if(e.key==='ArrowUp' || e.key==='ArrowLeft') step(-120);
+    if(e.key==='Home'){ p=0; render(); }
+    if(e.key==='End'){ p=1; render(); }
+  });
+
+  // Initial render
+  render();
+})();
