@@ -44,3 +44,23 @@
 .specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
 .specs-grid.clean>div{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;display:flex;justify-content:space-between;gap:8px}
 @media (max-width:980px){.threecol{grid-template-columns:1fr}.device-stage{order:-1;height:440px}}
+
+
+/* WCF-032 tuning */
+.intro-full .intro-wrap{transition:opacity .6s ease, transform .6s ease}
+.intro-fade.dim{opacity:0; transform:translateY(-28px)}
+
+.product-intro .intro-wrap{will-change:opacity,transform;transition:opacity .6s ease, transform .6s ease}
+.product-intro .intro-wrap.dim{opacity:0; transform:translateY(-24px)}
+
+.device-stage img.device{transition:opacity .8s ease}
+.device-stage img.device.start{opacity:0}
+.device-stage img.device.on{opacity:1}
+
+/* Delay cascade for highlight items */
+.h-item.reveal{transition-delay:.05s}
+.h-item.reveal.step2{transition-delay:.12s}
+.h-item.reveal.step3{transition-delay:.18s}
+.h-item.reveal.step4{transition-delay:.24s}
+.h-item.reveal.step5{transition-delay:.30s}
+.h-item.reveal.step6{transition-delay:.36s}
