@@ -64,3 +64,18 @@
 .h-item.reveal.step4{transition-delay:.24s}
 .h-item.reveal.step5{transition-delay:.30s}
 .h-item.reveal.step6{transition-delay:.36s}
+
+
+/* WCF-033 sequencing tweaks */
+.intro-full .intro-wrap{transition:opacity .6s ease, transform .6s ease}
+.intro-fade.dim{opacity:0; transform:translateY(-28px)}
+.product-intro .intro-wrap{transition:opacity .6s ease, transform .6s ease}
+.product-intro .intro-wrap.dim{opacity:0; transform:translateY(-24px)}
+
+/* Device opacity controlled strictly by JS ranges */
+.device-stage img.device{opacity:0; transition:opacity .7s ease}
+.device-stage img.device.show{opacity:1}
+
+/* Highlights start hidden; we drive them via progress */
+.h-item{opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease}
+.h-item.on{opacity:1; transform:none}

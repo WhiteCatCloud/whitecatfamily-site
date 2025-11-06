@@ -82,3 +82,94 @@ document.addEventListener('DOMContentLoaded',()=>{const y=document.getElementByI
     addEventListener('scroll', fade, {passive:true}); fade();
   }
 })();
+
+
+// WCF-033: explicit scroll sequencing
+(function(){
+  // --- Solution title fade only after user scrolls ---
+  const intro = document.querySelector('.intro-full');
+  if(intro){
+    const wrap = intro.querySelector('.intro-wrap');
+    const onScroll = () => {
+      // Fade only when user actually scrolls (not on load paint)
+      const sc = Math.max(0, window.scrollY || window.pageYOffset || 0);
+      const r = intro.getBoundingClientRect();
+      const vh = innerHeight;
+      // progress through intro viewport
+      const p = Math.min(1, Math.max(0, (vh - r.top)/vh));
+      // require tiny scroll (>10px) and progress > ~0.2 before dim
+      if (sc > 10 && p > 0.2) wrap.classList.add('dim'); else wrap.classList.remove('dim');
+    };
+    onScroll(); addEventListener('scroll', onScroll, {passive:true});
+  }
+
+  // --- Product page choreography ---
+  const pIntro = document.querySelector('.product-intro');
+  const scene = document.querySelector('.scene');
+  if(pIntro && scene){
+    const titleWrap = pIntro.querySelector('.intro-wrap') || pIntro.firstElementChild;
+    const hero = scene.querySelector('img.hero') || scene.querySelector('img[src*="router-front"]');
+    const back = scene.querySelector('img.back') || scene.querySelector('img[src*="router-io"]');
+    const left = [...scene.querySelectorAll('.col')][0]?.querySelectorAll('.h-item') || [];
+    const right = [...scene.querySelectorAll('.col')][1]?.querySelectorAll('.h-item') || [];
+
+    function clamp(v,a,b){ return Math.min(b, Math.max(a, v)); }
+    function lerp(a,b,t){ return a + (b-a)*t; }
+
+    function onScrollProd(){
+      const vh = innerHeight;
+
+      // 1) Product intro progress: fade title out between 10%-30% scrolled
+      const rIntro = pIntro.getBoundingClientRect();
+      const introP = clamp((vh*0.9 - rIntro.top) / (vh*0.9), 0, 1); // 0..1 through intro
+      // Title fade window
+      const fadeStart = 0.10, fadeEnd = 0.30;
+      const titleAlpha = 1 - clamp((introP - fadeStart)/(fadeEnd - fadeStart), 0, 1);
+      if(titleWrap){
+        titleWrap.style.opacity = String(titleAlpha);
+        titleWrap.style.transform = `translateY(${lerp(0,-24, clamp((introP - fadeStart)/(fadeEnd - fadeStart),0,1))}px)`;
+      }
+
+      // Router (front) fades in after title: 20%..45%
+      const heroInStart = 0.20, heroInEnd = 0.45;
+      const heroAlpha = clamp((introP - heroInStart)/(heroInEnd - heroInStart), 0, 1);
+      if(hero){
+        hero.style.opacity = String(heroAlpha);
+        hero.classList.toggle('show', heroAlpha > 0.02);
+      }
+
+      // 2) Scene progress for highlights and back transition
+      const rScene = scene.getBoundingClientRect();
+      const sceneP = clamp((vh - rScene.top) / (rScene.height || 1), 0, 1); // 0..1
+
+      // Highlights timing:
+      // Left column (1,2,3) appear at 0.15, 0.25, 0.35
+      const leftMarks = [0.15, 0.25, 0.35];
+      left.forEach((el, i) => {
+        if(sceneP > leftMarks[i]) el.classList.add('on'); else el.classList.remove('on');
+      });
+
+      // Start crossfade to back between 0.50..0.70 of scene
+      const backStart = 0.50, backEnd = 0.70;
+      const cross = clamp((sceneP - backStart)/(backEnd - backStart), 0, 1);
+      if(hero){
+        const heroOut = 1 - cross; // fades from 1 to 0
+        hero.style.opacity = String(heroAlpha * heroOut); // ensure hero only after intro
+      }
+      if(back){
+        back.style.opacity = String(cross); // 0 -> 1
+        back.classList.toggle('show', cross > 0.02);
+      }
+
+      // Right column (4,5,6) after back begins, at 0.60, 0.70, 0.80
+      const rightMarks = [0.60, 0.70, 0.80];
+      right.forEach((el, i) => {
+        if(sceneP > rightMarks[i]) el.classList.add('on'); else el.classList.remove('on');
+      });
+    }
+
+    onScrollProd();
+    addEventListener('scroll', onScrollProd, {passive:true});
+    addEventListener('resize', onScrollProd);
+  }
+})();
