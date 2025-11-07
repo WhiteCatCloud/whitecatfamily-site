@@ -1,0 +1,1 @@
+document.querySelectorAll('.card, .hero h1').forEach(el=>el.style.opacity=1);
