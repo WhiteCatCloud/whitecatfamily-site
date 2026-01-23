@@ -488,67 +488,63 @@
                 </div>
             </section>
 
-            <!-- Enhanced App Section -->
-            <section id="about" class="about section">
-                <div class="container section-title" data-aos="fade-up">
-                    <h2>The WhiteCat App</h2>
-                    <p>Our intuitive mobile app puts powerful controls at your fingertips — no tech skills needed. Manage devices, block distractions or scams, set schedules, all while keeping privacy local. Perfect for parents enforcing bedtimes or grandparents avoiding online threats.</p>
+           <!-- Enhanced App Section -->
+<section id="about" class="about section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>The WhiteCat App</h2>
+        <p>Our intuitive mobile app puts powerful controls at your fingertips — no tech skills needed. Manage devices, block distractions or scams, set schedules, all while keeping privacy local. Perfect for parents enforcing bedtimes or grandparents avoiding online threats.</p>
+    </div>
+    <div class="container">
+        <div class="row gy-4 align-items-center">
+            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+                <p class="fst-italic">Designed for real families: simple taps, clear overviews, automatic peace.</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>All devices at a glance — label "Emma’s iPad" or "Grandma’s Phone" easily.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>One-tap blocking for TikTok, YouTube, scams, or phishing sites.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Auto-routines: Bedtime pauses, homework blocks — set once, done.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Privacy insights: See top threats blocked without data leaving home.</span></li>
+                </ul>
+                <div class="cta-wrapper mt-4">
+                    <a href="https://apps.apple.com/app/whitecat" class="btn btn-primary me-3">Download on App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.whitecat" class="btn btn-outline-primary">Get on Google Play</a>
                 </div>
-                <div class="container">
-                    <div class="row gy-4">
-                        <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-                            <p class="fst-italic">Designed for real families: simple taps, clear overviews, automatic peace.</p>
-                            <ul>
-                                <li><i class="bi bi-check-circle"></i> <span>All devices at a glance — label "Emma’s iPad" or "Grandma’s Phone" easily.</span></li>
-                                <li><i class="bi bi-check-circle"></i> <span>One-tap blocking for TikTok, YouTube, scams, or phishing sites.</span></li>
-                                <li><i class="bi bi-check-circle"></i> <span>Auto-routines: Bedtime pauses, homework blocks — set once, done.</span></li>
-                                <li><i class="bi bi-check-circle"></i> <span>Privacy insights: See top threats blocked without data leaving home.</span></li>
-                            </ul>
-                            <div class="cta-wrapper">
-                                <a href="https://apps.apple.com/app/whitecat" class="btn btn-primary me-2">Download on App Store</a>
-                                <a href="https://play.google.com/store/apps/details?id=com.whitecat" class="btn btn-secondary">Get on Google Play</a>
-                            </div>
+            </div>
+            <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+                <!-- Swiper Carousel for App Screenshots -->
+                <div class="swiper app-swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                        {
+                          "loop": true,
+                          "speed": 600,
+                          "autoplay": { "delay": 5000, "disableOnInteraction": false },
+                          "slidesPerView": 1,
+                          "pagination": { "el": ".swiper-pagination", "clickable": true }
+                        }
+                    </script>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="assets/img/app-dashboard.png" class="img-fluid" alt="App Dashboard: Quick overview of devices and blocks.">
+                            <div class="caption">Dashboard: See who's online and pause with one tap.</div>
                         </div>
-                        <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-                            <!-- Swiper Carousel for App Screenshots -->
-                            <div class="swiper app-swiper init-swiper">
-                                <script type="application/json" class="swiper-config">
-                                    {
-                                      "loop": true,
-                                      "speed": 600,
-                                      "autoplay": { "delay": 5000 },
-                                      "slidesPerView": 1,
-                                      "pagination": { "el": ".swiper-pagination", "clickable": true },
-                                      "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }
-                                    }
-                                </script>
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-dashboard.png" class="img-fluid" alt="App Dashboard: Quick overview of devices and blocks.">
-                                        <div class="caption">Dashboard: See who's online and pause with one tap.</div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-devices.png" class="img-fluid" alt="Devices List: Manage every connected gadget.">
-                                        <div class="caption">Devices: Label and control phones, consoles, more.</div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-services.png" class="img-fluid" alt="Services Screen: Easy toggles for apps and scams.">
-                                        <div class="caption">Services: Block apps, sites, or threats instantly.</div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-schedules.png" class="img-fluid" alt="Schedules: Set auto-routines for peace.">
-                                        <div class="caption">Schedules: Bedtime and homework modes that enforce themselves.</div>
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div>
+                        <div class="swiper-slide">
+                            <img src="assets/img/app-devices.png" class="img-fluid" alt="Devices List: Manage every connected gadget.">
+                            <div class="caption">Devices: Label and control phones, consoles, more.</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/img/app-services.png" class="img-fluid" alt="Services Screen: Easy toggles for apps and scams.">
+                            <div class="caption">Services: Block apps, sites, or threats instantly.</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/img/app-schedules.png" class="img-fluid" alt="Schedules: Set auto-routines for peace.">
+                            <div class="caption">Schedules: Bedtime and homework modes that enforce themselves.</div>
                         </div>
                     </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-            </section>
-
+            </div>
+        </div>
+    </div>
+</section>
         </main>
 
         <footer id="footer" class="footer light-background">
