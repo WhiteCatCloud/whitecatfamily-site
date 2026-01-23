@@ -3036,4 +3036,90 @@ section,
   .app-swiper .swiper-slide img {
     max-height: 400px;
   }
+}/* Enhanced App Section Carousel Styles */
+.app-swiper {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.app-swiper .swiper-slide {
+  text-align: center; /* Centers content horizontally */
+}
+
+.app-swiper .swiper-slide img {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-height: 500px;          /* Reduced from 600px to prevent overflow */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;             /* Explicit horizontal centering */
+  transition: transform 0.3s ease;
+}
+
+.app-swiper .swiper-slide img:hover {
+  transform: scale(1.03);     /* Subtle hover zoom */
+}
+
+.app-swiper .caption {
+  text-align: center;
+  font-size: 13px;            /* Slightly smaller */
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin-top: 12px;
+  padding: 0 10px;
+}
+
+.app-swiper .swiper-pagination {
+  margin-top: 15px;
+}
+
+.app-swiper .swiper-pagination-bullet {
+  background-color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.app-swiper .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/* Hide navigation arrows completely */
+.app-swiper .swiper-button-next,
+.app-swiper .swiper-button-prev {
+  display: none !important;
+}
+
+/* Consistent check marks across site (ensure same as other sections) */
+.about .content ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.about .content ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.about .content ul li i.bi-check-circle {
+  color: var(--accent-color);
+  font-size: 1.3rem;          /* Matches typical site size */
+  margin-right: 12px;
+  flex-shrink: 0;
+  line-height: 1.6;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+  .app-swiper .swiper-slide img {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about .content ul li {
+    font-size: 15px;
+  }
 }
