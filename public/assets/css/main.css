@@ -2997,3 +2997,43 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+/*--------------------------------------------------------------
+# App Section Carousel Styles
+--------------------------------------------------------------*/
+.app-swiper {
+  position: relative;
+}
+
+.app-swiper .swiper-slide img {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-height: 600px; /* Adjust based on your screenshot sizes */
+  object-fit: contain;
+}
+
+.app-swiper .caption {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-top: 10px;
+}
+
+.app-swiper .swiper-pagination-bullet {
+  background-color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.app-swiper .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.app-swiper .swiper-button-next,
+.app-swiper .swiper-button-prev {
+  color: var(--accent-color);
+}
+
+@media (max-width: 767px) {
+  .app-swiper .swiper-slide img {
+    max-height: 400px;
+  }
+}
