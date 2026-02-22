@@ -174,6 +174,19 @@
                 </div>
             </section>
 
+            <style>
+                /* Multiply blend mode makes the white background of the JPG screenshots invisible, blending seamlessly with the page */
+                .app-screenshot {
+                    mix-blend-mode: multiply;
+                }
+                .team-overlay {
+                    background-color: rgba(0, 0, 0, 0.85) !important;
+                }
+                .team-overlay p {
+                    color: #ffffff !important;
+                }
+            </style>
+
             <section id="about" class="about section light-background">
                 <div class="container section-title" data-aos="fade-up">
                     <h2>The WhiteCat App</h2>
@@ -246,11 +259,11 @@
                                 </script>
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="assets/img/app-dashboard.png" class="img-fluid app-screenshot" alt="App Dashboard: Family activity and quick actions.">
+                                        <img src="assets/img/app-dashboard.jpg" class="img-fluid app-screenshot" alt="App Dashboard: Family activity and quick actions.">
                                         <div class="caption">Dashboard: See who's online, pause internet, or set limits instantly.</div>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="assets/img/app-devices.png" class="img-fluid app-screenshot" alt="Devices List: Assigned and unassigned devices.">
+                                        <img src="assets/img/app-devices.jpg" class="img-fluid app-screenshot" alt="Devices List: Assigned and unassigned devices.">
                                         <div class="caption">Devices: Label and control individual phones, tablets, and laptops.</div>
                                     </div>
                                     <div class="swiper-slide">
@@ -258,7 +271,7 @@
                                         <div class="caption">Services: Block specific apps, categories, or online threats.</div>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="assets/img/app-schedules.png" class="img-fluid app-screenshot" alt="Member Details: Jon's linked devices and activity.">
+                                        <img src="assets/img/app-schedules.jpg" class="img-fluid app-screenshot" alt="Member Details: Jon's linked devices and activity.">
                                         <div class="caption">Member Details: View activity and manage assigned devices.</div>
                                     </div>
                                     <div class="swiper-slide">
@@ -334,15 +347,6 @@
                 </div>
             </section>
 
-            <style>
-                .team-overlay {
-                    background-color: rgba(0, 0, 0, 0.85) !important;
-                }
-                .team-overlay p {
-                    color: #ffffff !important;
-                }
-            </style>
-
             <section id="team" class="team section light-background">
                 <div class="container section-title" data-aos="fade-up">
                     <h2>White Cat Family</h2>
@@ -355,7 +359,7 @@
                                 <div class="team-image">
                                     <img src="assets/img/person/person-m-1.webp" class="img-fluid" alt="">
                                     <div class="team-overlay">
-                                        <p>Founder. Calm, privacy-first voice. Hardware & mission-driven.</p>
+                                        <p>Founder & Lead Architect. With an extensive background in software development, networking, and electronics, Jack built WhiteCat to solve the exact screen-time battles he faced at home as a father of two.</p>
                                     </div>
                                 </div>
                                 <div class="team-content">
@@ -368,11 +372,11 @@
                                 <div class="team-image">
                                     <img src="assets/img/person/person-f-6.webp" class="img-fluid" alt="">
                                     <div class="team-overlay">
-                                        <p>20+ years scaling hardware reliably. Operations backbone.</p>
+                                        <p>E-commerce and digital marketing expert. She drives growth and ensures WhiteCat seamlessly connects with families across the globe.</p>
                                     </div>
                                 </div>
                                 <div class="team-content">
-                                    <h4>Gabriela</h4><span class="position">Operations</span>
+                                    <h4>Gabriela</h4><span class="position">Marketing & Operations</span>
                                 </div>
                             </div>
                         </div>
@@ -416,12 +420,25 @@
                         </div>
                         <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                             <div class="cta-content">
-                                <h2>Under the Hood: Technical Specs</h2>
-                                <p class="lead">Silent power. Dual-core ARM Cortex-A53. Dual-band Wi-Fi 6. Up to ≈3000 Mbps combined speed.</p>
+                                <h2>Under the Hood: WhiteCat Hardware</h2>
+                                <p class="lead">Built to handle a fully connected modern home without breaking a sweat. Silent, powerful, and blisteringly fast.</p>
                                 <div class="cta-features">
-                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="400"><i class="bi bi-check-circle-fill"></i><span>Wi-Fi 6 — better in crowded homes, lower latency for streaming & gaming</span></div>
-                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="450"><i class="bi bi-check-circle-fill"></i><span>Ports: 1× Gigabit WAN, 3× Gigabit LAN</span></div>
-                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="500"><i class="bi bi-check-circle-fill"></i><span>512 MB RAM / 128 MB Flash — handles filtering without slowing you down</span></div>
+                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="400">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span><strong>Next-Gen Connectivity:</strong> Wi-Fi 6 AX3000 powered by the advanced MediaTek MT7981B + MT7976CN chipset for massive coverage and low latency.</span>
+                                    </div>
+                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="450">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span><strong>Instant Local Filtering:</strong> 512 MB RAM / 128 MB Flash memory allows real-time threat blocking in under 3ms, without relying on slow cloud lookups.</span>
+                                    </div>
+                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="500">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span><strong>Hardwired Speed:</strong> 1× Gigabit WAN port for your modem, plus 3× Gigabit LAN ports for consoles, PCs, and smart home hubs.</span>
+                                    </div>
+                                    <div class="feature-item" data-aos="zoom-in" data-aos-delay="550">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span><strong>Living Room Ready:</strong> A completely fanless, silent design that blends perfectly into your home environment.</span>
+                                    </div>
                                 </div>
                                 <div class="cta-action mt-5">
                                     <a href="#" class="btn btn-primary" onclick="
