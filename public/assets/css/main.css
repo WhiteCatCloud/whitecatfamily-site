@@ -3074,7 +3074,8 @@ section,
 }
 
 .app-swiper .swiper-pagination {
-  margin-top: 15px;
+  position: static;
+  margin-top: 12px;
 }
 
 .app-swiper .swiper-pagination-bullet {
@@ -3123,4 +3124,53 @@ section,
   .about .content ul li {
     font-size: 15px;
   }
+}
+
+/*--------------------------------------------------------------
+# App Feature Cards (2x2 grid)
+--------------------------------------------------------------*/
+.app-feature-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  height: 100%;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-top: 3px solid var(--accent-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.app-feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(93,87,244,0.12);
+}
+
+.app-feature-icon {
+  width: 40px;
+  height: 40px;
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+}
+
+.app-feature-icon i {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+.app-feature-card h6 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--heading-color);
+}
+
+.app-feature-card p {
+  font-size: 0.8rem;
+  color: var(--default-color);
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.5;
 }
