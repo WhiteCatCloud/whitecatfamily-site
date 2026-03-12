@@ -225,20 +225,26 @@
                             </ul>
                             
                             <div class="cta-wrapper mt-4 d-flex flex-wrap gap-3">
-                                <a href="https://apps.apple.com/app/whitecat" class="btn btn-dark d-inline-flex align-items-center px-4 py-2 rounded-3">
-                                    <i class="bi bi-apple fs-4 me-2"></i> 
-                                    <div class="text-start">
-                                        <small class="d-block" style="font-size: 0.65rem; line-height: 1;">Download on the</small>
-                                        <span class="fw-bold" style="line-height: 1;">App Store</span>
-                                    </div>
-                                </a>
-                                <a href="https://play.google.com/store/apps/details?id=com.whitecat" class="btn btn-dark d-inline-flex align-items-center px-4 py-2 rounded-3">
-                                    <i class="bi bi-google-play fs-4 me-2"></i> 
-                                    <div class="text-start">
-                                        <small class="d-block" style="font-size: 0.65rem; line-height: 1;">GET IT ON</small>
-                                        <span class="fw-bold" style="line-height: 1;">Google Play</span>
-                                    </div>
-                                </a>
+                                <div class="d-inline-flex flex-column align-items-center">
+                                    <a class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3 disabled" style="opacity:0.55; pointer-events:none;">
+                                        <i class="bi bi-apple fs-4 me-2"></i>
+                                        <div class="text-start">
+                                            <small class="d-block" style="font-size: 0.65rem; line-height: 1;">Download on the</small>
+                                            <span class="fw-bold" style="line-height: 1;">App Store</span>
+                                        </div>
+                                    </a>
+                                    <small class="text-muted mt-1" style="font-size:0.7rem;">Coming Soon</small>
+                                </div>
+                                <div class="d-inline-flex flex-column align-items-center">
+                                    <a class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3 disabled" style="opacity:0.55; pointer-events:none;">
+                                        <i class="bi bi-google-play fs-4 me-2"></i>
+                                        <div class="text-start">
+                                            <small class="d-block" style="font-size: 0.65rem; line-height: 1;">GET IT ON</small>
+                                            <span class="fw-bold" style="line-height: 1;">Google Play</span>
+                                        </div>
+                                    </a>
+                                    <small class="text-muted mt-1" style="font-size:0.7rem;">Coming Soon</small>
+                                </div>
                             </div>
 
                         </div>
@@ -453,108 +459,6 @@
                 </div>
             </section>
 
-            <section id="testimonials" class="testimonials section light-background">
-                <div class="container section-title" data-aos="fade-up">
-                    <h2>What Families Are Saying</h2>
-                    <p>WhiteCat is bringing calm, focus, and real privacy back to homes — one router at a time.</p>
-                </div>
-                <div class="container" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonials-slider swiper init-swiper">
-                        <script type="application/json" class="swiper-config">
-                            {
-                              "loop": true,
-                              "speed": 800,
-                              "autoplay": { "delay": 5000 },
-                              "slidesPerView": 1,
-                              "spaceBetween": 30,
-                              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true },
-                              "breakpoints": { "768": { "slidesPerView": 2 }, "1200": { "slidesPerView": 3 } }
-                            }
-                        </script>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-content">
-                                        <p><i class="bi bi-quote quote-icon"></i> Didn’t expect a parental-control router to be this fast. Streaming and gaming are flawless.</p>
-                                    </div>
-                                    <div class="testimonial-profile">
-                                        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-                                        <div class="profile-info">
-                                            <div><h3>Robert J.</h3><h4>Michigan</h4></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-content">
-                                        <p><i class="bi bi-quote quote-icon"></i> I plugged it in, opened the app, and everything just appeared — every device, every option.</p>
-                                    </div>
-                                    <div class="testimonial-profile">
-                                        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-                                        <div class="profile-info">
-                                            <div><h3>Lisa W.</h3><h4>Chicago</h4></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-content">
-                                        <p><i class="bi bi-quote quote-icon"></i> One tap and all the distractions vanish. Kids focus better and our evenings are peaceful again.</p>
-                                    </div>
-                                    <div class="testimonial-profile">
-                                        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-                                        <div class="profile-info">
-                                            <div><h3>Patrick R.</h3><h4>Seattle</h4></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-content">
-                                        <p><i class="bi bi-quote quote-icon"></i> Bedtime actually sticks now. No more sneaking phones under the blanket.</p>
-                                    </div>
-                                    <div class="testimonial-profile">
-                                        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-                                        <div class="profile-info">
-                                            <div><h3>Maria L.</h3><h4>San Diego</h4></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-content">
-                                        <p><i class="bi bi-quote quote-icon"></i> Knowing our data isn’t being sold or tracked is a huge relief. It feels like the internet is ours again.</p>
-                                    </div>
-                                    <div class="testimonial-profile">
-                                        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-                                        <div class="profile-info">
-                                            <div><h3>Michael D.</h3><h4>New York</h4></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-content">
-                                        <p><i class="bi bi-quote quote-icon"></i> The schedules run automatically. I’m no longer the bad guy enforcing everything.</p>
-                                    </div>
-                                    <div class="testimonial-profile">
-                                        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-                                        <div class="profile-info">
-                                            <div><h3>Sarah T.</h3><h4>Los Angeles</h4></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </section>
 
         </main>
 
@@ -580,8 +484,9 @@
                             <li><a href="#hero">Home</a></li>
                             <li><a href="#how-we-work">How It Works</a></li>
                             <li><a href="#pricing">Pricing</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="digital-heroin.html">Digital Heroin Series</a></li>
                         </ul>
                     </div>
                 </div>
