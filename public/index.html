@@ -409,9 +409,9 @@
                 </div>
             </section>
 
-            <div style="height:60px; background:linear-gradient(to bottom, #f4f4f9, #ffffff);"></div>
+            <div style="height:60px; background:linear-gradient(to bottom, #ffffff, #f4f4f9);"></div>
 
-            <section id="call-to-action-2" class="section">
+            <section id="call-to-action-2" class="section light-background">
                 <div class="container section-title" data-aos="fade-up">
                     <h2>What's Inside?</h2>
                     <p>A router built for families — not data centers. Fast, quiet, and smart enough to handle your whole home.</p>
@@ -419,54 +419,59 @@
                 <div class="container">
                     <div class="row g-5 align-items-center">
                         <!-- Router image left -->
-                        <div class="col-lg-5 text-center" data-aos="fade-right">
-                            <img src="assets/img/back.png" alt="WhiteCat Router" class="img-fluid rounded-4">
+                        <div class="col-lg-5 text-center" data-aos="fade-right" style="position:relative;">
+                            <div style="position:absolute; inset:-40px; background:radial-gradient(ellipse at center, rgba(93,87,244,0.08) 0%, transparent 65%); pointer-events:none;"></div>
+                            <img src="assets/img/back.png" alt="WhiteCat Router" class="img-fluid rounded-4" style="position:relative;">
                         </div>
                         <!-- Feature cards right -->
                         <div class="col-lg-7" data-aos="fade-left">
-                            <div class="row g-3">
-                                <div class="col-6">
-                                    <div class="p-3 h-100" style="background:#f6f5ff; border-radius:12px; box-shadow:0 2px 12px rgba(93,87,244,0.08);">
-                                        <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;">
-                                            <i class="bi bi-wifi" style="font-size:1.2rem;"></i>
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                <div class="p-4" style="background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div style="width:60px;height:60px;border-radius:12px;background:color-mix(in srgb,#5d57f4,transparent 90%);color:#5d57f4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                            <i class="bi bi-wifi" style="font-size:1.8rem;"></i>
                                         </div>
-                                        <p class="fw-bold mb-1" style="font-size:0.9rem;">Fast for Everyone</p>
-                                        <p style="font-size:0.8rem;opacity:0.75;margin:0;line-height:1.5;">Wi-Fi 6 AX3000 — 4K, gaming, calls, and homework running at the same time.</p>
+                                        <div>
+                                            <p class="fw-bold mb-1" style="font-size:1.05rem;">Fast for Everyone</p>
+                                            <p class="text-muted mb-0" style="font-size:0.9rem;">Wi-Fi 6 AX3000 — 4K streaming, gaming, video calls, and homework all running at once without slowdowns.</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="p-3 h-100" style="background:#f6f5ff; border-radius:12px; box-shadow:0 2px 12px rgba(93,87,244,0.08);">
-                                        <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;">
-                                            <i class="bi bi-cpu" style="font-size:1.2rem;"></i>
+                                <div class="p-4" style="background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div style="width:60px;height:60px;border-radius:12px;background:color-mix(in srgb,#5d57f4,transparent 90%);color:#5d57f4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                            <i class="bi bi-cpu" style="font-size:1.8rem;"></i>
                                         </div>
-                                        <p class="fw-bold mb-1" style="font-size:0.9rem;">Enforces Rules On-Device</p>
-                                        <p style="font-size:0.8rem;opacity:0.75;margin:0;line-height:1.5;">Dual-core 1.3GHz, 512MB RAM. Blocks in under 3ms locally — no cloud gap, no workaround window.</p>
+                                        <div>
+                                            <p class="fw-bold mb-1" style="font-size:1.05rem;">Enforces Rules On-Device</p>
+                                            <p class="text-muted mb-0" style="font-size:0.9rem;">Dual-core 1.3GHz, 512MB RAM. Blocking happens locally in under 3ms — no cloud gap, no workaround window.</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="p-3 h-100" style="background:#f6f5ff; border-radius:12px; box-shadow:0 2px 12px rgba(93,87,244,0.08);">
-                                        <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;">
-                                            <i class="bi bi-plug" style="font-size:1.2rem;"></i>
+                                <div class="p-4" style="background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div style="width:60px;height:60px;border-radius:12px;background:color-mix(in srgb,#5d57f4,transparent 90%);color:#5d57f4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                            <i class="bi bi-plug" style="font-size:1.8rem;"></i>
                                         </div>
-                                        <p class="fw-bold mb-1" style="font-size:0.9rem;">Plugs In Anywhere</p>
-                                        <p style="font-size:0.8rem;opacity:0.75;margin:0;line-height:1.5;">1× Gigabit WAN + 3× Gigabit LAN. One cable to your modem — no rewiring, no technician.</p>
+                                        <div>
+                                            <p class="fw-bold mb-1" style="font-size:1.05rem;">Plugs Into Any Home</p>
+                                            <p class="text-muted mb-0" style="font-size:0.9rem;">1× Gigabit WAN + 3× Gigabit LAN. One cable to your modem — no rewiring, no technician needed.</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="p-3 h-100" style="background:#f6f5ff; border-radius:12px; box-shadow:0 2px 12px rgba(93,87,244,0.08);">
-                                        <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;">
-                                            <i class="bi bi-volume-mute" style="font-size:1.2rem;"></i>
+                                <div class="p-4" style="background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div style="width:60px;height:60px;border-radius:12px;background:color-mix(in srgb,#5d57f4,transparent 90%);color:#5d57f4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                            <i class="bi bi-volume-mute" style="font-size:1.8rem;"></i>
                                         </div>
-                                        <p class="fw-bold mb-1" style="font-size:0.9rem;">Silent by Design</p>
-                                        <p style="font-size:0.8rem;opacity:0.75;margin:0;line-height:1.5;">Fanless. No noise. You'll forget it's there — until your kids can't get around the rules.</p>
+                                        <div>
+                                            <p class="fw-bold mb-1" style="font-size:1.05rem;">Silent by Design</p>
+                                            <p class="text-muted mb-0" style="font-size:0.9rem;">Fanless. No noise. You'll forget it's there — until your kids can't get around the rules.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-4">
-                                <a href="#" class="btn btn-primary px-4 py-2" onclick="window.location.href='mailto:sales@whitecatcloud.com?subject=WhiteCat%20AX3000%20Preorder&body=Hi,%0A%0AI%27m%20interested%20in%20the%20WhiteCat%20AX3000%20router.%0A%0AExpected%20price:%20$79%20(understood,%20no%20commitment).%0A%0AThanks'; return false;">
-                                    Reserve Yours — $79
-                                </a>
-                            </div>
+                            <a href="#" class="btn btn-primary px-4 py-2" onclick="window.location.href='mailto:sales@whitecatcloud.com?subject=WhiteCat%20AX3000%20Preorder&body=Hi,%0A%0AI%27m%20interested%20in%20the%20WhiteCat%20AX3000%20router.%0A%0AExpected%20price:%20$79%20(understood,%20no%20commitment).%0A%0AThanks'; return false;">Reserve Yours — $79</a>
                         </div>
                     </div>
                 </div>
