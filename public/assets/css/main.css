@@ -3063,13 +3063,14 @@ section,
   transform: scale(1.03);     /* Subtle hover zoom */
 }
 
-.app-swiper .caption {
+.app-swiper .caption, #appSwiperCaption {
   text-align: center;
-  font-size: 13px;            /* Slightly smaller */
+  font-size: 0.95rem;
   font-style: italic;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin-top: 12px;
-  padding: 0 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-top: 16px;
+  padding: 0 16px;
+  min-height: 1.5em;
 }
 
 .app-swiper .swiper-pagination {

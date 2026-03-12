@@ -203,7 +203,7 @@
                 </div>
             </section>
 
-            <section id="about" class="about section light-background">
+            <section id="about" class="about section" style="background: #fff;">
                 <div class="container section-title" data-aos="fade-up">
                     <h2>The WhiteCat App</h2>
                     <p>Your router enforces the rules. The app puts you in charge of what those rules are.</p>
@@ -268,40 +268,39 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-6 about-images text-center" data-aos="fade-up" data-aos-delay="200">
-                            <div class="swiper app-swiper init-swiper">
-                                <script type="application/json" class="swiper-config">
-                                    {
-                                      "loop": true,
-                                      "speed": 600,
-                                      "autoplay": { "delay": 5000, "disableOnInteraction": false },
-                                      "slidesPerView": 1,
-                                      "pagination": { "el": ".swiper-pagination", "clickable": true }
-                                    }
-                                </script>
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-dashboard.png" class="img-fluid app-screenshot" alt="App Dashboard: Family activity and quick actions.">
-                                        <div class="caption mt-3">One tap. Every kid's device offline. Done.</div>
+                        <div class="col-lg-6 about-images text-center" data-aos="fade-up" data-aos-delay="200" style="position:relative;">
+                            <div style="position:absolute; inset:-60px; background:radial-gradient(ellipse at center, rgba(93,87,244,0.08) 0%, transparent 65%); pointer-events:none; z-index:0;"></div>
+                            <div style="position:relative; z-index:1;">
+                                <div class="swiper app-swiper init-swiper" id="appSwiper">
+                                    <script type="application/json" class="swiper-config">
+                                        {
+                                          "loop": true,
+                                          "speed": 600,
+                                          "autoplay": { "delay": 5000, "disableOnInteraction": false },
+                                          "slidesPerView": 1,
+                                          "pagination": { "el": ".swiper-pagination", "clickable": true }
+                                        }
+                                    </script>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide" data-caption="One tap. Every kid's device offline. Done.">
+                                            <img src="assets/img/app-dashboard.png" class="img-fluid app-screenshot" alt="App Dashboard">
+                                        </div>
+                                        <div class="swiper-slide" data-caption="Every device named, assigned, and under your control.">
+                                            <img src="assets/img/app-devices.png" class="img-fluid app-screenshot" alt="Devices List">
+                                        </div>
+                                        <div class="swiper-slide" data-caption="TikTok, YouTube, Gaming — blocked by name, not by guesswork.">
+                                            <img src="assets/img/app-services.png" class="img-fluid app-screenshot" alt="Services">
+                                        </div>
+                                        <div class="swiper-slide" data-caption="Schedules that run automatically — no reminders, no arguments.">
+                                            <img src="assets/img/app-schedules.png" class="img-fluid app-screenshot" alt="Schedules">
+                                        </div>
+                                        <div class="swiper-slide" data-caption="Wi-Fi, passwords, firmware — all managed from your phone.">
+                                            <img src="assets/img/app-settings.png" class="img-fluid app-screenshot" alt="Settings">
+                                        </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-devices.png" class="img-fluid app-screenshot" alt="Devices List: Assigned and unassigned devices.">
-                                        <div class="caption mt-3">Every device named, assigned, and under your control.</div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-services.png" class="img-fluid app-screenshot" alt="Category Filter: Adult, Social Media, Gaming.">
-                                        <div class="caption mt-3">TikTok, YouTube, Gaming — blocked by name, not by guesswork.</div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-schedules.png" class="img-fluid app-screenshot" alt="Member Details: Jon's linked devices and activity.">
-                                        <div class="caption mt-3">Schedules that run automatically — no reminders, no arguments.</div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="assets/img/app-settings.png" class="img-fluid app-screenshot" alt="Settings Screen: Router, Wi-Fi name, System time.">
-                                        <div class="caption mt-3">Wi-Fi, passwords, firmware — all managed from your phone.</div>
-                                    </div>
+                                    <div class="swiper-pagination mt-4"></div>
                                 </div>
-                                <div class="swiper-pagination mt-4"></div>
+                                <p id="appSwiperCaption" class="caption mt-3">One tap. Every kid's device offline. Done.</p>
                             </div>
                         </div>
                     </div>
@@ -530,5 +529,21 @@
         <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            (function() {
+                function initAppCaption() {
+                    var el = document.getElementById('appSwiper');
+                    var caption = document.getElementById('appSwiperCaption');
+                    if (!el || !caption || !el.swiper) return;
+                    el.swiper.on('slideChange', function() {
+                        var slide = el.swiper.slides[el.swiper.activeIndex];
+                        caption.textContent = slide ? (slide.dataset.caption || '') : '';
+                    });
+                }
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(initAppCaption, 600);
+                });
+            })();
+        </script>
     </body>
 </html>
