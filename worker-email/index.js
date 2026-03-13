@@ -29,17 +29,10 @@ async function sendLeadEmail(env, name, email, plan, submitted_at) {
 }
 
 export default {
-    // HTTP handler for direct testing
-    async fetch(request, env) {
-        try {
-            await sendLeadEmail(env, 'HTTP Test', 'sales@whitecatcloud.com', 'Family', new Date().toISOString());
-            return new Response('Email sent OK', { status: 200 });
-        } catch (err) {
-            return new Response(`Error: ${err.message}\n${err.stack}`, { status: 500 });
-        }
+    async fetch() {
+        return new Response('Not found', { status: 404 });
     },
 
-    // Queue consumer
     async queue(batch, env) {
         for (const msg of batch.messages) {
             const { name, email, plan, submitted_at } = msg.body;
