@@ -1,0 +1,6 @@
+name = "whitecatfamily-site"
+pages_build_output_dir = "public"
+
+[[send_email]]
+name = "EMAIL"
+destination_address = "sales@whitecatcloud.com"
