@@ -55,7 +55,7 @@
                             <h1 class="hero-title mb-4">The screen time solution kids can't bypass.</h1>
                             <p class="hero-description mb-4">Managing screen time shouldn't feel like a full-time job. WhiteCat handles it quietly and automatically — no IT skills, no arguments, no workarounds.</p>
                             <div class="cta-wrapper">
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Yours — $79</a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reserveModal" data-flag="wc_reserved">Reserve Yours — $79</a>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -306,7 +306,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i>Remote app control & automatic updates</li>
                                     <li><i class="bi bi-check-circle-fill"></i>Extended 1-year router warranty</li>
                                 </ul>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Yours — $79</a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reserveModal" data-flag="wc_reserved">Reserve Yours — $79</a>
                             </div>
                         </div>
                         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
@@ -323,7 +323,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i>Guest Wi-Fi portal</li>
                                     <li><i class="bi bi-check-circle-fill"></i>Weekly insights & usage reports</li>
                                 </ul>
-                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Yours — $79</a>
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reserveModal" data-flag="wc_reserved">Reserve Yours — $79</a>
                             </div>
                         </div>
                         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
@@ -338,7 +338,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i>Up to 3 mobile devices</li>
                                     <li><i class="bi bi-check-circle-fill"></i>Per-device detailed reports</li>
                                 </ul>
-                                <a href="#" class="btn" style="border:2px solid #5d57f4; color:#5d57f4;" data-bs-toggle="modal" data-bs-target="#reserveModal" data-plan="Everywhere — $8.99/mo">Notify Me When Live</a>
+                                <a href="#" class="btn" style="border:2px solid #5d57f4; color:#5d57f4;" data-bs-toggle="modal" data-bs-target="#reserveModal" data-plan="Everywhere — $8.99/mo" data-flag="wc_notify">Notify Me When Live</a>
                             </div>
                         </div>
                     </div>
@@ -514,9 +514,11 @@
                         <p class="text-muted mb-0">We'll reach out personally when your WhiteCat router is ready to ship.</p>
                     </div>`;
 
-                // Pre-select plan when triggered from a specific button
+                let currentFlag = 'wc_reserved';
+
                 document.getElementById('reserveModal').addEventListener('show.bs.modal', function(e) {
-                    if (localStorage.getItem('wc_reserved')) {
+                    currentFlag = (e.relatedTarget && e.relatedTarget.dataset.flag) || 'wc_reserved';
+                    if (localStorage.getItem(currentFlag)) {
                         document.getElementById('reserveModalBody').innerHTML = thankYouHTML;
                         return;
                     }
@@ -527,9 +529,8 @@
                     }
                 });
 
-                // Reset modal form when hidden
                 document.getElementById('reserveModal').addEventListener('hidden.bs.modal', function() {
-                    if (!localStorage.getItem('wc_reserved')) {
+                    if (!localStorage.getItem(currentFlag)) {
                         document.getElementById('reserveForm').reset();
                     }
                 });
@@ -538,7 +539,7 @@
                     e.preventDefault();
                     const data = new FormData(this);
                     await fetch('/reserve', { method: 'POST', body: data });
-                    localStorage.setItem('wc_reserved', '1');
+                    localStorage.setItem(currentFlag, '1');
                     document.getElementById('reserveModalBody').innerHTML = thankYouHTML;
                 });
             </script>
