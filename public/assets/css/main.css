@@ -1187,6 +1187,15 @@ section,
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
+/* Vertical card variant — icon on top, full-width text below */
+#services .service-item {
+  flex-direction: column;
+}
+#services .service-icon {
+  margin-right: 0;
+  margin-bottom: 1rem;
+}
+
 .services .service-item {
   display: flex;
   background-color: var(--surface-color);
