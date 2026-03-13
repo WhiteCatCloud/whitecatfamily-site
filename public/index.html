@@ -473,8 +473,8 @@
                     <div class="modal-content" style="border-radius:16px; border:none; box-shadow:0 8px 40px rgba(0,0,0,0.15);">
                         <div class="modal-header border-0 pb-0">
                             <div>
-                                <h5 class="modal-title fw-bold" id="reserveModalLabel" style="font-size:1.3rem;">Reserve Yours — $79</h5>
-                                <p class="text-muted mb-0" style="font-size:0.9rem;">No payment now. We'll reach out when ready to ship.</p>
+                                <h5 class="modal-title fw-bold" id="reserveModalLabel" style="font-size:1.3rem;">Be first in line.</h5>
+                                <p id="reserveModalSubtitle" class="text-muted mb-0" style="font-size:0.9rem;">No payment now, no commitment. Just your spot.</p>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -517,8 +517,16 @@
                 let currentFlag = 'wc_reserved';
                 const originalFormHTML = document.getElementById('reserveModalBody').innerHTML;
 
+                const copy = {
+                    wc_reserved: { title: 'Be first in line.', subtitle: 'No payment now, no commitment. Just your spot.' },
+                    wc_notify:   { title: 'Stay in the loop.', subtitle: 'We\'ll let you know the moment it\'s available.' },
+                };
+
                 document.getElementById('reserveModal').addEventListener('show.bs.modal', function(e) {
                     currentFlag = (e.relatedTarget && e.relatedTarget.dataset.flag) || 'wc_reserved';
+                    const c = copy[currentFlag];
+                    document.getElementById('reserveModalLabel').textContent = c.title;
+                    document.getElementById('reserveModalSubtitle').textContent = c.subtitle;
                     const body = document.getElementById('reserveModalBody');
                     if (localStorage.getItem(currentFlag)) {
                         body.innerHTML = thankYouHTML;
