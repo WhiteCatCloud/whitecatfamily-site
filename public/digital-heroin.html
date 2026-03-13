@@ -101,12 +101,21 @@
 
             /* Sticky session nav */
             .series-nav {
-                position: sticky;
+                position: fixed;
                 top: 70px;
-                z-index: 99;
+                left: 0;
+                right: 0;
+                z-index: 996;
                 background: var(--surface-color);
                 border-bottom: 1px solid rgba(0,0,0,0.08);
                 box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+            }
+            .series-nav.visible { transform: translateY(0); }
+            /* offset scroll targets so they don't hide under the fixed bars */
+            #session-1, #session-2, #session-3, #session-4, #session-5, #session-6 {
+                scroll-margin-top: 120px;
             }
             .series-nav ul {
                 list-style: none;
@@ -175,7 +184,7 @@
                             <div class="mb-3">
                                 <span style="background:rgba(255,255,255,0.15); color:#fff; font-size:0.8rem; font-weight:600; padding:6px 16px; border-radius:20px; letter-spacing:0.05em;">💊 DIGITAL HEROIN SERIES</span>
                             </div>
-                            <h1 class="mb-4" style="font-size:clamp(1.8rem, 4vw, 2.8rem);">The internet was designed to hook your kids.<br>We're naming the tactics.</h1>
+                            <h1 class="mb-4" style="font-size:clamp(1.8rem, 4vw, 2.8rem);">The internet was engineered to addict your kids.<br>We're naming the tactics.</h1>
                             <p class="lead mb-4">Real research. No panic — just the truth every parent needs to know about what happens when your child goes online.</p>
                         </div>
                     </div>
@@ -979,6 +988,12 @@
             const m = bootstrap.Modal.getInstance(this);
             if (m) m.hide();
         });
+
+        // Show series nav once hero scrolls out of view
+        const seriesNav = document.querySelector('.series-nav');
+        new IntersectionObserver(entries => {
+            seriesNav.classList.toggle('visible', !entries[0].isIntersecting);
+        }, { threshold: 0 }).observe(document.querySelector('.hero-series'));
 
         // Sticky nav active state on scroll
         const navLinks = document.querySelectorAll('.series-nav a[href^="#"]');
