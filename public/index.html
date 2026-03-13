@@ -478,8 +478,8 @@
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body pt-3">
-                            <form action="/reserve" method="POST">
+                        <div class="modal-body pt-3" id="reserveModalBody">
+                            <form id="reserveForm">
                                 <div class="mb-3">
                                     <label class="form-label fw-semibold">Your name</label>
                                     <input type="text" name="name" class="form-control form-control-lg" placeholder="Jane Smith" required>
@@ -504,6 +504,21 @@
                     </div>
                 </div>
             </div>
+            <script>
+                document.getElementById('reserveForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const data = new FormData(this);
+                    await fetch('/reserve', { method: 'POST', body: data });
+                    document.getElementById('reserveModalBody').innerHTML = `
+                        <div class="text-center py-4">
+                            <div style="width:72px;height:72px;border-radius:50%;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+                                <i class="bi bi-check-lg" style="font-size:2.2rem;"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">You're on the list.</h5>
+                            <p class="text-muted mb-0">We'll reach out personally when your WhiteCat router is ready to ship.</p>
+                        </div>`;
+                });
+            </script>
 
         </main>
 
