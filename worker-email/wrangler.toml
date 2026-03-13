@@ -1,0 +1,12 @@
+name = "preorder-email-sender"
+main = "index.js"
+compatibility_date = "2025-11-04"
+
+[[send_email]]
+name = "EMAIL"
+destination_address = "sales@whitecatcloud.com"
+
+[[queues.consumers]]
+queue = "preorder-leads"
+max_batch_size = 10
+max_batch_timeout = 30
