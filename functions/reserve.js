@@ -24,7 +24,7 @@ export async function onRequestPost(context) {
             ].join('\n');
 
             const rawEmail = [
-                `From: WhiteCat Preorder <noreply@whitecatcloud.com>`,
+                `From: WhiteCat Preorder <noreply@whitecatfamily.com>`,
                 `To: sales@whitecatcloud.com`,
                 `Subject: New Preorder: ${name} — ${plan}`,
                 `MIME-Version: 1.0`,
@@ -42,7 +42,7 @@ export async function onRequestPost(context) {
             });
 
             const message = new EmailMessage(
-                'noreply@whitecatcloud.com',
+                'noreply@whitecatfamily.com',
                 'sales@whitecatcloud.com',
                 stream
             );
