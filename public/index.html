@@ -338,7 +338,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i>Up to 3 mobile devices</li>
                                     <li><i class="bi bi-check-circle-fill"></i>Per-device detailed reports</li>
                                 </ul>
-                                <a href="mailto:sales@whitecatcloud.com?subject=WhiteCat%20Everywhere%20Plan%20Notification&body=Hi,%0A%0APlease%20notify%20me%20when%20the%20Everywhere%20plan%20launches.%0A%0AThanks" class="btn" style="border:2px solid #5d57f4; color:#5d57f4;">Notify Me When Live</a>
+                                <a href="#" class="btn" style="border:2px solid #5d57f4; color:#5d57f4;" data-bs-toggle="modal" data-bs-target="#reserveModal" data-plan="Everywhere — $8.99/mo">Notify Me When Live</a>
                             </div>
                         </div>
                     </div>
@@ -505,18 +505,41 @@
                 </div>
             </div>
             <script>
+                const thankYouHTML = `
+                    <div class="text-center py-4">
+                        <div style="width:72px;height:72px;border-radius:50%;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+                            <i class="bi bi-check-lg" style="font-size:2.2rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">You're on the list.</h5>
+                        <p class="text-muted mb-0">We'll reach out personally when your WhiteCat router is ready to ship.</p>
+                    </div>`;
+
+                // Pre-select plan when triggered from a specific button
+                document.getElementById('reserveModal').addEventListener('show.bs.modal', function(e) {
+                    if (localStorage.getItem('wc_reserved')) {
+                        document.getElementById('reserveModalBody').innerHTML = thankYouHTML;
+                        return;
+                    }
+                    const plan = e.relatedTarget && e.relatedTarget.dataset.plan;
+                    if (plan) {
+                        const select = document.querySelector('#reserveForm select[name="plan"]');
+                        if (select) select.value = plan;
+                    }
+                });
+
+                // Reset modal form when hidden
+                document.getElementById('reserveModal').addEventListener('hidden.bs.modal', function() {
+                    if (!localStorage.getItem('wc_reserved')) {
+                        document.getElementById('reserveForm').reset();
+                    }
+                });
+
                 document.getElementById('reserveForm').addEventListener('submit', async function(e) {
                     e.preventDefault();
                     const data = new FormData(this);
                     await fetch('/reserve', { method: 'POST', body: data });
-                    document.getElementById('reserveModalBody').innerHTML = `
-                        <div class="text-center py-4">
-                            <div style="width:72px;height:72px;border-radius:50%;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
-                                <i class="bi bi-check-lg" style="font-size:2.2rem;"></i>
-                            </div>
-                            <h5 class="fw-bold mb-2">You're on the list.</h5>
-                            <p class="text-muted mb-0">We'll reach out personally when your WhiteCat router is ready to ship.</p>
-                        </div>`;
+                    localStorage.setItem('wc_reserved', '1');
+                    document.getElementById('reserveModalBody').innerHTML = thankYouHTML;
                 });
             </script>
 
