@@ -116,9 +116,6 @@
                 opacity: 1;
                 pointer-events: auto;
             }
-            #session-1, #session-2, #session-3, #session-4, #session-5, #session-6 {
-                scroll-margin-top: 50px;
-            }
             .series-nav ul {
                 list-style: none;
                 margin: 0;
@@ -994,8 +991,11 @@
         // Place nav exactly below the header (measured, not hardcoded)
         const seriesNav = document.getElementById('series-nav');
         const mainHeader = document.getElementById('header');
+        const sessionAnchors = document.querySelectorAll('#session-1, #session-2, #session-3, #session-4, #session-5, #session-6');
         function positionNav() {
             seriesNav.style.top = mainHeader.offsetHeight + 'px';
+            const offset = mainHeader.offsetHeight + seriesNav.offsetHeight + 16;
+            sessionAnchors.forEach(el => el.style.scrollMarginTop = offset + 'px');
         }
         positionNav();
         window.addEventListener('resize', positionNav);
