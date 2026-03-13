@@ -101,17 +101,24 @@
 
             /* Sticky session nav */
             .series-nav {
-                position: sticky;
-                top: 76px;
-                z-index: 99;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 998;
                 background: var(--surface-color);
                 border-bottom: 1px solid rgba(0,0,0,0.08);
                 box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-                margin: 0 -12px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s ease;
             }
-            /* offset scroll targets so they don't hide under the fixed bars */
+            .series-nav.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
             #session-1, #session-2, #session-3, #session-4, #session-5, #session-6 {
-                scroll-margin-top: 120px;
+                scroll-margin-top: 50px;
             }
             .series-nav ul {
                 list-style: none;
@@ -187,19 +194,20 @@
                 </div>
             </section>
 
+            <nav class="series-nav" id="series-nav">
+                <div class="container">
+                    <ul>
+                        <li><a href="#session-1">🎰 The Hook</a></li>
+                        <li><a href="#session-2">💊 The Dealers</a></li>
+                        <li><a href="#session-3">👶 Kids &amp; Teens</a></li>
+                        <li><a href="#session-4">🎭 Scams &amp; Seniors</a></li>
+                        <li><a href="#session-5">🎄 Seasonal &amp; Systemic</a></li>
+                        <li><a href="#session-6">⏸️ Halftime</a></li>
+                    </ul>
+                </div>
+            </nav>
+
             <section class="section light-background">
-                <nav class="series-nav">
-                    <div class="container">
-                        <ul>
-                            <li><a href="#session-1">🎰 The Hook</a></li>
-                            <li><a href="#session-2">💊 The Dealers</a></li>
-                            <li><a href="#session-3">👶 Kids &amp; Teens</a></li>
-                            <li><a href="#session-4">🎭 Scams &amp; Seniors</a></li>
-                            <li><a href="#session-5">🎄 Seasonal &amp; Systemic</a></li>
-                            <li><a href="#session-6">⏸️ Halftime</a></li>
-                        </ul>
-                    </div>
-                </nav>
                 <div class="container">
 
                     <!-- SESSION 1 -->
@@ -983,6 +991,13 @@
             const m = bootstrap.Modal.getInstance(this);
             if (m) m.hide();
         });
+
+        // Show series nav after hero scrolls out of view
+        const seriesNav = document.getElementById('series-nav');
+        const hero = document.querySelector('.hero-series');
+        window.addEventListener('scroll', () => {
+            seriesNav.classList.toggle('visible', hero.getBoundingClientRect().bottom <= 0);
+        }, { passive: true });
 
         // Sticky nav active state on scroll
         const navLinks = document.querySelectorAll('.series-nav a[href^="#"]');
