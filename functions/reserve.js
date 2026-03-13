@@ -1,3 +1,11 @@
+export async function onRequestGet(context) {
+    const { env } = context;
+    return new Response(JSON.stringify({
+        LEADS_QUEUE_exists: !!env.LEADS_QUEUE,
+        bindings: Object.keys(env),
+    }), { headers: { 'Content-Type': 'application/json' } });
+}
+
 export async function onRequestPost(context) {
     const { request, env } = context;
 
@@ -8,19 +16,14 @@ export async function onRequestPost(context) {
         email = (data.get('email') || '').trim();
         plan = (data.get('plan') || 'Not specified').trim();
     } catch (err) {
-        console.error('Form parse error:', err);
         return Response.redirect(new URL('/thankyou.html', request.url).href, 303);
     }
-
-    console.log(`Form received: name=${name} email=${email} plan=${plan}`);
-    console.log(`LEADS_QUEUE binding exists: ${!!env.LEADS_QUEUE}`);
 
     if (name && email) {
         try {
             await env.LEADS_QUEUE.send({ name, email, plan, submitted_at: new Date().toISOString() });
-            console.log('Queue message sent successfully');
         } catch (err) {
-            console.error('Queue send failed:', err.message, err.stack);
+            console.error('Queue send failed:', err.message);
         }
     }
 
