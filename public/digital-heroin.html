@@ -15,6 +15,12 @@
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/css/main.css" rel="stylesheet">
         <style>
+            body:not(.scrolled) .header .logo h1,
+            body:not(.scrolled) .header .logo span { color: #fff; }
+            body:not(.scrolled) .navmenu a { color: rgba(255,255,255,0.85) !important; }
+            body:not(.scrolled) .navmenu a:hover,
+            body:not(.scrolled) .navmenu a.active { color: #fff !important; }
+
             .series-card {
                 background: var(--surface-color);
                 border-radius: 16px;
@@ -25,10 +31,11 @@
                 border-left: 4px solid var(--accent-color);
                 display: flex;
                 flex-direction: column;
+                cursor: pointer;
             }
             .series-card:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 8px 32px rgba(93,87,244,0.13);
+                box-shadow: 0 8px 32px rgba(93,87,244,0.18);
             }
             .series-card .card-body-content { flex: 1; }
             .series-tag {
@@ -44,6 +51,16 @@
             }
             .series-card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
             .series-card p { color: var(--default-color); opacity: 0.85; font-size: 0.9rem; line-height: 1.65; margin-bottom: 0; }
+            .read-more-hint {
+                font-size: 0.8rem;
+                color: var(--accent-color);
+                font-weight: 600;
+                margin-top: 1rem;
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+            .series-card:hover .read-more-hint { opacity: 1; }
+
             .hero-series {
                 background: linear-gradient(135deg, #32353a 0%, #5d57f4 100%);
                 padding: 120px 0 80px;
@@ -64,28 +81,23 @@
                 color: var(--accent-color);
                 margin-bottom: 0.25rem;
             }
-            .special-card {
-                background: color-mix(in srgb, var(--accent-color), transparent 93%);
-                border-left-color: #aaa;
+            .special-card { background: color-mix(in srgb, var(--accent-color), transparent 93%); border-left-color: #aaa; }
+
+            /* Modal */
+            #postModal .modal-tag {
+                display: inline-block;
+                background: color-mix(in srgb, #5d57f4, transparent 88%);
+                color: #5d57f4;
+                font-size: 0.75rem;
+                font-weight: 600;
+                padding: 3px 12px;
+                border-radius: 20px;
+                margin-bottom: 0.5rem;
+                letter-spacing: 0.05em;
             }
-            /* White header text over dark hero — reverts once scrolled */
-            body:not(.scrolled) .header .logo h1,
-            body:not(.scrolled) .header .logo span {
-                color: #fff;
-            }
-            body:not(.scrolled) .navmenu a {
-                color: rgba(255,255,255,0.85) !important;
-            }
-            body:not(.scrolled) .navmenu a:hover,
-            body:not(.scrolled) .navmenu a.active {
-                color: #fff !important;
-            }
-            .linkedin-cta {
-                background: color-mix(in srgb, var(--accent-color), transparent 92%);
-                border-radius: 16px;
-                padding: 2rem;
-                text-align: center;
-            }
+            #postModal .modal-title { font-size: 1.2rem; font-weight: 700; }
+            #postModal .modal-body p { font-size: 0.95rem; line-height: 1.75; color: #444; }
+            #postModal .modal-body p:last-child { margin-bottom: 0; }
         </style>
     </head>
     <body class="index-page">
@@ -140,112 +152,112 @@
                     <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="1">
                                 <div class="card-body-content">
                                     <span class="series-tag">#1 · The Slot Machine Effect</span>
                                     <h3>🎰 How Social Media Hooks You Like a Slot Machine</h3>
-                                    <p>Big Tobacco, Las Vegas casinos, and your favorite apps use the same trick — variable ratio reinforcement. Sometimes nothing, sometimes a small win, occasionally a jackpot. Sean Parker, former Facebook president, admitted: <em>"We knew exactly what we were doing. We exploited vulnerabilities in human psychology."</em></p>
+                                    <p>Big Tobacco, Las Vegas casinos, and your favorite apps use the same trick — variable ratio reinforcement. Sean Parker, former Facebook president, admitted: <em>"We knew exactly what we were doing. We exploited vulnerabilities in human psychology."</em></p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7360867646629695488-w91c" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="2">
                                 <div class="card-body-content">
                                     <span class="series-tag">#2 · Dark Tactics</span>
                                     <h3>💊 The Dark Tactics of Addictive App Design</h3>
-                                    <p>Infinite scroll, autoplay, push notifications — deliberate traps to exploit psychological triggers. Ex-Google designer Tristan Harris calls it <em>"time on device optimization."</em> Leaked Meta documents confirmed their algorithms amplify addictive behaviors — and engagement always came first.</p>
+                                    <p>Infinite scroll, autoplay, push notifications — deliberate traps to exploit psychological triggers. Ex-Google designer Tristan Harris calls it <em>"time on device optimization."</em> Leaked Meta documents confirmed their algorithms amplify addictive behaviors.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7361592425674387456-7Trg" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="3">
                                 <div class="card-body-content">
                                     <span class="series-tag">#3 · The Playbook</span>
                                     <h3>🃏 The Tech Giants' Secret Playbook</h3>
-                                    <p>Every "free" app has a hidden manual for designers: exploit FOMO, personalize bait, interrupt with streaks and fake alerts, keep infinite content flowing. The same techniques casinos use — but in your pocket, 24/7. This isn't bad design. <strong>It's predatory design.</strong></p>
+                                    <p>Every "free" app has a hidden manual for designers: exploit FOMO, personalize bait, interrupt with streaks and fake alerts, keep infinite content flowing. This isn't bad design. <strong>It's predatory design.</strong></p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7363041978579636228-Vdzt" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="4">
                                 <div class="card-body-content">
                                     <span class="series-tag">#4 · Offender #1</span>
                                     <h3>🎭 TikTok — The Fastest-Growing Slot Machine in History</h3>
                                     <p>Every swipe is a gamble. The algorithm learns your brain in minutes, then exploits it. Over 60% of users are under 25 — teens average 95 minutes a day. TikTok calls it entertainment. Psychologists call it engineered addiction.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7364129176334839809-mdfA" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="5">
                                 <div class="card-body-content">
                                     <span class="series-tag">#5 · Offender #2</span>
                                     <h3>🎯 Instagram — The Illusion of Perfection</h3>
-                                    <p>Likes give just enough validation to keep posting. Filters create impossible beauty standards. Meta's own leaked research showed 32% of teen girls said Instagram worsened their body image — and the platform doubled down anyway, because more screen time = more ad money.</p>
+                                    <p>Likes give just enough validation to keep posting. Filters create impossible beauty standards. Meta's own leaked research showed 32% of teen girls said Instagram worsened their body image — and the platform doubled down anyway.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7365639080547713028-nSbJ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="6">
                                 <div class="card-body-content">
                                     <span class="series-tag">#6 · Offender #3</span>
                                     <h3>⏯️ YouTube — The Endless Rabbit Hole</h3>
-                                    <p>Over 70% of YouTube watch time comes not from user choice but from algorithmic recommendations. Autoplay is default. Stopping takes effort. Researchers at Mozilla found YouTube's AI regularly recommends misinformation and toxic content to keep you hooked longer.</p>
+                                    <p>Over 70% of YouTube watch time comes from algorithmic recommendations, not user choice. Autoplay is default. Stopping takes effort. Mozilla researchers found YouTube's AI regularly recommends misinformation to keep you hooked longer.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7366722467358281729-jpoW" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="7">
                                 <div class="card-body-content">
                                     <span class="series-tag">#7 · The Economy</span>
                                     <h3>🔙 The Dopamine Economy — Your Time Is Worth Billions</h3>
-                                    <p>You're not the customer. You're the product. Social media earned $200B+ in ad revenue in 2023 — auctioning your attention in real-time. Every pause, click, and replay is tracked, packaged, and sold. The average user checks their phone 96 times a day.</p>
+                                    <p>You're not the customer. You're the product. Social media earned $200B+ in ad revenue in 2023 — auctioning your attention in real-time. The average user checks their phone 96 times a day.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7368172009362505729-W4ei" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="8">
                                 <div class="card-body-content">
                                     <span class="series-tag">#8 · The Trap</span>
                                     <h3>💊 The Variable Reward Trap</h3>
-                                    <p>Why do slot machines earn more than movies and music combined? Variable rewards — sometimes you win, sometimes you don't. Neuroscience's most powerful reinforcement system. Predictable rewards get boring. Unpredictable rewards are addictive. Your brain learns to crave uncertainty itself.</p>
+                                    <p>Why do slot machines earn more than movies and music combined? Variable rewards. Neuroscience's most powerful reinforcement system. Predictable rewards get boring. Unpredictable rewards are addictive. Your brain learns to crave uncertainty itself.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7369259174301483009-WwrD" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="9">
                                 <div class="card-body-content">
                                     <span class="series-tag">#9 · Infinite Scroll</span>
                                     <h3>📜 Why Your Brain Loves Infinite Scroll</h3>
-                                    <p>Invented in 2006, infinite scroll removes all natural stopping cues. The developer who built it later said it was like giving people <em>"an endless bag of chips."</em> No chapter end, no credits — just seamless dopamine drip while the platform serves more ads.</p>
+                                    <p>Invented in 2006, infinite scroll removes all natural stopping cues. The developer who built it later said it was like giving people <em>"an endless bag of chips."</em> No chapter end, no credits — just seamless dopamine drip.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7370111827340546048-Ugdw" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="10">
                                 <div class="card-body-content">
                                     <span class="series-tag">#10 · Notifications</span>
                                     <h3>🔔 Push Notifications: Pavlov's Bell in Your Pocket</h3>
-                                    <p>That buzz isn't random — it's conditioning. Timed for vulnerable moments: evenings, lunch breaks, late at night. The red dot triggers urgency. Every interruption takes 23 minutes to recover from. For kids, late-night pings turn sleep into a battleground.</p>
+                                    <p>That buzz isn't random — it's conditioning. Timed for vulnerable moments. The red dot triggers urgency. Every interruption takes 23 minutes to recover from. For kids, late-night pings turn sleep into a battleground.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7371727946178478080-bXcJ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
@@ -264,68 +276,68 @@
                     <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="11">
                                 <div class="card-body-content">
                                     <span class="series-tag">#11 · The App Buffet</span>
                                     <h3>♦️ The App Buffet Problem</h3>
-                                    <p>Closing TikTok and opening Instagram isn't a break — it's the same attention economy from a different angle. Cross-tracking connects every tap, like, and pause across all apps. You think you're switching channels. They're really switching nets.</p>
+                                    <p>Closing TikTok and opening Instagram isn't a break — it's the same attention economy from a different angle. You think you're switching channels. They're really switching nets.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7373607827929698304-tOm2" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="12">
                                 <div class="card-body-content">
                                     <span class="series-tag">#12 · Kids' Content</span>
                                     <h3>👶 The Children's Content Illusion</h3>
-                                    <p>Bright colors and cartoon mascots promise safety — but 95% of apps labeled "educational" for children include manipulative advertising or engagement tricks. Children can't distinguish between content designed to entertain and content designed to manipulate.</p>
+                                    <p>Bright colors and cartoon mascots promise safety — but 95% of apps labeled "educational" for children include manipulative advertising or engagement tricks. Children can't tell the difference.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7374147635122921472-MSo7" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="13">
                                 <div class="card-body-content">
                                     <span class="series-tag">#13 · Gamification</span>
                                     <h3>🏆 The Gamification of Everything</h3>
-                                    <p>Snapchat streaks, Duolingo badges, Fortnite daily logins — kids log in not to enjoy the app, but to keep a number alive. It's Pavlov with pixels. Learning feels like a hustle. Play feels like a job. Rest feels like failure.</p>
+                                    <p>Snapchat streaks, Duolingo badges, Fortnite daily logins — kids log in not to enjoy the app but to keep a number alive. Learning feels like a hustle. Play feels like a job. Rest feels like failure.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7375638485984129024-5tWU" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="14">
                                 <div class="card-body-content">
                                     <span class="series-tag">#14 · Data Brokers</span>
                                     <h3>🗂️ Data Brokers Love Your Free Apps</h3>
-                                    <p>Your data is being bundled and sold like Wall Street commodities. Location patterns, browsing habits, political sympathies, late-night searches. Your free email scans attachments and knows your new address before you sign the rental agreement. By high school, your kid has an invisible digital résumé.</p>
+                                    <p>Your data is bundled and sold like Wall Street commodities. Location, habits, political sympathies, late-night searches. By high school, your kid has an invisible digital résumé built entirely from "free" apps.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7376601338136334336-_dS5" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="15">
                                 <div class="card-body-content">
                                     <span class="series-tag">#15 · Surveillance</span>
                                     <h3>👁️ When Social Meets Surveillance</h3>
-                                    <p>Social media is one of the most sophisticated surveillance systems ever built. Every like, pause, and DM feeds machine learning that predicts what you'll click and when you're most vulnerable. Kids are test subjects: less skeptical, more impulsive, easier to steer.</p>
+                                    <p>Social media is one of the most sophisticated surveillance systems ever built. Every like, pause, and DM feeds machine learning that predicts what you'll click and when you're most vulnerable.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7377813039011721216-5Vx-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="16">
                                 <div class="card-body-content">
                                     <span class="series-tag">#16 · Streaming</span>
                                     <h3>📺 The Dark Side of Streaming</h3>
-                                    <p>Your TV isn't passive — it's watching you. Every pause, rewind, and late-night binge is logged and profiled. Autoplay turns cartoons into babysitters. For seniors, rogue apps trick them into handing over credit cards. Streaming didn't just kill cable — it turned the family sofa into a data pipeline.</p>
+                                    <p>Your TV isn't passive — it's watching you. Every pause, rewind, and late-night binge is logged and profiled. Streaming didn't just kill cable — it turned the family sofa into a data pipeline.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7379726903991218176-4A-N" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
@@ -344,68 +356,68 @@
                     <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="17">
                                 <div class="card-body-content">
                                     <span class="series-tag">#17 · Sleep Crisis</span>
                                     <h3>😴 Screen Time and the Sleep Crisis</h3>
-                                    <p>Kids today sleep nearly two hours less than their parents did at the same age. Blue light tricks the brain into daytime mode. FOMO keeps young minds racing long after the screen goes dark. Chronic sleep loss is tied to anxiety, depression, obesity, and weakened immune systems.</p>
+                                    <p>Kids today sleep nearly two hours less than their parents did at the same age. Blue light tricks the brain into daytime mode. Chronic sleep loss is tied to anxiety, depression, obesity, and weakened immune systems.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7380874495873466368-Tzjx" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="18">
                                 <div class="card-body-content">
                                     <span class="series-tag">#18 · Grades</span>
                                     <h3>📉 Grades in Freefall</h3>
-                                    <p>Teens who spend more than 3 hours daily on social media are twice as likely to report poor academic performance. Kids aren't lazy — their brains are too exhausted to perform. Every failure in school is someone else's profit. It's not just grades dropping; it's potential slipping away notification by notification.</p>
+                                    <p>Teens who spend more than 3 hours daily on social media are twice as likely to report poor academic performance. Kids aren't lazy — their brains are too exhausted to perform. Every failure in school is someone else's profit.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7381599282971205632-BX4Y" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="19">
                                 <div class="card-body-content">
                                     <span class="series-tag">#19 · Mental Health</span>
                                     <h3>💔 Mental Health Meltdown</h3>
-                                    <p>Teen depression has nearly doubled since smartphones became universal. ER visits for self-harm among girls aged 10–14 are up 190% in the last decade. Meta's own research showed Instagram worsened body image in 1 in 3 teen girls — and they kept going. <strong>This isn't a side effect. It's the business model.</strong></p>
+                                    <p>Teen depression has nearly doubled since smartphones became universal. ER visits for self-harm among girls aged 10–14 are up 190%. Meta's own research showed Instagram worsened body image in 1 in 3 teen girls — and they kept going.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7383169593835581440-gmql" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="20">
                                 <div class="card-body-content">
                                     <span class="series-tag">#20 · Social Skills</span>
                                     <h3>🤝 Social Skills at Risk</h3>
-                                    <p>Kids are replacing eye contact with emojis, friendship with streaks, self-worth with filters. A child who struggles to raise their hand in class posts on TikTok without hesitation. When jobs, relationships, and leadership all depend on real conversation — will this generation be ready?</p>
+                                    <p>Kids are replacing eye contact with emojis and friendship with streaks. A child who struggles to raise their hand in class posts on TikTok without hesitation. Will this generation be ready for real conversation?</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7384498350383034368-uvng" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="21">
                                 <div class="card-body-content">
                                     <span class="series-tag">#21 · Cyberbullying</span>
                                     <h3>🥹 The Cyberbullying Epidemic</h3>
-                                    <p>The playground used to close at sunset. Now bullies never go home. 59% of teens have experienced online harassment (Pew, 2022). Victims of cyberbullying are twice as likely to attempt self-harm. A cruel post can reach hundreds in minutes — and screenshots make sure it never disappears.</p>
+                                    <p>The playground used to close at sunset. Now bullies never go home. 59% of teens have experienced online harassment. Victims are twice as likely to attempt self-harm. Screenshots make sure the humiliation never disappears.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7385721398205472769-9oj7" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="22">
                                 <div class="card-body-content">
                                     <span class="series-tag">#22 · Digital Profile</span>
                                     <h3>📋 The Digital Report Card You Never See</h3>
-                                    <p>Every pause on a video, every late-night scroll, every cookie click builds an invisible file. It doesn't grade knowledge — it grades predictability. If the system learns your 11-year-old lingers on slime videos at 10:47 p.m., the machine feeds more. Brighter, louder, stickier. The algorithm is quietly deciding who your child becomes online.</p>
+                                    <p>Every pause on a video, every late-night scroll builds an invisible file. It doesn't grade knowledge — it grades predictability. The algorithm is quietly deciding who your child becomes online.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7389254722244919296-u4LX" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
@@ -424,68 +436,68 @@
                     <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="23">
                                 <div class="card-body-content">
                                     <span class="series-tag">#23 · Mobile Gambling</span>
                                     <h3>🎲 Gambling in Your Kid's Pocket</h3>
-                                    <p>Spinning wheels, treasure chests, confetti — it's not a game, it's a casino built for children. Over 90% of top-grossing mobile games use mechanics identical to gambling. Kids as young as 6 are learning to equate luck with skill. The casino isn't in Las Vegas anymore — it's in your child's backpack.</p>
+                                    <p>Over 90% of top-grossing mobile games use mechanics identical to gambling. Kids as young as 6 are learning to equate luck with skill. The casino isn't in Las Vegas anymore — it's in your child's backpack.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7390764636804956160-pFoh" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="24">
                                 <div class="card-body-content">
                                     <span class="series-tag">#24 · Skin Betting</span>
                                     <h3>🎮 The Hidden World of Skin Betting</h3>
-                                    <p>Game "skins" — outfits, weapons, characters — are worth real money, and kids trade them as chips on third-party gambling sites. A 2023 study found over 20% of teens had gambled using in-game items, often without realizing it. Addiction disguised as achievement. Profit disguised as play.</p>
+                                    <p>Game "skins" are worth real money, and kids trade them as chips on gambling sites. A 2023 study found over 20% of teens had gambled using in-game items, often without realizing it. Addiction disguised as achievement.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7393868116386254848-SSR3" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="25">
                                 <div class="card-body-content">
                                     <span class="series-tag">#25 · Malware</span>
                                     <h3>🦠 Malware Disguised as Fun Apps</h3>
-                                    <p>In 2024, researchers found hundreds of Android apps secretly installing tracking code targeting children — some collecting voice samples, others linking data to networks with zero privacy laws. That "game" your 9-year-old downloaded may have sent your home's Wi-Fi password to a server overseas.</p>
+                                    <p>In 2024, researchers found hundreds of Android apps secretly installing tracking code targeting children. That "game" your 9-year-old downloaded may have sent your home's Wi-Fi password to a server overseas.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7395505887869751297-3Nts" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="26">
                                 <div class="card-body-content">
                                     <span class="series-tag">#26 · In-App Purchases</span>
                                     <h3>💸 The Dark Patterns of In-App Purchases</h3>
-                                    <p>Every button, color, and countdown timer is designed by behavioral economists to make "no" feel wrong. The Buy button glows warmly under a character's teary eyes. The Cancel button? Faded, gray, hidden in the corner. Over 400,000 families disputed unauthorized in-app charges by children in a single FTC report.</p>
+                                    <p>Every button, color, and countdown timer is designed to make "no" feel wrong. The Buy button glows under a character's teary eyes. The Cancel button is faded and hidden. Over 400,000 families disputed unauthorized in-app charges by children in a single FTC report.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7396728933318254592-v8bb" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="27">
                                 <div class="card-body-content">
                                     <span class="series-tag">#27 · Fake Sites</span>
                                     <h3>🎭 Fraudulent Websites Targeting Children &amp; Grandparents</h3>
-                                    <p>A cartoon panda. "FREE Robux!" A quiz to win a prize. Children enter names, ages, emails, sometimes card details — and someone else gets exactly what they wanted. The internet is no longer divided by age. It's divided by awareness.</p>
+                                    <p>A cartoon panda. "FREE Robux!" A quiz to win a prize. Children enter names, ages, emails — and someone else gets exactly what they wanted. The internet is no longer divided by age. It's divided by awareness.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7403511135192113152-yxeX" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="28">
                                 <div class="card-body-content">
                                     <span class="series-tag">#28 · Deepfakes</span>
                                     <h3>🤖 Deepfakes &amp; Fake News — When Reality Becomes Optional</h3>
-                                    <p>A teenager can create a convincing deepfake in under a minute. A child sees a famous YouTuber "recommending" a scam — except it's AI-generated. A grandparent hears what sounds exactly like their grandchild's voice pleading for help. The new rule: if it triggers emotion instantly, question it immediately.</p>
+                                    <p>A teenager can create a convincing deepfake in under a minute. A grandparent hears what sounds exactly like their grandchild's voice pleading for help. The new rule: if it triggers emotion instantly, question it immediately.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7404505178671988736-IHT-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
@@ -504,46 +516,46 @@
                     <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="29">
                                 <div class="card-body-content">
                                     <span class="series-tag">#29 · Seniors</span>
                                     <h3>👵 Why Seniors Are Prime Targets</h3>
-                                    <p>Seniors grew up when phones were trustworthy, news was verified, and strangers couldn't access private lives. Scammers exploit four vulnerabilities: trust, panic, urgency, and isolation. Seniors aren't "bad with technology." Technology is bad at protecting them.</p>
+                                    <p>Seniors grew up when phones were trustworthy and strangers couldn't access private lives. Scammers exploit four vulnerabilities: trust, panic, urgency, and isolation. Seniors aren't "bad with technology." Technology is bad at protecting them.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7405713128019349504-3Zry" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card">
+                            <div class="series-card" data-post="30">
                                 <div class="card-body-content">
                                     <span class="series-tag">#30 · Facebook Scam</span>
                                     <h3>📱 The Facebook Friend Scam</h3>
-                                    <p>A message from someone you know — the right profile photo, the right name. Small talk, then a story: "I lost my wallet." "I'm stuck while traveling." To a senior, it's a call to help someone they love. To the scammer, it's just another payday. New rule: if a message asks for money, switch platforms and verify with a family member first.</p>
+                                    <p>A message from someone you know — the right photo, the right name. Small talk, then: "I'm stuck while traveling, could you send something small?" To a senior, it's a call to help someone they love. New rule: any money request — verify by phone first.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7407042019514286080-5Ajb" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="31">
                                 <div class="card-body-content">
                                     <span class="series-tag">#31 · Phishing</span>
                                     <h3>🎣 Phishing Emails &amp; Fake Tech Support</h3>
-                                    <p>"Your bank needs verification." "Microsoft detected a virus." Logos look perfect. Language sounds professional. Once the "fix-it" program is installed — it's remote access. Life savings, gone in seconds. Seniors never learned: banks don't email links, and "urgent" means danger online. Criminals aren't hacking devices — they're hacking instincts.</p>
+                                    <p>"Your bank needs verification." "Microsoft detected a virus." Logos look perfect. Once the "fix-it" program is installed — it's remote access. Life savings, gone in seconds. Criminals aren't hacking devices — they're hacking instincts.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7408144165882200064-Z9l-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card special-card">
+                            <div class="series-card special-card" data-post="32">
                                 <div class="card-body-content">
                                     <span class="series-tag" style="background:rgba(0,0,0,0.06); color:#555;">🎄 Christmas Special</span>
                                     <h3>🎁 The Season of Giving (and Scamming)</h3>
-                                    <p>For scammers, Christmas is harvest season. Fake delivery alerts, too-good-to-be-true deals, gift card payment scams, fake charities — all hitting when people are tired, distracted, and generous. Family rules: never click tracking links in SMS, never pay with gift cards, always donate via official websites directly.</p>
+                                    <p>For scammers, Christmas is harvest season. Fake delivery alerts, too-good-to-be-true deals, gift card scams, fake charities — all hitting when people are tired, distracted, and generous. Family rules that could save your wallet this holiday.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7409156053092806657-op7q" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
@@ -562,29 +574,28 @@
                     <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="series-card">
+                            <div class="series-card" data-post="33">
                                 <div class="card-body-content">
                                     <span class="series-tag">#33 · Big Tech Accountability</span>
                                     <h3>🏛️ How Big Tech Dodges Responsibility</h3>
-                                    <p>Instead of fixing addictive algorithms, platforms offer "parental controls." Instead of changing defaults, they lecture users on personal responsibility. Big Tobacco pushed "personal choice" for decades. Opioid makers blamed patients. Fast food blamed consumers. Tech is following the same playbook — and parents are left holding the damage.</p>
+                                    <p>Instead of fixing addictive algorithms, platforms offer "parental controls." Big Tobacco pushed "personal choice" for decades. Opioid makers blamed patients. Tech is following the same playbook — and parents are left holding the damage.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7417400306323611649-EarZ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="series-card special-card">
+                            <div class="series-card special-card" data-post="34">
                                 <div class="card-body-content">
                                     <span class="series-tag" style="background:rgba(0,0,0,0.06); color:#555;">⏸️ Halftime</span>
                                     <h3>💊 Halftime — A Question for Families</h3>
-                                    <p>We know who's behind the addiction machine. The only guaranteed escape is to stop using those apps entirely — but is that realistic? Jaro asks: what magic features would you want in a tool that actually fixes this? Block TikTok with one tap? Limit YouTube but keep school videos? Stop grandpa's online gambling? Drop your answer in the comments.</p>
+                                    <p>We know who's behind the addiction machine. But is quitting all apps even realistic? What magic features would you want in a tool that actually fixes this? Jaro asks the community — and the answers shaped what WhiteCat became.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7423582903789461504-qt5j" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                                <div class="read-more-hint">Read full post →</div>
                             </div>
                         </div>
 
                     </div>
-
 
                 </div>
             </section>
@@ -603,6 +614,25 @@
             </section>
 
         </main>
+
+        <!-- Post Modal -->
+        <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0 pb-0">
+                        <div>
+                            <div id="modal-tag" class="modal-tag mb-2"></div>
+                            <h5 class="modal-title" id="modal-title"></h5>
+                        </div>
+                        <button type="button" class="btn-close ms-3" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body pt-3" id="modal-body"></div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer id="footer" class="footer">
             <div class="container footer-top">
@@ -642,5 +672,191 @@
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/aos/aos.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+        const POSTS = {
+          1: {
+            tag: '#1 · The Slot Machine Effect',
+            title: '🎰 How Social Media Hooks You Like a Slot Machine',
+            content: `<p>Ever wonder why you can't STOP scrolling through your social media feed or playing that one mobile game? It's no accident.</p><p>Big Tobacco, Las Vegas casinos, and your favorite apps use the same psychological trick — variable ratio reinforcement — to keep you hooked. It's like a slot machine: sometimes nothing, sometimes a small win, and occasionally, a dopamine-fueled JACKPOT! That unpredictability keeps your brain craving more.</p><p>Sean Parker, former Facebook president, admitted in a 2017 Axios interview: <em>"We knew exactly what we were doing. We exploited vulnerabilities in human psychology."</em></p><p>Every app refresh is a gamble — a dull post, a funny video, or a tagged photo that hits like a reward. You never know what's next, so you keep scrolling.</p><p>And it's not just adults. In 2021, whistleblower Frances Haugen exposed internal Meta research showing 32% of teen girls said Instagram worsened their body image, fueling anxiety and eating disorders. Meta knew and did nothing.</p><p>From cigarettes to slots to your phone, the game's the same: keep you hooked.</p>`
+          },
+          2: {
+            tag: '#2 · Dark Tactics',
+            title: '💊 The Dark Tactics of Addictive App Design',
+            content: `<p>Social media apps and games aren't just fun — they're engineered to hijack your brain. Features like infinite scroll, autoplay videos, and push notifications are deliberate traps designed to exploit your psychological triggers.</p><p>Ever notice how Instagram Reels keep playing or how a single notification pulls you right back in? That's no accident. It's called the "lure of the next reward," driven by FOMO (fear of missing out) and dopamine spikes.</p><p>Ex-Google designer Tristan Harris calls it <em>"time on device optimization"</em> — maximizing your screen time at the cost of your well-being.</p><p>Leaked internal Meta documents, revealed by whistleblower Frances Haugen in 2021, show their own research confirmed their algorithms amplify addictive behaviors — yet engagement always came first.</p><p>It's a digital casino — and you're the player. Who's cashing in on your attention?</p>`
+          },
+          3: {
+            tag: '#3 · The Playbook',
+            title: '🃏 The Tech Giants\' Secret Playbook',
+            content: `<p>Every "free" app has a hidden manual — not for you, but for the designers. It's a blueprint to grab your attention, keep you hooked, and quietly harvest your data.</p><p>Inside this playbook:</p><p><strong>Psychological warfare</strong> – exploiting FOMO, reward loops, and social validation to make you check in again and again.<br><strong>Personalized bait</strong> – algorithms tracking every click to feed you exactly what will keep you scrolling.<br><strong>Interruption tactics</strong> – push notifications, streaks, and "you have 1 new message" alerts, even when you don't.<br><strong>Infinite content streams</strong> – no end, no stopping point, just one more swipe.</p><p>And here's the kicker: the same techniques are used in casinos and gambling apps — but in your pocket, 24/7.</p><p>This isn't "bad design." It's predatory design. And your kids are the easiest targets.</p>`
+          },
+          4: {
+            tag: '#4 · Offender #1',
+            title: '🎭 TikTok — The Fastest-Growing Slot Machine in History',
+            content: `<p>TikTok isn't just an app. It's the fastest-growing slot machine in history.</p><p>Every swipe is a gamble:<br>👉 Sometimes it's boring.<br>👉 Sometimes it's funny.<br>👉 Sometimes it's the perfect hit that keeps you swiping for "just one more."</p><p><strong>Why it's dangerous:</strong><br>Hyper-personalized feed — the algorithm learns your brain in minutes, then exploits it.<br>Endless scroll — no natural stopping point, designed for binge use.<br>Youth focus — more than 60% of TikTok's users are under 25, with teens spending 95 minutes a day on average.<br>Data concerns — investigations in the U.S. and Europe show TikTok collects far more data than most apps, including keystrokes and location.</p><p>TikTok calls it entertainment. Psychologists call it engineered addiction. And the longer kids stay hooked, the more data gets sold.</p>`
+          },
+          5: {
+            tag: '#5 · Offender #2',
+            title: '🎯 Instagram — The Illusion of Perfection',
+            content: `<p>Instagram isn't just pictures — it's a perfectly engineered dopamine trap.</p><p>👉 Infinite scroll means you never "finish."<br>👉 Likes and hearts give just enough validation to keep you posting.<br>👉 Filters and face-tuning create impossible beauty standards.</p><p>Meta's own leaked research (Frances Haugen, 2021) showed:<br>🔹 32% of teen girls said Instagram worsened their body image.<br>🔹 Many reported higher anxiety, depression, and eating disorders.</p><p>Yet the platform doubled down, because more screen time = more ad money.</p><p>It's not just kids. Adults are caught in the same loop of comparing their real lives to curated perfection. The result? Addiction, insecurity, and hours stolen every day.</p><p>Here's the thing: the problem isn't "kids being weak" — it's systems built to exploit psychology. And systems can be fixed.</p>`
+          },
+          6: {
+            tag: '#6 · Offender #3',
+            title: '⏯️ YouTube — The Endless Rabbit Hole',
+            content: `<p>YouTube looks harmless — "just videos." But behind every click is one of the most powerful recommendation engines ever built.</p><p>🔹 <strong>The hook:</strong> You come for one video — a recipe, a song, a tutorial. The algorithm pushes you toward "related" content, and suddenly hours are gone.<br>🔹 <strong>The design:</strong> Autoplay is default. Stopping takes effort. Watching more takes none.<br>🔹 <strong>The risk:</strong> Studies show over 70% of YouTube watch time comes not from user choice, but from algorithmic recommendations. YouTube decides what you see, not you.<br>🔹 <strong>The danger:</strong> Harmless clips can quickly slide into extreme or sensational content. Researchers at Mozilla found that YouTube's AI often recommends misinformation, conspiracy, and toxic videos to keep you hooked longer.</p><p>And let's not forget the kids. Bright thumbnails, autoplay cartoons, and "Made for Kids" labels give parents false confidence. But the line between kid content and advertising is razor thin — and YouTube profits either way.</p><p>⚠️ Numbers to chew on: Over 2 billion logged-in users monthly. Teens report watching up to 3–4 hours daily. It's not the content alone that's dangerous. It's the machine behind it, designed to never let you stop.</p>`
+          },
+          7: {
+            tag: '#7 · The Economy',
+            title: '🔙 The Dopamine Economy — Why Your Time Online Is Worth Billions',
+            content: `<p>Every like, every scroll, every autoplay = cash flow. You're not the customer. You're the product.</p><p>📊 In 2023, social media platforms raked in over $200 billion in ad revenue. Where did it come from? From your attention, auctioned in real-time to advertisers.</p><p>Here's the cycle:<br>1️⃣ Platforms exploit your brain's dopamine system.<br>2️⃣ Dopamine keeps you chasing "just one more" scroll.<br>3️⃣ More time online = more ads shown.<br>4️⃣ More ads = more profit.</p><p>🔍 Data is the fuel: every pause, click, and replay is tracked, packaged, and sold. Advertisers don't just know what you want — they know what will make you want.</p><p>⚠️ Studies show: The average user checks their phone 96 times a day. Kids spend over 7 hours daily on screens outside school.</p><p>Welcome to the Dopamine Economy — the largest behavioral experiment in human history, where your brain chemistry is traded for profit.</p>`
+          },
+          8: {
+            tag: '#8 · The Trap',
+            title: '💊 The Variable Reward Trap – Why Unpredictability Keeps You Glued',
+            content: `<p>Why do slot machines make more money than movies, sports, and music combined? One reason: variable rewards. Sometimes you win. Sometimes you don't. The brain craves that next try. It's the same trick fueling your favorite apps.</p><p>📱 Social media feeds = slot machines:<br>Refresh Instagram → maybe likes, maybe nothing.<br>Check TikTok → maybe a boring clip, maybe one that makes you laugh until you cry.<br>Open YouTube → maybe filler, maybe the "perfect" recommendation.</p><p>This uncertainty is what neuroscientists call the variable ratio schedule. It's the most powerful reinforcement system ever studied. Rats pressed levers thousands of times for random pellets. Humans? We scroll, tap, and refresh endlessly for digital dopamine hits.</p><p>And here's the danger: Predictable rewards get boring. Unpredictable rewards are addictive. The brain's reward system learns to crave uncertainty itself. That's why "just one more check" turns into hours lost.</p><p>The trap isn't the content. The trap is not knowing what's next.</p><p>⚠️ For kids, this creates a cycle of anticipation addiction. Even when the screen is OFF, their brains itch with "what if I'm missing something?" That's FOMO — and platforms profit from it.</p>`
+          },
+          9: {
+            tag: '#9 · Infinite Scroll',
+            title: '📜 Why Your Brain Loves Infinite Scroll',
+            content: `<p>Have you ever noticed that you can scroll a feed forever, yet never hit the bottom? That's not a happy accident — it's a deliberate design choice called infinite scroll, invented in 2006 by a developer named Aza Raskin. Years later, he admitted it was like handing people <em>"an endless bag of chips."</em></p><p><strong>Why it works:</strong><br>• No stopping cues: In the real world, you finish a chapter, the credits roll, the bag is empty — your brain gets a natural break. Infinite scroll removes those cues.<br>• Seamless dopamine drip: The content just keeps coming, keeping your brain in a low-level state of anticipation.<br>• Efficiency for them, exhaustion for you: The longer you scroll, the more ads and recommendations the platform can show.</p><p><strong>The cost?</strong><br>• Attention spans shrink.<br>• Kids lose hours that should be spent sleeping, studying, or simply being bored (a critical ingredient for creativity).<br>• Your sense of time itself gets warped.</p><p>Infinite scroll was meant to "help." In reality, it hijacks one of your most limited resources: attention.</p>`
+          },
+          10: {
+            tag: '#10 · Notifications',
+            title: '🔔 Push Notifications: Pavlov\'s Bell in Your Pocket',
+            content: `<p>That buzz in your pocket isn't random. It's conditioning. Psychologist Ivan Pavlov trained dogs to salivate at the sound of a bell, because they knew food was coming. Big Tech trains you the same way. Only the "food" is a dopamine hit — a like, a comment, a new message.</p><p>👉 <strong>It's not about relevance, it's about reaction.</strong> Most notifications aren't urgent. They're engineered interruptions. "A friend liked a post." "People are posting new content." "You haven't posted in a while."</p><p>👉 <strong>The timing is strategic.</strong> Notifications arrive in waves, not all at once. They arrive at vulnerable moments: lunch breaks, evenings, or late at night. Studies show people are most likely to cave when they're bored or tired.</p><p>👉 <strong>The design is addictive.</strong> The red dot isn't accidental. Red is a high-arousal color that triggers urgency and anxiety. The sound of a ping mimics the unpredictability of slot machines.</p><p>👉 <strong>The cost is focus.</strong> Every notification breaks your concentration. It takes on average 23 minutes to fully refocus after an interruption. Multiply that by dozens of daily notifications, and your productivity isn't just dented — it's destroyed.</p><p>👉 <strong>For kids, the damage is worse.</strong> Notifications turn sleep into a battleground. Late-night pings keep screens lighting up on nightstands, eroding rest and feeding the "always on" anxiety.</p>`
+          },
+          11: {
+            tag: '#11 · The App Buffet',
+            title: '♦️ The App Buffet Problem – Why Switching Apps Doesn\'t Save You',
+            content: `<p>Think closing TikTok and opening Instagram gives you a break? Think again. Every swipe, like, pause, or replay feeds into the same global attention economy.</p><p>♦️ <strong>Different apps, same playbook.</strong> TikTok tracks what you watch. Instagram logs what you like. YouTube measures how long you linger. Put it together, and advertisers know not only what you consume — but when, where, and in what mood.</p><p>♣️ <strong>Cross-tracking is the real trap.</strong> Your phone doesn't see "apps." It sees a constant flow of behavior. That's why ads seem to "follow" you: You look at a recipe on Pinterest, and suddenly DoorDash is in your Instagram feed.</p><p>♠️ <strong>The illusion of choice.</strong> You think you're switching channels. They're really switching nets. And no matter which app you tap, your attention (and data) gets caught.</p><p>📌 Bottom line: You're not escaping the system. You're feeding it from a different angle.</p>`
+          },
+          12: {
+            tag: '#12 · Kids\' Content',
+            title: '👶 The Children\'s Content Illusion',
+            content: `<p>Parents often feel a false sense of relief when they hand over a tablet set to "kids' mode" or open a "child-friendly" app. Bright colors, cartoon mascots, and cheerful branding promise safety. But behind the curtain, these platforms are still built on the same business model: harvesting attention and data.</p><p>👉 <strong>What "kid-safe" really means:</strong> Ads are swapped for "promoted content." Games reward attention with coins, skins, or badges — training kids for endless engagement. In-app recommendations still rely on engagement-driven algorithms.</p><p>📊 A 2019 study by the University of Michigan found that 95% of apps labeled as "educational" for children included manipulative advertising or engagement tricks.</p><p>🧠 Child psychologists warn that these tactics blur the line between learning and consumption, shaping how kids measure value — not in knowledge gained, but in rewards unlocked.</p><p>Even platforms like YouTube Kids and "educational" games have been caught funneling children toward data collection and addictive loops. A 2021 report revealed that YouTube Kids repeatedly exposed young viewers to junk food ads and influencer marketing.</p><p>⚠️ If adults struggle to resist slot-machine mechanics, what chance does a 7-year-old have?</p>`
+          },
+          13: {
+            tag: '#13 · Gamification',
+            title: '🏆 The Gamification of Everything',
+            content: `<p>Remember when games were just… games? You played, you had fun, you stopped. Now? Nothing ends. Everything has a streak, a badge, a leaderboard. You're not playing for fun anymore — you're playing to keep your "score" alive.</p><p>📌 <strong>Snapchat streaks</strong> – kids log in every single day, not to chat, but to keep a little 🔥 alive. Miss a day? Boom — shame, loss, anxiety.<br>📌 <strong>Duolingo badges</strong> – push notifications scold you like a coach when you fall behind.<br>📌 <strong>Fortnite daily rewards</strong> – log in, get your prize. Skip, and you feel punished.<br>📌 <strong>Fitness trackers</strong> – not just for health. They gamify movement, then quietly feed your patterns to data sellers.</p><p>It's Pavlov with pixels. Kids aren't just chasing dopamine; they're chasing numbers designed to never feel finished. Every ding, every badge, every "level up" is engineered to keep them feeding the machine.</p><p>The result? Learning feels like a hustle. Play feels like a job. Rest feels like failure. And behind every streak? A platform that's selling your kid's persistence, mood swings, and micro-habits to the highest bidder.</p>`
+          },
+          14: {
+            tag: '#14 · Data Brokers',
+            title: '🗂️ Data Brokers Love Your Free Apps',
+            content: `<p>You already know by now: nothing online is really "free." But here's the twist — your data isn't just fueling ads inside one app. It's being packaged, bundled, and sold like a commodity on Wall Street.</p><p>Every tap, swipe, and pause gets logged. Every "free" app you download becomes another sensor. Individually, it looks harmless. Collectively, it's a map of your life.</p><p>👉 Your location patterns.<br>👉 Your and your child's browsing habits.<br>👉 Your late-night searches, movies, music.<br>👉 Food preferences, religion, political sympathies.<br>👉 Even the times when you pick up the phone but do nothing.<br>👉 Your free email scans your attachments — knows your new address before you even sign the rental agreement.</p><p>All of this feeds into data broker warehouses — shadow companies you've never heard of, but that know you better than your doctor. They sell these insights to advertisers, political campaigns, insurance companies, banks, and sometimes less reputable actors.</p><p>It's not just about targeting you. It's about profiling your KIDS before they've even turned 13. By the time they're in high school, an invisible digital résumé already exists — built entirely on "free" apps and careless clicks.</p><p>Once your family's data is sold, there's no way to get it back.</p>`
+          },
+          15: {
+            tag: '#15 · Surveillance',
+            title: '👁️ When Social Meets Surveillance',
+            content: `<p>Think social media is just a place to hang out? It isn't. It's one of the most sophisticated surveillance systems ever built — and your family is the raw material.</p><p>Every like, pause, and DM feeds machine learning that predicts what you'll click, when you'll be tired, and what will push your buttons. Platforms don't just watch; they model your moods and sell the playbook to advertisers, political actors, and anyone with cash.</p><p>💰 <strong>Why that matters:</strong><br>The feed shows what hooks you; the pause shows what holds you.<br>Algorithms nudge behavior — they favor outrage, fear, and anything that keeps you coming back.<br>Kids are test subjects: less skeptical, more impulsive, easier to steer.<br>This isn't targeted ads only — it's influence at scale.</p><p>Your "private" moments become data points in someone else's business plan.</p>`
+          },
+          16: {
+            tag: '#16 · Streaming',
+            title: '📺 The Dark Side of Streaming',
+            content: `<p>Streaming was supposed to be freedom: no schedules, no commercials, just watch what you want when you want. But somewhere along the way, it turned into a trap.</p><p>Think about the last time you sat down for "just one episode." Did you even notice when episode two started? Three? That wasn't you being lazy — that was autoplay doing its job.</p><p>Your TV isn't passive anymore. It's watching you too. Every pause, rewind, or late-night binge goes into a log. That data gets stitched into your profile:<br>– Are you a night owl?<br>– Do you skip ads?<br>– Do you linger on kids' shows even after the kids leave the room?</p><p>Advertisers love this. It's the kind of detail no search history can match. Your living room is basically the most expensive focus group in history — and you never signed up for it.</p><p>For kids, it's worse. Autoplay turns cartoons into babysitters. Bright thumbnails and influencer tie-ins make sure they never run out of "just one more." Sleep gets shorter, attention gets thinner, and those habits get stored forever.</p><p>For seniors, the danger shifts. Rogue "TV apps" and fake pop-ups trick them into handing over credit cards or calling fake support numbers.</p><p>Bottom line: Streaming didn't just kill cable. It turned the family sofa into a data pipeline.</p>`
+          },
+          17: {
+            tag: '#17 · Sleep Crisis',
+            title: '😴 Screen Time and the Sleep Crisis',
+            content: `<p>Bedtime used to be simple. Brush teeth, read a story, lights out. Now, the glow of a screen has replaced the nightlight.</p><p>Picture this: a kid lying in bed, phone hidden under the blanket. Eyes wide open, scrolling, tapping, laughing quietly at a TikTok. Outside the door, parents think they're asleep. But inside the room, the brain is getting tricked: blue light screaming daytime, dopamine firing like it's Vegas. And sleep? It doesn't stand a chance.</p><p>⏰ <strong>Doctors are already sounding the alarm:</strong><br>Kids today sleep nearly two hours less than their parents did at the same age.<br>Chronic sleep loss in teens is tied to anxiety, depression, obesity, even weakened immune systems.<br>Teachers report kids yawning in class, losing focus, and dragging grades down — not because they're lazy, but because their brains never shut off.</p><p>And it's not just the late nights. Even when the screen finally goes dark, the mind keeps racing: "What did I miss?" "Who posted while I was sleeping?" That's FOMO crawling under the blanket, stealing rest hour by hour.</p><p>The cruel twist? Sleep should be the great healer for kids — growth, memory, mood, all rebuilt at night. Instead, the most natural medicine is what the digital world takes away first.</p><p>We thought screens were stealing attention. Turns out, they're stealing childhood nights too.</p>`
+          },
+          18: {
+            tag: '#18 · Grades',
+            title: '📉 Grades in Freefall',
+            content: `<p>Walk into any classroom today and you'll see it: kids rubbing their eyes, yawning through math, staring blankly at the board. Teachers complain about "lack of focus," but the truth is simpler — the kids are exhausted.</p><p>The night before, they weren't just texting friends. They were pulled into the endless loop: one more reel, one more game, one more notification. Midnight turns to 1 a.m. and suddenly the alarm clock is the enemy.</p><p>📉 <strong>And the results?</strong> Test scores sinking, not because kids aren't smart, but because their brains are too foggy to perform. Homework left half-done, replaced by streaks and badges that feel urgent but mean nothing. Classrooms turning into nap zones.</p><p>A study from the American Academy of Pediatrics found that teens who spend more than <strong>3 hours daily</strong> on social media are twice as likely to report poor academic performance. Not because they're "bad kids," but because sleep and attention are being stolen — drip by drip — by apps designed to never let go.</p><p>And here's the part parents hate to admit: kids don't choose this. The apps are built to win. Every failure in school is someone else's profit.</p><p>It's not just grades dropping. It's potential, confidence, and future opportunities slipping through their fingers — one notification at a time.</p>`
+          },
+          19: {
+            tag: '#19 · Mental Health',
+            title: '💔 Mental Health Meltdown',
+            content: `<p>This is the part most parents don't want to think about — because it's not just grades or sleep on the line. It's their child's state of mind.</p><p>📱 <strong>Childhood on Display.</strong> Imagine being 12 and living in a world where your worth is measured in likes, views, and streaks. Post a picture → instant scoreboard of approval. Get ignored → the silence feels like rejection. Open the feed → every scroll shows someone prettier, cooler, happier. Adults can tell themselves "It's just the internet." Kids can't. For them, it's their reality.</p><p>📉 <strong>The Numbers Are Brutal.</strong><br>Teen depression has nearly doubled since smartphones became universal.<br>ER visits for self-harm among girls aged 10–14 are up 190% in the last decade.<br>Heavy social media users are twice as likely to report anxiety and suicidal thoughts.</p><p>🧠 <strong>The Addiction Cycle.</strong> The apps give just enough dopamine to make kids feel better for a moment. But the crash after? That's when anxiety and emptiness hit hardest. More scrolling. More likes. More late-night DMs. It's like giving a thirsty kid salt water — the more they drink, the worse it gets.</p><p>💔 <strong>The Hard Truth for Parents.</strong> Big Tech knew, from their own leaked research, that platforms like Instagram worsened body image in 1 in 3 teen girls. They knew — and they kept going.</p><p>‼️ This isn't a side effect. It's the business model. ‼️</p>`
+          },
+          20: {
+            tag: '#20 · Social Skills',
+            title: '🤝 Social Skills at Risk',
+            content: `<p>Childhood used to be practice for adulthood: learning how to share, how to comfort a friend, how to survive the awkward pauses of real conversation. That's where confidence, empathy, and resilience grow. But kids today are practicing something else entirely.</p><p>They're learning to replace eye contact with emojis. They're learning that a streak is a friendship, a like is approval, a filter is self-worth.</p><p>Parents notice it at the dinner table. Teachers notice it in classrooms. Coaches see it on the field. Kids together, but each staring into a private universe on their screen.</p><p>It's subtle, but powerful: A child who struggles to raise their hand in class will post on TikTok without hesitation. Teens who can't sit through a family meal without glancing at their phones will send hundreds of Snapchats a day. Many now feel more comfortable broadcasting their lives to strangers than speaking to the person sitting next to them.</p><p>And what does that mean for their future? When job interviews, relationships, and leadership all depend on real conversation — will this generation be ready?</p><p>This isn't just about wasted time. It's about a childhood shortcut — where real skills are replaced by digital stand-ins. And shortcuts don't build strength.</p>`
+          },
+          21: {
+            tag: '#21 · Cyberbullying',
+            title: '🥹 The Cyberbullying Epidemic',
+            content: `<p>The playground used to close at sunset. Now, it's open 24/7 — and the bullies never go home.</p><p>For kids today, bullying doesn't stop at the school gate. It follows them into bedrooms, under blankets, and onto glowing screens at 2 a.m. One cruel comment, one screenshot passed around a group chat, one "joke" that spreads across a platform — and suddenly a child feels the entire world is against them.</p><p>📊 <strong>The Numbers Behind the Pain:</strong><br>According to the CDC (2021), about 15% of U.S. high school students reported being cyberbullied in just the past year.<br>A 2022 Pew Research study found that 59% of teens had experienced some form of online harassment.<br>Victims of cyberbullying are twice as likely to attempt self-harm or suicide.</p><p>📱 <strong>Why It Hurts So Much More Online:</strong><br>No escape: At least with schoolyard bullies, home was a safe zone. Now, bullying travels in your child's pocket.<br>Amplified shame: A cruel post can reach hundreds within minutes.<br>Permanent record: Screenshots make sure the humiliation doesn't disappear, even if the post does.</p><p>🧠 <strong>The Toll on Mental Health.</strong> For kids, the phone isn't just a device. It's their lifeline to friends, social groups, even their sense of identity. Turning it off feels like disappearing. So they keep scrolling. Keep reading. Keep hurting.</p><p>💔 If kids can't escape their bullies even in their bedrooms, where do they feel safe?</p>`
+          },
+          22: {
+            tag: '#22 · Digital Profile',
+            title: '📋 The Digital Report Card You Never See',
+            content: `<p>Report cards used to be simple: math, reading, science. Now there's a second one your child never gets to read. It lives behind the apps.</p><p>Every pause on a video, every late-night scroll, every "accept cookies" becomes a line on that invisible file: what makes your kid laugh, what keeps them anxious, when they're most likely to click "play."</p><p>The file doesn't grade knowledge. It grades predictability. Marketers love predictable kids.</p><p>If the system learns your 11-year-old lingers on slime videos at 10:47 p.m., the machine will feed more — brighter, louder, stickier. If your 13-year-old checks likes the second they wake up, the machine learns to ping at 6:41 a.m. sharp. It's not "personalization." It's training.</p><p>Parents don't see this report, but it follows kids from app to app, screen to screen. It can shape the ads they see, the content they're nudged toward, even the moods they start the day with.</p><p>We worry about grades slipping in school. The scarier question: what is the algorithm quietly rewarding at home? Endurance over sleep. Reaction over reflection. Staying on over signing off.</p><p>There's a reason the feed feels like it "knows" your kid. It does. And it's keeping score.</p>`
+          },
+          23: {
+            tag: '#23 · Mobile Gambling',
+            title: '🎲 Gambling in Your Kid\'s Pocket',
+            content: `<p>It starts small. A harmless game on a tablet. A few colorful gems, spinning wheels, treasure chests that burst open with sound and confetti. But look closer — it's not a game. It's a casino built for children.</p><p>Every tap is a bet. Every spin is a lesson in variable rewards — the same psychology slot machines have used for decades. Win? You get a dopamine rush. Lose? You're told you were "so close!" — just one more spin away.</p><p>Now picture this running on millions of young brains that don't yet understand odds, impulse, or manipulation.</p><p>Candy Crush, Roblox, even "educational" apps — they all borrow from the same rulebook: keep players chasing rewards they'll never own.</p><p>📉 <strong>Here's the truth:</strong> Over 90% of top-grossing mobile games use mechanics identical to gambling — loot boxes, daily rewards, streaks. Kids as young as 6 are learning to equate luck with skill, and persistence with spending. The line between gaming and gambling isn't blurry anymore. It's gone.</p><p>Psychologists now call this "predatory monetization." The dopamine pathways that were once protected by age walls are now wide open — disguised under "fun" and "free to play."</p><p>And it's not just about money. It's about wiring the brain to expect constant rewards, instant gratification, and emotional highs that real life can't match.</p><p>🎲 The casino isn't in Las Vegas anymore. It's in your child's backpack. And we added there "it's just a game." NO, IT'S NOT ‼️</p>`
+          },
+          24: {
+            tag: '#24 · Skin Betting',
+            title: '🎮 The Hidden World of Skin Betting',
+            content: `<p>It starts where every kid wants to be — inside the game. Bright colors, digital prizes, "rare skins." Harmless, right? Except those skins — outfits, weapons, character designs — are worth real money. And behind every trade, there's a hidden casino most parents never see.</p><p>A kid opens a loot box in Fortnite or CS:GO. They don't win cash — they win something better: status. Rare. Limited. Everyone wants it. Next step? They find out it can be sold. Suddenly, gaming isn't just fun anymore. It's gambling wrapped in pixels.</p><p>🎮 <strong>The line between gaming and gambling is gone.</strong> Kids use "skins" as chips on third-party sites to bet on matches, roll virtual dice, spin wheels, or open "mystery boxes" — all built to mimic slot machines.</p><p>A 2023 study in the Journal of Behavioral Addictions found that over 20% of teens had gambled using in-game items or currencies, often without realizing it. Many used their parents' credit cards. Some even sold their own gaming accounts to fund more bets.</p><p>These games teach something casinos never could: Gambling disguised as fun. Addiction disguised as "achievement." Profit disguised as play.</p><p>So next time you hear a child say, "It's just a skin, Mom," remember — that's exactly what the casino wants you to think.</p>`
+          },
+          25: {
+            tag: '#25 · Malware',
+            title: '🦠 Malware Disguised as Fun Apps',
+            content: `<p>It's one of the oldest tricks in the book — but it's now aimed at children. A new game. A flashlight app. A photo editor with cute stickers. Behind the friendly icon hides something darker — malware, quietly siphoning data, contacts, photos, even location.</p><p>Kids love to explore. Parents love convenience. Hackers love both.</p><p>In 2024, cybersecurity researchers found hundreds of Android apps that secretly installed tracking code and adware — many targeted directly at children. Some collected voice samples through the microphone. Others linked data to third-party advertising networks in countries with zero privacy laws.</p><p>Children's devices are perfect targets:<br>• They rarely run antivirus software.<br>• They're shared across the family.<br>• And most importantly — they're trusted.</p><p>That "game" your 9-year-old downloaded may have sent your home's Wi-Fi password to a server overseas. That "fun face filter" might be recording analytics on who your child is, where they go, and when they're online.</p><p>The line between entertainment and exploitation is disappearing. And while Big Tech claims to "remove" bad actors, new ones appear daily. Because where there's curiosity, there's opportunity.</p><p>The question isn't if your child will click — it's when.</p>`
+          },
+          26: {
+            tag: '#26 · In-App Purchases',
+            title: '💸 The Dark Patterns of In-App Purchases',
+            content: `<p>It usually begins with something innocent — a kid tapping "Get more gems." Just a little boost, a small power-up, a $1.99 "special offer." But behind that cute pop-up is a playbook written by behavioral economists, psychologists, and marketing engineers — not game designers.</p><p>🎮 <strong>The Design of Deception.</strong> Free games aren't really free. They're labs — testing how long it takes before a child clicks "buy." Bright colors, countdown clocks, "limited deals," and sad characters begging you to "save them" with one more purchase.</p><p>Every detail is optimized for emotion:<br>• The "Buy" button is warm, glowing, and placed under a character's teary eyes.<br>• The "Cancel" button? Faded, gray, hidden in the corner.<br>• The timer ticks down in red, whispering: "Hurry, or you'll miss it."</p><p>💸 <strong>The Reality Behind the Tap.</strong> A 2023 FTC report found that over 400,000 families disputed unauthorized in-app charges made by children. One major tech company refunded more than $70 million — and that's just the cases that got reported.</p><p>Children don't understand real money in digital space. When the app says "Only 500 coins!" — their brain sees points, not dollars. By the time the bill arrives, the dopamine hit is long gone, but the debt remains.</p><p>🧠 We used to warn kids about strangers offering candy. Now, the candy comes with a progress bar and a payment link.</p>`
+          },
+          27: {
+            tag: '#27 · Fake Sites',
+            title: '🎭 Fraudulent Websites Targeting Children & Grandparents',
+            content: `<p>It usually starts with something cute. A cartoon panda. A dancing unicorn. "FREE Robux!" "Win a new iPhone!" To a kid, it looks friendly — it's a fishing net, clickbait.</p><p>A child taps a bright banner: "Take this quiz to win a prize!" Up pops a form: name, age, email, maybe "parent's email," sometimes even an address or card details "to confirm the reward." Your kid believes a prize is coming. In reality, someone else just got exactly what they wanted: your family's data.</p><p>🎭 <strong>The Cute Graphics Are the Bait.</strong> These sites are fast to build and easy to disguise as "official": links under YouTube videos, fake fan pages, Instagram stories, TikTok giveaways, Roblox "codes" posted by strangers.</p><p>Why all this? To hunt treasure for criminals: emails for spam and phishing, passwords kids repeat everywhere, credit card info under the lie of "verification."</p><p><strong>Grandparents click too.</strong> Their traps look different: "Your antivirus expired — click here." "Your grandchild sent a photo — open to view." "Exclusive senior discount, today only." Same mechanics. Same urgency. Same emotional pressure. That's not stupidity — that's kindness being exploited.</p><p>🧠 <strong>The hard truth:</strong> Your child doesn't need the dark web to get into trouble. Your parents don't need hackers to break in. All it takes is one click on a fake giveaway. The internet is no longer divided by age. It's divided by awareness.</p>`
+          },
+          28: {
+            tag: '#28 · Deepfakes',
+            title: '🤖 Deepfakes & Fake News — When Reality Becomes Optional',
+            content: `<p>It used to take months and a Hollywood studio to fake a video. Now a teenager can do it on their phone in under a minute. Deepfakes became daily reality. Faces swapped, voices cloned. "News" generated in seconds.</p><p>👦 <strong>Kids don't question — they consume.</strong> A child sees a famous YouTuber "recommending" a game — except it's not the YouTuber, it's an AI-generated fake pushing a scam link. A teenager sees a video of a classmate "saying something awful" — except they never said it, but the drama spreads faster than the truth ever could. Deepfakes are becoming the new cyberbullying.</p><p>👵 <strong>Grandparents don't doubt — they trust what they hear.</strong> "Grandma, I need help… please don't tell Mom." It sounds exactly like her grandson — same tone, same hesitation. And scammers know that panic shuts down logic. Grandfather sees a "breaking news" video claiming banks are freezing accounts with a link to "save" the money. He forwards it instantly.</p><p>‼️ Grandparents grew up in a world where photos meant truth and voices meant identity. Deepfakes weaponize that trust.</p><p>🎯 <strong>Why these fakes hit so hard:</strong><br>Kids → identity insecurity, shame, FOMO<br>Teens → reputation, peer pressure, outrage<br>Grandparents → trust, fear, emotional loyalty<br>Parents → panic about safety</p><p>⚠️ The new rule of survival: If it triggers emotion instantly, question it immediately.</p>`
+          },
+          29: {
+            tag: '#29 · Seniors',
+            title: '👵 Why Seniors Are Prime Targets',
+            content: `<p>We often worry about kids online — and we're right to. But quietly, in the background, another group is being hit even harder: our parents and grandparents. And unlike kids, seniors usually blame themselves instead of the criminals.</p><p>"I thought it was real…" A pop-up claiming their computer is infected. A fake Facebook friend asking for help. A convincing voicemail from "the bank." A message that sounds exactly like their grandchild.</p><p>Seniors fall for these not because they're careless — but because they grew up in a world where phones were trustworthy, news was verified, strangers rarely had access to their private lives, and technology wasn't built to manipulate. Seniors aren't naive — they're generous.</p><p>🧠 <strong>Scammers exploit four senior vulnerabilities:</strong><br>1️⃣ <strong>Trust</strong> — They trust brands, institutions, and voices from an era before scammers sounded professional.<br>2️⃣ <strong>Panic</strong> — A warning about a frozen bank account creates instant fear.<br>3️⃣ <strong>Urgency</strong> — Seniors worry about doing "the wrong thing," so they act quickly.<br>4️⃣ <strong>Isolation</strong> — Many don't want to "bother the kids," so they solve problems alone — and get trapped.</p><p>🎯 Tiny screens. Confusing apps. Security warnings that look identical to scams. Seniors aren't "bad with technology." Technology is bad at protecting them. Criminals know exactly how to weaponize kindness, trust, and love — the very qualities we admire in older generations.</p>`
+          },
+          30: {
+            tag: '#30 · Facebook Scam',
+            title: '📱 The Facebook Friend Scam — Familiar Face, Fake Profile, Real Money Lost',
+            content: `<p>It starts with something harmless: A message from someone you know — a cousin, a neighbor, maybe a friend from church, even your own grandchild. The profile picture looks right, the name is spelled correctly, the greeting feels familiar. "Hi! Can you help me with something?" Just like that — the hook is in.</p><p>👵 <strong>Why seniors fall for this more than anyone else.</strong> Facebook was built to feel like a digital neighborhood. For seniors, that feeling is real. They don't expect danger behind a smiling profile picture. So when a scammer copies a public photo and creates a clone account, it works frighteningly well.</p><p>They send friendly small talk. Then a question. Then a story: "I lost my wallet." "My phone is broken." "I need to buy medicine." "I'm stuck while traveling." And finally — "Could you send something small?"</p><p>🔎 <strong>The tricks have become painfully convincing:</strong> stolen profile photos, copied posts, friend lists scraped from public accounts, AI-written messages that mimic natural conversation, even voice deepfakes for confirmation.</p><p>💸 <strong>The fallout is real.</strong> Families often discover scams only after money is gone — wired away, sent through gift cards, or transferred through payment apps. Victims feel something worse than financial loss: shame. They hide it, which makes them even easier targets the next time.</p><p>🛑 <strong>The new rule for families:</strong> If a message asks for money — switch platforms immediately. Verify with another family member.</p>`
+          },
+          31: {
+            tag: '#31 · Phishing',
+            title: '🎣 Phishing Emails & Fake Tech Support — When Criminals Walk Through the Digital Front Door',
+            content: `<p>For many seniors, email still feels like mail. A message arrives → you open it → you respond. Except now the envelopes are poisoned.</p><p>It starts with something that looks official: "Your bank needs verification." "Your package is delayed." "Your account is locked — click to restore." "Microsoft detected a virus on your computer." Logos look perfect. Language looks professional. Urgency is deliberate. And with one click, the criminal is inside the home — digitally, which is often worse than physically.</p><p>👵 <strong>Why seniors fall for phishing more than anyone.</strong> Younger generations grew up with spam filters and scam warnings. Seniors were raised on trust: companies were honest, services were reliable. So when a fake email says "Your Social Security account was suspended," the fear hits instantly.</p><p>🔧 <strong>Fake Tech Support — the scam that never dies.</strong> It often begins with a popup: "WARNING: Your computer is infected. Do NOT close this window!" A phone number appears. A calm, professional voice: "Don't worry, we will fix it. Just install this program so I can help you." And that program? A remote-control tool. Once installed, the scammer can fully control your digital world. Life savings, gone in a second.</p><p>🧓 <strong>Seniors don't lack intelligence — they lack warnings.</strong> They were never taught: banks don't email links, Microsoft never calls homes, popups can be fake, "urgent" means "danger" online.</p><p>Criminals exploit this gap ruthlessly. They're not hacking devices — they're hacking instincts.</p>`
+          },
+          32: {
+            tag: '🎄 Christmas Special',
+            title: '🎁 The Season of Giving (and Scamming)',
+            content: `<p>Christmas is supposed to be the happiest part of the year. But for scammers, this is harvest season. More shopping, more parcels, more tired and distracted people. Perfect conditions to rob families quietly.</p><p>1️⃣ <strong>The Fake Delivery Trap</strong> — You're waiting for gifts. Your phone buzzes: "Your package couldn't be delivered. Click here to reschedule." Looks like UPS, FedEx, DHL. Logo looks right. Just a small redelivery fee. Stop ‼️ One tap → fake tracking page → asking for card number.<br><em>Family rule: Never click tracking links from SMS or email. Go directly to the official app or website.</em></p><p>2️⃣ <strong>"Too Good To Be True" Christmas Deals</strong> — The console that's sold out everywhere — somehow in stock on a shady website. The countdown timer screams "Last chance!" Stop ‼️<br><em>Family rule: If a site is unknown and the price is crazy low, it's not a bargain — it's bait.</em></p><p>3️⃣ <strong>"Pay Me in Gift Cards"</strong> — Classic, but still working every day. Scammer asks for gift cards and the codes. Stop ‼️ Once you send the code, money is gone. No chargeback. No refund. No trace.<br><em>Family rule: No serious company, no bank, no government office ever demands payment in gift cards.</em></p><p>4️⃣ <strong>Fake Christmas Charities</strong> — Real charities ask for support, but scammers copy their names and logos. Stop ‼️<br><em>Family rule: If you want to donate, go directly to the charity's official website — never through a random email or social post.</em></p>`
+          },
+          33: {
+            tag: '#33 · Big Tech Accountability',
+            title: '🏛️ How Big Tech Dodges Responsibility — The Art of Saying "It\'s Your Choice"',
+            content: `<p>A few years ago, internal company documents leaked from Meta laid bare something most parents had always suspected: the company knew Instagram was harming teens' mental health — yet decided profits mattered more than safety.</p><p>Fast-forward to today, and the same pattern has repeated itself again and again: worrying headlines, a flurry of PR statements about "user choice," and then… silence.</p><p>That's not responsibility. That's opt-out accountability.</p><p>👩‍👧‍👦 <strong>A story you've probably lived.</strong> You've told your child to limit apps after dinner. They nod politely — then flip their phone when you leave the room. You dig into settings — and it's overwhelming: different toggles for different features, different rules for each device, all with tiny print and confusing names. That's not empowerment. That's complexity as a smokescreen.</p><p>Instead of fixing addictive feed algorithms, platforms offer more "tools." Instead of redesigning defaults, they lecture users on personal responsibility. At some point, parents stop wondering if tech can do better — because the pattern is painfully clear: if fixing safety reduces engagement even a little, they delay, deflect, or distract.</p><p>🧠 <strong>The cruel twist.</strong> This is exactly how powerful industries have behaved before: Big Tobacco pushed "personal choice" for decades. Opioid makers blamed patients. Fast food companies blamed consumers. And parents are left to patch a systemic design failure with family rules and willpower.</p>`
+          },
+          34: {
+            tag: '⏸️ Halftime',
+            title: '💊 Halftime — A Question for Families',
+            content: `<p>I've been posting a lot in my #DigitalHeroinSeries about apps, developers, and the money-making machines behind them. How the digital world and clever algorithms glue us to our screens. We all know who's behind it — and the only sure way to avoid the trap is to stop using those apps entirely. But is that really possible in today's world?</p><p>Let's dream a little. Imagine a super-powerful tool that actually fixes some of the problems I've described in the series. What features would you wish it had?</p><p>🔮 Magically wiping TikTok off your kid's phone?<br>🔮 Removing YouTube from the smart TV?<br>🔮 Blocking grandpa from online gambling sites?<br>🔮 Stopping any risky online content with just one simple click?</p><p>Nothing is impossible, but creating a solution that pleases everyone isn't easy. Families need YouTube for homework videos. Why buy a Sony PlayStation if no one can use it? School-issued Chromebooks are great tools for learning, but how do you set healthy limits without breaking everything?</p><p>The answers to these questions shaped what came next. Because knowledge is only the first step. Protection is the second.</p>`
+          }
+        };
+
+        document.querySelectorAll('.series-card[data-post]').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.post;
+                const post = POSTS[id];
+                if (!post) return;
+                document.getElementById('modal-tag').textContent = post.tag;
+                document.getElementById('modal-title').textContent = post.title;
+                document.getElementById('modal-body').innerHTML = post.content;
+                new bootstrap.Modal(document.getElementById('postModal')).show();
+            });
+        });
+        </script>
     </body>
 </html>
