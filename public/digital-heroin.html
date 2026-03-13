@@ -68,6 +68,18 @@
                 background: color-mix(in srgb, var(--accent-color), transparent 93%);
                 border-left-color: #aaa;
             }
+            /* White header text over dark hero — reverts once scrolled */
+            body:not(.scrolled) .header .logo h1,
+            body:not(.scrolled) .header .logo span {
+                color: #fff;
+            }
+            body:not(.scrolled) .navmenu a {
+                color: rgba(255,255,255,0.85) !important;
+            }
+            body:not(.scrolled) .navmenu a:hover,
+            body:not(.scrolled) .navmenu a.active {
+                color: #fff !important;
+            }
             .linkedin-cta {
                 background: color-mix(in srgb, var(--accent-color), transparent 92%);
                 border-radius: 16px;
