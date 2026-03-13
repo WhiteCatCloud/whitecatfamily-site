@@ -99,6 +99,43 @@
             #postModal .modal-body p { font-size: 0.95rem; line-height: 1.75; color: #444; }
             #postModal .modal-body p:last-child { margin-bottom: 0; }
 
+            /* Sticky session nav */
+            .series-nav {
+                position: sticky;
+                top: 70px;
+                z-index: 99;
+                background: var(--surface-color);
+                border-bottom: 1px solid rgba(0,0,0,0.08);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            }
+            .series-nav ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+            .series-nav ul::-webkit-scrollbar { display: none; }
+            .series-nav li a {
+                display: block;
+                padding: 0.65rem 1.1rem;
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: var(--default-color);
+                white-space: nowrap;
+                text-decoration: none;
+                border-bottom: 2px solid transparent;
+                transition: color 0.2s, border-color 0.2s;
+                opacity: 0.7;
+            }
+            .series-nav li a:hover,
+            .series-nav li a.active {
+                color: var(--accent-color);
+                border-bottom-color: var(--accent-color);
+                opacity: 1;
+            }
+
             /* Card thumbnail image */
             .series-card .card-thumb {
                 border-radius: 12px 12px 0 0;
@@ -145,10 +182,24 @@
                 </div>
             </section>
 
+            <nav class="series-nav">
+                <div class="container">
+                    <ul>
+                        <li><a href="#session-1">🎰 The Hook</a></li>
+                        <li><a href="#session-2">💊 The Dealers</a></li>
+                        <li><a href="#session-3">👶 Kids &amp; Teens</a></li>
+                        <li><a href="#session-4">🎭 Scams &amp; Seniors</a></li>
+                        <li><a href="#session-5">🎄 Seasonal &amp; Systemic</a></li>
+                        <li><a href="#session-6">⏸️ Halftime</a></li>
+                    </ul>
+                </div>
+            </nav>
+
             <section class="section light-background">
                 <div class="container">
 
                     <!-- SESSION 1 -->
+                    <span id="session-1"></span>
                     <div class="row justify-content-center mb-4">
                         <div class="col-lg-10 text-center">
                             <p class="session-label">Session 1 — The Hook</p>
@@ -281,7 +332,7 @@
                     </div>
 
                     <!-- SESSION 2 -->
-                    <div class="session-divider">
+                    <div class="session-divider" id="session-2">
                         <div class="row justify-content-center mb-4">
                             <div class="col-lg-10 text-center">
                                 <p class="session-label">Session 2 — The Dealers</p>
@@ -367,7 +418,7 @@
                     </div>
 
                     <!-- SESSION 3 -->
-                    <div class="session-divider">
+                    <div class="session-divider" id="session-3">
                         <div class="row justify-content-center mb-4">
                             <div class="col-lg-10 text-center">
                                 <p class="session-label">Session 3 — The Impact on Kids &amp; Teens</p>
@@ -453,12 +504,12 @@
                     </div>
 
                     <!-- SESSION 4 -->
-                    <div class="session-divider">
+                    <div class="session-divider" id="session-4">
                         <div class="row justify-content-center mb-4">
                             <div class="col-lg-10 text-center">
-                                <p class="session-label">Session 4 — Gambling &amp; Fraud</p>
-                                <h2 class="mb-2">Casino mechanics, hidden in plain sight</h2>
-                                <p>From loot boxes to deepfakes — how the digital world turned exploitation into entertainment.</p>
+                                <p class="session-label">Session 4 — Scams &amp; Seniors</p>
+                                <h2 class="mb-2">Two generations in the crosshairs</h2>
+                                <p>From loot boxes to deepfakes to fake Facebook friends — kids and seniors are the most exploited, for opposite reasons.</p>
                             </div>
                         </div>
                     </div>
@@ -536,19 +587,6 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <!-- SESSION 5 -->
-                    <div class="session-divider">
-                        <div class="row justify-content-center mb-4">
-                            <div class="col-lg-10 text-center">
-                                <p class="session-label">Session 5 — Protecting Seniors</p>
-                                <h2 class="mb-2">The other vulnerable generation</h2>
-                                <p>Scammers weaponize trust, kindness, and love — the very qualities we admire in older generations.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="series-card" data-post="29">
@@ -586,7 +624,21 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    </div>
+
+                    <!-- SESSION 5 -->
+                    <div class="session-divider" id="session-5">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 5 — Seasonal &amp; Systemic</p>
+                                <h2 class="mb-2">Christmas scams and corporate blame</h2>
+                                <p>The holidays are harvest season for criminals. And Big Tech has been running the same playbook as Big Tobacco for years.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="series-card special-card" data-post="32">
                                 <img class="card-thumb" src="assets/img/digital-heroin/post-32.jpg" alt="">
                                 <div class="card-body-content">
@@ -598,21 +650,7 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <!-- SESSION 6 -->
-                    <div class="session-divider">
-                        <div class="row justify-content-center mb-4">
-                            <div class="col-lg-10 text-center">
-                                <p class="session-label">Session 6 — Who's Responsible?</p>
-                                <h2 class="mb-2">Big Tech dodges the bill</h2>
-                                <p>The industry knew. The internal documents proved it. Yet families are still left to patch a systemic design failure on their own.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-4">
-
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="series-card" data-post="33">
                                 <img class="card-thumb" src="assets/img/digital-heroin/post-33.jpg" alt="">
                                 <div class="card-body-content">
@@ -624,7 +662,21 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    </div>
+
+                    <!-- SESSION 6 -->
+                    <div class="session-divider" id="session-6">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 6 — What Comes Next</p>
+                                <h2 class="mb-2">Halftime. Hard questions. Real solutions.</h2>
+                                <p>Knowledge is the first step. But what does actual protection look like — for every device, every family member, without becoming a surveillance state at home?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="series-card special-card" data-post="34">
                                 <img class="card-thumb" src="assets/img/digital-heroin/post-34.jpg" alt="">
                                 <div class="card-body-content">
@@ -927,6 +979,23 @@
             const m = bootstrap.Modal.getInstance(this);
             if (m) m.hide();
         });
+
+        // Sticky nav active state on scroll
+        const navLinks = document.querySelectorAll('.series-nav a[href^="#"]');
+        const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+        const navObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    const active = document.querySelector(`.series-nav a[href="#${e.target.id}"]`);
+                    if (active) {
+                        active.classList.add('active');
+                        active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                }
+            });
+        }, { rootMargin: '-10% 0px -80% 0px' });
+        sections.forEach(s => navObserver.observe(s));
         </script>
     </body>
 </html>
