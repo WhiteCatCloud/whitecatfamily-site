@@ -102,7 +102,7 @@
             /* Sticky session nav */
             .series-nav {
                 position: fixed;
-                top: 76px;
+                top: 0;
                 left: 0;
                 right: 0;
                 z-index: 998;
@@ -991,8 +991,16 @@
             if (m) m.hide();
         });
 
-        // Show series nav after hero scrolls out of view
+        // Place nav exactly below the header (measured, not hardcoded)
         const seriesNav = document.getElementById('series-nav');
+        const mainHeader = document.getElementById('header');
+        function positionNav() {
+            seriesNav.style.top = mainHeader.offsetHeight + 'px';
+        }
+        positionNav();
+        window.addEventListener('resize', positionNav);
+
+        // Show series nav after hero scrolls out of view
         const hero = document.querySelector('.hero-series');
         window.addEventListener('scroll', () => {
             seriesNav.classList.toggle('visible', hero.getBoundingClientRect().bottom <= 0);
