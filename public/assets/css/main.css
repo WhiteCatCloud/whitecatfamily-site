@@ -1200,7 +1200,7 @@ section,
   display: flex;
   background-color: var(--surface-color);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -1277,6 +1277,10 @@ section,
 .services .service-content p {
   margin-bottom: 1.25rem;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.services .service-content p:last-child {
+  margin-bottom: 0;
 }
 
 .services .service-link {
