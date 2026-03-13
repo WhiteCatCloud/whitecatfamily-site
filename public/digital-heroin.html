@@ -1003,7 +1003,7 @@
         // Show series nav after hero scrolls out of view
         const hero = document.querySelector('.hero-series');
         window.addEventListener('scroll', () => {
-            seriesNav.classList.toggle('visible', hero.getBoundingClientRect().bottom <= 0);
+            seriesNav.classList.toggle('visible', hero.getBoundingClientRect().bottom <= mainHeader.offsetHeight);
         }, { passive: true });
 
         // Sticky nav active state on scroll
