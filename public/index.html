@@ -55,7 +55,7 @@
                             <h1 class="hero-title mb-4">The screen time solution kids can't bypass.</h1>
                             <p class="hero-description mb-4">Managing screen time shouldn't feel like a full-time job. WhiteCat handles it quietly and automatically — no IT skills, no arguments, no workarounds.</p>
                             <div class="cta-wrapper">
-                                <a href="#reserve" class="btn btn-primary">Reserve Yours — $79</a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Yours — $79</a>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -306,7 +306,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i>Remote app control & automatic updates</li>
                                     <li><i class="bi bi-check-circle-fill"></i>Extended 1-year router warranty</li>
                                 </ul>
-                                <a href="#reserve" class="btn btn-primary">Reserve Yours — $79</a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Yours — $79</a>
                             </div>
                         </div>
                         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
@@ -323,7 +323,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i>Guest Wi-Fi portal</li>
                                     <li><i class="bi bi-check-circle-fill"></i>Weekly insights & usage reports</li>
                                 </ul>
-                                <a href="#reserve" class="btn btn-light">Reserve Yours — $79</a>
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Yours — $79</a>
                             </div>
                         </div>
                         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
@@ -467,43 +467,43 @@
             </section>
 
 
-            <div style="height:60px; background:linear-gradient(to bottom, #f4f4f9, #ffffff);"></div>
-
-            <section id="reserve" class="section">
-                <div class="container section-title" data-aos="fade-up">
-                    <h2>Reserve Yours</h2>
-                    <p>Leave your name and email — we'll reach out when your router is ready to ship. No payment now, no commitment.</p>
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6" data-aos="fade-up">
-                            <div class="p-4 p-md-5" style="background:#fff; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.07);">
-                                <form action="/reserve" method="POST">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Your name</label>
-                                        <input type="text" name="name" class="form-control form-control-lg" placeholder="Jane Smith" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Email address</label>
-                                        <input type="email" name="email" class="form-control form-control-lg" placeholder="jane@example.com" required>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="form-label fw-semibold">Plan interest</label>
-                                        <select name="plan" class="form-select form-select-lg">
-                                            <option value="Family — $5.99/mo" selected>Family — $5.99/mo (most popular)</option>
-                                            <option value="Protect — $1.99/mo">Protect — $1.99/mo</option>
-                                            <option value="Everywhere — $8.99/mo">Everywhere — $8.99/mo (coming soon)</option>
-                                            <option value="Not sure yet">Not sure yet</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn w-100 py-3 fw-bold" style="font-size:1.05rem; background-color:#5d57f4; border-color:#5d57f4; color:#fff;">Reserve Yours — $79</button>
-                                    <p class="text-center text-muted mt-3 mb-0" style="font-size:0.85rem;">First month free with every router purchase. Cancel anytime.</p>
-                                </form>
+            <!-- Reserve Modal -->
+            <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="border-radius:16px; border:none; box-shadow:0 8px 40px rgba(0,0,0,0.15);">
+                        <div class="modal-header border-0 pb-0">
+                            <div>
+                                <h5 class="modal-title fw-bold" id="reserveModalLabel" style="font-size:1.3rem;">Reserve Yours — $79</h5>
+                                <p class="text-muted mb-0" style="font-size:0.9rem;">No payment now. We'll reach out when ready to ship.</p>
                             </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body pt-3">
+                            <form action="/reserve" method="POST">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Your name</label>
+                                    <input type="text" name="name" class="form-control form-control-lg" placeholder="Jane Smith" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Email address</label>
+                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="jane@example.com" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Plan interest</label>
+                                    <select name="plan" class="form-select form-select-lg">
+                                        <option value="Family — $5.99/mo" selected>Family — $5.99/mo (most popular)</option>
+                                        <option value="Protect — $1.99/mo">Protect — $1.99/mo</option>
+                                        <option value="Everywhere — $8.99/mo">Everywhere — $8.99/mo (coming soon)</option>
+                                        <option value="Not sure yet">Not sure yet</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn w-100 py-3 fw-bold" style="font-size:1.05rem; background-color:#5d57f4; border-color:#5d57f4; color:#fff;">Reserve Yours — $79</button>
+                                <p class="text-center text-muted mt-3 mb-0" style="font-size:0.85rem;">First month free with every router purchase. Cancel anytime.</p>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
         </main>
 
