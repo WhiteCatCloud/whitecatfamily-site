@@ -156,12 +156,12 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 28px;
   margin-right: 8px;
 }
 
 .header .logo h1 {
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
   font-weight: 600;
   color: var(--heading-color);
@@ -169,7 +169,7 @@ h6 {
 
 .header .logo span {
   color: var(--accent-color);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   padding-left: 3px;
 }
