@@ -19,7 +19,7 @@
                 background: var(--surface-color);
                 border-radius: 16px;
                 box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-                padding: 2rem;
+                padding: 1.75rem;
                 height: 100%;
                 transition: transform 0.3s, box-shadow 0.3s;
                 border-left: 4px solid var(--accent-color);
@@ -27,33 +27,23 @@
                 flex-direction: column;
             }
             .series-card:hover {
-                transform: translateY(-5px);
+                transform: translateY(-4px);
                 box-shadow: 0 8px 32px rgba(93,87,244,0.13);
             }
-            .series-card .card-body-content {
-                flex: 1;
-            }
+            .series-card .card-body-content { flex: 1; }
             .series-tag {
                 display: inline-block;
                 background: color-mix(in srgb, var(--accent-color), transparent 88%);
                 color: var(--accent-color);
-                font-size: 0.75rem;
+                font-size: 0.72rem;
                 font-weight: 600;
-                padding: 4px 12px;
+                padding: 3px 10px;
                 border-radius: 20px;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
                 letter-spacing: 0.05em;
             }
-            .series-card h3 {
-                font-size: 1.15rem;
-                margin-bottom: 0.75rem;
-            }
-            .series-card p {
-                color: var(--default-color);
-                opacity: 0.85;
-                font-size: 0.93rem;
-                line-height: 1.7;
-            }
+            .series-card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+            .series-card p { color: var(--default-color); opacity: 0.85; font-size: 0.9rem; line-height: 1.65; margin-bottom: 0; }
             .hero-series {
                 background: linear-gradient(135deg, #32353a 0%, #5d57f4 100%);
                 padding: 120px 0 80px;
@@ -61,19 +51,28 @@
             }
             .hero-series h1 { color: #fff; }
             .hero-series p { color: rgba(255,255,255,0.85); }
-            .linkedin-cta {
-                background: color-mix(in srgb, var(--accent-color), transparent 92%);
-                border-radius: 16px;
-                padding: 2rem;
-                text-align: center;
+            .session-divider {
+                border-top: 2px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+                margin: 3.5rem 0 2.5rem;
+                padding-top: 2.5rem;
             }
-            .session-heading {
-                font-size: 0.8rem;
+            .session-label {
+                font-size: 0.75rem;
                 font-weight: 700;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
                 color: var(--accent-color);
                 margin-bottom: 0.25rem;
+            }
+            .special-card {
+                background: color-mix(in srgb, var(--accent-color), transparent 93%);
+                border-left-color: #aaa;
+            }
+            .linkedin-cta {
+                background: color-mix(in srgb, var(--accent-color), transparent 92%);
+                border-radius: 16px;
+                padding: 2rem;
+                text-align: center;
             }
         </style>
     </head>
@@ -106,7 +105,7 @@
                                 <span style="background:rgba(255,255,255,0.15); color:#fff; font-size:0.8rem; font-weight:600; padding:6px 16px; border-radius:20px; letter-spacing:0.05em;">💊 DIGITAL HEROIN SERIES</span>
                             </div>
                             <h1 class="mb-4" style="font-size:clamp(1.8rem, 4vw, 2.8rem);">The internet was designed to hook your kids.<br>We're naming the tactics.</h1>
-                            <p class="lead mb-4">Real research. No panic — just the truth every parent needs to know about what happens when your child goes online.</p>
+                            <p class="lead mb-4">Real research. No panic — just the truth every parent needs to know about what happens when your child goes online. 34 posts and counting.</p>
                             <a href="https://www.linkedin.com/in/jaroslav-fusko-038a7741/" target="_blank" class="btn btn-light px-4 py-2">
                                 <i class="bi bi-linkedin me-2"></i>Follow Jaro on LinkedIn
                             </a>
@@ -118,28 +117,24 @@
             <section class="section light-background">
                 <div class="container">
 
-                    <!-- Session 1 -->
+                    <!-- SESSION 1 -->
                     <div class="row justify-content-center mb-4">
                         <div class="col-lg-10 text-center">
-                            <p class="session-heading">Session 1 — The Hook</p>
+                            <p class="session-label">Session 1 — The Hook</p>
                             <h2 class="mb-2">How they get you addicted</h2>
                             <p>The mechanics behind why you can't put your phone down — and why your kids never had a chance.</p>
                         </div>
                     </div>
-
-                    <div class="row g-4 mb-5">
+                    <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="series-card">
                                 <div class="card-body-content">
                                     <span class="series-tag">#1 · The Slot Machine Effect</span>
                                     <h3>🎰 How Social Media Hooks You Like a Slot Machine</h3>
-                                    <p>Big Tobacco, Las Vegas casinos, and your favorite apps use the same psychological trick — variable ratio reinforcement. Sometimes nothing, sometimes a small win, occasionally a dopamine-fueled jackpot. That unpredictability keeps your brain craving more.</p>
-                                    <p class="mt-2">Sean Parker, former Facebook president, admitted: <em>"We knew exactly what we were doing. We exploited vulnerabilities in human psychology."</em></p>
+                                    <p>Big Tobacco, Las Vegas casinos, and your favorite apps use the same trick — variable ratio reinforcement. Sometimes nothing, sometimes a small win, occasionally a jackpot. Sean Parker, former Facebook president, admitted: <em>"We knew exactly what we were doing. We exploited vulnerabilities in human psychology."</em></p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7360867646629695488-w91c" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7360867646629695488-w91c" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -148,12 +143,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#2 · Dark Tactics</span>
                                     <h3>💊 The Dark Tactics of Addictive App Design</h3>
-                                    <p>Infinite scroll, autoplay videos, push notifications — these aren't features. They're deliberate traps engineered to exploit your psychological triggers. Ex-Google designer Tristan Harris calls it <em>"time on device optimization"</em> — maximizing screen time at the cost of your well-being.</p>
-                                    <p class="mt-2">Leaked Meta documents confirmed their own algorithms amplify addictive behaviors. Engagement always came first.</p>
+                                    <p>Infinite scroll, autoplay, push notifications — deliberate traps to exploit psychological triggers. Ex-Google designer Tristan Harris calls it <em>"time on device optimization."</em> Leaked Meta documents confirmed their algorithms amplify addictive behaviors — and engagement always came first.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7361592425674387456-7Trg" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7361592425674387456-7Trg" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -162,12 +154,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#3 · The Playbook</span>
                                     <h3>🃏 The Tech Giants' Secret Playbook</h3>
-                                    <p>Every "free" app has a hidden manual — not for you, but for the designers. Inside: psychological warfare exploiting FOMO, personalized bait tracking every click, interruption tactics (streaks, fake alerts), and infinite content streams with no stopping point.</p>
-                                    <p class="mt-2">The same techniques are used in casinos and gambling apps — but in your pocket, 24/7. This isn't bad design. <strong>It's predatory design.</strong></p>
+                                    <p>Every "free" app has a hidden manual for designers: exploit FOMO, personalize bait, interrupt with streaks and fake alerts, keep infinite content flowing. The same techniques casinos use — but in your pocket, 24/7. This isn't bad design. <strong>It's predatory design.</strong></p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7363041978579636228-Vdzt" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7363041978579636228-Vdzt" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -176,12 +165,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#4 · Offender #1</span>
                                     <h3>🎭 TikTok — The Fastest-Growing Slot Machine in History</h3>
-                                    <p>Every swipe is a gamble: sometimes boring, sometimes funny, sometimes the perfect hit that keeps you going for "just one more." The algorithm learns your brain in minutes, then exploits it. Over 60% of TikTok users are under 25 — teens average 95 minutes a day.</p>
-                                    <p class="mt-2">TikTok calls it entertainment. Psychologists call it engineered addiction.</p>
+                                    <p>Every swipe is a gamble. The algorithm learns your brain in minutes, then exploits it. Over 60% of users are under 25 — teens average 95 minutes a day. TikTok calls it entertainment. Psychologists call it engineered addiction.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7364129176334839809-mdfA" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7364129176334839809-mdfA" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -190,12 +176,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#5 · Offender #2</span>
                                     <h3>🎯 Instagram — The Illusion of Perfection</h3>
-                                    <p>Infinite scroll means you never "finish." Likes give just enough validation to keep you posting. Filters and face-tuning create impossible beauty standards. Meta's own leaked research showed 32% of teen girls said Instagram worsened their body image — and the platform doubled down anyway.</p>
-                                    <p class="mt-2">The problem isn't kids being weak. It's systems built to exploit psychology.</p>
+                                    <p>Likes give just enough validation to keep posting. Filters create impossible beauty standards. Meta's own leaked research showed 32% of teen girls said Instagram worsened their body image — and the platform doubled down anyway, because more screen time = more ad money.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7365639080547713028-nSbJ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7365639080547713028-nSbJ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -204,12 +187,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#6 · Offender #3</span>
                                     <h3>⏯️ YouTube — The Endless Rabbit Hole</h3>
-                                    <p>You come for one video — a recipe, a song, a tutorial. The algorithm pushes you toward "related" content, and suddenly hours are gone. Over 70% of YouTube watch time comes not from user choice, but from algorithmic recommendations. YouTube decides what you see, not you.</p>
-                                    <p class="mt-2">Researchers at Mozilla found YouTube's AI often recommends misinformation and toxic content to keep you hooked longer.</p>
+                                    <p>Over 70% of YouTube watch time comes not from user choice but from algorithmic recommendations. Autoplay is default. Stopping takes effort. Researchers at Mozilla found YouTube's AI regularly recommends misinformation and toxic content to keep you hooked longer.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7366722467358281729-jpoW" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7366722467358281729-jpoW" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -218,12 +198,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#7 · The Economy</span>
                                     <h3>🔙 The Dopamine Economy — Your Time Is Worth Billions</h3>
-                                    <p>You're not the customer. You're the product. In 2023 social media platforms earned over $200 billion in ad revenue — auctioning your attention in real-time. Every pause, click, and replay is tracked, packaged, and sold. Advertisers don't just know what you want — they know what will make you want.</p>
-                                    <p class="mt-2">The average user checks their phone 96 times a day. Kids spend over 7 hours daily on screens outside school.</p>
+                                    <p>You're not the customer. You're the product. Social media earned $200B+ in ad revenue in 2023 — auctioning your attention in real-time. Every pause, click, and replay is tracked, packaged, and sold. The average user checks their phone 96 times a day.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7368172009362505729-W4ei" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7368172009362505729-W4ei" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -232,12 +209,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#8 · The Trap</span>
                                     <h3>💊 The Variable Reward Trap</h3>
-                                    <p>Why do slot machines make more money than movies, sports, and music combined? Variable rewards — sometimes you win, sometimes you don't. This is neuroscience's most powerful reinforcement system. Rats pressed levers thousands of times for random pellets. Humans scroll endlessly for digital dopamine hits.</p>
-                                    <p class="mt-2">Predictable rewards get boring. Unpredictable rewards are addictive. The brain learns to crave uncertainty itself.</p>
+                                    <p>Why do slot machines earn more than movies and music combined? Variable rewards — sometimes you win, sometimes you don't. Neuroscience's most powerful reinforcement system. Predictable rewards get boring. Unpredictable rewards are addictive. Your brain learns to crave uncertainty itself.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7369259174301483009-WwrD" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7369259174301483009-WwrD" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -246,12 +220,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#9 · Infinite Scroll</span>
                                     <h3>📜 Why Your Brain Loves Infinite Scroll</h3>
-                                    <p>Invented in 2006, infinite scroll removes all natural stopping cues. No chapter end, no credits, no empty bag. The developer who invented it later called it like handing people <em>"an endless bag of chips."</em></p>
-                                    <p class="mt-2">The longer you scroll, the more ads the platform shows. Attention spans shrink. Kids lose hours that should be spent sleeping, studying, or simply being bored — a critical ingredient for creativity.</p>
+                                    <p>Invented in 2006, infinite scroll removes all natural stopping cues. The developer who built it later said it was like giving people <em>"an endless bag of chips."</em> No chapter end, no credits — just seamless dopamine drip while the platform serves more ads.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7370111827340546048-Ugdw" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7370111827340546048-Ugdw" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -260,39 +231,34 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#10 · Notifications</span>
                                     <h3>🔔 Push Notifications: Pavlov's Bell in Your Pocket</h3>
-                                    <p>That buzz in your pocket isn't random — it's conditioning. Notifications arrive in waves to make you check again and again, timed for vulnerable moments: lunch breaks, evenings, late at night. The red dot isn't accidental. Red is a high-arousal color that triggers urgency and anxiety.</p>
-                                    <p class="mt-2">Every interruption takes an average of 23 minutes to recover from. For kids, late-night pings turn sleep into a battleground.</p>
+                                    <p>That buzz isn't random — it's conditioning. Timed for vulnerable moments: evenings, lunch breaks, late at night. The red dot triggers urgency. Every interruption takes 23 minutes to recover from. For kids, late-night pings turn sleep into a battleground.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7371727946178478080-bXcJ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7371727946178478080-bXcJ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- Session 2 -->
-                    <div class="row justify-content-center mb-4 mt-4">
-                        <div class="col-lg-10 text-center">
-                            <p class="session-heading">Session 2 — The Dealers</p>
-                            <h2 class="mb-2">Who profits from your family's data</h2>
-                            <p>Behind every "free" app is a business model built on your children's attention, habits, and personal data.</p>
+                    <!-- SESSION 2 -->
+                    <div class="session-divider">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 2 — The Dealers</p>
+                                <h2 class="mb-2">Who profits from your family's data</h2>
+                                <p>Behind every "free" app is a business model built on your children's attention, habits, and personal information.</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="row g-4 mb-5">
+                    <div class="row g-4">
 
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="series-card">
                                 <div class="card-body-content">
                                     <span class="series-tag">#11 · The App Buffet</span>
                                     <h3>♦️ The App Buffet Problem</h3>
-                                    <p>Think closing TikTok and opening Instagram gives you a break? Think again. Every swipe, like, pause, or replay feeds into the same global attention economy. TikTok tracks what you watch. Instagram logs what you like. YouTube measures how long you linger. Together, they build a map of your life.</p>
-                                    <p class="mt-2">You think you're switching channels. They're really switching nets.</p>
+                                    <p>Closing TikTok and opening Instagram isn't a break — it's the same attention economy from a different angle. Cross-tracking connects every tap, like, and pause across all apps. You think you're switching channels. They're really switching nets.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7373607827929698304-tOm2" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7373607827929698304-tOm2" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -301,12 +267,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#12 · Kids' Content</span>
                                     <h3>👶 The Children's Content Illusion</h3>
-                                    <p>Bright colors, cartoon mascots, and "child-friendly" branding promise safety. But behind the curtain, these platforms still run on the same business model: harvesting attention and data. A 2019 study found 95% of apps labeled "educational" for children included manipulative advertising or engagement tricks.</p>
-                                    <p class="mt-2">Children can't tell the difference between content designed to entertain and content designed to manipulate.</p>
+                                    <p>Bright colors and cartoon mascots promise safety — but 95% of apps labeled "educational" for children include manipulative advertising or engagement tricks. Children can't distinguish between content designed to entertain and content designed to manipulate.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7374147635122921472-MSo7" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7374147635122921472-MSo7" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -315,12 +278,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#13 · Gamification</span>
                                     <h3>🏆 The Gamification of Everything</h3>
-                                    <p>Snapchat streaks, Duolingo badges, Fortnite daily rewards — kids log in every day not to enjoy the app, but to keep a number alive. Miss a day and feel shame, loss, anxiety. It's Pavlov with pixels. Kids aren't chasing fun; they're chasing numbers designed to never feel finished.</p>
-                                    <p class="mt-2">Learning feels like a hustle. Play feels like a job. Rest feels like failure.</p>
+                                    <p>Snapchat streaks, Duolingo badges, Fortnite daily logins — kids log in not to enjoy the app, but to keep a number alive. It's Pavlov with pixels. Learning feels like a hustle. Play feels like a job. Rest feels like failure.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7375638485984129024-5tWU" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7375638485984129024-5tWU" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -329,12 +289,9 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#14 · Data Brokers</span>
                                     <h3>🗂️ Data Brokers Love Your Free Apps</h3>
-                                    <p>Your data isn't just fueling ads inside one app — it's being packaged and sold like a commodity. Your location patterns, browsing habits, late-night searches, political sympathies. Even your free email scans your attachments and knows your new address before you sign the rental agreement.</p>
-                                    <p class="mt-2">By the time your kids are in high school, an invisible digital résumé already exists — built entirely from "free" apps and careless clicks.</p>
+                                    <p>Your data is being bundled and sold like Wall Street commodities. Location patterns, browsing habits, political sympathies, late-night searches. Your free email scans attachments and knows your new address before you sign the rental agreement. By high school, your kid has an invisible digital résumé.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7376601338136334336-_dS5" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7376601338136334336-_dS5" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
@@ -343,24 +300,286 @@
                                 <div class="card-body-content">
                                     <span class="series-tag">#15 · Surveillance</span>
                                     <h3>👁️ When Social Meets Surveillance</h3>
-                                    <p>Social media isn't a place to hang out — it's one of the most sophisticated surveillance systems ever built. Every like, pause, and DM feeds machine learning that predicts what you'll click, when you'll be tired, and what will push your buttons. Platforms don't just watch; they model your moods.</p>
-                                    <p class="mt-2">Kids are test subjects: less skeptical, more impulsive, easier to steer. Your "private" moments become data points in someone else's business plan.</p>
+                                    <p>Social media is one of the most sophisticated surveillance systems ever built. Every like, pause, and DM feeds machine learning that predicts what you'll click and when you're most vulnerable. Kids are test subjects: less skeptical, more impulsive, easier to steer.</p>
                                 </div>
-                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7377813039011721216-5Vx-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start">
-                                    <i class="bi bi-linkedin me-1"></i> Read on LinkedIn
-                                </a>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7377813039011721216-5Vx-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#16 · Streaming</span>
+                                    <h3>📺 The Dark Side of Streaming</h3>
+                                    <p>Your TV isn't passive — it's watching you. Every pause, rewind, and late-night binge is logged and profiled. Autoplay turns cartoons into babysitters. For seniors, rogue apps trick them into handing over credit cards. Streaming didn't just kill cable — it turned the family sofa into a data pipeline.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7379726903991218176-4A-N" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SESSION 3 -->
+                    <div class="session-divider">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 3 — The Impact on Kids &amp; Teens</p>
+                                <h2 class="mb-2">What it's doing to your children</h2>
+                                <p>Sleep, grades, mental health, social skills, bullying — the real cost of growing up online.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#17 · Sleep Crisis</span>
+                                    <h3>😴 Screen Time and the Sleep Crisis</h3>
+                                    <p>Kids today sleep nearly two hours less than their parents did at the same age. Blue light tricks the brain into daytime mode. FOMO keeps young minds racing long after the screen goes dark. Chronic sleep loss is tied to anxiety, depression, obesity, and weakened immune systems.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7380874495873466368-Tzjx" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#18 · Grades</span>
+                                    <h3>📉 Grades in Freefall</h3>
+                                    <p>Teens who spend more than 3 hours daily on social media are twice as likely to report poor academic performance. Kids aren't lazy — their brains are too exhausted to perform. Every failure in school is someone else's profit. It's not just grades dropping; it's potential slipping away notification by notification.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7381599282971205632-BX4Y" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#19 · Mental Health</span>
+                                    <h3>💔 Mental Health Meltdown</h3>
+                                    <p>Teen depression has nearly doubled since smartphones became universal. ER visits for self-harm among girls aged 10–14 are up 190% in the last decade. Meta's own research showed Instagram worsened body image in 1 in 3 teen girls — and they kept going. <strong>This isn't a side effect. It's the business model.</strong></p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7383169593835581440-gmql" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#20 · Social Skills</span>
+                                    <h3>🤝 Social Skills at Risk</h3>
+                                    <p>Kids are replacing eye contact with emojis, friendship with streaks, self-worth with filters. A child who struggles to raise their hand in class posts on TikTok without hesitation. When jobs, relationships, and leadership all depend on real conversation — will this generation be ready?</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7384498350383034368-uvng" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#21 · Cyberbullying</span>
+                                    <h3>🥹 The Cyberbullying Epidemic</h3>
+                                    <p>The playground used to close at sunset. Now bullies never go home. 59% of teens have experienced online harassment (Pew, 2022). Victims of cyberbullying are twice as likely to attempt self-harm. A cruel post can reach hundreds in minutes — and screenshots make sure it never disappears.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7385721398205472769-9oj7" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#22 · Digital Profile</span>
+                                    <h3>📋 The Digital Report Card You Never See</h3>
+                                    <p>Every pause on a video, every late-night scroll, every cookie click builds an invisible file. It doesn't grade knowledge — it grades predictability. If the system learns your 11-year-old lingers on slime videos at 10:47 p.m., the machine feeds more. Brighter, louder, stickier. The algorithm is quietly deciding who your child becomes online.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7389254722244919296-u4LX" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SESSION 4 -->
+                    <div class="session-divider">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 4 — Gambling &amp; Fraud</p>
+                                <h2 class="mb-2">Casino mechanics, hidden in plain sight</h2>
+                                <p>From loot boxes to deepfakes — how the digital world turned exploitation into entertainment.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#23 · Mobile Gambling</span>
+                                    <h3>🎲 Gambling in Your Kid's Pocket</h3>
+                                    <p>Spinning wheels, treasure chests, confetti — it's not a game, it's a casino built for children. Over 90% of top-grossing mobile games use mechanics identical to gambling. Kids as young as 6 are learning to equate luck with skill. The casino isn't in Las Vegas anymore — it's in your child's backpack.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7390764636804956160-pFoh" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#24 · Skin Betting</span>
+                                    <h3>🎮 The Hidden World of Skin Betting</h3>
+                                    <p>Game "skins" — outfits, weapons, characters — are worth real money, and kids trade them as chips on third-party gambling sites. A 2023 study found over 20% of teens had gambled using in-game items, often without realizing it. Addiction disguised as achievement. Profit disguised as play.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7393868116386254848-SSR3" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#25 · Malware</span>
+                                    <h3>🦠 Malware Disguised as Fun Apps</h3>
+                                    <p>In 2024, researchers found hundreds of Android apps secretly installing tracking code targeting children — some collecting voice samples, others linking data to networks with zero privacy laws. That "game" your 9-year-old downloaded may have sent your home's Wi-Fi password to a server overseas.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7395505887869751297-3Nts" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#26 · In-App Purchases</span>
+                                    <h3>💸 The Dark Patterns of In-App Purchases</h3>
+                                    <p>Every button, color, and countdown timer is designed by behavioral economists to make "no" feel wrong. The Buy button glows warmly under a character's teary eyes. The Cancel button? Faded, gray, hidden in the corner. Over 400,000 families disputed unauthorized in-app charges by children in a single FTC report.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7396728933318254592-v8bb" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#27 · Fake Sites</span>
+                                    <h3>🎭 Fraudulent Websites Targeting Children &amp; Grandparents</h3>
+                                    <p>A cartoon panda. "FREE Robux!" A quiz to win a prize. Children enter names, ages, emails, sometimes card details — and someone else gets exactly what they wanted. The internet is no longer divided by age. It's divided by awareness.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7403511135192113152-yxeX" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#28 · Deepfakes</span>
+                                    <h3>🤖 Deepfakes &amp; Fake News — When Reality Becomes Optional</h3>
+                                    <p>A teenager can create a convincing deepfake in under a minute. A child sees a famous YouTuber "recommending" a scam — except it's AI-generated. A grandparent hears what sounds exactly like their grandchild's voice pleading for help. The new rule: if it triggers emotion instantly, question it immediately.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7404505178671988736-IHT-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SESSION 5 -->
+                    <div class="session-divider">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 5 — Protecting Seniors</p>
+                                <h2 class="mb-2">The other vulnerable generation</h2>
+                                <p>Scammers weaponize trust, kindness, and love — the very qualities we admire in older generations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#29 · Seniors</span>
+                                    <h3>👵 Why Seniors Are Prime Targets</h3>
+                                    <p>Seniors grew up when phones were trustworthy, news was verified, and strangers couldn't access private lives. Scammers exploit four vulnerabilities: trust, panic, urgency, and isolation. Seniors aren't "bad with technology." Technology is bad at protecting them.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7405713128019349504-3Zry" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#30 · Facebook Scam</span>
+                                    <h3>📱 The Facebook Friend Scam</h3>
+                                    <p>A message from someone you know — the right profile photo, the right name. Small talk, then a story: "I lost my wallet." "I'm stuck while traveling." To a senior, it's a call to help someone they love. To the scammer, it's just another payday. New rule: if a message asks for money, switch platforms and verify with a family member first.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7407042019514286080-5Ajb" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#31 · Phishing</span>
+                                    <h3>🎣 Phishing Emails &amp; Fake Tech Support</h3>
+                                    <p>"Your bank needs verification." "Microsoft detected a virus." Logos look perfect. Language sounds professional. Once the "fix-it" program is installed — it's remote access. Life savings, gone in seconds. Seniors never learned: banks don't email links, and "urgent" means danger online. Criminals aren't hacking devices — they're hacking instincts.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7408144165882200064-Z9l-" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card special-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag" style="background:rgba(0,0,0,0.06); color:#555;">🎄 Christmas Special</span>
+                                    <h3>🎁 The Season of Giving (and Scamming)</h3>
+                                    <p>For scammers, Christmas is harvest season. Fake delivery alerts, too-good-to-be-true deals, gift card payment scams, fake charities — all hitting when people are tired, distracted, and generous. Family rules: never click tracking links in SMS, never pay with gift cards, always donate via official websites directly.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7409156053092806657-op7q" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SESSION 6 -->
+                    <div class="session-divider">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-10 text-center">
+                                <p class="session-label">Session 6 — Who's Responsible?</p>
+                                <h2 class="mb-2">Big Tech dodges the bill</h2>
+                                <p>The industry knew. The internal documents proved it. Yet families are still left to patch a systemic design failure on their own.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="series-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag">#33 · Big Tech Accountability</span>
+                                    <h3>🏛️ How Big Tech Dodges Responsibility</h3>
+                                    <p>Instead of fixing addictive algorithms, platforms offer "parental controls." Instead of changing defaults, they lecture users on personal responsibility. Big Tobacco pushed "personal choice" for decades. Opioid makers blamed patients. Fast food blamed consumers. Tech is following the same playbook — and parents are left holding the damage.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7417400306323611649-EarZ" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="series-card special-card">
+                                <div class="card-body-content">
+                                    <span class="series-tag" style="background:rgba(0,0,0,0.06); color:#555;">⏸️ Halftime</span>
+                                    <h3>💊 Halftime — A Question for Families</h3>
+                                    <p>We know who's behind the addiction machine. The only guaranteed escape is to stop using those apps entirely — but is that realistic? Jaro asks: what magic features would you want in a tool that actually fixes this? Block TikTok with one tap? Limit YouTube but keep school videos? Stop grandpa's online gambling? Drop your answer in the comments.</p>
+                                </div>
+                                <a href="https://www.linkedin.com/posts/jaroslav-fusko-038a7741_digitalheroinseries-activity-7423582903789461504-qt5j" target="_blank" class="btn btn-outline-primary btn-sm mt-3 align-self-start"><i class="bi bi-linkedin me-1"></i> Read on LinkedIn</a>
                             </div>
                         </div>
 
                     </div>
 
                     <!-- LinkedIn CTA -->
-                    <div class="row justify-content-center mt-3">
+                    <div class="row justify-content-center mt-5">
                         <div class="col-lg-8">
                             <div class="linkedin-cta" data-aos="fade-up">
                                 <i class="bi bi-linkedin fs-1 text-primary mb-3 d-block"></i>
-                                <h4>More chapters coming every week</h4>
-                                <p class="mb-4">Jaro publishes new chapters regularly — covering gaming addiction, AI risks, streaming surveillance, and what parents can actually do. This series is planned for 40 posts. Follow along on LinkedIn to catch every chapter.</p>
+                                <h4>More chapters every week</h4>
+                                <p class="mb-4">This is a planned 40-post series. Jaro publishes new chapters regularly covering AI risks, legislative battles, and practical tools for families. Follow on LinkedIn to catch every chapter as it drops.</p>
                                 <a href="https://www.linkedin.com/in/jaroslav-fusko-038a7741/" target="_blank" class="btn px-4 py-2" style="background-color:#5d57f4; border-color:#5d57f4; color:#fff;">
                                     <i class="bi bi-linkedin me-2"></i>Follow Jaro on LinkedIn
                                 </a>
@@ -371,14 +590,13 @@
                 </div>
             </section>
 
-            <!-- CTA to main site -->
             <section class="section">
                 <div class="container">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-7" data-aos="fade-up">
                             <h2>Knowledge is the first step. Protection is the second.</h2>
                             <p class="mb-4">WhiteCat is the router that quietly enforces the boundaries you set — no arguments, no browser tricks, no workarounds. Built by parents who read every one of these posts and decided to do something about it.</p>
-                            <a href="index.html#pricing" class="btn btn-primary px-4 py-2 me-2" style="background-color:#5d57f4; border-color:#5d57f4; color:#fff;">See Plans</a>
+                            <a href="index.html#pricing" class="btn px-4 py-2 me-2" style="background-color:#5d57f4; border-color:#5d57f4; color:#fff;">See Plans</a>
                             <a href="index.html" class="btn btn-outline-primary px-4 py-2">Learn More</a>
                         </div>
                     </div>
