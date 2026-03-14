@@ -212,4 +212,17 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Contact form — submit via fetch, show thank-you message
+   */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch('/contact', { method: 'POST', body: new FormData(this) });
+      this.style.display = 'none';
+      document.getElementById('contactThanks').style.display = '';
+    });
+  }
+
 })();

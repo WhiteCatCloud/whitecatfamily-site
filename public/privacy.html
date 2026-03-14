@@ -166,14 +166,6 @@
                                 </form>
                                 <div id="contactThanks" class="text-center text-success fw-bold mt-3" style="display:none;">Thanks! We'll get back to you within 5 business days.</div>
                             </div>
-                            <script>
-                                document.getElementById('contactForm').addEventListener('submit', function(e) {
-                                    e.preventDefault();
-                                    fetch('/contact', { method: 'POST', body: new FormData(this) });
-                                    this.style.display = 'none';
-                                    document.getElementById('contactThanks').style.display = '';
-                                });
-                            </script>
 
                         </div>
                     </div>
