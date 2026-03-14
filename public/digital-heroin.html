@@ -114,6 +114,9 @@
             #modal-next-btn:hover { background-color: #4a45d4; border-color: #4a45d4; }
 
             /* Sticky session nav */
+            body.mobile-nav-active .series-nav {
+                display: none;
+            }
             .series-nav {
                 position: fixed;
                 top: 0;
@@ -182,6 +185,13 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="index.html#pricing">Pricing</a></li>
                         <li><a href="digital-heroin.html" class="active">💊 Digital Heroin</a></li>
+                        <li class="d-lg-none" style="pointer-events:none; padding: 8px 20px 2px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#999; list-style:none;">Series</li>
+                        <li class="d-lg-none"><a href="#session-1">🎰 The Hook</a></li>
+                        <li class="d-lg-none"><a href="#session-2">💊 The Dealers</a></li>
+                        <li class="d-lg-none"><a href="#session-3">👶 Kids &amp; Teens</a></li>
+                        <li class="d-lg-none"><a href="#session-4">🎭 Scams &amp; Seniors</a></li>
+                        <li class="d-lg-none"><a href="#session-5">🎄 Seasonal &amp; Systemic</a></li>
+                        <li class="d-lg-none"><a href="#session-6">⏸️ Halftime</a></li>
                     </ul>
                     <i class="mobile-nav-toggle d-lg-none bi bi-list" role="button" tabindex="0" aria-label="Toggle navigation" aria-expanded="false"></i>
                 </nav>
