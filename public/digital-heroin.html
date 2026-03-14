@@ -25,13 +25,13 @@
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-        <link href="assets/css/main.css?v=7" rel="stylesheet">
+        <link href="assets/css/main.css?v=12" rel="stylesheet">
         <style>
             body:not(.scrolled) .header .logo h1,
             body:not(.scrolled) .header .logo span { color: #fff; }
-            body:not(.scrolled) .navmenu a { color: rgba(255,255,255,0.85) !important; }
-            body:not(.scrolled) .navmenu a:hover,
-            body:not(.scrolled) .navmenu a.active { color: #fff !important; }
+            body:not(.scrolled):not(.mobile-nav-active) .navmenu a { color: rgba(255,255,255,0.85) !important; }
+            body:not(.scrolled):not(.mobile-nav-active) .navmenu a:hover,
+            body:not(.scrolled):not(.mobile-nav-active) .navmenu a.active { color: #fff !important; }
 
             .series-card {
                 background: var(--surface-color);
