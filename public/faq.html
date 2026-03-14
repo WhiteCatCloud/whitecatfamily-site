@@ -383,5 +383,22 @@
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/aos/aos.js"></script>
         <script src="assets/js/main.js?v=4"></script>
+    
+    <!-- Cookie consent -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a2e; color:#fff; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; box-shadow:0 -2px 12px rgba(0,0,0,0.2);">
+      <p style="margin:0; font-size:0.88rem; opacity:0.9;">We use cookies to understand how visitors use our site. <a href="/privacy.html" style="color:#a09cf7;">Privacy policy</a></p>
+      <button onclick="acceptCookies()" style="background:#5d57f4; color:#fff; border:none; border-radius:6px; padding:0.45rem 1.2rem; font-size:0.88rem; font-weight:600; cursor:pointer; white-space:nowrap;">Got it</button>
+    </div>
+    <script>
+      (function() {
+        if (!localStorage.getItem('wc_cookies_ok')) {
+          document.getElementById('cookie-banner').style.display = 'flex';
+        }
+      })();
+      function acceptCookies() {
+        localStorage.setItem('wc_cookies_ok', '1');
+        document.getElementById('cookie-banner').style.display = 'none';
+      }
+    </script>
     </body>
 </html>
