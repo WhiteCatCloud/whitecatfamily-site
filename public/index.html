@@ -529,6 +529,10 @@
                 function handleSubmit(e) {
                     e.preventDefault();
                     const data = new FormData(this);
+                    try {
+                        const utm = JSON.parse(localStorage.getItem('wc_utm') || '{}');
+                        Object.entries(utm).forEach(([k, v]) => data.append(k, v));
+                    } catch(e) {}
                     fetch('/reserve', { method: 'POST', body: data });
                     localStorage.setItem(currentFlag, '1');
                     document.getElementById('reserveModalBody').innerHTML = thankYouHTML;
@@ -568,6 +572,6 @@
 
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/aos/aos.js"></script>
-        <script src="assets/js/main.js?v=3"></script>
+        <script src="assets/js/main.js?v=4"></script>
     </body>
 </html>

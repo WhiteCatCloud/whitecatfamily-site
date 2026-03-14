@@ -10,6 +10,18 @@
   "use strict";
 
   /**
+   * UTM capture — store on first touch, preserve original source
+   */
+  (function() {
+    if (localStorage.getItem('wc_utm')) return; // already captured
+    const params = new URLSearchParams(window.location.search);
+    const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const utm = {};
+    keys.forEach(function(k) { if (params.get(k)) utm[k] = params.get(k); });
+    if (Object.keys(utm).length) localStorage.setItem('wc_utm', JSON.stringify(utm));
+  })();
+
+  /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
   function toggleScrolled() {
