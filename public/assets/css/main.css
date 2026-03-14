@@ -165,7 +165,6 @@ h6 {
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
-  border-top: 3px solid var(--accent-color);
 }
 
 .header .logo {
