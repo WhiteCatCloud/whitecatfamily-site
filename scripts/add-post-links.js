@@ -58,7 +58,8 @@ html = html.replace(/<div class="(series-card[^"]*)" data-post="(\d+)">/g, (matc
   const slug = `${id}-${toSlug(post.title)}`;
   count++;
   // onclick: prevent default navigation, open modal (loadPost is the actual function name)
-  return `<a href="/digital-heroin/${slug}.html" class="series-card-link" onclick="event.preventDefault();loadPost(${id});new bootstrap.Modal(document.getElementById('postModal')).show();"><div class="${cls}" data-post="${id}">`;
+  // onclick only prevents navigation — the existing .series-card click listener opens the modal
+  return `<a href="/digital-heroin/${slug}.html" class="series-card-link" onclick="event.preventDefault();"><div class="${cls}" data-post="${id}">`;
 });
 
 // Step 2: close each <a> after the series-card's closing </div>
