@@ -347,9 +347,6 @@ h6 {
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
-    background: none;
-    border: none;
-    padding: 0;
     color: var(--nav-color);
     font-size: 28px;
     line-height: 0;
