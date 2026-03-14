@@ -1,6 +1,10 @@
 import { EmailMessage } from 'cloudflare:email';
 
-async function sendLeadEmail(env, name, email, plan, submitted_at) {
+async function sendLeadEmail(env, name, email, plan, utm, submitted_at) {
+    const utmLines = Object.keys(utm || {}).length
+        ? [``, `Source: ${utm.utm_source || '—'}`, `Medium: ${utm.utm_medium || '—'}`, `Campaign: ${utm.utm_campaign || '—'}`]
+        : [];
+
     const encoded = new TextEncoder().encode([
         `From: WhiteCat Preorder <noreply@whitecatfamily.com>`,
         `To: sales@whitecatcloud.com`,
@@ -15,6 +19,7 @@ async function sendLeadEmail(env, name, email, plan, submitted_at) {
         `Email: ${email}`,
         `Plan:  ${plan}`,
         `Time:  ${submitted_at}`,
+        ...utmLines,
     ].join('\r\n'));
 
     const stream = new ReadableStream({
@@ -35,9 +40,9 @@ export default {
 
     async queue(batch, env) {
         for (const msg of batch.messages) {
-            const { name, email, plan, submitted_at } = msg.body;
+            const { name, email, plan, utm, submitted_at } = msg.body;
             try {
-                await sendLeadEmail(env, name, email, plan, submitted_at);
+                await sendLeadEmail(env, name, email, plan, utm, submitted_at);
                 console.log(`Email sent for ${email}`);
                 msg.ack();
             } catch (err) {
