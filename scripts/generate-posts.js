@@ -95,7 +95,7 @@ ids.forEach(id => {
   const post = POSTS[id];
   const slug = `${id}-${toSlug(post.title)}`;
   const filename = `${slug}.html`;
-  const url = `${BASE_URL}/digital-heroin/${filename}`;
+  const url = `${BASE_URL}/digital-heroin/${slug}`;
   const imgUrl = `${BASE_URL}/assets/img/digital-heroin/post-${id}.jpg`;
   const imgLocal = `/assets/img/digital-heroin/post-${id}.jpg`;
   const session = SESSIONS[id] || '';
@@ -117,10 +117,10 @@ ids.forEach(id => {
     : '';
 
   const prevBtn = prevId
-    ? `<a href="/digital-heroin/${prevSlug}.html" class="btn btn-outline-secondary btn-sm">← ${POSTS[prevId].tag.replace(/[<>]/g, '')}</a>`
-    : `<a href="/digital-heroin.html" class="btn btn-outline-secondary btn-sm">← All posts</a>`;
+    ? `<a href="/digital-heroin/${prevSlug}" class="btn btn-outline-secondary btn-sm">← ${POSTS[prevId].tag.replace(/[<>]/g, '')}</a>`
+    : `<a href="/digital-heroin" class="btn btn-outline-secondary btn-sm">← All posts</a>`;
   const nextBtn = nextId
-    ? `<a href="/digital-heroin/${nextSlug}.html" class="btn btn-primary btn-sm" style="background:#5d57f4;border-color:#5d57f4;">→ ${POSTS[nextId].tag.replace(/[<>]/g, '')}</a>`
+    ? `<a href="/digital-heroin/${nextSlug}" class="btn btn-primary btn-sm" style="background:#5d57f4;border-color:#5d57f4;">→ ${POSTS[nextId].tag.replace(/[<>]/g, '')}</a>`
     : '';
 
   const safeTitle = post.title.replace(/[<>]/g, '').replace(/"/g, '&quot;');
@@ -157,15 +157,15 @@ ids.forEach(id => {
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
-      <a href="/index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+      <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
         <img src="/assets/img/Image%2010-26-25%20at%2017.31.png" alt="WhiteCat Family Logo">
         <h1 class="sitename">WhiteCat Family</h1><span>.</span>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/index.html#pricing">Pricing</a></li>
-          <li><a href="/digital-heroin.html" class="active">💊 Digital Heroin</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/digital-heroin" class="active">💊 Digital Heroin</a></li>
         </ul>
         <i class="mobile-nav-toggle d-lg-none bi bi-list" role="button" tabindex="0" aria-label="Toggle navigation" aria-expanded="false"></i>
       </nav>
@@ -200,11 +200,11 @@ ids.forEach(id => {
             <div class="mt-5 p-4 rounded" style="background:color-mix(in srgb,#5d57f4,transparent 93%); border:1px solid color-mix(in srgb,#5d57f4,transparent 80%); text-align:center;">
               <p class="mb-2" style="font-weight:600; font-size:1rem;">Knowledge is the first step. Protection is the second.</p>
               <p class="mb-3" style="font-size:0.9rem; color:#666;">WhiteCat is the router that quietly enforces the boundaries you set — no arguments, no workarounds.</p>
-              <a href="/index.html#pricing" class="btn px-4 py-2" style="background-color:#5d57f4; border-color:#5d57f4; color:#fff;">See Plans →</a>
+              <a href="/#pricing" class="btn px-4 py-2" style="background-color:#5d57f4; border-color:#5d57f4; color:#fff;">See Plans →</a>
             </div>
 
             <div class="mt-3 text-center">
-              <a href="/digital-heroin.html" style="font-size:0.85rem; color:#5d57f4;">← Back to all 35 posts</a>
+              <a href="/digital-heroin" style="font-size:0.85rem; color:#5d57f4;">← Back to all 35 posts</a>
             </div>
 
           </div>
@@ -224,11 +224,11 @@ ids.forEach(id => {
           <a href="https://www.linkedin.com/company/white-cat-family/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-muted" aria-label="WhiteCat Family on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
         </div>
         <div class="d-flex align-items-center gap-2" style="font-size:0.9rem;">
-          <a href="/faq.html" class="text-muted text-decoration-none">FAQ</a>
+          <a href="/faq" class="text-muted text-decoration-none">FAQ</a>
           <span class="text-muted">&middot;</span>
-          <a href="/terms.html" class="text-muted text-decoration-none">Terms</a>
+          <a href="/terms" class="text-muted text-decoration-none">Terms</a>
           <span class="text-muted">&middot;</span>
-          <a href="/privacy.html" class="text-muted text-decoration-none">Privacy</a>
+          <a href="/privacy" class="text-muted text-decoration-none">Privacy</a>
         </div>
       </div>
     </div>
@@ -241,7 +241,7 @@ ids.forEach(id => {
 
   <!-- Cookie consent -->
   <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a2e; color:#fff; padding:1rem 1.5rem; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; box-shadow:0 -2px 12px rgba(0,0,0,0.2);">
-    <p style="margin:0; font-size:0.88rem; opacity:0.9;">We use cookies to understand how visitors use our site. <a href="/privacy.html" style="color:#a09cf7;">Privacy policy</a></p>
+    <p style="margin:0; font-size:0.88rem; opacity:0.9;">We use cookies to understand how visitors use our site. <a href="/privacy" style="color:#a09cf7;">Privacy policy</a></p>
     <button onclick="acceptCookies()" style="background:#5d57f4; color:#fff; border:none; border-radius:6px; padding:0.45rem 1.2rem; font-size:0.88rem; font-weight:600; cursor:pointer; white-space:nowrap;">Got it</button>
   </div>
   <script>
