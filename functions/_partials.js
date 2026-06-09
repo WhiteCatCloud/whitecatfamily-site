@@ -12,6 +12,7 @@ const PARTIAL_NAMES = [
   'cookie-banner-en', 'cookie-banner-de',
   'cta-amazon-en', 'cta-amazon-de',
   'header-locale-switch',
+  'hreflang',
 ];
 
 export async function loadPartials(env) {

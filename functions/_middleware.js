@@ -45,6 +45,53 @@ function cookieFor(locale) {
   return locale === 'de' ? 'cookie-banner-de' : 'cookie-banner-en';
 }
 
+// Map an EN path → its DE counterpart and vice versa.
+// Pages without a DE counterpart return de=null; Function emits no hreflang=de
+// for them and the locale switcher links to the canonical DE root (/de/).
+const UNPAIRED_PATHS = new Set([
+  '/digital-heroin', '/digital-heroin/', '/digital-heroin.html',
+]);
+const TRANSLATED_BASENAMES = {
+  // EN basename → DE basename (path under /de/)
+  privacy: 'datenschutz',
+  terms: 'agb',
+  thankyou: 'danke',
+};
+const REVERSE_BASENAMES = Object.fromEntries(
+  Object.entries(TRANSLATED_BASENAMES).map(([en, de]) => [de, en])
+);
+
+function buildLocaleSwitchUrls(pathname) {
+  // EN side asks: where's the DE version?
+  const isDe = pathname === '/de' || pathname.startsWith('/de/');
+
+  if (!isDe) {
+    if (UNPAIRED_PATHS.has(pathname) || pathname.startsWith('/digital-heroin/')) {
+      return { en: pathname, de: null };
+    }
+    if (pathname === '/' || pathname === '/index.html') {
+      return { en: '/', de: '/de/' };
+    }
+    // Strip leading slash, drop trailing index.html
+    const base = pathname.replace(/^\//, '').replace(/\.html$/, '');
+    const dePath = '/de/' + (TRANSLATED_BASENAMES[base] || base);
+    return { en: pathname, de: dePath };
+  }
+
+  // DE side asks: where's the EN version?
+  // /de/ → /
+  if (pathname === '/de' || pathname === '/de/') {
+    return { en: '/', de: pathname };
+  }
+  const base = pathname.replace(/^\/de\//, '').replace(/\.html$/, '');
+  const enBase = REVERSE_BASENAMES[base] || base;
+  return { en: '/' + enBase, de: pathname };
+}
+
+function makeAbsolute(host, p) {
+  return p ? `https://${host}${p}` : null;
+}
+
 function amazonUrlFor(locale, env) {
   if (locale === 'de' || locale === 'en-EU') {
     return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/stores/WhiteCat';
@@ -135,6 +182,26 @@ export async function onRequest(context) {
     const cta = (partials[ctaFor(locale)] || '').replace('{{AMAZON_URL}}', amazonUrlFor(locale, env));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
+
+    // Phase 8: locale switcher + hreflang
+    const localeUrls = buildLocaleSwitchUrls(url.pathname);
+    const switchPartial = (partials['header-locale-switch'] || '')
+      .replace('{{EN_URL}}', localeUrls.en || '/')
+      .replace('{{DE_URL}}', localeUrls.de || '/de/');
+    html = html.replaceAll('<!-- LOCALE-SWITCH -->', switchPartial);
+
+    // Hreflang: omit hreflang=de for unpaired pages
+    const host = url.host;
+    const absEn = makeAbsolute(host, localeUrls.en) || '';
+    const absDe = makeAbsolute(host, localeUrls.de);
+    let hreflangBlock = (partials['hreflang'] || '').replaceAll('{{EN_URL}}', absEn);
+    if (absDe) {
+      hreflangBlock = hreflangBlock.replaceAll('{{DE_URL}}', absDe);
+    } else {
+      // Strip the hreflang=de line entirely (and any unsubstituted {{DE_URL}})
+      hreflangBlock = hreflangBlock.replace(/\s*<link rel="alternate" hreflang="de"[^>]*>\s*\n?/, '\n');
+    }
+    html = html.replaceAll('<!-- HREFLANG -->', hreflangBlock);
 
     return new Response(html, {
       status: upstream.status,

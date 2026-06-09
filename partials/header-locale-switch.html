@@ -1,0 +1,15 @@
+<nav class="wc-locale-switch d-flex align-items-center gap-2" aria-label="Language" style="font-size:0.85rem;">
+  <a href="{{EN_URL}}" lang="en" rel="alternate" class="text-muted text-decoration-none">🇺🇸 EN</a>
+  <span class="text-muted" aria-hidden="true">·</span>
+  <a href="{{DE_URL}}" lang="de" rel="alternate" hreflang="de" class="text-muted text-decoration-none">🇩🇪 DE</a>
+</nav>
+<script>
+(function () {
+  document.querySelectorAll('.wc-locale-switch a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var locale = a.lang === 'de' ? 'de' : 'en-US';
+      document.cookie = 'wc_locale=' + locale + '; max-age=' + (365 * 24 * 3600) + '; path=/; samesite=lax';
+    });
+  });
+})();
+</script>
