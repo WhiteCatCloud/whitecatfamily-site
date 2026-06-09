@@ -118,10 +118,18 @@ export async function onRequest(context) {
   const { request, next, env } = context;
   const url = new URL(request.url);
 
-  // Rollout gate: until EU_LAUNCH_ENABLED=true, behave as pure pass-through.
-  // Lets us deploy Function code to prod safely; flip the env var to activate.
-  // (Override per-request with ?eu=1 during preview testing.)
-  const enabled = env.EU_LAUNCH_ENABLED === 'true' || url.searchParams.get('eu') === '1';
+  // Rollout gate: auto-active on canary + any preview host so we can test
+  // without setting an env var; production must explicitly opt in via
+  // EU_LAUNCH_ENABLED=true. ?eu=1 forces on anywhere for ad-hoc smoke tests.
+  const host = url.host;
+  const isPreviewHost =
+    host.startsWith('canary.') ||
+    host.endsWith('.pages.dev') ||
+    host === 'localhost' || host.startsWith('localhost:');
+  const enabled =
+    env.EU_LAUNCH_ENABLED === 'true' ||
+    url.searchParams.get('eu') === '1' ||
+    isPreviewHost;
   if (!enabled) return next();
 
   // Bypass non-HTML: assets, images, fonts, etc.
