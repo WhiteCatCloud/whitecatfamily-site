@@ -37,6 +37,17 @@ function footerFor(locale) {
   return 'footer-us';
 }
 
+function ctaFor(locale) {
+  return locale === 'de' ? 'cta-amazon-de' : 'cta-amazon-en';
+}
+
+function amazonUrlFor(locale, env) {
+  if (locale === 'de' || locale === 'en-EU') {
+    return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/stores/WhiteCat';
+  }
+  return env.WHITECAT_AMAZON_US_URL || 'https://www.amazon.com/stores/WhiteCat';
+}
+
 function classifyLocale(req) {
   const override = readCookie(req, 'wc_locale');
   if (override && VALID_LOCALES.has(override)) return override;
@@ -101,6 +112,8 @@ export async function onRequest(context) {
 
     // Marker swaps — use replaceAll (markers may appear multiple times).
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
+    const cta = (partials[ctaFor(locale)] || '').replace('{{AMAZON_URL}}', amazonUrlFor(locale, env));
+    html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
 
     return new Response(html, {
       status: upstream.status,

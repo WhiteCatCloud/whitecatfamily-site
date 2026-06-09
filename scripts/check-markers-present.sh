@@ -19,8 +19,9 @@ if [ "$PHASE" -ge 8 ]; then
 fi
 
 fail=0
-# All page HTML files (skip partials/ — markers don't live in partials)
-for f in $(find public -name '*.html' -type f 2>/dev/null); do
+# All page HTML files (skip _partials/ build output — those are partial bodies,
+# not pages, so they don't carry markers themselves).
+for f in $(find public -name '*.html' -type f -not -path 'public/_partials/*' 2>/dev/null); do
   for marker in "${REQUIRED_MARKERS[@]}"; do
     if ! grep -qF "$marker" "$f"; then
       echo "ERROR: $f missing marker: $marker"

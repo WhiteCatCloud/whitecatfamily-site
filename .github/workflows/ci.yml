@@ -1,27 +1,36 @@
 name: CI
 on:
   pull_request:
+    branches: [main, canary]
   push:
-    branches: [main]
+    branches: [main, canary]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   guards:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
+        with:
+          node-version: '20'
+          cache: 'npm'
       - run: npm ci
-      # Advisory until the relevant phase lands; flip `continue-on-error: false`
-      # after Phase 3 (forbidden) and Phase 6 (markers) and Phase 5.7 (permanent) merge to main.
-      - name: Forbidden strings (advisory until Phase 3)
+      # Promotion path:
+      #   Phase 2 → markers PHASE=2 enforced (footer markers everywhere)
+      #   Phase 3 → forbidden strings enforced (no $79/Reserve Yours anywhere)
+      #   Phase 5 → permanent URLs enforced (/doc, /guide exist EN+DE)
+      #   Phase 6 → markers PHASE=6 enforced (cookie markers everywhere)
+      #   Phase 8 → markers PHASE=8 enforced (locale-switch + hreflang)
+      - name: Forbidden strings (enforced — Phase 3)
         run: npm run check:forbidden
-        continue-on-error: true
-      - name: Markers present (advisory until Phase 2)
-        # Phase escalates: 2 (footer only) → 6 (+cookie) → 8 (+locale-switch +hreflang)
+      - name: Markers present (enforced — Phase 2; escalates to 6 / 8 as those phases land)
         env: { MARKER_PHASE: '2' }
         run: npm run check:markers
-        continue-on-error: true
       - name: Permanent URLs (advisory until Phase 5)
         run: npm run check:permanent
         continue-on-error: true
