@@ -1,12 +1,13 @@
 export async function onRequestPost(context) {
     const { request, env } = context;
 
-    let name, email, plan, utm = {};
+    let name, email, plan, locale, utm = {};
     try {
         const data = await request.formData();
         name = (data.get('name') || '').trim();
         email = (data.get('email') || '').trim();
         plan = (data.get('plan') || 'Not specified').trim();
+        locale = (data.get('locale') || 'en-US').trim();
         for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
             const val = data.get(key);
             if (val) utm[key] = val.trim();
@@ -17,11 +18,16 @@ export async function onRequestPost(context) {
 
     if (name && email) {
         try {
-            await env.LEADS_QUEUE.send({ name, email, plan, utm, submitted_at: new Date().toISOString() });
+            await env.LEADS_QUEUE.send({
+                name, email, plan, locale, utm,
+                submitted_at: new Date().toISOString(),
+            });
         } catch (err) {
             console.error('Queue send failed:', err.message);
         }
     }
 
-    return Response.redirect(new URL('/thankyou.html', request.url).href, 303);
+    // Locale-aware thank-you redirect
+    const danke = (locale === 'de') ? '/de/danke' : '/thankyou';
+    return Response.redirect(new URL(danke, request.url).href, 303);
 }
