@@ -28,8 +28,8 @@ jobs:
       #   Phase 8 → markers PHASE=8 enforced (locale-switch + hreflang)
       - name: Forbidden strings (enforced — Phase 3)
         run: npm run check:forbidden
-      - name: Markers present (enforced — Phase 2; escalates to 6 / 8 as those phases land)
-        env: { MARKER_PHASE: '2' }
+      - name: Markers present (enforced — Phase 6; escalates to 8 when locale-switch + hreflang land)
+        env: { MARKER_PHASE: '6' }
         run: npm run check:markers
       - name: Permanent URLs (enforced — Phase 5)
         run: npm run check:permanent

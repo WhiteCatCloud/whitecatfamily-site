@@ -41,6 +41,10 @@ function ctaFor(locale) {
   return locale === 'de' ? 'cta-amazon-de' : 'cta-amazon-en';
 }
 
+function cookieFor(locale) {
+  return locale === 'de' ? 'cookie-banner-de' : 'cookie-banner-en';
+}
+
 function amazonUrlFor(locale, env) {
   if (locale === 'de' || locale === 'en-EU') {
     return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/stores/WhiteCat';
@@ -130,6 +134,7 @@ export async function onRequest(context) {
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
     const cta = (partials[ctaFor(locale)] || '').replace('{{AMAZON_URL}}', amazonUrlFor(locale, env));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
+    html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
 
     return new Response(html, {
       status: upstream.status,

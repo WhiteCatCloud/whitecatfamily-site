@@ -179,13 +179,28 @@
             }
         </style>
       <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6R7922H8N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-J6R7922H8N');
-  </script>
+        <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+          (function(){
+            var m = document.cookie.match(/(?:^|; )wc_consent=([^;]+)/);
+            if (m && m[1] === 'granted') gtag('consent','update',{analytics_storage:'granted'});
+          })();
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6R7922H8N"></script>
+        <script>
+          gtag('js', new Date());
+          gtag('config', 'G-J6R7922H8N');
+        </script>
+        <link rel="stylesheet" href="/assets/css/wc-cookie.css">
+        <script defer src="/assets/js/wc-cookie.js"></script>
 </head>
     <body class="index-page">
 
@@ -1055,22 +1070,6 @@
         }, { rootMargin: '-10% 0px -80% 0px' });
         sections.forEach(s => navObserver.observe(s));
         </script>
-    
-    <!-- Cookie consent -->
-    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a2e; color:#fff; padding:1rem 1.5rem; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; box-shadow:0 -2px 12px rgba(0,0,0,0.2);">
-      <p style="margin:0; font-size:0.88rem; opacity:0.9;">We use cookies to understand how visitors use our site. <a href="/privacy" style="color:#a09cf7;">Privacy policy</a></p>
-      <button onclick="acceptCookies()" style="background:#5d57f4; color:#fff; border:none; border-radius:6px; padding:0.45rem 1.2rem; font-size:0.88rem; font-weight:600; cursor:pointer; white-space:nowrap;">Got it</button>
-    </div>
-    <script>
-      (function() {
-        if (!localStorage.getItem('wc_cookies_ok')) {
-          document.getElementById('cookie-banner').style.display = 'flex';
-        }
-      })();
-      function acceptCookies() {
-        localStorage.setItem('wc_cookies_ok', '1');
-        document.getElementById('cookie-banner').style.display = 'none';
-      }
-    </script>
+            <!-- COOKIE -->
     </body>
 </html>

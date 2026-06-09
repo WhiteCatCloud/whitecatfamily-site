@@ -1,0 +1,17 @@
+.wc-cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #1a1a2e; color: #fff; padding: 1rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.2);
+}
+.wc-cookie-banner[hidden] { display: none; }
+.wc-cookie-banner p { margin: 0; font-size: 0.88rem; opacity: 0.9; flex: 1 1 280px; }
+.wc-cookie-banner a { color: #a09cf7; }
+.wc-cookie-actions { display: flex; gap: 0.5rem; }
+.wc-cookie-actions button {
+  background: #fff; color: #1a1a2e; border: 1px solid #fff; border-radius: 6px;
+  padding: 0.45rem 1.2rem; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+  min-width: 96px; /* BGH 2020 — equal visual weight */
+}
+#wc-cookie-accept { background: #5d57f4; color: #fff; border-color: #5d57f4; }
