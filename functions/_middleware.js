@@ -136,7 +136,11 @@ export async function onRequest(context) {
     return next();
   }
 
-  const locale = classifyLocale(request);
+  // Path-aware locale: any page under /de/ is German, regardless of visitor IP.
+  // A US visitor manually opening /de/impressum still gets the EU-DE footer.
+  // For the EN side, fall back to geo + cookie classification.
+  const onDePath = url.pathname === '/de' || url.pathname.startsWith('/de/');
+  const locale = onDePath ? 'de' : classifyLocale(request);
 
   // Phase 4: redirect German-speakers from / to /de/ (canonical entry).
   // Anti-loop: only fires on the root; manual /de/* access always wins;

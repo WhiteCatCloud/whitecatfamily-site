@@ -13,6 +13,7 @@
         <meta property="og:title" content="WhiteCat Family Router – Kindersicherung, die Kinder nicht umgehen können">
         <meta property="og:description" content="Wi-Fi 6 Router mit unumgehbarer Kindersicherung. Privacy-First. Bald auf Amazon.de.">
         <meta property="og:image" content="https://whitecatfamily.com/assets/img/og-image.png">
+        <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="WhiteCat Family Router – Kindersicherung, die Kinder nicht umgehen können">
         <meta name="twitter:description" content="Wi-Fi 6 Router mit unumgehbarer Kindersicherung. Privacy-First. Bald auf Amazon.de.">
@@ -23,11 +24,12 @@
         <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="https://fonts.googleapis.com" rel="preconnect">
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="/assets/css/main.css" rel="stylesheet">
-            <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
+        <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="/assets/css/main.css?v=13" rel="stylesheet">
+        <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -50,113 +52,312 @@
         <link rel="stylesheet" href="/assets/css/wc-cookie.css">
         <script defer src="/assets/js/wc-cookie.js"></script>
     </head>
-    <body>
-        <header id="header" class="header d-flex align-items-center sticky-top">
-            <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-                <a href="/de/" class="logo d-flex align-items-center">
-                    <img src="/assets/img/logo.png" alt="WhiteCat Family" style="height:40px;">
+    <body class="index-page">
+        <header id="header" class="header d-flex align-items-center fixed-top">
+            <!-- LOCALE-SWITCH -->
+            <div class="container position-relative d-flex align-items-center justify-content-between">
+                <a href="/de/" class="logo d-flex align-items-center me-auto me-lg-0">
+                    <img src="/assets/img/logo.png" alt="WhiteCat Family Logo">
                     <h1 class="sitename">WhiteCat Family</h1><span>.</span>
                 </a>
-                <!-- LOCALE-SWITCH -->
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="#hero" class="active">Start</a></li>
+                        <li><a href="#services">Warum WhiteCat</a></li>
+                        <li><a href="#how-we-work">Funktionen</a></li>
+                        <li><a href="#about">App</a></li>
+                        <li><a href="#pricing">Pläne</a></li>
+                        <li><a href="#call-to-action-2">Hardware</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="/de/faq">FAQ</a></li>
+                        <li><a href="/digital-heroin">💊 Digital Heroin</a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-lg-none bi bi-list" role="button" tabindex="0" aria-label="Navigation umschalten" aria-expanded="false"></i>
+                </nav>
             </div>
         </header>
 
         <main class="main">
             <section id="hero" class="hero section">
-                <div class="container">
-                    <div class="row gy-4 align-items-center">
-                        <div class="col-lg-7">
-                            <h1 class="hero-title mb-4">WhiteCat Family Router – Kindersicherung &amp; Bildschirmzeit, die Kinder nicht umgehen können</h1>
-                            <p class="hero-description mb-4">Schluss mit Diskussionen am Esstisch. Einmal einstellen, immer aktiv. Privacy-First, VPN-resistent, mit Scam-Schutz für Großeltern.</p>
-                            <div class="d-flex flex-wrap gap-3">
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <div class="badge-wrapper mb-3">
+                                <div class="d-inline-flex align-items-center rounded-pill border border-accent-light">
+                                    <div class="icon-circle me-2"><i class="bi bi-shield-lock"></i></div>
+                                    <span class="badge-text me-3">Schluss mit Bildschirmzeit-Streit</span>
+                                </div>
+                            </div>
+                            <h1 class="hero-title mb-4">Die Bildschirmzeit-Regeln, die Kinder nicht umgehen können.</h1>
+                            <p class="hero-description mb-4">Bildschirmzeit zu verwalten sollte sich nicht wie ein Vollzeitjob anfühlen. WhiteCat erledigt das leise und automatisch — keine IT-Kenntnisse, keine Streitereien, keine Workarounds.</p>
+                            <div class="cta-wrapper">
                                 <!-- CTA-AMAZON -->
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="hero-image">
-                                <img src="/Router_hero.png" alt="WhiteCat Family Router" class="img-fluid">
+                                <img src="/Router_hero.png" class="img-fluid" loading="lazy" alt="WhiteCat Router schützt deine Familie">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="benefits" class="services section">
-                <div class="container">
-                    <div class="row gy-4">
-                        <div class="col-lg-6">
-                            <div class="service-item p-4 h-100">
-                                <h3>Schluss mit Bildschirmzeit-Streit</h3>
-                                <p>Bettzeit um 22:00? TikTok wirklich aus? Ein Tipp in der App und die Regel hält — automatisch, jeden Tag, ohne Diskussionen am Esstisch.</p>
+            <section id="services" class="services section light-background">
+                <div class="container" data-aos="fade-up">
+                    <div class="container section-title" data-aos="fade-up">
+                        <h2>Kommt dir bekannt vor?</h2>
+                    </div>
+                    <div class="row g-4 justify-content-center mb-5">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-item" style="flex-direction:column;">
+                                <div class="service-icon" style="margin-right:0;margin-bottom:1rem;"><i class="bi bi-moon-stars"></i></div>
+                                <div class="service-content">
+                                    <h3>„Es ist 23:00. Du denkst, deine Kinder schlafen.“</h3>
+                                    <p>Sind sie nicht. Das Handy liegt unter der Decke. TikTok läuft weiter. Und morgen früh sind sie erschöpft, und du fragst dich, warum.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="service-item p-4 h-100">
-                                <h3>Einmal einstellen, immer aktiv</h3>
-                                <p>Pro Kind individuell: Emma YouTube bis 20:00, Jon kein Gaming an Schultagen, Oma vor Phishing geschützt. Die App regelt, du bleibst entspannt.</p>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="service-item" style="flex-direction:column;">
+                                <div class="service-icon" style="margin-right:0;margin-bottom:1rem;"><i class="bi bi-hourglass-split"></i></div>
+                                <div class="service-content">
+                                    <h3>„Du hast vor zwei Stunden ‚noch fünf Minuten‘ gesagt.“</h3>
+                                    <p>Du bist wieder der Böse. Jeder Bildschirmzeit-Streit endet gleich — im Streit, und du fühlst dich schuldig, weil du das Richtige tust.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="service-item p-4 h-100">
-                                <h3>VPN-resistent — keine 5-Minuten-Workarounds</h3>
-                                <p>Schul-Kinder googeln Bypasses bis zur Mittagspause. WhiteCat erkennt VPNs, Proxies und Tarnverkehr — verdächtiger Traffic wird gestoppt, Regeln halten.</p>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="service-item" style="flex-direction:column;">
+                                <div class="service-icon" style="margin-right:0;margin-bottom:1rem;"><i class="bi bi-shield-x"></i></div>
+                                <div class="service-content">
+                                    <h3>„Dein 9-Jähriger kennt mehr VPN-Tricks als du.“</h3>
+                                    <p>Du richtest die Kindersicherung ein. Bis zur Mittagspause umgangen. Die Apps, die Kinder schützen sollen, wurden entwickelt, bevor Kinder gelernt haben, Workarounds zu googeln.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="service-item p-4 h-100">
-                                <h3>Scam- und Malware-Schutz für Großeltern</h3>
-                                <p>Täglich aktualisierte Filter blockieren Betrugsseiten, Phishing und Glücksspiel, bevor sie geladen werden. Das Sicherheitsnetz, das ältere Verwandte verdienen.</p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="100">
+                            <p style="font-size:1.2rem; line-height:1.8; font-weight:500; color:#32353a;">Wir haben WhiteCat gebaut, weil wir genau dort waren, wo du gerade bist.</p>
+                            <p style="font-size:1rem; line-height:1.8;">Wir sind Ingenieure, Sicherheitsprofis und Eltern, die genug hatten. Wir wollten Kontrollen, die funktionieren — ohne Überwachung und ohne uns zum Bösen zu machen.</p>
+                            <p style="font-size:1rem; line-height:1.8;">Also haben wir etwas gebaut, bei dem Ein-Tipp-Blocks und Zeitpläne leise und zuverlässig greifen und das endlose Scrollen abschneiden, wenn es Zeit ist, abzuschalten. Plus starker Scam- &amp; Malware-Schutz — ein perfektes Sicherheitsnetz für Großeltern, die oft Ziel von Online-Betrug sind.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div style="height:60px; background:linear-gradient(to bottom, #f4f4f9, #ffffff);"></div>
+
+            <section id="how-we-work" class="services section light-background">
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Wie WhiteCat Ruhe in dein Zuhause bringt</h2>
+                    <p>Ein intelligentes, privates System, das Regeln leise durchsetzt und deine Familie sicher hält — ohne Verlangsamung oder Spionage.</p>
+                </div>
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row justify-content-center g-5">
+                        <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                            <div class="service-item">
+                                <div class="service-icon"><i class="bi bi-slash-circle"></i></div>
+                                <div class="service-content">
+                                    <h3>Ein-Tipp-Blockade</h3>
+                                    <p>Digitale Plattformen sind darauf ausgelegt, Kinder so lange wie möglich am Haken zu halten. TikTok, YouTube, Roblox — mit einem Tipp weg. Einfach für Eltern, wirksam gegen endloses Scrollen.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="service-item p-4 h-100">
-                                <h3>Privatsphäre bleibt zuhause</h3>
-                                <p>Wir verkaufen keine Familiendaten. Kein Cloud-Tracking, keine Werbeprofile. Wi-Fi 6 AX3000 mit Dual-Core CPU, 4K-Streaming + Gaming gleichzeitig — flüsterleise und lüfterlos.</p>
+                        <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
+                            <div class="service-item">
+                                <div class="service-icon"><i class="bi bi-moon-stars"></i></div>
+                                <div class="service-content">
+                                    <h3>Regeln, die wirklich halten</h3>
+                                    <p>Späte Bildschirmzeit stört den Schlafzyklus — Kinderärzte sagen das seit Jahren. WhiteCat-Zeitpläne erzwingen die Bettzeit automatisch. Du hörst auf, der Bösewicht zu sein, und Kinder bekommen den Schlaf, den sie brauchen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                            <div class="service-item">
+                                <div class="service-icon"><i class="bi bi-phone"></i></div>
+                                <div class="service-content">
+                                    <h3>Einfache App, volle Kontrolle</h3>
+                                    <p>Sieh jedes Gerät auf einen Blick. Blockieren, pausieren oder Zeitpläne verwalten — vom Sofa oder von unterwegs. Schlicht, intuitiv, gemacht für vielbeschäftigte Eltern.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+                            <div class="service-item">
+                                <div class="service-icon"><i class="bi bi-shield-exclamation"></i></div>
+                                <div class="service-content">
+                                    <h3>Schwer zu umgehen</h3>
+                                    <p>Schulkinder sind clever. WhiteCat ist cleverer. Es blockiert gängige VPNs und Browser-Tricks. Wirkt Traffic verdächtig, wird er gestoppt. Die Regeln lassen sich nicht überlisten.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+                            <div class="service-item">
+                                <div class="service-icon"><i class="bi bi-cloud-check"></i></div>
+                                <div class="service-content">
+                                    <h3>Intelligenter Komfort</h3>
+                                    <p>Auto-Updates, frische Sperrlisten für neue Bedrohungen und Fernzugriff — alles läuft leise im Hintergrund. Beruhigung, kein Privatsphäre-Kompromiss.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+                            <div class="service-item">
+                                <div class="service-icon"><i class="bi bi-shield-lock"></i></div>
+                                <div class="service-content">
+                                    <h3>Privatsphäre, die zuhause bleibt</h3>
+                                    <p>Big Tech verdient an Familiendaten. Wir nicht. Kein Verkauf, kein Mining, kein Teilen. Deine Internet-Aktivitäten und die Gewohnheiten deiner Kinder bleiben ausschließlich deine Sache.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="plans" class="services section light-background">
+            <style>
+                .team-overlay {
+                    background-color: rgba(0, 0, 0, 0.85) !important;
+                }
+                .team-overlay p {
+                    color: #ffffff !important;
+                }
+            </style>
+
+            <section style="background: linear-gradient(135deg, #32353a 0%, #5d57f4 100%); padding: 42px 0;">
                 <div class="container">
-                    <div class="text-center mb-5">
-                        <h2 class="fw-bold">Pläne</h2>
-                        <p class="text-muted">Erster Monat gratis beim Router-Kauf.</p>
+                    <div class="row align-items-center justify-content-between g-4">
+                        <div class="col-lg-8">
+                            <span style="background:rgba(255,255,255,0.15); color:#fff; font-size:0.75rem; font-weight:600; padding:4px 14px; border-radius:20px; letter-spacing:0.05em;">💊 DIGITAL HEROIN SERIE</span>
+                            <h4 class="mt-3 mb-1" style="color:#fff; font-size:clamp(1rem, 2.2vw, 1.3rem); font-weight:600;">Das Internet wurde so gebaut, dass es deine Kinder süchtig macht. Wir benennen die Methoden.</h4>
+                            <p style="color:rgba(255,255,255,0.8); margin:0; font-size:0.9rem;">Schlafverlust, Malware in Spielen, Streaming-Fallen, manipulatives Design — erklärt für jeden Elternteil.</p>
+                        </div>
+                        <div class="col-lg-auto text-lg-end">
+                            <a href="/digital-heroin" class="btn btn-light px-4 py-2 fw-bold">Zur Serie →</a>
+                        </div>
                     </div>
-                    <div class="row gy-4">
-                        <div class="col-lg-4">
-                            <div class="service-item p-4 h-100 text-center">
+                </div>
+            </section>
+
+            <section id="about" class="about services section light-background">
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Die WhiteCat-App</h2>
+                    <p>Der Router setzt die Regeln durch. Mit der App bestimmst du, was diese Regeln sind.</p>
+                </div>
+                <div class="container">
+                    <div class="row g-5 align-items-center">
+                        <!-- Phone left -->
+                        <div class="col-lg-5 text-center" data-aos="fade-right" style="position:relative;">
+                            <div style="position:absolute; inset:-40px; background:radial-gradient(ellipse at center, rgba(93,87,244,0.08) 0%, transparent 65%); pointer-events:none;"></div>
+                            <img src="/assets/img/app-dashboard.png" class="img-fluid" loading="lazy" style="max-height:520px; position:relative;" alt="WhiteCat-App-Dashboard">
+                        </div>
+                        <!-- Cards + buttons right -->
+                        <div class="col-lg-7" data-aos="fade-left">
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                <div class="service-item">
+                                    <div class="service-icon"><i class="bi bi-calendar-check"></i></div>
+                                    <div class="service-content">
+                                        <h3>Einmal einstellen, vergessen</h3>
+                                        <p>Stell die Regeln einmal ein — Bettzeit um 22:00, kein TikTok an Schultagen, YouTube aus während der Hausaufgaben. WhiteCat erledigt den Rest jeden Tag, ohne dass du die App noch einmal öffnen musst.</p>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <div class="service-icon"><i class="bi bi-sliders"></i></div>
+                                    <div class="service-content">
+                                        <h3>Jedes Kind ist anders</h3>
+                                        <p>Emma bekommt YouTube bis 20:00. Jon verliert Gaming an Schultagen. Omas Tablet blockt Betrugsseiten automatisch. Eine App, Regeln, die zu jeder Person passen.</p>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <div class="service-icon"><i class="bi bi-shield-check"></i></div>
+                                    <div class="service-content">
+                                        <h3>Geschützt, während du schläfst</h3>
+                                        <p>Neue Betrugsseiten, neue Bypass-Tricks, neue Bedrohungen — sie tauchen täglich auf. WhiteCat aktualisiert sich über Nacht. Am Morgen ist es schon erledigt.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                                <div class="d-inline-flex flex-column align-items-center">
+                                    <a class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3 disabled" style="opacity:0.55; pointer-events:none;" aria-disabled="true" tabindex="-1">
+                                        <i class="bi bi-apple fs-4 me-2" aria-hidden="true"></i>
+                                        <div class="text-start">
+                                            <small class="d-block" style="font-size:0.65rem; line-height:1;">Laden im</small>
+                                            <span class="fw-bold" style="line-height:1;">App Store</span>
+                                        </div>
+                                    </a>
+                                    <small class="text-muted mt-1" style="font-size:0.7rem;">Demnächst</small>
+                                </div>
+                                <div class="d-inline-flex flex-column align-items-center">
+                                    <a class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3 disabled" style="opacity:0.55; pointer-events:none;" aria-disabled="true" tabindex="-1">
+                                        <i class="bi bi-google-play fs-4 me-2" aria-hidden="true"></i>
+                                        <div class="text-start">
+                                            <small class="d-block" style="font-size:0.65rem; line-height:1;">JETZT BEI</small>
+                                            <span class="fw-bold" style="line-height:1;">Google Play</span>
+                                        </div>
+                                    </a>
+                                    <small class="text-muted mt-1" style="font-size:0.7rem;">Demnächst</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div style="height:60px; background:linear-gradient(to bottom, #ffffff, #f4f4f9);"></div>
+
+            <section id="pricing" class="pricing section light-background">
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Einfache Pläne — echter Schutz für jedes Alter</h2>
+                    <p>Alle Pläne enthalten Fern-App-Kontrolle, automatische Sicherheitsupdates und Malware-/Scam-Blockierung.</p>
+                </div>
+                <div class="container">
+                    <!-- Free trial badge -->
+                    <div class="row justify-content-center mb-4" data-aos="fade-up">
+                        <div class="col-auto">
+                            <div style="background:color-mix(in srgb,#5d57f4,transparent 88%); color:#5d57f4; border-radius:30px; padding:10px 24px; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:8px;">
+                                <i class="bi bi-gift"></i> Erster Monat gratis beim Router-Kauf
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="pricing-card">
                                 <h3>Protect</h3>
-                                <ul class="text-start small">
-                                    <li>Malware- &amp; Phishing-Filter</li>
-                                    <li>Inhaltsschutz für Großeltern</li>
-                                    <li>Automatische Updates</li>
+                                <p class="description">Du richtest es für deine Eltern ein? Blockt im Hintergrund Betrug, Malware und Schwindel, bevor sie überhaupt sichtbar werden.</p>
+                                <ul class="features-list">
+                                    <li><i class="bi bi-check-circle-fill"></i>Täglich aktualisierte Malware- &amp; Spyware-Blockierung</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Glücksspiel, Erwachsenen- &amp; Betrugsseiten blocken</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Fern-App-Kontrolle &amp; automatische Updates</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Verlängerte 1-Jahres-Router-Garantie</li>
                                 </ul>
                                 <!-- CTA-AMAZON -->
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="service-item p-4 h-100 text-center" style="border:2px solid #5d57f4;">
-                                <span class="badge bg-primary mb-2">Beliebt</span>
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="pricing-card popular">
+                                <div class="popular-badge">Beliebt</div>
                                 <h3>Family</h3>
-                                <ul class="text-start small">
-                                    <li>Volle Kindersicherung</li>
-                                    <li>Bildschirmzeit-Regeln pro Kind</li>
-                                    <li>App-Blocking (TikTok, YouTube, Gaming)</li>
-                                    <li>SafeSearch erzwungen</li>
+                                <p class="description">Volle Kindersicherung für Familien mit Kindern. Zeitpläne, Regeln pro Person und Echtzeit-Blockierung — alles in einer App.</p>
+                                <ul class="features-list">
+                                    <li><i class="bi bi-check-circle-fill"></i>Alles aus Protect</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Zeitpläne &amp; Bildschirmzeit-Regeln pro Person</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Per App blocken: TikTok, YouTube, Gaming…</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>SafeSearch erzwungen auf allen Geräten</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Gäste-WLAN-Portal</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Wöchentliche Einblicke &amp; Nutzungsberichte</li>
                                 </ul>
                                 <!-- CTA-AMAZON -->
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="service-item p-4 h-100 text-center">
-                                <span class="badge bg-secondary mb-2">Demnächst</span>
-                                <h3>Everywhere</h3>
-                                <ul class="text-start small">
-                                    <li>Alles aus Family</li>
-                                    <li>Schutz auch außerhalb des WLANs</li>
-                                    <li>Auf Mobilfunk-Daten</li>
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="pricing-card" style="border: 2px dashed color-mix(in srgb,#5d57f4,transparent 60%);">
+                                <h3>Everywhere <span style="font-size:0.65rem; background:color-mix(in srgb,#5d57f4,transparent 85%); color:#5d57f4; padding:3px 10px; border-radius:20px; font-weight:600; vertical-align:middle; margin-left:6px;">Demnächst</span></h3>
+                                <p class="description">Für Familien mit Teenagern. Dieselben Regeln gelten zuhause, in der Schule oder bei Freunden.</p>
+                                <ul class="features-list">
+                                    <li><i class="bi bi-check-circle-fill"></i>Alles aus Family</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Kontrollen folgen dem Gerät auch außerhalb des Zuhauses</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>iPhone &amp; Android unterstützt</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Bis zu 3 mobile Geräte</li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Detaillierte Berichte pro Gerät</li>
                                 </ul>
                                 <!-- CTA-AMAZON -->
                             </div>
@@ -165,18 +366,123 @@
                 </div>
             </section>
 
-            <section id="hardware" class="services section">
-                <div class="container">
-                    <h2 class="text-center mb-4">Hardware</h2>
-                    <p class="text-center text-muted">Wi-Fi 6 AX3000 &middot; Dual-Core CPU &middot; lüfterlos &middot; 4K-Streaming + Gaming gleichzeitig.</p>
+            <section id="team" class="team section light-background">
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Das Team hinter WhiteCat</h2>
+                    <p>Ingenieure, Eltern und Macher, die genug hatten — und beschlossen, es zu beheben.</p>
+                </div>
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row g-5">
+                        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="team-card">
+                                <div class="team-image">
+                                    <img src="/assets/img/team/jaro.jpg" class="img-fluid" loading="lazy" alt="Jaro">
+                                    <div class="team-overlay">
+                                        <p>Mit einer Tastatur in der Hand geboren. Nach Jahren wachsender Frustration darüber, dass jede Kindersicherung von einem 12-Jährigen mit einem YouTube-Tutorial überlistet werden konnte, hörte er auf zu klagen und fing an zu bauen.</p>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h4>Jaro</h4><span class="position">Gründer &amp; CEO</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="team-card">
+                                <div class="team-image">
+                                    <img src="/assets/img/team/gabriela.jpg" class="img-fluid" loading="lazy" alt="Gabriela">
+                                    <div class="team-overlay">
+                                        <p>Hat digitale Storefronts gebaut und gelernt, wie süchtig machende Algorithmen funktionieren — und wehrt sich jetzt dagegen.</p>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h4>Gabriela</h4><span class="position">E-Commerce &amp; Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="team-card">
+                                <div class="team-image">
+                                    <img src="/assets/img/team/maros.jpg" class="img-fluid" loading="lazy" alt="Maros">
+                                    <div class="team-overlay">
+                                        <p>Als Vater hat er persönlich jeden Bildschirmzeit-Streit verloren — bis jetzt. Außerdem ist er Supply-Chain-Profi, weshalb WhiteCat pünktlich gebaut und geliefert wird.</p>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h4>Maros</h4><span class="position">Lieferkette &amp; Einkauf</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="team-card">
+                                <div class="team-image">
+                                    <img src="/assets/img/Good%20Sailors%20by%20M2C%20Logo.png" class="img-fluid" loading="lazy" alt="">
+                                    <div class="team-overlay">
+                                        <p>Engineering-Partner — Firmware, Backend, moderne Cloud-Systeme.</p>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h4>Good Sailors</h4><span class="position">Software-Partner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <div style="height:60px; background:linear-gradient(to bottom, #ffffff, #f4f4f9);"></div>
+
+            <section id="call-to-action-2" class="services section light-background">
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Was steckt drin?</h2>
+                    <p>Ein Router, gebaut für Familien — nicht für Rechenzentren. Schnell, leise und smart genug für dein ganzes Zuhause.</p>
+                </div>
+                <div class="container">
+                    <div class="row g-5 align-items-center">
+                        <!-- Router image left -->
+                        <div class="col-lg-5 text-center" data-aos="fade-right" style="position:relative;">
+                            <div style="position:absolute; inset:-40px; background:radial-gradient(ellipse at center, rgba(93,87,244,0.08) 0%, transparent 65%); pointer-events:none;"></div>
+                            <img src="/assets/img/back.png" alt="WhiteCat Router" class="img-fluid rounded-4" loading="lazy" style="position:relative;">
+                        </div>
+                        <!-- Feature cards right -->
+                        <div class="col-lg-7" data-aos="fade-left">
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                <div class="service-item">
+                                    <div class="service-icon"><i class="bi bi-wifi"></i></div>
+                                    <div class="service-content">
+                                        <h3>Schnell für alle</h3>
+                                        <p>Wi-Fi 6 AX3000 — 4K-Streaming, Gaming, Videocalls und Hausaufgaben gleichzeitig, ohne Geschwindigkeitsverlust.</p>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <div class="service-icon"><i class="bi bi-cpu"></i></div>
+                                    <div class="service-content">
+                                        <h3>Regeln direkt am Gerät</h3>
+                                        <p>Dual-Core 1,3&nbsp;GHz, 512&nbsp;MB RAM. Blockierung passiert lokal in unter 3&nbsp;ms — keine Cloud-Lücke, kein Umgehungsfenster.</p>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <div class="service-icon"><i class="bi bi-plug"></i></div>
+                                    <div class="service-content">
+                                        <h3>Einstecken, leise bleiben</h3>
+                                        <p>Ein Kabel zu deinem Modem — keine Neuverkabelung, kein Techniker. Lüfterlos und leise. Du vergisst, dass er da ist — bis deine Kinder die Regeln nicht mehr umgehen können.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
         <!-- FOOTER -->
-        <!-- COOKIE -->
+
+        <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Nach oben"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+        <div id="preloader"></div>
 
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/assets/js/main.js"></script>
+        <script src="/assets/vendor/aos/aos.js"></script>
+        <script src="/assets/js/main.js?v=4"></script>
+        <!-- COOKIE -->
     </body>
 </html>
