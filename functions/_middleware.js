@@ -87,6 +87,22 @@ export async function onRequest(context) {
 
   const locale = classifyLocale(request);
 
+  // Phase 4: redirect German-speakers from / to /de/ (canonical entry).
+  // Anti-loop: only fires on the root; manual /de/* access always wins;
+  // a cookie override is already respected by classifyLocale above.
+  const isRoot = url.pathname === '/' || url.pathname === '/index.html';
+  const isAlreadyDe = url.pathname === '/de' || url.pathname.startsWith('/de/');
+  if (locale === 'de' && isRoot && !isAlreadyDe) {
+    // Preserve query string so flags like ?eu=1 (preview-mode override) survive
+    return new Response(null, {
+      status: 302,
+      headers: {
+        location: '/de/' + (url.search || ''),
+        'cache-control': 'private, max-age=0',
+      },
+    });
+  }
+
   // Fallback contract: any failure inside the injection block falls through
   // to the raw upstream HTML (markers are HTML comments → invisible to users).
   // Never serve a 500 from the Function — degrade silently.
