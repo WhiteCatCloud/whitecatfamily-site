@@ -1,0 +1,19 @@
+{
+  "name": "whitecatfamily-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WhiteCat Family marketing site — Cloudflare Pages, vanilla HTML.",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "dev": "npm run build && wrangler pages dev public --compatibility-date=2024-10-22",
+    "check:forbidden": "bash scripts/check-forbidden-strings.sh",
+    "check:markers": "bash scripts/check-markers-present.sh",
+    "check:permanent": "bash scripts/check-permanent-urls.sh",
+    "check": "npm run check:forbidden && npm run check:markers && npm run check:permanent",
+    "smoke:geo": "bash scripts/smoke-geo.sh",
+    "test": "npm run check"
+  },
+  "devDependencies": {
+    "wrangler": "^3.80.0"
+  }
+}
