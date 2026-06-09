@@ -1,8 +1,14 @@
 // functions/_middleware.js
 // Cloudflare Pages Function — runs on every request.
 //
-// Phase 1: classify locale from cf-ipcountry + cookie. No content injection yet.
-// Phase 2+ adds marker replacement INSIDE the existing try block.
+// Phase 1: classify locale from cf-ipcountry + cookie. No content injection.
+// Phase 2: injects locale-appropriate footer via <!-- FOOTER --> marker.
+// Phase 3+ adds CTA-AMAZON, COOKIE, LOCALE-SWITCH, HREFLANG markers.
+//
+// Every marker swap MUST be inside the try block so a partial fetch failure
+// degrades to raw HTML (markers are invisible comments).
+
+import { loadPartials } from './_partials.js';
 //
 // Rollout: gated by EU_LAUNCH_ENABLED env var. Without it set to "true" on prod,
 // this Function is a pure pass-through. Override per-request with ?eu=1 for
@@ -23,6 +29,12 @@ function readCookie(req, name) {
   const cookie = req.headers.get('cookie') || '';
   const match = cookie.match(new RegExp('(?:^|; )' + name + '=([^;]+)'));
   return match ? decodeURIComponent(match[1]) : null;
+}
+
+function footerFor(locale) {
+  if (locale === 'de') return 'footer-eu-de';
+  if (locale === 'en-EU') return 'footer-eu-en';
+  return 'footer-us';
 }
 
 function classifyLocale(req) {
@@ -79,14 +91,16 @@ export async function onRequest(context) {
     if (!contentType.includes('text/html')) return upstream;
 
     let html = await upstream.text();
+    const partials = await loadPartials(env);
 
-    // Phase 1: set data-locale attribute only; no other injection.
-    // Use replaceAll for marker swaps in later phases (NOT replace) — markers
-    // may legitimately appear more than once on a page (e.g. multiple CTAs).
+    // <html data-locale="..."> — single-replace (only one <html> per page)
     html = html.replace(/<html(\s[^>]*)?>/i, (m, attrs) => {
       const cleaned = (attrs || '').replace(/\s+data-locale="[^"]*"/g, '');
       return `<html${cleaned} data-locale="${locale}">`;
     });
+
+    // Marker swaps — use replaceAll (markers may appear multiple times).
+    html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
 
     return new Response(html, {
       status: upstream.status,

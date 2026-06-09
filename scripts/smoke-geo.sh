@@ -47,5 +47,29 @@ if [ "$status" != "200" ]; then
 fi
 echo "PASS  DE visitor at /  →  200 (no redirect in Phase 1)"
 
+# Phase 2: footer injection
+check_footer() {
+  local label="$1" country="$2" expected_marker="$3"
+  body=$(curl -sS -H "CF-IPCountry: $country" "$BASE/$Q")
+  if echo "$body" | grep -qF "$expected_marker"; then
+    echo "PASS  $label footer present"
+  else
+    echo "FAIL  $label footer missing ($expected_marker)"
+    exit 1
+  fi
+}
+
+check_footer "US"    US  "White Cat Cloud Inc."
+check_footer "EU-EN" FR  "Cluster s.r.o."
+check_footer "EU-EN" FR  "Sold in the European Union"
+check_footer "EU-DE" DE  "Verkauft in der Europäischen Union"
+check_footer "EU-DE" DE  "USt-IdNr.: SK2023158368"
+
+# Marker leak check
+if curl -sS -H 'CF-IPCountry: US' "$BASE/$Q" | grep -qF '<!-- FOOTER -->'; then
+  echo "FAIL  raw FOOTER marker leaked to response"; exit 1
+fi
+echo "PASS  no FOOTER marker leak"
+
 echo
-echo "All geo classifier smoke tests passed."
+echo "All geo + footer smoke tests passed."
