@@ -4,15 +4,11 @@
 set -euo pipefail
 
 FORBIDDEN=(
-  '\$79\b'
-  '\$1\.99'
-  '\$5\.99'
-  '\$8\.99'
-  '\$[0-9]+\.[0-9]+/(mo|month)\b'
-  '\b[0-9]+\.[0-9]+ ?/ ?(mo|month)\b'
-  'Reserve Yours'
+  '\$79\b'          # original pre-order reservation price — never coming back
+  'Reserve Yours'   # pre-order CTA — pricing strategy shifted to subscription
 )
-# Note: anchored to actual price contexts so 'monitoring', 'mode', 'mom', etc. don't false-positive.
+# Note: legitimate subscription pricing (e.g. $4.99/month, €4,99/Monat) is now
+# allowed. If a pricing-removal phase comes back, restore the patterns here.
 
 PATHS=()
 [ -d public ] && PATHS+=(public/)
