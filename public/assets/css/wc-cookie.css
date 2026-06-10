@@ -21,3 +21,23 @@
 body:has(#wc-cookie-banner:not([hidden])) #scroll-top {
   display: none !important;
 }
+
+/* Subscribe-in-app CTA: solid, never washed out. White button on the popular
+   (purple-background) card so it's actually visible. */
+.cta-subscribe-btn {
+  opacity: 1 !important;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+}
+.pricing-card.popular .cta-subscribe-btn {
+  background: #fff !important;
+  color: #5d57f4 !important;
+  border-color: #fff !important;
+}
+.pricing-card.popular .cta-subscribe-btn:hover {
+  background: #f3f0ff !important;
+  color: #5d57f4 !important;
+}
