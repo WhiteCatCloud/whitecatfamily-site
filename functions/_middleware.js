@@ -76,6 +76,13 @@ const REVERSE_BASENAMES = Object.fromEntries(
   Object.entries(TRANSLATED_BASENAMES).map(([en, de]) => [de, en])
 );
 
+// EN root pages that have a published /de/ counterpart. Pages outside this
+// set get no DE hreflang (pointing hreflang at a 404 is an SEO error).
+const DE_PAIRED_BASES = new Set([
+  'faq', 'privacy', 'terms', 'impressum', 'opensource', 'accessibility',
+  'guide', 'doc', 'thankyou',
+]);
+
 // Returns canonical paths for each available locale, given the current pathname.
 // Used for both the locale switcher and hreflang link tags. A value of null
 // means the locale isn't published for this page yet (e.g. /fr/faq doesn't
@@ -102,12 +109,14 @@ function buildLocaleUrls(pathname) {
       return { 'en-US': '/', 'en-EU': '/en/', de: pathname, fr: '/fr/', sk: '/sk/' };
     }
     const enBase = REVERSE_BASENAMES[base] || base;
+    // Only the DE homepage has EU-EN/FR/SK counterparts; secondary DE pages
+    // pair with their EN-US original only.
     return {
       'en-US': '/' + enBase,
-      'en-EU': '/en/' + (enBase === 'index' ? '' : enBase),
+      'en-EU': null,
       de: pathname,
-      fr: '/fr/',
-      sk: '/sk/',
+      fr: null,
+      sk: null,
     };
   }
 
@@ -137,14 +146,17 @@ function buildLocaleUrls(pathname) {
     };
   }
 
-  // EN-US side (root path like /faq, /privacy, etc.)
+  // EN-US side (root path like /faq, /privacy, etc.). Only /en/ (homepage)
+  // exists on the EU-EN side, and FR/SK are homepage-only — emitting their
+  // homepage as an "alternate" of a secondary page is an hreflang error, so
+  // unpaired locales return null and the hreflang filter drops them.
   const base = pathname.replace(/^\//, '').replace(/\.html$/, '');
   return {
     'en-US': pathname,
-    'en-EU': '/en/' + base,
-    de: '/de/' + (TRANSLATED_BASENAMES[base] || base),
-    fr: '/fr/',
-    sk: '/sk/',
+    'en-EU': null,
+    de: DE_PAIRED_BASES.has(base) ? '/de/' + (TRANSLATED_BASENAMES[base] || base) : null,
+    fr: null,
+    sk: null,
   };
 }
 

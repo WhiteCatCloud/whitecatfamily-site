@@ -158,7 +158,7 @@ ids.forEach(id => {
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
       <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-        <img src="/assets/img/Image%2010-26-25%20at%2017.31.png" alt="WhiteCat Family Logo">
+        <img src="/assets/img/logo.png" alt="WhiteCat Family Logo">
         <h1 class="sitename">WhiteCat Family</h1><span>.</span>
       </a>
       <nav id="navmenu" class="navmenu">
