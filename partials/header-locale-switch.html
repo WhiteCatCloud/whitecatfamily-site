@@ -1,17 +1,36 @@
-<nav class="wc-locale-switch d-flex align-items-center gap-2" aria-label="Language" style="font-size:0.85rem;">
-  <a href="{{US_URL}}" data-locale="en-US" rel="alternate" class="text-muted text-decoration-none" title="USA / English">🇺🇸</a>
-  <span class="text-muted" aria-hidden="true">·</span>
-  <a href="{{EN_URL}}" data-locale="en-EU" rel="alternate" hreflang="en" class="text-muted text-decoration-none" title="EU / English">🇪🇺 EN</a>
-  <span class="text-muted" aria-hidden="true">·</span>
-  <a href="{{DE_URL}}" data-locale="de" rel="alternate" hreflang="de" class="text-muted text-decoration-none" title="Deutsch">🇩🇪 DE</a>
-  <span class="text-muted" aria-hidden="true">·</span>
-  <a href="{{FR_URL}}" data-locale="fr" rel="alternate" hreflang="fr" class="text-muted text-decoration-none" title="Français">🇫🇷 FR</a>
-  <span class="text-muted" aria-hidden="true">·</span>
-  <a href="{{SK_URL}}" data-locale="sk" rel="alternate" hreflang="sk" class="text-muted text-decoration-none" title="Slovenčina">🇸🇰 SK</a>
-</nav>
+<div class="wc-locale-switch dropdown" style="position:absolute; top:0.6rem; right:0.6rem; z-index:1050;">
+  <button class="btn btn-sm dropdown-toggle wc-locale-trigger" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Language">
+    <span class="wc-locale-current">🌐</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.88rem; min-width:auto;">
+    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{US_URL}}" data-locale="en-US">🇺🇸 <span>English (US)</span></a></li>
+    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{EN_URL}}" data-locale="en-EU">🇪🇺 <span>English (EU)</span></a></li>
+    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{DE_URL}}" data-locale="de">🇩🇪 <span>Deutsch</span></a></li>
+    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{FR_URL}}" data-locale="fr">🇫🇷 <span>Français</span></a></li>
+    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{SK_URL}}" data-locale="sk">🇸🇰 <span>Slovenčina</span></a></li>
+  </ul>
+</div>
+<style>
+.wc-locale-trigger {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 0.25rem 0.55rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+.wc-locale-trigger:hover { background: #fff; }
+.wc-locale-trigger::after { font-size: 0.65rem; margin-left: 0.3rem; }
+.wc-locale-current { font-size: 1.05rem; }
+</style>
 <script>
 (function () {
-  document.querySelectorAll('.wc-locale-switch a').forEach(function (a) {
+  // Reflect the current locale in the trigger button (flag only).
+  var FLAGS = { 'en-US': '🇺🇸', 'en-EU': '🇪🇺', 'de': '🇩🇪', 'fr': '🇫🇷', 'sk': '🇸🇰' };
+  var current = document.documentElement.dataset.locale || 'en-US';
+  var label = document.querySelector('.wc-locale-current');
+  if (label && FLAGS[current]) label.textContent = FLAGS[current];
+  document.querySelectorAll('.wc-locale-switch .dropdown-item').forEach(function (a) {
     a.addEventListener('click', function () {
       var locale = a.dataset.locale || 'en-US';
       document.cookie = 'wc_locale=' + locale + '; max-age=' + (365 * 24 * 3600) + '; path=/; samesite=lax';

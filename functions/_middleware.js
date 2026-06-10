@@ -35,16 +35,31 @@ function readCookie(req, name) {
 
 function footerFor(locale) {
   if (locale === 'de') return 'footer-eu-de';
+  if (locale === 'fr') return 'footer-eu-fr';
+  if (locale === 'sk') return 'footer-eu-sk';
   if (locale === 'en-EU') return 'footer-eu-en';
   return 'footer-us';
 }
 
 function ctaFor(locale) {
-  return locale === 'de' ? 'cta-amazon-de' : 'cta-amazon-en';
+  if (locale === 'de') return 'cta-amazon-de';
+  if (locale === 'fr') return 'cta-amazon-fr';
+  if (locale === 'sk') return 'cta-amazon-sk';
+  return 'cta-amazon-en';
+}
+
+function subscribeFor(locale) {
+  if (locale === 'de') return 'cta-subscribe-de';
+  if (locale === 'fr') return 'cta-subscribe-fr';
+  if (locale === 'sk') return 'cta-subscribe-sk';
+  return 'cta-subscribe-en';
 }
 
 function cookieFor(locale) {
-  return locale === 'de' ? 'cookie-banner-de' : 'cookie-banner-en';
+  if (locale === 'de') return 'cookie-banner-de';
+  if (locale === 'fr') return 'cookie-banner-fr';
+  if (locale === 'sk') return 'cookie-banner-sk';
+  return 'cookie-banner-en';
 }
 
 // EN-side pages with translated /de/ filenames (privacy → datenschutz, etc.).
@@ -261,6 +276,7 @@ export async function onRequest(context) {
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
     const cta = (partials[ctaFor(locale)] || '').replace('{{AMAZON_URL}}', amazonUrlFor(locale, env));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
+    html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
 
     // Phase 8 (5-locale): locale switcher + hreflang
