@@ -13,7 +13,6 @@ const PARTIAL_NAMES = [
   'cta-amazon-en', 'cta-amazon-de', 'cta-amazon-fr', 'cta-amazon-sk',
   'cta-subscribe-en', 'cta-subscribe-de', 'cta-subscribe-fr', 'cta-subscribe-sk',
   'header-locale-switch',
-  'hreflang',
 ];
 
 export async function loadPartials(env) {
