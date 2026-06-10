@@ -1,40 +1,46 @@
-<div class="wc-locale-switch dropdown" style="position:absolute; top:0.6rem; right:0.6rem; z-index:1050;">
-  <button class="btn btn-sm dropdown-toggle wc-locale-trigger" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Language">
-    <span class="wc-locale-current">🌐</span>
-  </button>
-  <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.88rem; min-width:auto;">
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{US_URL}}" data-locale="en-US">🇺🇸 <span>English (US)</span></a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{EN_URL}}" data-locale="en-EU">🇪🇺 <span>English (EU)</span></a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{DE_URL}}" data-locale="de">🇩🇪 <span>Deutsch</span></a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{FR_URL}}" data-locale="fr">🇫🇷 <span>Français</span></a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{SK_URL}}" data-locale="sk">🇸🇰 <span>Slovenčina</span></a></li>
-  </ul>
-</div>
+<li class="wc-locale-item">
+  <select class="wc-locale-select" aria-label="Language">
+    <option value="en-US" data-href="{{US_URL}}">🇺🇸 English (US)</option>
+    <option value="en-EU" data-href="{{EN_URL}}">🇪🇺 English (EU)</option>
+    <option value="de"    data-href="{{DE_URL}}">🇩🇪 Deutsch</option>
+    <option value="fr"    data-href="{{FR_URL}}">🇫🇷 Français</option>
+    <option value="sk"    data-href="{{SK_URL}}">🇸🇰 Slovenčina</option>
+  </select>
+</li>
 <style>
-.wc-locale-trigger {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(0,0,0,0.08);
-  padding: 0.25rem 0.55rem;
-  font-size: 1rem;
-  line-height: 1;
+.wc-locale-item {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
 }
-.wc-locale-trigger:hover { background: #fff; }
-.wc-locale-trigger::after { font-size: 0.65rem; margin-left: 0.3rem; }
-.wc-locale-current { font-size: 1.05rem; }
+.wc-locale-select {
+  appearance: auto;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  max-width: 180px;
+}
+.wc-locale-select:hover { border-color: rgba(0, 0, 0, 0.35); }
+.wc-locale-select:focus { outline: 2px solid #5d57f4; outline-offset: 1px; }
 </style>
 <script>
 (function () {
-  // Reflect the current locale in the trigger button (flag only).
-  var FLAGS = { 'en-US': '🇺🇸', 'en-EU': '🇪🇺', 'de': '🇩🇪', 'fr': '🇫🇷', 'sk': '🇸🇰' };
+  var sel = document.querySelector('.wc-locale-select');
+  if (!sel) return;
   var current = document.documentElement.dataset.locale || 'en-US';
-  var label = document.querySelector('.wc-locale-current');
-  if (label && FLAGS[current]) label.textContent = FLAGS[current];
-  document.querySelectorAll('.wc-locale-switch .dropdown-item').forEach(function (a) {
-    a.addEventListener('click', function () {
-      var locale = a.dataset.locale || 'en-US';
-      document.cookie = 'wc_locale=' + locale + '; max-age=' + (365 * 24 * 3600) + '; path=/; samesite=lax';
-    });
+  sel.value = current;
+  sel.addEventListener('change', function () {
+    var opt = sel.options[sel.selectedIndex];
+    var href = opt.dataset.href;
+    document.cookie =
+      'wc_locale=' + sel.value + '; max-age=' + (365 * 24 * 3600) + '; path=/; samesite=lax';
+    if (href) window.location.href = href;
   });
 })();
 </script>
