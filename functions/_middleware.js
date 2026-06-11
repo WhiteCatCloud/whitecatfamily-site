@@ -10,9 +10,9 @@
 
 import { loadPartials } from './_partials.js';
 //
-// Rollout: gated by EU_LAUNCH_ENABLED env var. Without it set to "true" on prod,
-// this Function is a pure pass-through. Override per-request with ?eu=1 for
-// preview testing.
+// Rollout: launched 2026-06-10 — enabled by default everywhere. Set
+// EU_LAUNCH_ENABLED=false in the Pages env to kill-switch back to
+// pass-through (markers stay invisible comments, no redirect).
 
 const EU_GERMAN_SPEAKING = new Set(['DE', 'AT']);
 const EU_FRENCH_SPEAKING = new Set(['FR', 'MC']);
@@ -208,16 +208,15 @@ export async function onRequest(context) {
   const { request, next, env } = context;
   const url = new URL(request.url);
 
-  // Rollout gate: auto-active on canary + any preview host so we can test
-  // without setting an env var; production must explicitly opt in via
-  // EU_LAUNCH_ENABLED=true. ?eu=1 forces on anywhere for ad-hoc smoke tests.
+  // Launched: enabled by default. EU_LAUNCH_ENABLED=false is the kill switch;
+  // preview hosts and ?eu=1 stay enabled even then for testing.
   const host = url.host;
   const isPreviewHost =
     host.startsWith('canary.') ||
     host.endsWith('.pages.dev') ||
     host === 'localhost' || host.startsWith('localhost:');
   const enabled =
-    env.EU_LAUNCH_ENABLED === 'true' ||
+    env.EU_LAUNCH_ENABLED !== 'false' ||
     url.searchParams.get('eu') === '1' ||
     isPreviewHost;
   if (!enabled) return next();
