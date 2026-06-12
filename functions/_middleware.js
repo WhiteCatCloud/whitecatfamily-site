@@ -171,10 +171,12 @@ function makeAbsolute(host, p) {
 }
 
 function amazonUrlFor(locale, env) {
-  if (locale === 'de' || locale === 'en-EU') {
-    return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/stores/WhiteCat';
+  // All EU locales buy on Amazon.de (their CTAs say "Amazon.de"); only en-US
+  // goes to Amazon.com.
+  if (locale === 'en-US') {
+    return env.WHITECAT_AMAZON_US_URL || 'https://www.amazon.com/stores/WhiteCat';
   }
-  return env.WHITECAT_AMAZON_US_URL || 'https://www.amazon.com/stores/WhiteCat';
+  return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/stores/WhiteCat';
 }
 
 function classifyLocale(req) {
