@@ -223,15 +223,20 @@ export async function onRequest(context) {
     isPreviewHost;
   if (!enabled) return next();
 
-  // Bypass non-HTML: assets, images, fonts, etc.
-  // Heuristic: only act on paths that end with '/', '.html', or look like a clean
-  // single-segment route ('/de', '/faq', etc.).
-  if (
-    !url.pathname.endsWith('/') &&
-    !url.pathname.endsWith('.html') &&
-    url.pathname !== '/' &&
-    !/^\/[a-z][a-z-]*$/i.test(url.pathname.split('?')[0])
-  ) {
+  // Bypass non-HTML assets (images, css, js, fonts, sitemap.xml, robots.txt).
+  // A path is an HTML route if it is the root, ends with '/' (directory index),
+  // ends with '.html', or is EXTENSIONLESS — i.e. its last segment has no dot.
+  // Extensionless covers every clean URL at any depth: '/faq', '/de/faq',
+  // '/digital-heroin/<slug>'. The previous single-segment regex wrongly
+  // bypassed every multi-segment clean URL, so /de/* and /digital-heroin/*
+  // shipped with unreplaced FOOTER/COOKIE/HREFLANG markers.
+  const lastSegment = url.pathname.split('?')[0].split('/').pop();
+  const isHtmlRoute =
+    url.pathname === '/' ||
+    url.pathname.endsWith('/') ||
+    url.pathname.endsWith('.html') ||
+    !lastSegment.includes('.');
+  if (!isHtmlRoute) {
     return next();
   }
 
@@ -329,6 +334,9 @@ export async function onRequest(context) {
         // Per-visitor injection makes HTML uncacheable at the edge.
         // Static assets bypass this Function entirely and remain CDN-cached.
         'cache-control': 'private, max-age=0, must-revalidate',
+        // Injected content varies by the wc_locale cookie (and geo); declare it
+        // so no future edge cache can serve one locale's render to another.
+        'vary': 'Cookie',
       },
     });
   } catch (err) {
