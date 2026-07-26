@@ -7,7 +7,7 @@ FORBIDDEN=(
   '\$79\b'          # original pre-order reservation price — never coming back
   'Reserve Yours'   # pre-order CTA — pricing strategy shifted to subscription
 )
-# Note: legitimate subscription pricing (e.g. $4.99/month, €4,99/Monat) is now
+# Note: legitimate subscription pricing (e.g. $5.99/month, €5,99/Monat) is now
 # allowed. If a pricing-removal phase comes back, restore the patterns here.
 
 PATHS=()
