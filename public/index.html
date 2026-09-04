@@ -266,28 +266,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-wrap gap-3 justify-content-center">
-                                <div class="d-inline-flex flex-column align-items-center">
-                                    <a class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3 disabled" style="opacity:0.55; pointer-events:none;" aria-disabled="true" tabindex="-1">
-                                        <i class="bi bi-apple fs-4 me-2" aria-hidden="true"></i>
-                                        <div class="text-start">
-                                            <small class="d-block" style="font-size:0.65rem; line-height:1;">Download on the</small>
-                                            <span class="fw-bold" style="line-height:1;">App Store</span>
-                                        </div>
-                                    </a>
-                                    <small class="text-muted mt-1" style="font-size:0.7rem;">Coming Soon</small>
-                                </div>
-                                <div class="d-inline-flex flex-column align-items-center">
-                                    <a class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3 disabled" style="opacity:0.55; pointer-events:none;" aria-disabled="true" tabindex="-1">
-                                        <i class="bi bi-google-play fs-4 me-2" aria-hidden="true"></i>
-                                        <div class="text-start">
-                                            <small class="d-block" style="font-size:0.65rem; line-height:1;">GET IT ON</small>
-                                            <span class="fw-bold" style="line-height:1;">Google Play</span>
-                                        </div>
-                                    </a>
-                                    <small class="text-muted mt-1" style="font-size:0.7rem;">Coming Soon</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -404,6 +382,68 @@
                     </div>
                 </div>
             </section>
+
+
+            <!-- US waitlist modal. The US cannot buy hardware: FCC certification is
+                 pending and the Mar-2026 import ban covers Chinese-made routers. The
+                 en-US CTA partial (cta-notify-us) is the only thing that opens this,
+                 so the modal ships on this page alone. Posts to the existing
+                 /reserve Function -> LEADS_QUEUE -> sales@whitecatcloud.com. -->
+            <div class="modal fade" id="notifyModal" tabindex="-1" aria-labelledby="notifyModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="border-radius:16px; border:none; box-shadow:0 8px 40px rgba(0,0,0,0.15);">
+                        <div class="modal-header border-0 pb-0">
+                            <div>
+                                <h5 class="modal-title fw-bold" id="notifyModalLabel" style="font-size:1.3rem;">We'll tell you when it's ready.</h5>
+                                <p class="text-muted mb-0" style="font-size:0.9rem;">WhiteCat isn't cleared for sale in the US yet. No spam, no drip campaign &mdash; one email when it is.</p>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body pt-3" id="notifyModalBody">
+                            <form id="notifyForm">
+                                <div class="mb-3">
+                                    <label for="notifyName" class="form-label fw-semibold">Your name</label>
+                                    <input id="notifyName" type="text" name="name" class="form-control form-control-lg" placeholder="Jane Smith" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="notifyEmail" class="form-label fw-semibold">Email address</label>
+                                    <input id="notifyEmail" type="email" name="email" class="form-control form-control-lg" placeholder="jane@example.com" required>
+                                </div>
+                                <input type="hidden" name="plan" value="US waitlist - FCC pending">
+                                <input type="hidden" name="locale" value="en-US">
+                                <button type="submit" class="btn w-100 py-3 fw-bold" style="font-size:1.05rem; background-color:#5d57f4; border-color:#5d57f4; color:#fff;">Keep me posted</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                (function () {
+                    var FLAG = 'wc_notify_us';
+                    var body = document.getElementById('notifyModalBody');
+                    var thanks = '<div class="text-center py-4">' +
+                        '<div style="width:72px;height:72px;border-radius:50%;background:color-mix(in srgb,#5d57f4,transparent 88%);color:#5d57f4;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">' +
+                        '<i class="bi bi-check-lg" style="font-size:2.2rem;"></i></div>' +
+                        '<h5 class="fw-bold mb-2">You\'re on the list.</h5>' +
+                        '<p class="text-muted mb-0">We\'ll be in touch personally the moment WhiteCat is cleared for the US.</p></div>';
+
+                    document.getElementById('notifyModal').addEventListener('show.bs.modal', function () {
+                        try { if (localStorage.getItem(FLAG)) body.innerHTML = thanks; } catch (e) {}
+                    });
+
+                    document.getElementById('notifyForm').addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        var data = new FormData(this);
+                        try {
+                            var utm = JSON.parse(localStorage.getItem('wc_utm') || '{}');
+                            Object.keys(utm).forEach(function (k) { data.append(k, utm[k]); });
+                        } catch (err) {}
+                        fetch('/reserve', { method: 'POST', body: data });
+                        try { localStorage.setItem(FLAG, '1'); } catch (err) {}
+                        body.innerHTML = thanks;
+                    });
+                })();
+            </script>
 
         </main>
 

@@ -42,6 +42,10 @@ function footerFor(locale) {
 }
 
 function ctaFor(locale) {
+  // The US cannot buy hardware at all - FCC certification is pending and the
+  // March 2026 import ban covers Chinese-made routers - so en-US gets an email
+  // capture instead of any storefront link.
+  if (locale === 'en-US') return 'cta-notify-us';
   if (locale === 'de') return 'cta-amazon-de';
   if (locale === 'fr') return 'cta-amazon-fr';
   if (locale === 'sk') return 'cta-amazon-sk';
@@ -170,13 +174,22 @@ function makeAbsolute(host, p) {
   return p ? `https://${host}${p}` : null;
 }
 
-function amazonUrlFor(locale, env) {
-  // All EU locales buy on Amazon.de (their CTAs say "Amazon.de"); only en-US
-  // goes to Amazon.com.
-  if (locale === 'en-US') {
-    return env.WHITECAT_AMAZON_US_URL || 'https://www.amazon.com/stores/WhiteCat';
-  }
-  return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/stores/WhiteCat';
+// Amazon.de is the only Amazon storefront we have. There is no US listing and
+// there will not be one while the FCC import ban stands, so en-US never reaches
+// this (see ctaFor).
+//
+// The fallback is a brand SEARCH, not a /stores/ path. /stores/<Brand> only
+// resolves once a Brand Store has actually been built under Brand Registry;
+// hardcoding it shipped a 404 on every locale's primary CTA. A search URL is
+// always 200 and starts returning the product the moment the listing goes live.
+function amazonUrlFor(env) {
+  return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/s?k=WhiteCat+Family';
+}
+
+// Direct checkout for buyers outside Germany (AT, CZ, PL, SK). Until the Stripe
+// payment link exists, degrade to email rather than to a dead link.
+function stripeUrlFor(env) {
+  return env.WHITECAT_STRIPE_URL || 'mailto:sales@whitecatcloud.com';
 }
 
 function classifyLocale(req) {
@@ -292,7 +305,9 @@ export async function onRequest(context) {
 
     // Marker swaps — use replaceAll (markers may appear multiple times).
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
-    const cta = (partials[ctaFor(locale)] || '').replace('{{AMAZON_URL}}', amazonUrlFor(locale, env));
+    const cta = (partials[ctaFor(locale)] || '')
+      .replaceAll('{{AMAZON_URL}}', amazonUrlFor(env))
+      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
