@@ -15,7 +15,10 @@
 .wc-step-b h2 { font-size: 1.25rem; margin: .15rem 0 .5rem; }
 
 .wc-shot {
-  max-width: 220px; width: 100%; border-radius: 14px;
+  /* width/height attributes on the <img> reserve layout space (no CLS), but the
+     height attribute would stretch the image once CSS caps the width — height
+     must be auto to keep the aspect ratio. */
+  max-width: 220px; width: 100%; height: auto; border-radius: 14px;
   border: 1px solid #e6e6ef; box-shadow: 0 6px 22px rgba(0,0,0,.08);
 }
 .wc-shot-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 .25rem; }
