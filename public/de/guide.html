@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <!--
   PERMANENT URL: /de/guide
-  Diese URL ist auf der Verpackung und im App-Onboarding aufgedruckt.
-  NIEMALS umbenennen. NIEMALS 404. NIEMALS umleiten.
+  This URL is printed on physical product packaging and in-app onboarding.
+  NEVER rename. NEVER 404. NEVER redirect away.
+
+  Written phone-first on purpose: almost everyone arrives here by scanning the
+  QR code on the box, so they are already holding the phone they need to
+  install the app on. Store buttons are tappable and come first; the QR block
+  is hidden under 576px because you cannot scan a code with the phone that is
+  displaying it.
+
+  Scope: onboarding only. Everything after "it works" lives on /de/faq.
+  In-app labels are quoted from the app's i18n files — keep them in sync.
 -->
 <html lang="de">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Anleitung – WhiteCat Family</title>
-        <meta name="description" content="Schritt-für-Schritt-Anleitung für den WhiteCat Family Router und die App.">
+        <title>Einrichtung – WhiteCat Family</title>
+        <meta name="description" content="Richte deinen WhiteCat-Router in etwa 10 Minuten ein: anschlie&szlig;en, App installieren, koppeln, Familie anlegen.">
         <link rel="canonical" href="https://whitecatfamily.com/de/guide">
         <!-- HREFLANG -->
         <link href="/assets/img/favicon.png" rel="icon">
         <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="/assets/css/main.css" rel="stylesheet">
+        <link href="/assets/css/wc-guide.css?v=1" rel="stylesheet">
             <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -50,43 +61,86 @@
         </header>
         <main class="main">
             <section class="section">
-                <div class="container" style="max-width:780px;">
-                    <h1 class="mb-4">Einrichtungsanleitung</h1>
-                    <p class="text-muted">Sechs Schritte. Etwa 10 Minuten. Keine IT-Kenntnisse nötig.</p>
+                <div class="container wc-guide">
 
-                    <nav class="mb-4 small">
-                        <a href="#unbox">1. Auspacken &amp; anschließen</a> &middot;
-                        <a href="#app">2. App installieren</a> &middot;
-                        <a href="#pair">3. Router koppeln</a> &middot;
-                        <a href="#family">4. Familienmitglieder anlegen</a> &middot;
-                        <a href="#rule">5. Erste Regel setzen</a> &middot;
-                        <a href="#help">6. Hilfe</a>
-                    </nav>
+                    <h1 class="mb-2">WhiteCat einrichten</h1>
+                    <p class="text-muted">F&uuml;nf Schritte, etwa 10 Minuten. Netzwerkkenntnisse brauchst du keine.</p>
 
-                    <h2 id="unbox">1. Auspacken &amp; anschließen</h2>
-                    <p>In der Verpackung: WhiteCat-Router, Netzteil, Ethernet-Kabel, diese Anleitung. Verbinde das Ethernet-Kabel von deiner Internet-Box (oder dem Glasfaser-Modem) mit dem blauen WAN-Port des Routers. Stromversorgung anschließen. Warte etwa 60 Sekunden, bis die Anzeige durchgehend weiß leuchtet.</p>
-                    <img src="/front.png" alt="Vorderseite des Routers" class="img-fluid my-3" style="max-width:240px;">
+                    <div class="wc-note"><strong>Vorab:</strong> Lass deinen bisherigen Internet-Router (oder das Glasfaser-Modem) angeschlossen. WhiteCat wird dahinter gesteckt und ersetzt ihn nicht.</div>
 
-                    <h2 id="app">2. App installieren</h2>
-                    <p>Suche im App Store oder bei Google Play nach "WhiteCat Family". Öffne die App. Erstelle ein Konto mit deiner E-Mail. Wir verwenden Firebase für die Anmeldung — kein Passwort erforderlich.</p>
+                    <div class="wc-step">
+                        <div class="wc-step-n">1</div>
+                        <div class="wc-step-b">
+                            <h2>Anschlie&szlig;en</h2>
+                            <p>In der Verpackung: der WhiteCat-Router, ein Netzteil und ein Netzwerkkabel.</p><p>Steck das Netzwerkkabel von deinem bisherigen Internet-Router in den <strong>blauen WAN-Anschluss</strong> auf der R&uuml;ckseite des WhiteCat. Danach das Netzteil einstecken.</p><p>Warte etwa 60 Sekunden. Sobald das Licht <strong>durchgehend wei&szlig;</strong> leuchtet, ist er bereit.</p>
+                            <img src="/back.png" alt="R&uuml;ckseite des WhiteCat-Routers mit dem blauen WAN-Anschluss" class="img-fluid my-2" style="max-width:260px;" loading="lazy">
+                        </div>
+                    </div>
 
-                    <h2 id="pair">3. Router koppeln</h2>
-                    <p>Die App führt dich durch den Kopplungsvorgang. Du verbindest dein Telefon für etwa 30 Sekunden mit einem temporären "WhiteCat-Setup"-WLAN. Den Rest übernimmt die App — sie kennt die lokale Adresse des Routers und tauscht die Zugangsdaten aus. Fertig.</p>
+                    <div class="wc-step">
+                        <div class="wc-step-n">2</div>
+                        <div class="wc-step-b">
+                            <h2>App holen</h2>
+                            <p>Alles Weitere l&auml;uft &uuml;ber die App. Sie ist kostenlos.</p>
+                            <div class="wc-store">
+                                <a href="https://apps.apple.com/de/app/id6754770126" class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3" target="_blank" rel="noopener">
+                                    <i class="bi bi-apple fs-4 me-2" aria-hidden="true"></i>
+                                    <div class="text-start">
+                                        <small class="d-block" style="font-size:0.65rem; line-height:1;">Laden im</small>
+                                        <span class="fw-bold" style="line-height:1;">App Store</span>
+                                    </div>
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.whitecatcloud.app&amp;hl=de&amp;gl=DE" class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3" target="_blank" rel="noopener">
+                                    <i class="bi bi-google-play fs-4 me-2" aria-hidden="true"></i>
+                                    <div class="text-start">
+                                        <small class="d-block" style="font-size:0.65rem; line-height:1;">JETZT BEI</small>
+                                        <span class="fw-bold" style="line-height:1;">Google Play</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="wc-qr">
+                                <div class="wc-qr-box"><img src="/assets/img/qr-app.svg" alt="QR-Code zur Installation der WhiteCat-App" width="104" height="104" loading="lazy"></div>
+                                <p class="text-muted mb-0" style="font-size:.9rem;">Du liest das am Computer? Scanne den Code mit der Handykamera — er &ouml;ffnet automatisch den passenden Store.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <h2 id="family">4. Familienmitglieder anlegen</h2>
-                    <p>Geh in der App auf <strong>Mitglieder</strong>. Füge jede Person in deinem Haushalt hinzu: Name, Alter, Profil (Kinder / Erwachsene / Großeltern). Geräte werden automatisch zugeordnet, sobald sie sich erstmals mit eurem WLAN verbinden.</p>
+                    <div class="wc-step">
+                        <div class="wc-step-n">3</div>
+                        <div class="wc-step-b">
+                            <h2>Konto erstellen</h2>
+                            <p>&Ouml;ffne die App und melde dich mit deiner E-Mail-Adresse an. Ein Passwort musst du dir nicht ausdenken — du bekommst einen Link.</p><p>Nimm die Adresse, an die Rechnungen und Hinweise gehen sollen. Einen zweiten Elternteil kannst du sp&auml;ter einladen.</p>
+                        </div>
+                    </div>
 
-                    <h2 id="rule">5. Erste Regel setzen</h2>
-                    <p>Klein anfangen. Probier: "TikTok für Emma an Schultagen blockiert, 20:00 – 7:00 Uhr." Öffne Emmas Profil, tippe auf <strong>Zeitpläne</strong>, füge ein Zeitfenster hinzu, wähle TikTok aus der Dienst-Liste, speichern. Fertig.</p>
+                    <div class="wc-step">
+                        <div class="wc-step-n">4</div>
+                        <div class="wc-step-b">
+                            <h2>Router koppeln</h2>
+                            <p>Die App f&uuml;hrt dich durch. Dein Handy verbindet sich f&uuml;r etwa 30 Sekunden mit einem tempor&auml;ren WLAN namens <span class="wc-key">WhiteCat-Setup</span>, tauscht einen Schl&uuml;ssel mit dem Router aus und wechselt zur&uuml;ck.</p><p>Danach legst du <strong>Netzwerkname (SSID)</strong> und <strong>Passwort</strong> fest — das ist ab jetzt euer Familien-WLAN.</p>
+                            <div class="wc-note">Nimm einen Namen, den du wiedererkennst, und notier dir das Passwort. Im n&auml;chsten Schritt brauchst du es einmal pro Ger&auml;t.</div>
+                        </div>
+                    </div>
 
-                    <h2 id="help">6. Fehlersuche + Hilfe</h2>
-                    <ul>
-                        <li><strong>Kein Internet nach Anschluss?</strong> Prüfe, ob das WAN-Kabel im blauen Port steckt und dein bestehendes Modem online anzeigt.</li>
-                        <li><strong>App koppelt nicht?</strong> Starte den Router neu, versuche es erneut. Wenn es weiterhin hängt, auf Werkseinstellungen zurücksetzen (Reset-Knopf mit Büroklammer 30 Sekunden gedrückt halten, ohne Strom abzuziehen).</li>
-                        <li><strong>Echte Hilfe benötigt?</strong> E-Mail an <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a>. Wir antworten persönlich.</li>
-                    </ul>
+                    <div class="wc-step">
+                        <div class="wc-step-n">5</div>
+                        <div class="wc-step-b">
+                            <h2>Ger&auml;te umziehen</h2>
+                            <p>Verbinde die Ger&auml;te deiner Familie mit dem neuen WhiteCat-WLAN — Tablets, Fernseher, Laptops, Konsolen, Handys. Was noch im alten WLAN h&auml;ngt, ist nicht gesch&uuml;tzt.</p><p>Damit du das Passwort nicht &uuml;berall eintippen musst, zeigt dir die App einen QR-Code: <strong>Ger&auml;te &rarr; WLAN-Netzwerke</strong>, tippe auf dein Netzwerk und halte die Kamera des neuen Ger&auml;ts davor.</p>
+                            <div class="wc-note"><strong>Neue Ger&auml;te sind von Anfang an gefiltert.</strong> Solange ein Ger&auml;t niemandem zugeordnet ist, bleiben soziale Netzwerke, Gaming, Streaming und Erwachsenenseiten darauf gesperrt. Das ist Absicht — w&auml;hrend du noch einrichtest, rutscht nichts durch.</div>
+                        </div>
+                    </div>
 
-                    <p class="text-muted small mt-5">Permanente URL — auf der Verpackung und im App-Onboarding aufgedruckt — nicht umbenennen.</p>
+                    <hr class="my-5">
+
+                    <h2 class="h4">Die Einrichtung ist fertig.</h2>
+                    <p>Dein Zuhause ist bereits gefiltert. Alles Weitere — Familienmitglieder anlegen, einzelne Apps sperren, Schlafenszeiten, 15 Minuten extra — steht auf der Hilfeseite, mit Beispielen zum Nachmachen.</p>
+                    <p class="mt-3"><a href="/de/faq" class="btn btn-primary">Zur Hilfeseite &rarr;</a></p>
+
+                    <h2 class="h5 mt-5">Klappt etwas nicht?</h2>
+                    <ul><li><strong>Kein Internet nach dem Anschlie&szlig;en?</strong> Pr&uuml;f, ob das Kabel im blauen WAN-Anschluss steckt und dein bisheriges Modem noch online ist.</li><li><strong>Die App koppelt nicht?</strong> Starte den Router neu und versuch es erneut. Wenn es weiter klemmt: Halte eine B&uuml;roklammer 30 Sekunden im Reset-Loch — Strom dabei angeschlossen lassen — und fang von vorn an.</li><li><strong>Lieber mit einem Menschen sprechen?</strong> Schreib an <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a>. Wir antworten pers&ouml;nlich.</li></ul>
+
+                    <p class="text-muted small mt-5">Dauerhafte URL, aufgedruckt auf der Verpackung und in der App — nicht umbenennen.</p>
                 </div>
             </section>
         </main>

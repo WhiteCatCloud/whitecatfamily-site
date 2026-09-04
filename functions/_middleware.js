@@ -82,6 +82,12 @@ const REVERSE_BASENAMES = Object.fromEntries(
 
 // EN root pages that have a published /de/ counterpart. Pages outside this
 // set get no DE hreflang (pointing hreflang at a 404 is an SEO error).
+// Bases that now exist in FR and SK too. /guide is the URL printed on the box,
+// so a French or Slovak buyer scanning it must land on their own language and
+// the locale switcher must offer real pages rather than bouncing them home.
+// Add to this set whenever a page is translated into FR/SK.
+const FR_SK_PAIRED_BASES = new Set(['guide', 'faq']);
+
 const DE_PAIRED_BASES = new Set([
   'faq', 'privacy', 'terms', 'impressum', 'opensource', 'accessibility',
   'guide', 'doc', 'thankyou',
@@ -119,20 +125,28 @@ function buildLocaleUrls(pathname) {
       'en-US': '/' + enBase,
       'en-EU': null,
       de: pathname,
-      fr: null,
-      sk: null,
+      fr: FR_SK_PAIRED_BASES.has(enBase) ? '/fr/' + enBase : null,
+      sk: FR_SK_PAIRED_BASES.has(enBase) ? '/sk/' + enBase : null,
     };
   }
 
   if (isFr || isSk) {
-    // FR + SK are homepage-only, anything under them maps back to root variants
-    return {
-      'en-US': '/',
-      'en-EU': '/en/',
-      de: '/de/',
-      fr: '/fr/',
-      sk: '/sk/',
-    };
+    const homes = { 'en-US': '/', 'en-EU': '/en/', de: '/de/', fr: '/fr/', sk: '/sk/' };
+    if (['/fr', '/fr/', '/sk', '/sk/'].includes(pathname)) return homes;
+
+    const base = pathname.replace(/^\/(fr|sk)\//, '').replace(/\.html$/, '');
+    if (FR_SK_PAIRED_BASES.has(base)) {
+      return {
+        'en-US': '/' + base,
+        'en-EU': null,
+        de: '/de/' + (TRANSLATED_BASENAMES[base] || base),
+        fr: '/fr/' + base,
+        sk: '/sk/' + base,
+      };
+    }
+    // Anything else under /fr/ or /sk/ is untranslated — fall back to homepages
+    // rather than emitting an hreflang that 404s.
+    return homes;
   }
 
   if (isEnEU) {
@@ -159,8 +173,8 @@ function buildLocaleUrls(pathname) {
     'en-US': pathname,
     'en-EU': null,
     de: DE_PAIRED_BASES.has(base) ? '/de/' + (TRANSLATED_BASENAMES[base] || base) : null,
-    fr: null,
-    sk: null,
+    fr: FR_SK_PAIRED_BASES.has(base) ? '/fr/' + base : null,
+    sk: FR_SK_PAIRED_BASES.has(base) ? '/sk/' + base : null,
   };
 }
 

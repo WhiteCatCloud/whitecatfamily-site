@@ -11,6 +11,7 @@
         <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="/assets/css/main.css" rel="stylesheet">
+        <link href="/assets/css/wc-guide.css?v=1" rel="stylesheet">
             <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -46,6 +47,244 @@
         </header>
 
         <main class="main">
+            <!-- HOW-TO (de) — generated 2026-09-04. /guide covers onboarding
+                 only; everything after that lives here. In-app labels quoted from
+                 the app i18n files — keep in sync when the app renames one. -->
+            <section class="section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 wc-guide">
+
+                            <h3 class="mb-2">Die App benutzen</h3>
+                            <p class="text-muted">Gerade ausgepackt? Fang mit der <a href="/de/guide">Einrichtung</a> an. Alles hier setzt voraus, dass dein Router schon gekoppelt ist.</p>
+
+                            <div class="wc-note"><strong>WhiteCat steuert euer Heim-WLAN.</strong> Alles, was damit verbunden ist — Tablets, Fernseher, Laptops, Konsolen, Handys — folgt euren Regeln. Ein Handy, das das Haus verl&auml;sst und auf Mobilfunk wechselt, ist nicht mehr in eurem Netz; dorthin reichen die Regeln von zu Hause nicht. Deshalb nutzen die Beispiele unten Tablets, Fernseher und Laptops: Ger&auml;te, die im WLAN bleiben.</div>
+
+                            <div class="mb-4 mt-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-people fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">Familienmitglieder &amp; Ger&auml;te</h4>
+                                </div>
+                                <div class="accordion" id="faqHow_de_m">
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde1">
+                                                Wie f&uuml;ge ich ein Familienmitglied hinzu?
+                                            </button>
+                                        </h2>
+                                        <div id="hde1" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_m">
+                                            <div class="accordion-body"><p>&Ouml;ffne <strong>Familienmitglieder</strong> und tippe auf <strong>Mitglied hinzuf&uuml;gen</strong>. Vergib einen Namen und ein <strong>Profilbild</strong>, damit alle auf einen Blick erkennbar sind.</p><p class="mb-0">Ein Mitglied ist eine Person, kein Ger&auml;t. Die Ger&auml;te ordnest du im n&auml;chsten Schritt zu — genau das sorgt daf&uuml;r, dass eine Regel Tablet, Laptop und Konsole gleichzeitig abdeckt.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde2">
+                                                Wie verbinde ich ein neues Ger&auml;t mit dem WLAN?
+                                            </button>
+                                        </h2>
+                                        <div id="hde2" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_m">
+                                            <div class="accordion-body"><p>Geh zu <strong>Ger&auml;te &rarr; WLAN-Netzwerke</strong> und tippe auf dein Netzwerk. Die App zeigt einen QR-Code — halte die Kamera des neuen Ger&auml;ts davor, und es verbindet sich, ohne dass jemand das Passwort tippt.</p><p class="mb-0">Praktisch beim Tablet der Kinder oder beim Laptop von G&auml;sten, wenn du kein langes Passwort vorlesen willst.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde3">
+                                                Ein neues Ger&auml;t ist aufgetaucht. Wie finde ich heraus, was das ist?
+                                            </button>
+                                        </h2>
+                                        <div id="hde3" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_m">
+                                            <div class="accordion-body"><p>Alles, was ins WLAN kommt, erscheint unter <strong>Ger&auml;te</strong>. WhiteCat errechnet Name und Typ daraus, wie sich das Ger&auml;t meldet — meist steht schon &bdquo;Samsung TV&ldquo; oder &bdquo;iPad&ldquo; da.</p><p>Ist ein Name kryptisch, &ouml;ffne ihn und nutze <strong>Ger&auml;t umbenennen</strong>. Schneller Trick: schalte das WLAN am fraglichen Ger&auml;t aus und schau, welcher Eintrag offline geht.</p><p class="mb-0">Setz dann <strong>Familienmitglied</strong>, um es einer Person zuzuordnen — die Regeln dieser Person gelten sofort.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde4">
+                                                Was passiert mit einem Ger&auml;t, das ich noch nicht zugeordnet habe?
+                                            </button>
+                                        </h2>
+                                        <div id="hde4" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_m">
+                                            <div class="accordion-body"><p class="mb-0">Es bekommt gefiltertes Internet: soziale Netzwerke, Gaming, Streaming und Erwachsenenseiten bleiben gesperrt, bis du es jemandem zuordnest. W&auml;hrend du einrichtest, rutscht nichts durch — ein nicht zugeordnetes Ger&auml;t ist nie weniger eingeschr&auml;nkt als ein zugeordnetes.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde5">
+                                                Was ist ein &bdquo;Prim&auml;res Ger&auml;t&ldquo;?
+                                            </button>
+                                        </h2>
+                                        <div id="hde5" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_m">
+                                            <div class="accordion-body"><p class="mb-0">Das Ger&auml;t, das am besten zeigt, ob jemand zu Hause und online ist — meist das Handy. Der Status dieser Person richtet sich danach. An den Regeln &auml;ndert es nichts.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde6">
+                                                Wie f&uuml;ge ich den anderen Elternteil hinzu?
+                                            </button>
+                                        </h2>
+                                        <div id="hde6" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_m">
+                                            <div class="accordion-body"><p>Erzeuge in der App einen Zugangscode. Er erscheint als QR-Code, den der andere Elternteil mit dem Handy scannt — oder du liest den kurzen Code vor, wenn ihr nicht im selben Raum seid.</p><p class="mb-0">Codes laufen nach 15 Minuten ab. Erzeuge einfach einen neuen. Danach haben beide Eltern volle Kontrolle vom eigenen Handy aus.</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 mt-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-sliders fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">Regeln &amp; Zeitpl&auml;ne</h4>
+                                </div>
+                                <div class="accordion" id="faqHow_de_r">
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde7">
+                                                Was ist der Unterschied zwischen Familienregeln und Mitgliederregeln?
+                                            </button>
+                                        </h2>
+                                        <div id="hde7" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_r">
+                                            <div class="accordion-body"><p><strong>Familienregeln</strong> gelten f&uuml;r alle — die Grundlinie des Haushalts. Erwachsenen&shy;inhalte oder Gl&uuml;cksspiel sperrt man hier.</p><p class="mb-0"><strong>Mitgliederregeln</strong> gelten f&uuml;r eine Person und gewinnen im Konflikt. So kannst du TikTok f&uuml;r die ganze Familie sperren und es f&uuml;r eine Jugendliche wieder erlauben, ohne alle anderen anzufassen.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde8">
+                                                Wie erstelle ich einen Zeitplan?
+                                            </button>
+                                        </h2>
+                                        <div id="hde8" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_r">
+                                            <div class="accordion-body"><p>&Ouml;ffne <strong>Zeitpl&auml;ne</strong> und tippe auf <strong>Zeitplan erstellen</strong>. Gib ihm einen Namen, den du sp&auml;ter wiedererkennst — &bdquo;Schultage&ldquo;, &bdquo;Hausaufgaben&ldquo; — w&auml;hle Tage und Zeitfenster und dann, was gesperrt wird.</p><p class="mb-0">Der letzte Schritt z&auml;hlt: F&uuml;ge unter <strong>Zugewiesene Mitglieder</strong> Personen hinzu. Ein Zeitplan ohne Zuweisung bewirkt nichts — die App sagt dir das auch.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde9">
+                                                Jemand braucht noch ein paar Minuten. Was mache ich?
+                                            </button>
+                                        </h2>
+                                        <div id="hde9" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_r">
+                                            <div class="accordion-body"><p>Tippe auf <strong>+15 Min.</strong> Die aktuelle Sperre wird f&uuml;r diese Person um 15 Minuten nach hinten geschoben, danach l&auml;uft alles von selbst weiter wie vorher.</p><p class="mb-0">Nochmal tippen gibt weitere 15. Es gibt nichts zur&uuml;ckzustellen — gedacht f&uuml;r &bdquo;lass mich das Level fertig spielen&ldquo;, ohne die Regeln zu &ouml;ffnen.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde10">
+                                                Kann ich jemanden sofort abklemmen?
+                                            </button>
+                                        </h2>
+                                        <div id="hde10" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_r">
+                                            <div class="accordion-body"><p class="mb-0">Ja — pausiere das Internet f&uuml;r dieses Mitglied, und alle zugeordneten Ger&auml;te sind sofort offline, bis du es wieder einschaltest. Danach gelten die normalen Regeln unver&auml;ndert weiter.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde11">
+                                                Was macht der Strict Mode?
+                                            </button>
+                                        </h2>
+                                        <div id="hde11" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_r">
+                                            <div class="accordion-body"><p>Er blockiert VPNs und versteckte Tunnel — den &uuml;blichen Weg um einen Filter herum — indem nur ausdr&uuml;cklich freigegebener Verkehr erlaubt wird.</p><p class="mb-0">Das ist die sch&auml;rfste Einstellung und lohnt sich bei einem Kind, das herausgefunden hat, was ein VPN ist. Manche Smart-Home-Ger&auml;te kommen damit nicht klar — schalte ihn deshalb pro Person ein, nicht f&uuml;rs ganze Haus.</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 mt-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-wifi fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">WLAN</h4>
+                                </div>
+                                <div class="accordion" id="faqHow_de_w">
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde12">
+                                                Wie &auml;ndere ich WLAN-Name oder Passwort?
+                                            </button>
+                                        </h2>
+                                        <div id="hde12" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_w">
+                                            <div class="accordion-body"><p>&Ouml;ffne die WLAN-Konfiguration und bearbeite <strong>Netzwerkname (SSID)</strong> oder <strong>Passwort</strong>. Die App bewertet die Passwortst&auml;rke beim Tippen.</p><p class="mb-0">Beides trennt einmal alle Ger&auml;te — sie brauchen dann die neuen Daten. Mach es, wenn niemand mitten im Film sitzt.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde13">
+                                                Kann ich G&auml;sten ein eigenes Netz geben?
+                                            </button>
+                                        </h2>
+                                        <div id="hde13" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_w">
+                                            <div class="accordion-body"><p class="mb-0">Ja — leg ein <strong>Gastnetzwerk</strong> mit eigenem Namen und Passwort an und teile es per QR-Code. G&auml;ste kommen ins Internet, ohne in eurem Familiennetz oder in eurer Ger&auml;teliste aufzutauchen.</p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#hde14">
+                                                Soll ich Kanal oder Sendeleistung &auml;ndern?
+                                            </button>
+                                        </h2>
+                                        <div id="hde14" class="accordion-collapse collapse" data-bs-parent="#faqHow_de_w">
+                                            <div class="accordion-body"><p class="mb-0">Nur bei Problemen. <strong>Auto</strong> sucht selbst einen freien Kanal. &Auml;nderungen trennen die Verbindung kurz, und die orangen Kan&auml;le sind Radar-Kan&auml;le (DFS) — erlaubt, aber das WLAN kann kurz aussetzen, wenn in der N&auml;he ein Radar arbeitet.</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-lightbulb fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">H&auml;ufige Einrichtungen</h4>
+                                </div>
+                                <p class="text-muted">Was Familien zuerst fragen.</p>
+
+                                <div class="wc-recipe">
+                                    <h3>YouTube auf dem Tablet meines Sohnes sperren</h3>
+                                    <ol><li>Stell sicher, dass das Tablet ihm zugeordnet ist: <strong>Ger&auml;te</strong> &rarr; das Tablet &rarr; <strong>Familienmitglied</strong>.</li><li>&Ouml;ffne sein Profil &rarr; <strong>Mitgliederregeln</strong>.</li><li>Such YouTube in der Dienstliste und sperre es.</li></ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Das gilt f&uuml;r alle ihm zugeordneten Ger&auml;te, nicht nur f&uuml;rs Tablet. Soll es nur das Tablet treffen, gib dem Tablet ein eigenes Mitglied.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>Schlafenszeit f&uuml;r die ganze Familie</h3>
+                                    <ol><li><strong>Zeitpl&auml;ne</strong> &rarr; <strong>Zeitplan erstellen</strong>, nenn ihn &bdquo;Nacht&ldquo;.</li><li>Sonntag bis Donnerstag, 21:00 bis 07:00.</li><li>Streaming, Gaming und Social sperren.</li><li>Unter <strong>Zugewiesene Mitglieder</strong> die Kinder hinzuf&uuml;gen — oder alle, wenn die Erwachsenen dieselbe Disziplin wollen.</li></ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Lass den Zeitplan &uuml;ber Mitternacht laufen; den Tageswechsel macht er selbst.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>Fernseher ab 21:00 stoppen, Laptops aber nicht</h3>
+                                    <ol><li>Leg ein Mitglied &bdquo;Wohnzimmer&ldquo; an und ordne ihm den Fernseher zu.</li><li>Erstelle einen Zeitplan 21:00 bis 07:00, der Streaming sperrt.</li><li>Weise ihn nur &bdquo;Wohnzimmer&ldquo; zu.</li></ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Mitglieder m&uuml;ssen keine Personen sein. Ein Raum oder ein einzelnes Ger&auml;t funktioniert genauso, wenn eine Regel eng bleiben soll.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>Keine Gaming-Seiten auf dem Laptop w&auml;hrend der Hausaufgaben</h3>
+                                    <ol><li><strong>Zeitplan erstellen</strong>, nenn ihn &bdquo;Hausaufgaben&ldquo;.</li><li>Montag bis Freitag, 16:00 bis 18:00.</li><li>Gaming sperren — und Social, falls das die eigentliche Ablenkung ist.</li><li>Dem Kind zuweisen.</li></ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Halte das Fenster kurz. Eine Regel, die den ganzen Abend gilt, wird diskutiert; eine, die um sechs endet, nicht.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>&bdquo;Nur noch f&uuml;nf Minuten!&ldquo;</h3>
+                                    <ol><li>&Ouml;ffne die Person in der App.</li><li>Tippe auf <strong>+15 Min.</strong></li></ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">L&auml;uft von selbst ab — du musst nicht daran denken, die Regel zur&uuml;ckzusetzen. Nochmal tippen, wenn du gro&szlig;z&uuml;gig bist.</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="section">
                 <div class="container">
                     <h1 class="mb-4">Häufig gestellte Fragen</h1>

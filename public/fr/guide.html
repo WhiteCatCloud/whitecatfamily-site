@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+  PERMANENT URL: /fr/guide
+  This URL is printed on physical product packaging and in-app onboarding.
+  NEVER rename. NEVER 404. NEVER redirect away.
+
+  Written phone-first on purpose: almost everyone arrives here by scanning the
+  QR code on the box, so they are already holding the phone they need to
+  install the app on. Store buttons are tappable and come first; the QR block
+  is hidden under 576px because you cannot scan a code with the phone that is
+  displaying it.
+
+  Scope: onboarding only. Everything after "it works" lives on /fr/faq.
+  In-app labels are quoted from the app's i18n files — keep them in sync.
+-->
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Guide d&#39;installation – WhiteCat Family</title>
+        <meta name="description" content="Installez votre routeur WhiteCat en 10 minutes environ : branchement, application, appairage et cr&eacute;ation de la famille.">
+        <link rel="canonical" href="https://whitecatfamily.com/fr/guide">
+        <!-- HREFLANG -->
+        <link href="/assets/img/favicon.png" rel="icon">
+        <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link href="/assets/css/wc-guide.css?v=1" rel="stylesheet">
+            <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+          (function(){
+            var m = document.cookie.match(/(?:^|; )wc_consent=([^;]+)/);
+            if (m && m[1] === 'granted') gtag('consent','update',{analytics_storage:'granted'});
+          })();
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6R7922H8N"></script>
+        <script>
+          gtag('js', new Date());
+          gtag('config', 'G-J6R7922H8N');
+        </script>
+        <link rel="stylesheet" href="/assets/css/wc-cookie.css">
+        <script defer src="/assets/js/wc-cookie.js"></script>
+    </head>
+    <body>
+        <header id="header" class="header d-flex align-items-center sticky-top">
+            <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+                <a href="/fr/" class="logo d-flex align-items-center">
+                    <img src="/assets/img/logo.png" alt="WhiteCat Family" style="height:40px;">
+                    <h1 class="sitename">WhiteCat Family</h1><span>.</span>
+                </a>
+                <!-- LOCALE-SWITCH -->
+            </div>
+        </header>
+        <main class="main">
+            <section class="section">
+                <div class="container wc-guide">
+
+                    <h1 class="mb-2">Installez votre WhiteCat</h1>
+                    <p class="text-muted">Cinq &eacute;tapes, une dizaine de minutes. Aucune connaissance en r&eacute;seau n&#39;est n&eacute;cessaire.</p>
+
+                    <div class="wc-note"><strong>Avant de commencer :</strong> laissez votre box internet (ou votre modem fibre) branch&eacute;e. Le WhiteCat se place derri&egrave;re elle, il ne la remplace pas.</div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">1</div>
+                        <div class="wc-step-b">
+                            <h2>Branchez-le</h2>
+                            <p>Dans la bo&icirc;te : le routeur WhiteCat, un adaptateur secteur et un c&acirc;ble Ethernet.</p><p>Reliez votre box internet au <strong>port WAN bleu</strong> &agrave; l&#39;arri&egrave;re du WhiteCat avec le c&acirc;ble Ethernet. Branchez ensuite l&#39;alimentation.</p><p>Patientez environ 60 secondes. Quand le voyant est <strong>blanc fixe</strong>, c&#39;est pr&ecirc;t.</p>
+                            <img src="/back.png" alt="Arri&egrave;re du routeur WhiteCat avec le port WAN bleu" class="img-fluid my-2" style="max-width:260px;" loading="lazy">
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">2</div>
+                        <div class="wc-step-b">
+                            <h2>Installez l&#39;application</h2>
+                            <p>Tout se configure depuis l&#39;application. Elle est gratuite.</p>
+                            <div class="wc-store">
+                                <a href="https://apps.apple.com/fr/app/id6754770126" class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3" target="_blank" rel="noopener">
+                                    <i class="bi bi-apple fs-4 me-2" aria-hidden="true"></i>
+                                    <div class="text-start">
+                                        <small class="d-block" style="font-size:0.65rem; line-height:1;">T&eacute;l&eacute;charger dans l&#39;</small>
+                                        <span class="fw-bold" style="line-height:1;">App Store</span>
+                                    </div>
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.whitecatcloud.app&amp;hl=fr&amp;gl=FR" class="btn btn-secondary d-inline-flex align-items-center px-4 py-2 rounded-3" target="_blank" rel="noopener">
+                                    <i class="bi bi-google-play fs-4 me-2" aria-hidden="true"></i>
+                                    <div class="text-start">
+                                        <small class="d-block" style="font-size:0.65rem; line-height:1;">DISPONIBLE SUR</small>
+                                        <span class="fw-bold" style="line-height:1;">Google Play</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="wc-qr">
+                                <div class="wc-qr-box"><img src="/assets/img/qr-app.svg" alt="QR code pour installer l&#39;application WhiteCat" width="104" height="104" loading="lazy"></div>
+                                <p class="text-muted mb-0" style="font-size:.9rem;">Vous lisez ceci sur un ordinateur ? Scannez avec l&#39;appareil photo de votre t&eacute;l&eacute;phone — le bon store s&#39;ouvre automatiquement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">3</div>
+                        <div class="wc-step-b">
+                            <h2>Cr&eacute;ez votre compte</h2>
+                            <p>Ouvrez l&#39;application et inscrivez-vous avec votre adresse e-mail. Pas de mot de passe &agrave; inventer : nous vous envoyons un lien.</p><p>Utilisez l&#39;adresse qui doit recevoir les re&ccedil;us et les alertes du foyer. Vous pourrez inviter un second parent plus tard.</p>
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">4</div>
+                        <div class="wc-step-b">
+                            <h2>Appairez le routeur</h2>
+                            <p>L&#39;application vous guide. Elle demande &agrave; votre t&eacute;l&eacute;phone de rejoindre un r&eacute;seau Wi-Fi temporaire nomm&eacute; <span class="wc-key">WhiteCat-Setup</span> pendant une trentaine de secondes, &eacute;change une cl&eacute; avec le routeur, puis vous ram&egrave;ne.</p><p>Vous choisissez ensuite le <strong>Nom du r&eacute;seau (SSID)</strong> et le <strong>Mot de passe</strong> — ce sera d&eacute;sormais le Wi-Fi de la maison.</p>
+                            <div class="wc-note">Choisissez un nom que vous reconna&icirc;trez et notez le mot de passe quelque part. Vous en aurez besoin une fois par appareil &agrave; l&#39;&eacute;tape suivante.</div>
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">5</div>
+                        <div class="wc-step-b">
+                            <h2>D&eacute;placez vos appareils</h2>
+                            <p>Connectez les appareils de la famille au nouveau Wi-Fi WhiteCat : tablettes, t&eacute;l&eacute;viseurs, ordinateurs portables, consoles, t&eacute;l&eacute;phones. Ce qui reste sur l&#39;ancien Wi-Fi n&#39;est pas prot&eacute;g&eacute;.</p><p>Pour &eacute;viter de saisir le mot de passe partout, l&#39;application affiche un QR code : <strong>Appareils &rarr; R&eacute;seaux Wi-Fi</strong>, touchez votre r&eacute;seau, puis pointez l&#39;appareil photo du nouvel appareil dessus.</p>
+                            <div class="wc-note"><strong>Les nouveaux appareils sont filtr&eacute;s d&#39;embl&eacute;e.</strong> Tant qu&#39;un appareil n&#39;est attribu&eacute; &agrave; personne, les r&eacute;seaux sociaux, le gaming, le streaming et les sites pour adultes y restent bloqu&eacute;s. C&#39;est voulu : rien ne passe pendant que vous installez.</div>
+                        </div>
+                    </div>
+
+                    <hr class="my-5">
+
+                    <h2 class="h4">L&#39;installation est termin&eacute;e.</h2>
+                    <p>Votre maison est d&eacute;j&agrave; filtr&eacute;e. La suite — ajouter des membres, bloquer une application pr&eacute;cise, l&#39;heure du coucher, accorder 15 minutes de plus — se trouve sur la page d&#39;aide, avec des exemples concrets.</p>
+                    <p class="mt-3"><a href="/fr/faq" class="btn btn-primary">Ouvrir l&#39;aide &rarr;</a></p>
+
+                    <h2 class="h5 mt-5">Quelque chose ne fonctionne pas ?</h2>
+                    <ul><li><strong>Pas d&#39;internet apr&egrave;s le branchement ?</strong> V&eacute;rifiez que le c&acirc;ble est bien dans le port WAN bleu et que votre box est toujours en ligne.</li><li><strong>L&#39;appairage &eacute;choue ?</strong> Red&eacute;marrez le routeur et r&eacute;essayez. Si cela bloque encore, maintenez un trombone 30 secondes dans le trou de r&eacute;initialisation — en laissant l&#39;alimentation branch&eacute;e — puis recommencez.</li><li><strong>Besoin de parler &agrave; quelqu&#39;un ?</strong> &Eacute;crivez &agrave; <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a>. Nous r&eacute;pondons personnellement.</li></ul>
+
+                    <p class="text-muted small mt-5">URL permanente imprim&eacute;e sur la bo&icirc;te et utilis&eacute;e dans l&#39;application — ne pas renommer.</p>
+                </div>
+            </section>
+        </main>
+        <!-- FOOTER -->
+        <!-- COOKIE -->
+    </body>
+</html>

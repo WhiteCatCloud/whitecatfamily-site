@@ -81,6 +81,318 @@
                 </div>
             </section>
 
+
+            <!-- ============================================================
+                 HOW-TO — added 2026-09-04.
+                 /guide covers onboarding only (box -> paired -> devices on the
+                 new Wi-Fi). Everything after that lives here so the box-QR
+                 landing page stays short. Wording matches the app's own
+                 i18n strings exactly (i18n/locales/*.json) — if a label is
+                 renamed in the app, it must be renamed here too.
+                 ============================================================ -->
+            <section class="section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 wc-guide">
+
+                            <h3 class="mb-2">Using the app</h3>
+                            <p class="text-muted">Just unboxed it? Start with the <a href="/guide">setup guide</a>. Everything below assumes your router is already paired.</p>
+
+                            <div class="wc-note">
+                                <strong>WhiteCat controls your home Wi-Fi.</strong> Anything connected to it — tablets, TVs, laptops, consoles, phones — follows your rules.
+                                A phone that leaves the house and switches to mobile data is no longer on your network, so home rules don't reach it.
+                                That's why the examples below use tablets, TVs and laptops: devices that live on your Wi-Fi.
+                            </div>
+
+                            <!-- Family members & devices -->
+                            <div class="mb-4 mt-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-people fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">Family members &amp; devices</h4>
+                                </div>
+                                <div class="accordion" id="faqHowMembers">
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h1">
+                                                How do I add a family member?
+                                            </button>
+                                        </h2>
+                                        <div id="h1" class="accordion-collapse collapse" data-bs-parent="#faqHowMembers">
+                                            <div class="accordion-body">
+                                                <p>Open <strong>Family Members</strong> and tap <strong>Add Member</strong>. Give them a name and a <strong>Profile image</strong> so everyone is easy to spot at a glance.</p>
+                                                <p class="mb-0">A member is a person, not a device. You link their devices to them in the next step — that's what lets one rule cover someone's tablet, laptop and console at once.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h2">
+                                                How do I connect a new device to the Wi-Fi?
+                                            </button>
+                                        </h2>
+                                        <div id="h2" class="accordion-collapse collapse" data-bs-parent="#faqHowMembers">
+                                            <div class="accordion-body">
+                                                <p>Go to <strong>Devices &rarr; Wi-Fi Networks</strong> and tap your network. The app shows a QR code — point the new device's camera at it and it joins without anyone typing the password.</p>
+                                                <p class="mb-0">Useful for a child's tablet or a guest's laptop when you'd rather not read a long password out loud.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h3">
+                                                A new device appeared. How do I work out what it is?
+                                            </button>
+                                        </h2>
+                                        <div id="h3" class="accordion-collapse collapse" data-bs-parent="#faqHowMembers">
+                                            <div class="accordion-body">
+                                                <p>Anything that joins your Wi-Fi shows up under <strong>Devices</strong>. WhiteCat guesses the name and type from how the device identifies itself, so most things arrive already labelled — "Samsung TV", "iPad".</p>
+                                                <p>If a name is cryptic, open it and use <strong>Rename device</strong>. A quick way to identify a mystery device: turn its Wi-Fi off and see which entry drops offline.</p>
+                                                <p class="mb-0">Then set <strong>Family member</strong> to assign it to a person, and the rules for that person start applying immediately.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h4">
+                                                What happens to a device I haven't assigned yet?
+                                            </button>
+                                        </h2>
+                                        <div id="h4" class="accordion-collapse collapse" data-bs-parent="#faqHowMembers">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">It gets filtered internet: social, gaming, streaming and adult sites stay blocked until you assign it to someone. Nothing slips through while you're still setting up — an unassigned device is never less restricted than an assigned one.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h5">
+                                                What is a "Primary device"?
+                                            </button>
+                                        </h2>
+                                        <div id="h5" class="accordion-collapse collapse" data-bs-parent="#faqHowMembers">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">The one that best represents whether that person is home and online — usually their phone. Their status in the app follows that device. It doesn't change any rules.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h6">
+                                                How do I add the other parent?
+                                            </button>
+                                        </h2>
+                                        <div id="h6" class="accordion-collapse collapse" data-bs-parent="#faqHowMembers">
+                                            <div class="accordion-body">
+                                                <p>In the app, generate an access code. It appears as a QR code for the other parent to scan with their phone — or you can read the short code out loud if they're not in the room.</p>
+                                                <p class="mb-0">Codes expire after 15 minutes. Generate a fresh one if it lapses. Both parents then have full control from their own phones.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Rules & schedules -->
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-sliders fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">Rules &amp; schedules</h4>
+                                </div>
+                                <div class="accordion" id="faqHowRules">
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h7">
+                                                What's the difference between Family rules and Member rules?
+                                            </button>
+                                        </h2>
+                                        <div id="h7" class="accordion-collapse collapse" data-bs-parent="#faqHowRules">
+                                            <div class="accordion-body">
+                                                <p><strong>Family rules</strong> apply to everyone — the household baseline. Blocking adult content or gambling belongs here.</p>
+                                                <p class="mb-0"><strong>Member rules</strong> apply to one person and win where they disagree. So you can block TikTok for the whole family, then allow it for a teenager, without touching anyone else.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h8">
+                                                How do I create a schedule?
+                                            </button>
+                                        </h2>
+                                        <div id="h8" class="accordion-collapse collapse" data-bs-parent="#faqHowRules">
+                                            <div class="accordion-body">
+                                                <p>Open <strong>Schedules</strong> and tap <strong>Create Schedule</strong>. Give it a name you'll recognise later — "School nights", "Homework" — pick the days and the time window, then choose what it blocks.</p>
+                                                <p class="mb-0">Last step matters: add people under <strong>Assigned members</strong>. A schedule with nobody assigned does nothing, and the app will tell you so.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h9">
+                                                Someone needs a few more minutes. What do I do?
+                                            </button>
+                                        </h2>
+                                        <div id="h9" class="accordion-collapse collapse" data-bs-parent="#faqHowRules">
+                                            <div class="accordion-body">
+                                                <p>Tap <strong>+15m</strong>. It pushes the current block back by fifteen minutes for that person, then everything returns to normal on its own.</p>
+                                                <p class="mb-0">Tap it again for another fifteen. Nothing to undo afterwards — it's designed for "let me finish this level" without reopening the rules.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h10">
+                                                Can I cut someone off right now?
+                                            </button>
+                                        </h2>
+                                        <div id="h10" class="accordion-collapse collapse" data-bs-parent="#faqHowRules">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">Yes — pause the internet for that member and every device linked to them drops offline immediately, until you switch it back. Their normal rules resume untouched afterwards.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h11">
+                                                What does Strict Mode do?
+                                            </button>
+                                        </h2>
+                                        <div id="h11" class="accordion-collapse collapse" data-bs-parent="#faqHowRules">
+                                            <div class="accordion-body">
+                                                <p>It blocks VPNs and hidden tunnels — the usual way around a filter — by allowing only traffic WhiteCat has explicitly approved.</p>
+                                                <p class="mb-0">It's the strongest setting and worth turning on for a child who has worked out what a VPN is. Some smart-home gadgets don't cope with it, so switch it on per person rather than for the whole house.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Wi-Fi -->
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-wifi fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">Wi-Fi</h4>
+                                </div>
+                                <div class="accordion" id="faqHowWifi">
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h12">
+                                                How do I change my Wi-Fi name or password?
+                                            </button>
+                                        </h2>
+                                        <div id="h12" class="accordion-collapse collapse" data-bs-parent="#faqHowWifi">
+                                            <div class="accordion-body">
+                                                <p>Open the Wi-Fi configuration and edit <strong>Network name (SSID)</strong> or <strong>Password</strong>. The app rates the password as you type.</p>
+                                                <p class="mb-0">Changing either disconnects every device once — they'll need the new details. Do it when nobody's mid-film.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h13">
+                                                Can I give guests their own network?
+                                            </button>
+                                        </h2>
+                                        <div id="h13" class="accordion-collapse collapse" data-bs-parent="#faqHowWifi">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">Yes — add a <strong>Guest Network</strong> with its own name and password, and share it with the QR code. Guests get internet without joining your family network or appearing in your device list.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#h14">
+                                                Should I change the channel or transmit power?
+                                            </button>
+                                        </h2>
+                                        <div id="h14" class="accordion-collapse collapse" data-bs-parent="#faqHowWifi">
+                                            <div class="accordion-body">
+                                                <p class="mb-0">Only if you're having trouble. <strong>Auto</strong> picks a clear channel by itself. Changing these causes a brief disconnection, and the orange channels are radar (DFS) ones — permitted, but Wi-Fi can drop for a moment if a radar is nearby.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Recipes -->
+                            <div class="mb-5">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-lightbulb fs-4 text-primary me-3"></i>
+                                    <h4 class="mb-0">Common setups</h4>
+                                </div>
+                                <p class="text-muted">The things most families ask for first.</p>
+
+                                <div class="wc-recipe">
+                                    <h3>Block YouTube on my son's tablet</h3>
+                                    <ol>
+                                        <li>Make sure the tablet is assigned to him: <strong>Devices</strong> &rarr; the tablet &rarr; <strong>Family member</strong>.</li>
+                                        <li>Open his profile &rarr; <strong>Member rules</strong>.</li>
+                                        <li>Find YouTube in the service list and block it.</li>
+                                    </ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">This covers every device linked to him, not just the tablet. To block it on the tablet alone, give the tablet its own member.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>Bedtime for the whole family</h3>
+                                    <ol>
+                                        <li><strong>Schedules</strong> &rarr; <strong>Create Schedule</strong>, name it "Night".</li>
+                                        <li>Sunday to Thursday, 21:00 to 07:00.</li>
+                                        <li>Block streaming, gaming and social.</li>
+                                        <li>Under <strong>Assigned members</strong>, add the children — or everyone, if the adults want the same discipline.</li>
+                                    </ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Leave the schedule running across midnight; it handles the rollover.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>Stop the TV after 21:00, but leave the laptops alone</h3>
+                                    <ol>
+                                        <li>Create a member called "Living room" and assign the TV to it.</li>
+                                        <li>Create a schedule for 21:00 to 07:00 blocking streaming.</li>
+                                        <li>Assign it to "Living room" only.</li>
+                                    </ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Members don't have to be people. A room or a single device works just as well when you want a rule to stay narrow.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>No gaming sites on the laptop during homework</h3>
+                                    <ol>
+                                        <li><strong>Create Schedule</strong>, name it "Homework".</li>
+                                        <li>Monday to Friday, 16:00 to 18:00.</li>
+                                        <li>Block gaming — and social, if that's the real distraction.</li>
+                                        <li>Assign it to the child.</li>
+                                    </ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">Keep the window short. A rule that bites all evening gets argued with; one that ends at six doesn't.</p>
+                                </div>
+
+                                <div class="wc-recipe">
+                                    <h3>"Five more minutes!"</h3>
+                                    <ol>
+                                        <li>Open that person in the app.</li>
+                                        <li>Tap <strong>+15m</strong>.</li>
+                                    </ol>
+                                    <p class="text-muted mb-0 mt-2" style="font-size:.9rem;">It expires on its own — no need to remember to put the rule back. Tap again if you're feeling generous.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="section">
                 <div class="container">
                     <div class="row justify-content-center">

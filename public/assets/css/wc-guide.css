@@ -1,0 +1,42 @@
+/* wc-guide.css — setup guide (/guide) + help pages.
+   Kept out of main.css so the marketing pages don't download rules only two
+   page types use. */
+
+.wc-guide { max-width: 720px; }
+
+.wc-step { display: flex; gap: 1rem; padding: 1.5rem 0; border-top: 1px solid #ececf4; }
+.wc-step:first-of-type { border-top: 0; }
+.wc-step-n {
+  flex: 0 0 2.25rem; height: 2.25rem; border-radius: 50%;
+  background: #5d57f4; color: #fff; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.wc-step-b { flex: 1 1 auto; min-width: 0; }
+.wc-step-b h2 { font-size: 1.25rem; margin: .15rem 0 .5rem; }
+
+.wc-shot {
+  max-width: 220px; width: 100%; border-radius: 14px;
+  border: 1px solid #e6e6ef; box-shadow: 0 6px 22px rgba(0,0,0,.08);
+}
+.wc-shot-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 .25rem; }
+.wc-shot-row figure { margin: 0; max-width: 220px; }
+.wc-shot-row figcaption { font-size: .8rem; color: #6c757d; margin-top: .4rem; line-height:1.35; }
+
+.wc-note {
+  background: #f6f5ff; border-left: 3px solid #5d57f4;
+  padding: .85rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: .93rem;
+}
+.wc-key { background:#f4f4f9; border-radius:5px; padding:.1rem .4rem; font-weight:600; white-space:nowrap; }
+
+.wc-store { display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; margin:.9rem 0; }
+.wc-qr { display:flex; gap:1rem; align-items:center; margin-top:1rem; }
+.wc-qr svg { width:104px; height:104px; display:block; }
+.wc-qr-box { background:#fff; padding:.55rem; border:1px solid #e6e6ef; border-radius:10px; }
+/* The QR only helps someone reading on a computer. Anyone who scanned the box
+   QR is already holding the phone they need to install on. */
+@media (max-width: 575.98px) { .wc-qr { display: none; } }
+
+.wc-recipe { border:1px solid #e6e6ef; border-radius:12px; padding:1.1rem 1.25rem; margin-bottom:1rem; }
+.wc-recipe h3 { font-size:1.05rem; margin:0 0 .6rem; }
+.wc-recipe ol { margin:0; padding-left:1.15rem; }
+.wc-recipe li { margin-bottom:.35rem; }
