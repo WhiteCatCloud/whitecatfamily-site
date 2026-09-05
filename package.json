@@ -9,9 +9,10 @@
     "check:forbidden": "bash scripts/check-forbidden-strings.sh",
     "check:markers": "bash scripts/check-markers-present.sh",
     "check:permanent": "bash scripts/check-permanent-urls.sh",
-    "check": "npm run check:forbidden && npm run check:markers && npm run check:permanent",
+    "check": "npm run check:forbidden && npm run check:markers && npm run check:permanent && npm run check:partials",
     "smoke:geo": "bash scripts/smoke-geo.sh",
-    "test": "npm run check"
+    "test": "npm run check",
+    "check:partials": "bash scripts/check-partials-synced.sh"
   },
   "devDependencies": {
     "wrangler": "^3.80.0"

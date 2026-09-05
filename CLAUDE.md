@@ -77,6 +77,28 @@ ONLY in `partials/`. Page HTML files carry markers:
 The Pages Function (`functions/_middleware.js`) replaces them at request time
 with the locale-appropriate partial.
 
+### Editing a partial: build and commit, or it does nothing
+
+`partials/` is the source. **`public/_partials/` is what actually ships.**
+
+`functions/_partials.js` fetches `/_partials/<name>.html` through the Pages
+ASSETS binding, and `wrangler.toml` deploys `public/` with no build command —
+so the committed `public/_partials/` copy is the deployed artifact.
+`scripts/build.sh` (via `npm run build`) copies one to the other; nothing in
+the deploy pipeline runs it for you.
+
+Editing `partials/` alone fails **silently**: CI passes, the deploy succeeds,
+and the site keeps serving the old content. This is how the German buy button
+kept pointing at an empty Amazon search after it had supposedly been switched
+to Stripe (fixed in `ed4e1a3`).
+
+```bash
+npm run build && git add public/_partials
+```
+
+`scripts/check-partials-synced.sh` enforces this in CI, in both directions —
+a source edited without rebuilding, and a built copy whose source is gone.
+
 NEVER paste a `<footer>...</footer>` block into a page HTML file. The
 `scripts/check-markers-present.sh` script enforces this; CI fails the build if a page is
 missing FOOTER + COOKIE markers (phase-controlled via `MARKER_PHASE`).
