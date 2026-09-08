@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects. One rule per line: <from> <to> <status>
+#
+# /delete-account was the original path of the account-deletion page. It moved
+# to /account-deletion in db86f25 (2026-08-10) and the old path was left to
+# 404 — but that old URL is what the Google Play Data safety form declares as
+# the account-deletion URL, and Play requires it to work. Keep this rule for as
+# long as any store console, printed material or old email can still point at
+# the old path.
+/delete-account  /account-deletion  301
