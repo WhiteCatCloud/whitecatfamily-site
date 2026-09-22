@@ -77,7 +77,7 @@
             <section class="section light-background">
                 <div class="container section-title" data-aos="fade-up">
                     <h2>Privacy Policy</h2>
-                    <p>Last updated: March 2026 &nbsp;·&nbsp; We don't sell your data. Ever.</p>
+                    <p>Last updated: September 2026 &nbsp;·&nbsp; We don't sell your data. Ever.</p>
                 </div>
             </section>
 
@@ -91,7 +91,9 @@
                                     <i class="bi bi-shield-check fs-3 text-primary me-3"></i>
                                     <h3 class="mb-0">The short version</h3>
                                 </div>
-                                <p>WhiteCat is a tool for parents, built by parents. Your family's data is yours. We collect only what we need to make the router and app work. We don't read your kids' browsing history. We don't build profiles on your children. We don't sell anything to advertisers. Full stop.</p>
+                                <p>WhiteCat is a tool for parents, built by parents. The thing most people worry about — a record of every site your family looks up — is <strong>switched off when the router leaves the factory</strong>. You turn it on yourself, in the app, and it fails closed: unless the router can positively read "on", it records nothing.</p>
+                                <p>What the router sends us by default is duller: which devices are on your network, what those devices call themselves, and whether the router is healthy. It goes every 30 to 60 seconds, which means that kept together over a day it does show when each device was at home. Below we list all of it, name every company that receives any of it, and say how long we keep it.</p>
+                                <p>We don't sell data to advertisers, and we never see the content of what your family reads, types or watches. Full stop.</p>
                             </div>
 
                             <hr class="my-5">
@@ -100,13 +102,14 @@
                                 <h4><i class="bi bi-person-circle text-primary me-2"></i>Who we are</h4>
                                 <p>For customers in the US and rest of world: White Cat Cloud Inc., 8 The Green, Dover, DE 19901, USA.<br>
                                 For customers in the EU/EEA: Cluster s.r.o., Rusovská cesta 15, 851 01 Bratislava, Slovak Republic — see <a href="#gdpr">the GDPR section</a> below.<br>
-                                Questions? Email us at <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a></p>
+                                Questions? Email us at <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a></p>
                             </div>
 
                             <div class="mb-5">
                                 <h4><i class="bi bi-collection text-primary me-2"></i>What we collect and why</h4>
+                                <p class="mt-3 mb-1"><strong>Always on — this is how the product works</strong></p>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered mt-3">
+                                    <table class="table table-bordered mt-2">
                                         <thead class="table-light">
                                             <tr>
                                                 <th>What</th>
@@ -119,53 +122,189 @@
                                                 <td>To create and manage your account</td>
                                             </tr>
                                             <tr>
-                                                <td>Device names, MAC addresses, IP addresses on your network</td>
-                                                <td>So you can see and manage your home devices in the app</td>
+                                                <td>Router health, every 30 seconds: uptime, free memory, firmware version, and the router's own WAN MAC address</td>
+                                                <td>To show the router as online, and to send security updates to the right device</td>
                                             </tr>
                                             <tr>
-                                                <td>Which domains are blocked or allowed (counts only — not content)</td>
-                                                <td>To show you usage insights and improve blocking accuracy</td>
+                                                <td>One line per connected device, every 60 seconds: the device's MAC address, whether it is on Wi-Fi or cable, and signal strength</td>
+                                                <td>So the app can show who is online right now. Kept together over a day, this does show when each device was at home</td>
                                             </tr>
                                             <tr>
-                                                <td>Router firmware version and health status</td>
-                                                <td>To push security updates and keep your router running</td>
+                                                <td>When a device first appears: its MAC and IP addresses, the name it announces over DHCP, its vendor class, and the service records it broadcasts on your local network</td>
+                                                <td>To build your device list and give each device a readable name instead of a hex address. Names people choose for their devices often contain a first name</td>
                                             </tr>
                                             <tr>
-                                                <td>Subscription and billing status (via Apple)</td>
+                                                <td>Crash and error reports from the app and the router firmware</td>
+                                                <td>To find and fix faults. Reports from the app carry your account identifier</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Subscription and billing status (from Apple or Google)</td>
                                                 <td>To activate your plan features</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mt-4 mb-1"><strong>Off from the factory — nothing is recorded unless you switch it on</strong></p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mt-2">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>What</th>
+                                                <th>Why</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Which domains each device asked for, with the time and whether it was allowed or blocked</td>
+                                                <td>So you can see what was requested and correct a wrong block. Off by default, switched on per profile, and the router will not record unless that setting positively reads "on"</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Screen time and activity overview</td>
+                                                <td>So you can see time spent per person. Off by default and switched on per person</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Anonymous data you choose to share with us</td>
+                                                <td>To improve the filter lists for everyone. Off unless you opt in</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="alert alert-light border mt-3">
                                     <i class="bi bi-lock text-primary me-2"></i>
-                                    <strong>We never read the content of websites your family visits.</strong> We see that a device visited "youtube.com" — we never see what video was watched, what was searched, or what was typed.
+                                    <strong>We never see the content of what your family does online.</strong> WhiteCat works on domain names. At most it can know that a device asked for "youtube.com" — never which video was watched, what was searched, or what was typed. That content is encrypted and never reaches our servers at all.
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <h4><i class="bi bi-diagram-3 text-primary me-2"></i>Who else receives any of it</h4>
+                                <p>These are the companies that receive any part of your data, and there are no others. The first six work under a data processing agreement and may act only on our instructions — none of them may use your data for their own purposes. Apple and Google are independent controllers for the app store purchase itself, and tell us only whether your subscription is active. All of them are based in the United States except Google Ireland Ltd., so those transfers run on the European Commission's Standard Contractual Clauses.</p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mt-3">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Company</th>
+                                                <th>Based in</th>
+                                                <th>What it receives</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Anthropic PBC</td>
+                                                <td>USA</td>
+                                                <td>To turn a new device into a readable name: its MAC address, the manufacturer we derive from that address, the name and vendor class it announces over DHCP, and the service records it broadcasts locally. <strong>This is on by default.</strong> Because people name their devices things like "Emma's iPhone", that name can be part of what is sent.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cloudflare, Inc.</td>
+                                                <td>USA</td>
+                                                <td>Our upstream encrypted DNS resolver (1.1.1.2 / 1.0.0.2), so it sees every domain your network resolves to the outside world — there is currently no setting to point somewhere else. Cloudflare is also our reverse proxy for app and router traffic, our CDN, and the object storage that holds our database backups.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Google Ireland Ltd. / Google LLC</td>
+                                                <td>Ireland / USA</td>
+                                                <td>Sign-in and push notifications. The "a new device joined your network" notification carries that device's MAC address and name in readable form. Google also receives anonymous visit statistics for this website, and only if you accept them in the cookie banner.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Functional Software, Inc. (Sentry)</td>
+                                                <td>USA</td>
+                                                <td>Crash and error reports from the app and from the router firmware, so we can fix faults. On by default; reports from the app carry your account identifier.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>650 Industries, Inc. (Expo)</td>
+                                                <td>USA</td>
+                                                <td>Delivery of mobile app updates.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DigitalOcean, LLC</td>
+                                                <td>USA</td>
+                                                <td>The servers and database the service itself runs on.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apple Inc. / Google LLC</td>
+                                                <td>USA</td>
+                                                <td>Subscription purchase and billing status through the App Store or Google Play. They act as their own controllers for that transaction, not on our instructions.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <h4><i class="bi bi-hourglass-split text-primary me-2"></i>How long we keep it</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mt-3">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>What</th>
+                                                <th>How long</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Router operational logs</td>
+                                                <td>About 34 hours, then overwritten</td>
+                                            </tr>
+                                            <tr>
+                                                <td>The per-device domain log, if you switched it on</td>
+                                                <td>Since September 2026 we no longer store these queries individually in our database — all we derive from them is when a device was last online. The raw batch sits in the operational logs above for about 34 hours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Screen time and activity overview, if you switched it on</td>
+                                                <td>30 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Anonymous data you choose to share with us</td>
+                                                <td>Deleted within 24 hours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Database backups</td>
+                                                <td>Up to 12 monthly snapshots — so a copy of your data can survive in a backup for up to a year after you delete it. We use these only to restore the service after a failure</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Your device list, router settings and account</td>
+                                                <td>For as long as your account exists</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
                             <div class="mb-5">
                                 <h4><i class="bi bi-people text-primary me-2"></i>Children's privacy</h4>
-                                <p>WhiteCat is operated by parents — accounts are created and managed by adults only. We do not knowingly collect personal information directly from children under 13. Family member profiles in the app (e.g. "Emma, age 8") are created by the parent and contain only a name and icon — nothing else. If you believe we have inadvertently collected data from a child, contact us at <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a> and we will delete it immediately.</p>
+                                <p>WhiteCat is operated by parents — accounts are created and managed by adults only. We do not knowingly collect personal information directly from children under 13. A family member profile in the app (for example "Emma, age 8") is created by you and holds only a name and an icon.</p>
+                                <p>One thing worth knowing: a phone usually announces its own name on the network, and people name phones after their owner. So a child's first name commonly reaches us as part of a device name, and is included in the device-naming step described above. You can rename or delete any device in the app. If you believe we hold data from a child that we should not, email <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a> and we will delete it.</p>
                             </div>
 
                             <div class="mb-5">
                                 <h4><i class="bi bi-slash-circle text-primary me-2"></i>What we never do</h4>
                                 <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never sell your data to advertisers or third parties</li>
+                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never sell your data — not to advertisers, not to anyone</li>
                                     <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never read the content of your family's internet traffic</li>
-                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never build advertising profiles on your children</li>
-                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never share data with schools, governments, or other companies without your consent (except where required by law)</li>
+                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never build advertising profiles of you or your children</li>
+                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never share your data with schools, governments or other companies beyond the ones named above, except where the law requires it</li>
+                                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i>We never switch on the domain log or the screen time overview for you — that is your decision</li>
                                 </ul>
                             </div>
 
                             <div class="mb-5">
                                 <h4><i class="bi bi-cloud text-primary me-2"></i>Where your data is stored</h4>
-                                <p>Your account data is stored on secure servers in the United States. Network traffic stays on your router at home — it is not streamed to our cloud. Only metadata (domain block counts, device status) is synced to our servers.</p>
+                                <p>The service runs on servers in the United States. Backups sit in Cloudflare's object storage, which is configured to choose its own region — so we cannot promise you that a backup stays inside the EU, and we are not going to pretend otherwise.</p>
+                                <p>What does <em>not</em> leave your home is your traffic itself: the router does not proxy, mirror or store the pages, messages or video your family loads. What leaves it continuously is the device and health data listed above — roughly 36 MB a month for a household with nothing switched on, and around 140 MB with activity logging enabled.</p>
+                            </div>
+
+                            <div class="mb-5">
+                                <h4><i class="bi bi-wrench-adjustable text-primary me-2"></i>Support access to your router</h4>
+                                <p>Every WhiteCat router keeps an outbound maintenance connection open to our servers, which lets our engineers log in to the device to diagnose faults. It is enabled on every router we ship, there is currently no switch to turn it off, and the app does not tell you when it is used. We are stating it plainly because it is true, and we regard the lack of a switch and the lack of an indicator as gaps in your control rather than features.</p>
+                            </div>
+
+                            <div class="mb-5">
+                                <h4><i class="bi bi-cookie text-primary me-2"></i>Cookies and this website</h4>
+                                <p>Separately from the router: this website uses Google Analytics to count visits. No analytics cookie is set until you accept it in the banner, and you can withdraw that at any time from the same banner. If you write to us using the form below, your name, email address and message reach us by email and are kept only as long as we need them to answer you. None of this has anything to do with your router or your family's devices, and we do not use it for advertising.</p>
                             </div>
 
                             <div class="mb-5">
                                 <h4><i class="bi bi-person-check text-primary me-2"></i>Your rights</h4>
-                                <p>You can request a copy of your data, ask us to delete your account and all associated data, or opt out of any non-essential communications at any time. Email <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a> — we'll respond within 5 business days.</p>
+                                <p>You can ask us for a copy of your data, ask us to correct it, ask us to delete your account and everything attached to it, or object to a particular use. Email <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a>. There is no self-service export button in the app yet, so we handle these by hand: we acknowledge within 5 business days and complete the request within 30 days. After a deletion, a copy of your data can remain in a monthly backup snapshot for up to a year, until that snapshot expires.</p>
+                                <p>You can also switch the domain log and the screen time overview off in the app at any time. They take effect immediately and stay off until you turn them back on.</p>
                             </div>
 
                             <div class="mb-5">
@@ -210,26 +349,33 @@
                     <h3>Data Controllers</h3>
                     <ul>
                         <li><strong>For EU customers:</strong> Cluster s.r.o., Rusovská cesta 15, 851 01 Bratislava, Slovak Republic. Full details: <a href="/impressum">Imprint</a>.</li>
-                        <li><strong>For US/other customers:</strong> White Cat Cloud Inc.</li>
+                        <li><strong>For US/other customers:</strong> White Cat Cloud Inc., 8 The Green, Dover, DE 19901, USA.</li>
                     </ul>
 
                     <h3>Data categories</h3>
-                    <p>Account email · device identifiers (MAC addresses, stored locally on the router) · DNS query metadata used for filtering (60-day retention).</p>
+                    <p>Account email · router health telemetry every 30 seconds, including the router's WAN MAC address · per-device telemetry every 60 seconds (device MAC address, connection type, signal strength) · device discovery data (MAC and IP addresses, DHCP hostname and vendor class, locally broadcast service records) · crash and error reports · subscription status · and, <strong>only where you have switched it on</strong>, per-device DNS query records, the screen time overview, and anonymous data shared to improve the filter lists.</p>
 
                     <h3>Legal basis</h3>
-                    <p>Contract performance (Art. 6(1)(b) GDPR) and legitimate interest in network security and parental-control functionality (Art. 6(1)(f) GDPR).</p>
+                    <ul>
+                        <li><strong>Art. 6(1)(b) — contract:</strong> your account, the device list, policy enforcement and router health.</li>
+                        <li><strong>Art. 6(1)(a) — consent:</strong> the per-device DNS query log, the screen time overview, the anonymous data you choose to share, and analytics cookies on this website. All are off by default and you can withdraw consent at any time, with immediate effect.</li>
+                        <li><strong>Art. 6(1)(f) — legitimate interest:</strong> network security, and crash and error diagnostics to keep the product working.</li>
+                    </ul>
 
                     <h3>Data location and transfers</h3>
-                    <p>Service infrastructure currently runs in the United States (DigitalOcean, San Francisco region). EU customer data is therefore transferred to the United States. We rely on the European Commission's <strong>Standard Contractual Clauses (SCCs)</strong> as the transfer mechanism. We are evaluating EU-region deployment for a future rollout.</p>
+                    <p>Service infrastructure runs in the United States (DigitalOcean). EU customer data is therefore transferred to the United States, and we rely on the European Commission's <strong>Standard Contractual Clauses (SCCs)</strong> as the transfer mechanism.</p>
+                    <p>Our processors under Art. 28 GDPR are: <strong>DigitalOcean, LLC</strong> (USA, hosting) · <strong>Cloudflare, Inc.</strong> (USA, upstream DNS resolution, reverse proxy, CDN and backup object storage) · <strong>Anthropic PBC</strong> (USA, automated device naming) · <strong>Google Ireland Ltd.</strong> (Ireland) and <strong>Google LLC</strong> (USA) (authentication, push notifications and website analytics) · <strong>Functional Software, Inc.</strong> trading as Sentry (USA, crash and error reporting) · <strong>650 Industries, Inc.</strong> trading as Expo (USA, mobile app update delivery). <strong>Apple Inc.</strong> (USA) and <strong>Google LLC</strong> act as independent controllers for App Store and Google Play purchases and report only your subscription status to us.</p>
+                    <p>Our backup storage buckets are configured to let the provider select the region, so we cannot currently assert that backups are held only in the EU.</p>
 
                     <h3>Your rights</h3>
-                    <p>Under GDPR you have the right to access, rectify, erase, port, restrict the processing of, and object to the processing of your personal data. You also have the right to lodge a complaint with a supervisory authority — in Slovakia: <a href="https://dataprotection.gov.sk/" target="_blank" rel="noopener">Úrad na ochranu osobných údajov</a>. EU customers may additionally file with their own national authority.</p>
+                    <p>Under GDPR you have the right to access, rectify, erase, port, restrict the processing of, and object to the processing of your personal data, and to withdraw any consent you have given. We handle these requests manually: we acknowledge within 5 business days and complete them within 30 days. You also have the right to lodge a complaint with a supervisory authority — in Slovakia: <a href="https://dataprotection.gov.sk/" target="_blank" rel="noopener">Úrad na ochranu osobných údajov</a>. EU customers may additionally file with their own national authority.</p>
 
-                    <h3>No selling, no profiling</h3>
-                    <p>We do not sell personal data and do not engage in automated profiling.</p>
+                    <h3>No selling, no advertising profiles</h3>
+                    <p>We do not sell personal data. We do not use your family's data for advertising, and we do not build profiles of your children.</p>
+                    <p>We do use one automated step, and we would rather name it than let you find it: when a new device appears on your network, its identifiers and the names it broadcasts are sent to a model operated by Anthropic PBC so it can propose a readable device name. It produces a label for a piece of hardware. It makes no decision about a person and has no legal or similarly significant effect within the meaning of Art. 22 GDPR. There is no self-service switch that turns this off for your account today — every newly discovered device goes through it. You may object under Art. 21 GDPR and we will handle that by hand, and you can always set your own name for a device in the app, which takes precedence over the generated one.</p>
 
                     <h3>Privacy contact</h3>
-                    <p>For privacy requests, please email: <a href="mailto:privacy@whitecatfamily.com">privacy@whitecatfamily.com</a></p>
+                    <p>For privacy requests, please email: <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a></p>
                 </div>
             </section>
 

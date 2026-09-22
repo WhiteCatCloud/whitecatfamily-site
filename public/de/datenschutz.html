@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>Datenschutzerklärung – WhiteCat Family</title>
-        <meta name="description" content="Datenschutzerklärung von WhiteCat Family. DSGVO-konform, Privacy-First, keine Werbeprofile.">
+        <meta name="description" content="Datenschutzerklärung von WhiteCat Family. Welche Daten der Router sendet, wer sie erhält, wie lange wir sie speichern — und was ab Werk ausgeschaltet ist.">
         <link rel="canonical" href="https://whitecatfamily.com/de/datenschutz">
         <!-- HREFLANG -->
         <link href="/assets/img/favicon.png" rel="icon">
@@ -48,38 +48,156 @@
             <section class="section">
                 <div class="container" style="max-width:780px;">
                     <h1 class="mb-4">Datenschutzerklärung</h1>
-                    <p class="text-muted small">Letzte Aktualisierung: 2026-06-09</p>
+                    <p class="text-muted small">Letzte Aktualisierung: September 2026</p>
+
+                    <div class="alert alert-info small">
+                        <strong>Kurz gesagt:</strong> Die Aufzeichnung einzelner DNS-Anfragen ist <strong>ab Werk ausgeschaltet</strong>. Sie muss bewusst eingeschaltet werden, und im Zweifelsfall wird nicht aufgezeichnet. Was der Router dagegen <em>immer</em> sendet, damit die App funktioniert, steht in Abschnitt 2 — die Empfänger in Abschnitt 4. Wir verkaufen keine Daten, und wir sehen keine Seiteninhalte.
+                    </div>
 
                     <h2>1. Verantwortliche</h2>
                     <ul>
-                        <li><strong>Für Kunden in der EU:</strong> Cluster s.r.o., Rusovská cesta 15, 851 01 Bratislava, Slowakische Republik. Details unter <a href="/de/impressum">Impressum</a>.</li>
-                        <li><strong>Für Kunden in den USA und weltweit:</strong> White Cat Cloud Inc.</li>
+                        <li><strong>Für Kunden in der EU/EWR:</strong> Cluster s.r.o., Rusovská cesta 15, 851 01 Bratislava, Slowakische Republik. Details unter <a href="/de/impressum">Impressum</a>.</li>
+                        <li><strong>Für Kunden in den USA und weltweit:</strong> White Cat Cloud Inc., 8 The Green, Dover, DE 19901, USA.</li>
                     </ul>
 
                     <h2>2. Welche Daten erheben wir?</h2>
+
+                    <h3 class="h5 mt-4">2.1 Standardmäßig, ohne Zutun</h3>
+                    <p>Diese Daten verlassen den Router laufend, sobald er mit Ihrem Konto verbunden ist. Ohne sie kann die App den Router nicht anzeigen und nicht steuern; einen Schalter dafür gibt es deshalb nicht.</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered small mt-3">
+                            <thead class="table-light">
+                                <tr><th>Was</th><th>Wofür</th><th>Wie lange</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Konto-E-Mail-Adresse und Konto-Kennung</td>
+                                    <td>Konto anlegen, anmelden, Abo zuordnen</td>
+                                    <td>Für die Dauer des Kontos</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Router-Status, alle 30 Sekunden:</strong> Betriebszeit, Speicherauslastung, Firmware-Version, WAN-MAC-Adresse des Routers</td>
+                                    <td>Router-Zustand in der App anzeigen, Sicherheitsupdates ausliefern, Gerät Ihrem Konto zuordnen</td>
+                                    <td>Betriebsprotokolle ca. 34 Stunden; der jeweils aktuelle Zustand für die Dauer des Kontos</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Je verbundenem Gerät, alle 60 Sekunden:</strong> MAC-Adresse, Verbindungsart (WLAN/LAN), Signalstärke</td>
+                                    <td>Geräteliste in der App aktuell halten, „online/offline“ anzeigen</td>
+                                    <td>Betriebsprotokolle ca. 34 Stunden; die Geräteliste für die Dauer des Kontos</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Wenn ein Gerät neu im Netz auftaucht:</strong> MAC-Adresse, IPv4- und IPv6-Adresse, DHCP-Hostname, DHCP-Vendor-Class sowie die mDNS-Dienstdaten des Geräts einschließlich TXT-Einträgen</td>
+                                    <td>Gerät erkennen, einordnen und benennbar machen (siehe Abschnitt 4 und 6)</td>
+                                    <td>Für die Dauer des Kontos, solange das Gerät in der Liste steht</td>
+                                </tr>
+                                <tr>
+                                    <td>Fehler- und Absturzberichte aus App und Router-Firmware</td>
+                                    <td>Fehler finden und beheben; die App übermittelt dabei Ihre Konto-Kennung</td>
+                                    <td>Beim Dienstleister Sentry, siehe Abschnitt 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Abo- und Zahlungsstatus (über Apple bzw. Google)</td>
+                                    <td>Funktionen freischalten</td>
+                                    <td>Für die Dauer des Kontos</td>
+                                </tr>
+                                <tr>
+                                    <td>Datenbank-Sicherungen aller in Abschnitt 2 genannten Daten — auch der in 2.2 genannten</td>
+                                    <td>Wiederherstellung nach Ausfall</td>
+                                    <td>Bis zu 12 Monatsstände, also bis zu einem Jahr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Was das in der Praxis bedeutet:</strong> Aus den Geräte-Meldungen im 60-Sekunden-Takt lässt sich ablesen, wann welches Gerät im Netz war — und damit meist auch, wann eine Person zu Hause war. Das ist die Kehrseite einer Geräteliste, die live ist. Wir sagen es lieber deutlich, als es zu verschweigen.</p>
+                    <p class="text-muted small">Größenordnung: rund 36 MB pro Haushalt und Monat, wenn nichts zusätzlich eingeschaltet ist; rund 140 MB, wenn die Aktivitätsaufzeichnung läuft.</p>
+
+                    <h3 class="h5 mt-4">2.2 Ab Werk ausgeschaltet — nur mit Ihrer Einwilligung</h3>
+                    <p>Das hier ist der Teil, auf den es uns ankommt. Diese Daten entstehen erst, wenn Sie sie aktiv einschalten, und sie sind im Auslieferungszustand aus:</p>
                     <ul>
-                        <li>Konto-E-Mail-Adresse</li>
-                        <li>Geräte-Identifikatoren (MAC-Adressen) — ausschließlich lokal im Router</li>
-                        <li>DNS-Abfrage-Protokolle — zur Filterfunktion, Aufbewahrung 60 Tage</li>
+                        <li><strong>Protokoll einzelner DNS-Anfragen</strong> (welches Gerät hat wann welche Domain angefragt, und wurde sie erlaubt oder blockiert). Die Sperre sitzt nicht in der Anzeige, sondern an der Stelle, an der aufgezeichnet würde: Ist die Einstellung für das jeweilige Profil nicht ausdrücklich aktiv, wird nichts geschrieben. Fehlt oder kippt die Einstellung, wird ebenfalls nichts geschrieben. <strong>Aufbewahrung:</strong> Wir legen diese Anfragen seit September 2026 nicht mehr einzeln in unserer Datenbank ab — aus der Übertragung leiten wir nur noch ab, wann ein Gerät zuletzt online war. Die Rohdaten der Übertragung liegen rund 34 Stunden in unseren Betriebsprotokollen und werden dann überschrieben.</li>
+                        <li><strong>Aktivitäts- und Bildschirmzeit-Übersicht</strong> je Person. Ebenfalls standardmäßig aus und einzeln pro Familienmitglied einzuschalten. <strong>Aufbewahrung: 30 Tage</strong>, danach Löschung.</li>
+                        <li><strong>Freiwillig geteilte anonyme Daten</strong> zur Verbesserung der Filterlisten. <strong>Aufbewahrung: innerhalb von 24 Stunden</strong> gelöscht.</li>
                     </ul>
+                    <p class="text-muted small">Das gilt für alle drei Punkte mit einer Einschränkung: In unseren Datenbank-Sicherungen können bereits gelöschte Daten noch bis zu einem Jahr enthalten sein (siehe Abschnitt 2.1). Diese Sicherungen dienen ausschließlich der Wiederherstellung nach einem Ausfall und werden für nichts anderes ausgewertet.</p>
+                    <p>Die Filterung selbst braucht diese Protokolle nicht. Sie läuft auf dem Router bei Ihnen zu Hause, anhand eines Regelpakets, das lokal gespeichert ist. Blockieren funktioniert also auch dann, wenn nichts aufgezeichnet wird.</p>
+                    <div class="alert alert-info small">
+                        <strong>Inhalte sehen wir nicht.</strong> Wir sehen, dass ein Gerät die Domain „youtube.com“ angefragt hat — nicht, welches Video lief, was gesucht oder was geschrieben wurde. Wir entschlüsseln keinen Datenverkehr Ihrer Familie.
+                    </div>
+
+                    <h3 class="h5 mt-4">2.3 Kinder im Haushalt</h3>
+                    <p>Konten werden ausschließlich von Erwachsenen angelegt und verwaltet. Wir erheben wissentlich keine personenbezogenen Daten unmittelbar bei Kindern unter 13 Jahren; ein Familienmitglied in der App („Emma, 8 Jahre“) legen Sie selbst an und es enthält nur Name und Symbol. Eines sollten Sie trotzdem wissen: Ein Telefon meldet seinen eigenen Namen ins Netz, und Telefone werden nach ihren Besitzern benannt. Der Vorname eines Kindes erreicht uns deshalb regelmäßig als Teil eines Gerätenamens und geht in die automatische Benennung nach Abschnitt 6 ein. Sie können jedes Gerät in der App umbenennen oder löschen.</p>
 
                     <h2>3. Rechtsgrundlage</h2>
-                    <p>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO) sowie berechtigtes Interesse an Netzwerksicherheit (Art. 6 Abs. 1 lit. f DSGVO).</p>
+                    <ul>
+                        <li><strong>Vertragserfüllung</strong> (Art. 6 Abs. 1 lit. b DSGVO) für alles in Abschnitt 2.1 — ohne diese Daten gibt es kein nutzbares Produkt.</li>
+                        <li><strong>Einwilligung</strong> (Art. 6 Abs. 1 lit. a DSGVO) für alles in Abschnitt 2.2 sowie für Analyse-Cookies auf dieser Website. Sie können sie jederzeit widerrufen, indem Sie die jeweilige Funktion wieder ausschalten; für die Zukunft entfällt die Verarbeitung dann sofort.</li>
+                        <li><strong>Berechtigtes Interesse</strong> (Art. 6 Abs. 1 lit. f DSGVO) an Netzwerk- und Produktsicherheit, etwa für Fehler- und Absturzberichte.</li>
+                    </ul>
 
-                    <h2>4. Datenstandort und Übermittlung</h2>
-                    <p>Die Service-Infrastruktur läuft derzeit in den Vereinigten Staaten (DigitalOcean, San Francisco). Daten von EU-Kunden werden somit in die USA übermittelt. Wir stützen uns auf die Standardvertragsklauseln (SCC) der Europäischen Kommission als Übermittlungsmechanismus. Eine EU-Region wird für zukünftige Implementierungen geprüft.</p>
+                    <h2>4. Datenstandort, Empfänger und Übermittlung</h2>
+                    <p>Unsere Server-Infrastruktur läuft derzeit in den Vereinigten Staaten (DigitalOcean, San Francisco). Daten von EU-Kunden werden damit in die USA übermittelt. Für die unten genannten Auftragsverarbeiter bestehen Verträge nach Art. 28 DSGVO; als Übermittlungsmechanismus stützen wir uns auf die Standardvertragsklauseln (SCC) der Europäischen Kommission. Apple und Google handeln beim Kauf über den App Store bzw. Google Play als eigene Verantwortliche; von ihnen erhalten wir nur den Abo-Status. Insbesondere für die Sicherungskopien können wir eine ausschließliche Speicherung in der EU derzeit <strong>nicht</strong> zusichern.</p>
+                    <p>Keiner dieser Empfänger erhält Daten, um Werbung auszuspielen. Wir verkaufen nichts weiter.</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered small mt-3">
+                            <thead class="table-light">
+                                <tr><th>Empfänger</th><th>Sitz</th><th>Wofür, und was er dabei sieht</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>DigitalOcean, LLC</td>
+                                    <td>USA</td>
+                                    <td>Server und Datenbank des Dienstes</td>
+                                </tr>
+                                <tr>
+                                    <td>Cloudflare, Inc.</td>
+                                    <td>USA</td>
+                                    <td>Vorgeschalteter DNS-Resolver (1.1.1.2 / 1.0.0.2, verschlüsselt, vom Nutzer nicht umstellbar) — sieht dadurch jede extern aufgelöste Domain. Zusätzlich Reverse-Proxy mit TLS-Terminierung für App- und Router-Verbindungen, Objektspeicher für Datenbank-Sicherungen sowie CDN für diese Website.</td>
+                                </tr>
+                                <tr>
+                                    <td>Anthropic PBC</td>
+                                    <td>USA</td>
+                                    <td>Erzeugt aus MAC-Adresse, dem daraus abgeleiteten Hersteller, DHCP-Hostname, DHCP-Vendor-Class und den mDNS-Werten einen verständlichen Gerätenamen. <strong>Standardmäßig aktiv.</strong> Hostnamen enthalten häufig Vornamen („emmas-iphone“); diese Angabe geht damit mit.</td>
+                                </tr>
+                                <tr>
+                                    <td>Google Ireland Ltd. / Google LLC</td>
+                                    <td>Irland / USA</td>
+                                    <td>Anmeldung (Firebase Authentication) und Push-Benachrichtigungen. Die Meldung „neues Gerät im Netz“ enthält MAC-Adresse und Hostname des Geräts im Klartext. Google LLC erhält außerdem die anonyme Nutzungsstatistik dieser Website, wenn Sie im Cookie-Banner zustimmen (Abschnitt 7).</td>
+                                </tr>
+                                <tr>
+                                    <td>Functional Software, Inc. (Sentry)</td>
+                                    <td>USA</td>
+                                    <td>Fehler- und Absturzberichte aus App und Router-Firmware. Ab Werk aktiv; die App übermittelt dabei Ihre Konto-Kennung.</td>
+                                </tr>
+                                <tr>
+                                    <td>650 Industries, Inc. (Expo)</td>
+                                    <td>USA</td>
+                                    <td>Auslieferung von Aktualisierungen der Mobil-App</td>
+                                </tr>
+                                <tr>
+                                    <td>Apple Inc. / Google LLC</td>
+                                    <td>USA</td>
+                                    <td>Abo-Abwicklung und Zahlungsstatus über den jeweiligen App-Store. Eigene Verantwortliche, nicht unsere Auftragsverarbeiter — wir erfahren nur, ob Ihr Abo aktiv ist.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Fernwartung:</strong> Jeder Router baut eine gesicherte Wartungsverbindung zu unserem Server auf, über die unser Support im Fehlerfall auf das Gerät zugreifen kann. Sie ist im Auslieferungszustand aktiv, lässt sich in der App derzeit nicht abschalten, und die App zeigt Ihnen auch nicht an, wenn sie genutzt wird. Wir nutzen sie zur Fehlersuche, nicht zur Beobachtung Ihres Datenverkehrs — dass Sie sie weder abschalten noch mitverfolgen können, sehen wir als Lücke in Ihrer Kontrolle, nicht als Funktion.</p>
 
                     <h2>5. Ihre Rechte</h2>
-                    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Datenübertragbarkeit, Einschränkung der Verarbeitung sowie das Recht auf Widerspruch. EU-Kunden können sich an die zuständige Aufsichtsbehörde wenden (in der Slowakei: Úrad na ochranu osobných údajov; in Deutschland: die jeweilige Landesdatenschutzbehörde).</p>
+                    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Datenübertragbarkeit, Einschränkung der Verarbeitung sowie das Recht auf Widerspruch. Schreiben Sie uns dazu einfach an die Adresse in Abschnitt 8; wir bestätigen den Eingang innerhalb von 5 Werktagen und bearbeiten Ihre Anfrage innerhalb von 30 Tagen. Eine Kopie Ihrer Daten stellen wir heute manuell zusammen — einen Selbstbedienungs-Export in der App gibt es noch nicht. Die Löschung Ihres Kontos lösen Sie in der App selbst aus oder per E-Mail.</p>
+                    <p>Bitte beachten Sie: Nach einer Löschung kann eine Kopie Ihrer Daten in unseren Datenbank-Sicherungen noch bis zu zwölf Monate fortbestehen, bis der betreffende Monatsstand verfällt. Diese Sicherungen werden nur zur Wiederherstellung nach einem Ausfall genutzt.</p>
+                    <p>EU-Kunden können sich jederzeit an eine Aufsichtsbehörde wenden — in der Slowakei an den <a href="https://dataprotection.gov.sk/" target="_blank" rel="noopener">Úrad na ochranu osobných údajov</a>, in Deutschland an die jeweils zuständige Landesdatenschutzbehörde.</p>
 
-                    <h2>6. Kein Verkauf, keine Profilbildung</h2>
-                    <p>Wir verkaufen keine personenbezogenen Daten und betreiben keine automatisierte Profilbildung.</p>
+                    <h2>6. Kein Verkauf, keine Werbeprofile</h2>
+                    <p>Wir verkaufen keine personenbezogenen Daten, geben sie nicht an Werbenetzwerke weiter und erstellen keine Werbe- oder Interessenprofile — weder von Ihnen noch von Ihren Kindern.</p>
+                    <p>Eine automatisierte Auswertung gibt es allerdings, und wir nennen sie beim Namen: Für die Geräteliste wird aus MAC-Adresse, Hostname und Netzwerk-Kennungen automatisch ein Gerätename und -typ abgeleitet (siehe Abschnitt 4). Diese Auswertung betrifft Geräte, nicht Personen, und hat keine rechtliche Wirkung für Sie im Sinne von Art. 22 DSGVO. Da Hostnamen oft Vornamen enthalten, lässt sich ein Gerät dabei faktisch einer Person zuordnen.</p>
+                    <p>Einen Selbstbedienungs-Schalter, der diese Auswertung für Ihr Konto dauerhaft abschaltet, gibt es heute noch nicht — jedes neu im Netz erkannte Gerät durchläuft sie. Sie können der Verarbeitung nach Art. 21 DSGVO widersprechen; einen solchen Widerspruch bearbeiten wir derzeit manuell. Unabhängig davon können Sie in der App jederzeit einen eigenen Gerätenamen vergeben — dieser hat Vorrang vor dem automatisch erzeugten.</p>
 
                     <h2>7. Cookies und Analyse</h2>
-                    <p>Wir verwenden Google Analytics zur anonymen Nutzungsanalyse. Cookies werden erst nach Ihrer ausdrücklichen Zustimmung gesetzt. Sie können Ihre Einwilligung jederzeit über den Cookie-Banner unten widerrufen.</p>
+                    <p>Wir verwenden auf dieser Website Google Analytics zur anonymen Reichweitenmessung. Cookies werden erst nach Ihrer ausdrücklichen Zustimmung gesetzt. Sie können Ihre Einwilligung jederzeit über den Cookie-Banner unten widerrufen. Das betrifft nur diese Website — mit Ihrem Router und den Geräten Ihrer Familie hat es nichts zu tun.</p>
 
                     <h2>8. Kontakt zum Datenschutz</h2>
-                    <p>Für Datenschutzanfragen: <a href="mailto:privacy@whitecatfamily.com">privacy@whitecatfamily.com</a></p>
+                    <p>Für Datenschutzanfragen: <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a>. Wir antworten persönlich.</p>
                 </div>
             </section>
         </main>
