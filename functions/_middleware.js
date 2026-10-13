@@ -17,6 +17,7 @@ import { loadPartials } from './_partials.js';
 const EU_GERMAN_SPEAKING = new Set(['DE', 'AT']);
 const EU_FRENCH_SPEAKING = new Set(['FR', 'MC']);
 const EU_SLOVAK = new Set(['SK']);
+const EU_POLISH = new Set(['PL']);
 const EU_COUNTRIES = new Set([
   'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU',
   'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES',
@@ -25,7 +26,7 @@ const EU_COUNTRIES = new Set([
   'NO', 'IS', 'LI',
 ]);
 
-const VALID_LOCALES = new Set(['en-US', 'en-EU', 'de', 'fr', 'sk']);
+const VALID_LOCALES = new Set(['en-US', 'en-EU', 'de', 'fr', 'sk', 'pl']);
 
 function readCookie(req, name) {
   const cookie = req.headers.get('cookie') || '';
@@ -37,6 +38,7 @@ function footerFor(locale) {
   if (locale === 'de') return 'footer-eu-de';
   if (locale === 'fr') return 'footer-eu-fr';
   if (locale === 'sk') return 'footer-eu-sk';
+  if (locale === 'pl') return 'footer-eu-pl';
   if (locale === 'en-EU') return 'footer-eu-en';
   return 'footer-us';
 }
@@ -49,6 +51,7 @@ function ctaFor(locale) {
   if (locale === 'de') return 'cta-amazon-de';
   if (locale === 'fr') return 'cta-amazon-fr';
   if (locale === 'sk') return 'cta-amazon-sk';
+  if (locale === 'pl') return 'cta-amazon-pl';
   return 'cta-amazon-en';
 }
 
@@ -56,6 +59,7 @@ function subscribeFor(locale) {
   if (locale === 'de') return 'cta-subscribe-de';
   if (locale === 'fr') return 'cta-subscribe-fr';
   if (locale === 'sk') return 'cta-subscribe-sk';
+  if (locale === 'pl') return 'cta-subscribe-pl';
   return 'cta-subscribe-en';
 }
 
@@ -63,11 +67,12 @@ function cookieFor(locale) {
   if (locale === 'de') return 'cookie-banner-de';
   if (locale === 'fr') return 'cookie-banner-fr';
   if (locale === 'sk') return 'cookie-banner-sk';
+  if (locale === 'pl') return 'cookie-banner-pl';
   return 'cookie-banner-en';
 }
 
 // EN-side pages with translated /de/ filenames (privacy → datenschutz, etc.).
-// FR + SK are homepage-only for now, so they always link to their root.
+// FR, SK and PL are homepage-only for now, so they always link to their root.
 const UNPAIRED_PATHS = new Set([
   '/digital-heroin', '/digital-heroin/', '/digital-heroin.html',
 ]);
@@ -82,11 +87,11 @@ const REVERSE_BASENAMES = Object.fromEntries(
 
 // EN root pages that have a published /de/ counterpart. Pages outside this
 // set get no DE hreflang (pointing hreflang at a 404 is an SEO error).
-// Bases that now exist in FR and SK too. /guide is the URL printed on the box,
-// so a French or Slovak buyer scanning it must land on their own language and
-// the locale switcher must offer real pages rather than bouncing them home.
-// Add to this set whenever a page is translated into FR/SK.
-const FR_SK_PAIRED_BASES = new Set(['guide', 'faq']);
+// Bases that now exist in FR, SK and PL too. /guide is the URL printed on the
+// box, so a French, Slovak or Polish buyer scanning it must land on their own
+// language and the locale switcher must offer real pages rather than bouncing
+// them home. Add to this set whenever a page is translated into FR/SK/PL.
+const FR_SK_PL_PAIRED_BASES = new Set(['guide', 'faq']);
 
 const DE_PAIRED_BASES = new Set([
   'faq', 'privacy', 'terms', 'impressum', 'opensource', 'accessibility',
@@ -101,50 +106,53 @@ function buildLocaleUrls(pathname) {
   const isDe = pathname === '/de' || pathname.startsWith('/de/');
   const isFr = pathname === '/fr' || pathname.startsWith('/fr/');
   const isSk = pathname === '/sk' || pathname.startsWith('/sk/');
+  const isPl = pathname === '/pl' || pathname.startsWith('/pl/');
   const isEnEU = pathname === '/en' || pathname.startsWith('/en/');
 
   // Unpaired pages — only the EN US side exists
   if (UNPAIRED_PATHS.has(pathname) || pathname.startsWith('/digital-heroin/')) {
-    return { 'en-US': pathname, 'en-EU': null, de: null, fr: null, sk: null };
+    return { 'en-US': pathname, 'en-EU': null, de: null, fr: null, sk: null, pl: null };
   }
 
   // Root or US homepage variants
   if (pathname === '/' || pathname === '/index.html') {
-    return { 'en-US': '/', 'en-EU': '/en/', de: '/de/', fr: '/fr/', sk: '/sk/' };
+    return { 'en-US': '/', 'en-EU': '/en/', de: '/de/', fr: '/fr/', sk: '/sk/', pl: '/pl/' };
   }
 
   if (isDe) {
     const base = pathname.replace(/^\/de\//, '').replace(/\.html$/, '');
     if (pathname === '/de' || pathname === '/de/') {
-      return { 'en-US': '/', 'en-EU': '/en/', de: pathname, fr: '/fr/', sk: '/sk/' };
+      return { 'en-US': '/', 'en-EU': '/en/', de: pathname, fr: '/fr/', sk: '/sk/', pl: '/pl/' };
     }
     const enBase = REVERSE_BASENAMES[base] || base;
-    // Only the DE homepage has EU-EN/FR/SK counterparts; secondary DE pages
+    // Only the DE homepage has EU-EN/FR/SK/PL counterparts; secondary DE pages
     // pair with their EN-US original only.
     return {
       'en-US': '/' + enBase,
       'en-EU': null,
       de: pathname,
-      fr: FR_SK_PAIRED_BASES.has(enBase) ? '/fr/' + enBase : null,
-      sk: FR_SK_PAIRED_BASES.has(enBase) ? '/sk/' + enBase : null,
+      fr: FR_SK_PL_PAIRED_BASES.has(enBase) ? '/fr/' + enBase : null,
+      sk: FR_SK_PL_PAIRED_BASES.has(enBase) ? '/sk/' + enBase : null,
+      pl: FR_SK_PL_PAIRED_BASES.has(enBase) ? '/pl/' + enBase : null,
     };
   }
 
-  if (isFr || isSk) {
-    const homes = { 'en-US': '/', 'en-EU': '/en/', de: '/de/', fr: '/fr/', sk: '/sk/' };
-    if (['/fr', '/fr/', '/sk', '/sk/'].includes(pathname)) return homes;
+  if (isFr || isSk || isPl) {
+    const homes = { 'en-US': '/', 'en-EU': '/en/', de: '/de/', fr: '/fr/', sk: '/sk/', pl: '/pl/' };
+    if (['/fr', '/fr/', '/sk', '/sk/', '/pl', '/pl/'].includes(pathname)) return homes;
 
-    const base = pathname.replace(/^\/(fr|sk)\//, '').replace(/\.html$/, '');
-    if (FR_SK_PAIRED_BASES.has(base)) {
+    const base = pathname.replace(/^\/(fr|sk|pl)\//, '').replace(/\.html$/, '');
+    if (FR_SK_PL_PAIRED_BASES.has(base)) {
       return {
         'en-US': '/' + base,
         'en-EU': null,
         de: '/de/' + (TRANSLATED_BASENAMES[base] || base),
         fr: '/fr/' + base,
         sk: '/sk/' + base,
+        pl: '/pl/' + base,
       };
     }
-    // Anything else under /fr/ or /sk/ is untranslated — fall back to homepages
+    // Anything else under /fr/, /sk/ or /pl/ is untranslated — fall back to homepages
     // rather than emitting an hreflang that 404s.
     return homes;
   }
@@ -152,7 +160,7 @@ function buildLocaleUrls(pathname) {
   if (isEnEU) {
     const base = pathname.replace(/^\/en\//, '').replace(/\.html$/, '');
     if (pathname === '/en' || pathname === '/en/') {
-      return { 'en-US': '/', 'en-EU': pathname, de: '/de/', fr: '/fr/', sk: '/sk/' };
+      return { 'en-US': '/', 'en-EU': pathname, de: '/de/', fr: '/fr/', sk: '/sk/', pl: '/pl/' };
     }
     const dePath = '/de/' + (TRANSLATED_BASENAMES[base] || base);
     return {
@@ -161,11 +169,12 @@ function buildLocaleUrls(pathname) {
       de: dePath,
       fr: '/fr/',
       sk: '/sk/',
+      pl: '/pl/',
     };
   }
 
   // EN-US side (root path like /faq, /privacy, etc.). Only /en/ (homepage)
-  // exists on the EU-EN side, and FR/SK are homepage-only — emitting their
+  // exists on the EU-EN side, and FR/SK/PL are homepage-only — emitting their
   // homepage as an "alternate" of a secondary page is an hreflang error, so
   // unpaired locales return null and the hreflang filter drops them.
   const base = pathname.replace(/^\//, '').replace(/\.html$/, '');
@@ -173,8 +182,9 @@ function buildLocaleUrls(pathname) {
     'en-US': pathname,
     'en-EU': null,
     de: DE_PAIRED_BASES.has(base) ? '/de/' + (TRANSLATED_BASENAMES[base] || base) : null,
-    fr: FR_SK_PAIRED_BASES.has(base) ? '/fr/' + base : null,
-    sk: FR_SK_PAIRED_BASES.has(base) ? '/sk/' + base : null,
+    fr: FR_SK_PL_PAIRED_BASES.has(base) ? '/fr/' + base : null,
+    sk: FR_SK_PL_PAIRED_BASES.has(base) ? '/sk/' + base : null,
+    pl: FR_SK_PL_PAIRED_BASES.has(base) ? '/pl/' + base : null,
   };
 }
 
@@ -214,6 +224,7 @@ function classifyLocale(req) {
   if (EU_GERMAN_SPEAKING.has(country)) return 'de';
   if (EU_FRENCH_SPEAKING.has(country)) return 'fr';
   if (EU_SLOVAK.has(country)) return 'sk';
+  if (EU_POLISH.has(country)) return 'pl';
   if (country === 'CH') {
     const accept = (req.headers.get('accept-language') || '').toLowerCase();
     if (accept.startsWith('de')) return 'de';
@@ -229,6 +240,7 @@ function homeFor(locale) {
   if (locale === 'de') return '/de/';
   if (locale === 'fr') return '/fr/';
   if (locale === 'sk') return '/sk/';
+  if (locale === 'pl') return '/pl/';
   if (locale === 'en-EU') return '/en/';
   return '/';
 }
@@ -267,18 +279,19 @@ export async function onRequest(context) {
     return next();
   }
 
-  // Path-aware locale: any page under /de/, /fr/, /sk/, /en/ forces that
+  // Path-aware locale: any page under /de/, /fr/, /sk/, /pl/, /en/ forces that
   // locale regardless of visitor IP — US visitor manually opening /de/impressum
   // still gets the EU-DE footer. For the root path, fall back to geo+cookie.
   let pathLocale = null;
   if (url.pathname === '/de' || url.pathname.startsWith('/de/')) pathLocale = 'de';
   else if (url.pathname === '/fr' || url.pathname.startsWith('/fr/')) pathLocale = 'fr';
   else if (url.pathname === '/sk' || url.pathname.startsWith('/sk/')) pathLocale = 'sk';
+  else if (url.pathname === '/pl' || url.pathname.startsWith('/pl/')) pathLocale = 'pl';
   else if (url.pathname === '/en' || url.pathname.startsWith('/en/')) pathLocale = 'en-EU';
   const locale = pathLocale || classifyLocale(request);
 
   // Auto-redirect from root: send each visitor to their locale's homepage.
-  // EU visitors → /en/ /de/ /fr/ /sk/ (keeps US-USD site for US visitors only).
+  // EU visitors → /en/ /de/ /fr/ /sk/ /pl/ (keeps US-USD site for US visitors only).
   // US/ROW → stay on root.
   const isRoot = url.pathname === '/' || url.pathname === '/index.html';
   if (isRoot && locale !== 'en-US') {
@@ -326,14 +339,15 @@ export async function onRequest(context) {
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
 
-    // Phase 8 (5-locale): locale switcher + hreflang
+    // Phase 8 (6-locale): locale switcher + hreflang
     const allUrls = buildLocaleUrls(url.pathname);
     const switchPartial = (partials['header-locale-switch'] || '')
       .replace('{{US_URL}}', allUrls['en-US'] || '/')
       .replace('{{EN_URL}}', allUrls['en-EU'] || '/en/')
       .replace('{{DE_URL}}', allUrls.de || '/de/')
       .replace('{{FR_URL}}', allUrls.fr || '/fr/')
-      .replace('{{SK_URL}}', allUrls.sk || '/sk/');
+      .replace('{{SK_URL}}', allUrls.sk || '/sk/')
+      .replace('{{PL_URL}}', allUrls.pl || '/pl/');
     html = html.replaceAll('<!-- LOCALE-SWITCH -->', switchPartial);
 
     // Hreflang: emit only locales that exist for this page (others omitted)
@@ -344,6 +358,7 @@ export async function onRequest(context) {
       ['de', allUrls.de],
       ['fr', allUrls.fr],
       ['sk', allUrls.sk],
+      ['pl', allUrls.pl],
     ];
     let hreflangLines = hreflangPairs
       .filter(([, p]) => p)

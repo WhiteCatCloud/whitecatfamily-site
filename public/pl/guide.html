@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+  PERMANENT URL: /pl/guide
+  This URL is printed on physical product packaging and in-app onboarding.
+  NEVER rename. NEVER 404. NEVER redirect away.
+
+  Written phone-first on purpose: almost everyone arrives here by scanning the
+  QR code on the box, so they are already holding the phone they need to
+  install the app on. Store buttons are tappable and come first; the QR block
+  is hidden under 576px because you cannot scan a code with the phone that is
+  displaying it.
+
+  Scope: onboarding only. Everything after "it works" lives on /pl/faq.
+  In-app labels are quoted from the app's i18n files — keep them in sync.
+-->
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Instrukcja konfiguracji – WhiteCat Family</title>
+        <meta name="description" content="Skonfiguruj router WhiteCat w około 10 minut: podłącz go, zainstaluj aplikację, sparuj ją z routerem i dodaj członków rodziny.">
+        <link rel="canonical" href="https://whitecatfamily.com/pl/guide">
+        <!-- HREFLANG -->
+        <link href="/assets/img/favicon.png" rel="icon">
+        <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link href="/assets/css/wc-guide.css?v=1" rel="stylesheet">
+            <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+          (function(){
+            var m = document.cookie.match(/(?:^|; )wc_consent=([^;]+)/);
+            if (m && m[1] === 'granted') gtag('consent','update',{analytics_storage:'granted'});
+          })();
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6R7922H8N"></script>
+        <script>
+          gtag('js', new Date());
+          gtag('config', 'G-J6R7922H8N');
+        </script>
+        <link rel="stylesheet" href="/assets/css/wc-cookie.css">
+        <script defer src="/assets/js/wc-cookie.js"></script>
+    </head>
+    <body>
+        <header id="header" class="header d-flex align-items-center sticky-top">
+            <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+                <a href="/pl/" class="logo d-flex align-items-center">
+                    <img src="/assets/img/logo.png" alt="WhiteCat Family" style="height:40px;">
+                    <h1 class="sitename">WhiteCat Family</h1><span>.</span>
+                </a>
+                <!-- LOCALE-SWITCH -->
+            </div>
+        </header>
+        <main class="main">
+            <section class="section">
+                <div class="container wc-guide">
+
+                    <h1 class="mb-2">Skonfiguruj swojego WhiteCata</h1>
+                    <p class="text-muted">Pięć kroków, około 10 minut. Nie musisz się znać na sieciach.</p>
+
+                    <div class="wc-note"><strong>Zanim zaczniesz:</strong> zostaw podłączone urządzenie, przez które masz teraz internet (router lub modem światłowodowy). WhiteCat działa za nim, a nie zamiast niego.</div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">1</div>
+                        <div class="wc-step-b">
+                            <h2>Podłącz router</h2>
+                            <p>W pudełku znajdziesz router WhiteCat, zasilacz i kabel Ethernet.</p><p>Połącz kablem Ethernet obecny router lub modem z portem oznaczonym <strong>WAN</strong> na tylnym panelu WhiteCata. Potem podłącz zasilanie.</p><p>Odczekaj około minuty. Gdy dioda stanu zacznie migać na przemian <strong>na zielono i na czerwono</strong>, router się uruchomił i jest gotowy do parowania.</p>
+                            <img src="/back.png" alt="Tył routera WhiteCat z portem WAN" class="img-fluid my-2" style="max-width:260px;" loading="lazy">
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">2</div>
+                        <div class="wc-step-b">
+                            <h2>Pobierz aplikację</h2>
+                            <p>Wszystko ustawiasz w aplikacji. Jest bezpłatna.</p>
+                            <div class="wc-store">
+                                <a href="https://apps.apple.com/pl/app/id6754770126" target="_blank" rel="noopener">
+                                    <img src="/assets/img/badges/appstore-en.svg" alt="Pobierz w App Store" style="height:40px;width:auto;display:block;">
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.whitecatcloud.app&amp;hl=pl&amp;gl=PL" target="_blank" rel="noopener">
+                                    <img src="/assets/img/badges/googleplay-en.png" alt="Pobierz z Google Play" style="height:40px;width:auto;display:block;">
+                                </a>
+                            </div>
+                            <div class="wc-qr">
+                                <div class="wc-qr-box"><img src="/assets/img/qr-app.svg" alt="Kod QR do pobrania aplikacji WhiteCat" width="104" height="104" loading="lazy"></div>
+                                <p class="text-muted mb-0" style="font-size:.9rem;">Czytasz to na komputerze? Zeskanuj kod aparatem telefonu — właściwy sklep otworzy się automatycznie.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">3</div>
+                        <div class="wc-step-b">
+                            <h2>Załóż konto</h2>
+                            <p>Otwórz aplikację i stuknij <strong>Kontynuuj z Google</strong> albo <strong>Kontynuuj z Apple</strong>. Nie musisz wymyślać osobnego hasła.</p><p>Wybierz konto, na które mają przychodzić potwierdzenia płatności i powiadomienia dotyczące Twojego domu. Drugiego rodzica możesz zaprosić później.</p>
+
+                            <figure class="wc-shot-row"><div><img src="/assets/img/help/welcome.png" alt="Ekran powitalny — logowanie przez Google lub Apple" class="wc-shot" loading="lazy" width="460" height="981"><figcaption>Ekran powitalny — logowanie przez Google lub Apple</figcaption></div></figure>
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">4</div>
+                        <div class="wc-step-b">
+                            <h2>Sparuj router</h2>
+                            <p>Aplikacja przeprowadzi Cię przez ten krok. Na około 30 sekund poprosi o połączenie telefonu z tymczasową siecią Wi-Fi <span class="wc-key">WhiteCat-Setup</span>, wymieni klucz z routerem, a potem przywróci poprzednie połączenie.</p><p>Następnie w polach <strong>Nazwa sieci (SSID)</strong> i <strong>Hasło</strong> ustawisz Wi-Fi, z którego od teraz będzie korzystać cała rodzina.</p>
+                            <p>Gdy parowanie się zakończy, dioda stanu zaświeci <strong>ciągłym niebieskim światłem</strong>. To znak, że router jest gotowy i działa prawidłowo.</p>
+                            <div class="wc-note">Wybierz nazwę, którą łatwo rozpoznasz. Nie musisz wpisywać hasła na każdym urządzeniu — w następnym kroku pokażemy Ci, jak zrobić to szybciej kodem QR.</div>
+                        </div>
+                    </div>
+
+                    <div class="wc-step">
+                        <div class="wc-step-n">5</div>
+                        <div class="wc-step-b">
+                            <h2>Przenieś urządzenia do nowej sieci</h2>
+                            <p>Połącz urządzenia całej rodziny z nową siecią Wi-Fi WhiteCat — tablety, telewizory, laptopy, konsole, telefony. Wszystko, co zostanie w starej sieci Wi-Fi, nie będzie chronione.</p><p>Żeby nie wpisywać hasła na każdym urządzeniu, skorzystaj z kodu QR w aplikacji: przejdź do <strong>Urządzenia &rarr; Sieci Wi-Fi</strong>, stuknij swoją sieć i zeskanuj kod aparatem nowego urządzenia.</p>
+                            <div class="wc-note"><strong>Nowe urządzenia są domyślnie filtrowane.</strong> Dopóki nie przypiszesz urządzenia do członka rodziny, media społecznościowe, gry, serwisy streamingowe i strony dla dorosłych są na nim zablokowane. To celowe — dzięki temu nic się nie prześlizgnie, zanim skończysz wszystko ustawiać.</div>
+                        </div>
+                    </div>
+
+                    <hr class="my-5">
+
+                    <h2 class="h4">Gotowe — konfiguracja za Tobą.</h2>
+                    <p>Internet w Twoim domu jest już filtrowany. Wszystko, co przyda Ci się dalej — dodawanie członków rodziny, blokowanie konkretnej aplikacji, ustawianie pory snu, przyznawanie dodatkowych 15 minut — znajdziesz na stronie pomocy wraz z przykładami krok po kroku.</p>
+                    <p class="mt-3"><a href="/pl/faq" class="btn btn-primary">Przejdź do pomocy &rarr;</a></p>
+
+                    <h2 class="h5 mt-5">Coś nie działa?</h2>
+                    <ul><li><strong>Brak internetu po podłączeniu?</strong> Sprawdź, czy kabel jest podłączony do portu oznaczonego <strong>WAN</strong> i czy obecny modem nadal ma połączenie z internetem.</li><li><strong>Nie udaje się sparować routera?</strong> Uruchom router ponownie i spróbuj jeszcze raz. Jeśli to nie pomoże, wciśnij spinaczem przycisk w otworze resetu i przytrzymaj go przez 30 sekund (nie odłączaj przy tym zasilania), a potem zacznij od początku.</li><li><strong>Wolisz zapytać kogoś z nas?</strong> Napisz na <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a>. Odpowiadamy osobiście.</li></ul>
+
+                    <p class="text-muted small mt-5">Stały adres URL wydrukowany na opakowaniu produktu i używany w aplikacji podczas konfiguracji — nie zmieniać.</p>
+                </div>
+            </section>
+        </main>
+        <!-- FOOTER -->
+        <!-- COOKIE -->
+    </body>
+</html>

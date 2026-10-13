@@ -9,10 +9,14 @@
 
 const PARTIAL_NAMES = [
   'footer-us', 'footer-eu-en', 'footer-eu-de', 'footer-eu-fr', 'footer-eu-sk',
+  'footer-eu-pl',
   'cookie-banner-en', 'cookie-banner-de', 'cookie-banner-fr', 'cookie-banner-sk',
+  'cookie-banner-pl',
   'cta-amazon-en', 'cta-amazon-de', 'cta-amazon-fr', 'cta-amazon-sk',
+  'cta-amazon-pl',
   'cta-notify-us',
   'cta-subscribe-en', 'cta-subscribe-de', 'cta-subscribe-fr', 'cta-subscribe-sk',
+  'cta-subscribe-pl',
   'header-locale-switch',
 ];
 

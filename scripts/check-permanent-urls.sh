@@ -8,6 +8,11 @@ PERMANENT_FILES=(
   'public/guide.html'
   'public/de/doc.html'
   'public/de/guide.html'
+  # Localized /guide pages: a buyer scanning the box is routed to these by
+  # locale, so they are as permanent as the root one.
+  'public/fr/guide.html'
+  'public/sk/guide.html'
+  'public/pl/guide.html'
 )
 
 fail=0
