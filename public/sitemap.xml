@@ -146,6 +146,12 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://whitecatfamily.com/security</loc>
+        <lastmod>2026-10-16</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
         <loc>https://whitecatfamily.com/accessibility</loc>
         <xhtml:link rel="alternate" hreflang="en" href="https://whitecatfamily.com/accessibility"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://whitecatfamily.com/de/accessibility"/>
