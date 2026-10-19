@@ -202,12 +202,12 @@ function makeAbsolute(host, p) {
 // there will not be one while the FCC import ban stands, so en-US never reaches
 // this (see ctaFor).
 //
-// The fallback is a brand SEARCH, not a /stores/ path. /stores/<Brand> only
-// resolves once a Brand Store has actually been built under Brand Registry;
-// hardcoding it shipped a 404 on every locale's primary CTA. A search URL is
-// always 200 and starts returning the product the moment the listing goes live.
+// The fallback is the product detail page (ASIN B0HJYRBGPW, live since 09-2026).
+// It used to be a brand SEARCH while the listing did not exist yet, but a search
+// lands buyers in a results list where other products and ads can rank above
+// ours. Never use a /stores/ path: it 404s unless a Brand Store is published.
 function amazonUrlFor(env) {
-  return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/s?k=WhiteCat+Family';
+  return env.WHITECAT_AMAZON_DE_URL || 'https://www.amazon.de/dp/B0HJYRBGPW';
 }
 
 // Direct checkout for buyers outside Germany (AT, CZ, PL, SK). Until the Stripe
