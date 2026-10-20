@@ -212,8 +212,29 @@ function amazonUrlFor(env) {
 
 // Direct checkout for buyers outside Germany (AT, CZ, PL, SK). Until the Stripe
 // payment link exists, degrade to email rather than to a dead link.
-function stripeUrlFor(env) {
-  return env.WHITECAT_STRIPE_URL || 'mailto:sales@whitecatcloud.com';
+//
+// Partner attribution: a visitor who lands with ?ref= or ?utm_source= gets
+// that label passed to Stripe as client_reference_id, so each payment in the
+// Stripe dashboard shows which partner link it came from. Nothing is stored
+// on the visitor's device, so the label only survives on the landing page.
+function stripeUrlFor(env, url) {
+  const base = env.WHITECAT_STRIPE_URL || 'mailto:sales@whitecatcloud.com';
+  const ref = attributionFor(url);
+  if (!ref || !base.startsWith('https://')) return base;
+  const link = new URL(base);
+  link.searchParams.set('client_reference_id', ref);
+  return link.toString();
+}
+
+// Stripe accepts letters, digits, dashes and underscores, up to 200 chars.
+function attributionFor(url) {
+  const clean = (v) => (v || '').toLowerCase().replace(/[^a-z0-9-]+/g, '-')
+    .replace(/^-+|-+$/g, '').slice(0, 60);
+  const p = url.searchParams;
+  const source = clean(p.get('ref') || p.get('utm_source'));
+  if (!source) return '';
+  const medium = clean(p.get('utm_medium'));
+  return medium ? `${source}_${medium}` : source;
 }
 
 function classifyLocale(req) {
@@ -334,7 +355,7 @@ export async function onRequest(context) {
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
     const cta = (partials[ctaFor(locale)] || '')
       .replaceAll('{{AMAZON_URL}}', amazonUrlFor(env))
-      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env));
+      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
