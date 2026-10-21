@@ -314,6 +314,23 @@ export async function onRequest(context) {
   // Auto-redirect from root: send each visitor to their locale's homepage.
   // EU visitors → /en/ /de/ /fr/ /sk/ /pl/ (keeps US-USD site for US visitors only).
   // US/ROW → stay on root.
+  // Box-printed /guide (and /faq) follow the visitor's language like the root
+  // does: a buyer in DE/AT/FR/SK/PL scanning the box lands on their own
+  // translation. /guide itself still serves 200 to everyone else, and anyone
+  // who picked a language in the switcher (wc_locale cookie) gets that choice.
+  if (!pathLocale && ['de', 'fr', 'sk', 'pl'].includes(locale)) {
+    const base = url.pathname.replace(/^\//, '').replace(/\.html$/, '');
+    if (FR_SK_PL_PAIRED_BASES.has(base)) {
+      return new Response(null, {
+        status: 302,
+        headers: {
+          location: `/${locale}/${base}` + (url.search || ''),
+          'cache-control': 'private, max-age=0',
+        },
+      });
+    }
+  }
+
   const isRoot = url.pathname === '/' || url.pathname === '/index.html';
   if (isRoot && locale !== 'en-US') {
     const home = homeFor(locale);
