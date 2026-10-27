@@ -98,11 +98,35 @@ const DE_PAIRED_BASES = new Set([
   'guide', 'doc', 'thankyou',
 ]);
 
+// Buyer-facing legal pages exist under different slugs per language, so they
+// cannot be paired by base name. Each row lists the real page per locale;
+// a missing locale is null (no hreflang, switcher falls back to that home).
+const LEGAL_PAGE_GROUPS = [
+  { 'en-EU': '/en/terms-of-sale', de: '/de/agb', sk: '/sk/obchodne-podmienky', pl: '/pl/regulamin' },
+  { 'en-EU': '/en/withdraw', sk: '/sk/odstupenie', pl: '/pl/odstapienie' },
+  { 'en-EU': '/en/withdraw-sent', sk: '/sk/odstupenie-odoslane', pl: '/pl/odstapienie-wyslane' },
+  { 'en-EU': '/en/thank-you', sk: '/sk/dakujeme', pl: '/pl/dziekujemy' },
+  { 'en-US': '/privacy', de: '/de/datenschutz', sk: '/sk/ochrana-sukromia', pl: '/pl/prywatnosc' },
+];
+
+function legalGroupFor(pathname) {
+  const clean = pathname.replace(/\.html$/, '');
+  const group = LEGAL_PAGE_GROUPS.find((g) => Object.values(g).includes(clean));
+  if (!group) return null;
+  return {
+    'en-US': group['en-US'] || null, 'en-EU': group['en-EU'] || null,
+    de: group.de || null, fr: null, sk: group.sk || null, pl: group.pl || null,
+  };
+}
+
 // Returns canonical paths for each available locale, given the current pathname.
 // Used for both the locale switcher and hreflang link tags. A value of null
 // means the locale isn't published for this page yet (e.g. /fr/faq doesn't
 // exist, so on /faq the FR locale entry points at /fr/ instead).
 function buildLocaleUrls(pathname) {
+  const legal = legalGroupFor(pathname);
+  if (legal) return legal;
+
   const isDe = pathname === '/de' || pathname.startsWith('/de/');
   const isFr = pathname === '/fr' || pathname.startsWith('/fr/');
   const isSk = pathname === '/sk' || pathname.startsWith('/sk/');
