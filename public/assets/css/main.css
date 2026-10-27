@@ -223,6 +223,44 @@ h6 {
   }
 }
 
+/* Pages without a navmenu (legal pages, guide, FAQ, imprint, 404 …) get the
+   locale switcher injected straight into the header row. The rule above gives
+   .logo `order: 1` below 992px, so the switcher (order 0) landed left of the
+   logo and pushed "WhiteCat Family" off a phone screen. Keep the logo first,
+   the switcher last, and shrink both to fit 375px. Homepages are unaffected:
+   their switcher sits inside .navmenu, not directly in the header row. */
+.header [class*="container"] > .wc-locale-item {
+  order: 2;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+  .header [class*="container"]:has(> .wc-locale-item) .logo {
+    min-width: 0;
+  }
+
+  .header [class*="container"]:has(> .wc-locale-item) .logo img {
+    max-height: 30px;
+    margin-right: 6px;
+  }
+
+  .header [class*="container"]:has(> .wc-locale-item) .logo h1,
+  .header [class*="container"]:has(> .wc-locale-item) .logo span {
+    font-size: 18px;
+  }
+
+  .header [class*="container"] > .wc-locale-item {
+    margin-left: .5rem;
+  }
+
+  .header [class*="container"] > .wc-locale-item .wc-locale-select {
+    font-size: .8rem;
+    padding: .2rem .35rem;
+    max-width: 128px;
+  }
+}
+
 .scrolled .header {
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
 }

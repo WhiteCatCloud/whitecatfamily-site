@@ -44,16 +44,4 @@
 .wc-recipe ol { margin:0; padding-left:1.15rem; }
 .wc-recipe li { margin-bottom:.35rem; }
 
-/* Header on guide/FAQ pages: the locale switcher is injected straight into the
-   header row (these pages have no navmenu), and main.css gives .logo
-   `order: 1` below 992px — so on phones the switcher (order 0) landed left of
-   the logo and pushed "WhiteCat Family" off the screen. Keep the logo first,
-   the switcher last, and shrink both to fit a 375px phone. */
-.header .wc-locale-item { order: 2; margin-left: auto; flex-shrink: 0; }
-@media (max-width: 575.98px) {
-  .header .logo { min-width: 0; }
-  .header .logo img { max-height: 30px; margin-right: 6px; }
-  .header .logo h1, .header .logo span { font-size: 18px; }
-  .header .wc-locale-item { margin-left: .5rem; }
-  .header .wc-locale-select { font-size: .8rem; padding: .2rem .35rem; max-width: 128px; }
-}
+/* Header layout for pages without a navmenu now lives in main.css. */
