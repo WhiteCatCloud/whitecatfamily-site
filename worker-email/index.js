@@ -33,6 +33,51 @@ async function sendContactEmail(env, name, email, message, locale, submitted_at)
     await env.EMAIL.send(msg);
 }
 
+// A buyer withdrew from a purchase through /withdraw. Reply-To is the buyer, so
+// answering this email sends the written confirmation the law asks for.
+async function sendWithdrawalEmail(env, { ref, name, email, order, reason, locale, submitted_at }) {
+    const encoded = new TextEncoder().encode([
+        `From: WhiteCat Returns <noreply@whitecatfamily.com>`,
+        `To: sales@whitecatcloud.com`,
+        `Reply-To: ${email}`,
+        `Subject: [${(locale || 'pl').toUpperCase()}] Withdrawal ${ref} from ${name}`,
+        `Message-ID: <${Date.now()}.withdrawal@whitecatfamily.com>`,
+        `MIME-Version: 1.0`,
+        `Content-Type: text/plain; charset=utf-8`,
+        ``,
+        `A buyer withdrew from a purchase on whitecatfamily.com.`,
+        `Reply to confirm in writing and send the free return instructions.`,
+        `Refund within 14 days of ${submitted_at} (may wait for the router or proof of posting).`,
+        ``,
+        `Reference: ${ref}`,
+        `Received:  ${submitted_at}`,
+        `Name:      ${name}`,
+        `Email:     ${email}`,
+        `Order:     ${order}`,
+        `Locale:    ${locale}`,
+        `Reason:    ${reason || '—'}`,
+        ``,
+        `--- Suggested reply (PL) ---`,
+        `Dzień dobry,`,
+        ``,
+        `potwierdzamy otrzymanie odstąpienia od umowy ${ref} w dniu ${submitted_at.slice(0, 10)}.`,
+        `Router prosimy odesłać w ciągu 14 dni. Koszt odesłania pokrywamy my: [instrukcja / etykieta zwrotna].`,
+        `Pieniądze zwrócimy tą samą metodą płatności po otrzymaniu routera lub dowodu jego odesłania.`,
+        ``,
+        `Pozdrawiamy,`,
+        `WhiteCat Family (Cluster s.r.o.)`,
+    ].join('\r\n'));
+
+    const stream = new ReadableStream({
+        start(controller) {
+            controller.enqueue(encoded);
+            controller.close();
+        },
+    });
+
+    await env.EMAIL.send(new EmailMessage('noreply@whitecatfamily.com', 'sales@whitecatcloud.com', stream));
+}
+
 async function sendLeadEmail(env, name, email, plan, locale, utm, submitted_at) {
     const utmLines = Object.keys(utm || {}).length
         ? [``, `Source: ${utm.utm_source || '—'}`, `Medium: ${utm.utm_medium || '—'}`, `Campaign: ${utm.utm_campaign || '—'}`]
@@ -81,6 +126,8 @@ export default {
             try {
                 if (type === 'contact') {
                     await sendContactEmail(env, name, email, message, locale, submitted_at);
+                } else if (type === 'withdrawal') {
+                    await sendWithdrawalEmail(env, msg.body);
                 } else {
                     await sendLeadEmail(env, name, email, plan, locale, utm, submitted_at);
                 }
