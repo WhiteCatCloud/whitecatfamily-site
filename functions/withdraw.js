@@ -2,13 +2,16 @@
 // The "withdraw from contract" function required for online sales to EU
 // consumers since 19 June 2026 (Consumer Rights Directive art. 11a). Buyers
 // have no account with us, so they identify the purchase themselves; the
-// form on /pl/odstapienie is the confirmation step.
+// forms on /pl/odstapienie, /sk/odstupenie and /en/withdraw are the
+// confirmation step.
 //
 // The withdrawal goes to sales@ through the same queue as the contact form.
 // The buyer gets a reference number and the time of receipt on screen at once;
 // sales@ then sends the written confirmation and the free return instructions.
 const PAGES = {
     pl: { form: '/pl/odstapienie', done: '/pl/odstapienie-wyslane' },
+    sk: { form: '/sk/odstupenie', done: '/sk/odstupenie-odoslane' },
+    en: { form: '/en/withdraw', done: '/en/withdraw-sent' },
 };
 
 export async function onRequestPost(context) {

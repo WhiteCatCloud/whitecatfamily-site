@@ -33,6 +33,36 @@ async function sendContactEmail(env, name, email, message, locale, submitted_at)
     await env.EMAIL.send(msg);
 }
 
+const REPLIES = {
+    pl: [
+        `Dzień dobry,`, ``,
+        `potwierdzamy otrzymanie odstąpienia od umowy {ref} w dniu {date}.`,
+        `Router prosimy odesłać w ciągu 14 dni. Koszt odesłania pokrywamy my: [instrukcja / etykieta zwrotna].`,
+        `Pieniądze zwrócimy tą samą metodą płatności po otrzymaniu routera lub dowodu jego odesłania.`, ``,
+        `Pozdrawiamy,`, `WhiteCat Family (Cluster s.r.o.)`,
+    ],
+    sk: [
+        `Dobrý deň,`, ``,
+        `potvrdzujeme prijatie odstúpenia od zmluvy {ref} dňa {date}.`,
+        `Router nám, prosím, pošlite späť do 14 dní. Poštovné platíme my: [pokyny / štítok na vrátenie].`,
+        `Peniaze vrátime rovnakým spôsobom platby po prijatí routera alebo dokladu o jeho odoslaní.`, ``,
+        `S pozdravom`, `WhiteCat Family (Cluster s.r.o.)`,
+    ],
+    en: [
+        `Hello,`, ``,
+        `we confirm that we received your withdrawal from the contract, reference {ref}, on {date}.`,
+        `Please send the router back within 14 days. We pay for the return: [instructions / return label].`,
+        `We refund you using the same payment method once we have the router or proof that you have sent it.`, ``,
+        `Kind regards,`, `WhiteCat Family (Cluster s.r.o.)`,
+    ],
+};
+
+function suggestedReply(locale, ref, date) {
+    const lang = REPLIES[locale] ? locale : 'en';
+    return [``, `--- Suggested reply (${lang.toUpperCase()}) ---`,
+        ...REPLIES[lang].map((line) => line.replace('{ref}', ref).replace('{date}', date))];
+}
+
 // A buyer withdrew from a purchase through /withdraw. Reply-To is the buyer, so
 // answering this email sends the written confirmation the law asks for.
 async function sendWithdrawalEmail(env, { ref, name, email, order, reason, locale, submitted_at }) {
@@ -57,15 +87,7 @@ async function sendWithdrawalEmail(env, { ref, name, email, order, reason, local
         `Locale:    ${locale}`,
         `Reason:    ${reason || '—'}`,
         ``,
-        `--- Suggested reply (PL) ---`,
-        `Dzień dobry,`,
-        ``,
-        `potwierdzamy otrzymanie odstąpienia od umowy ${ref} w dniu ${submitted_at.slice(0, 10)}.`,
-        `Router prosimy odesłać w ciągu 14 dni. Koszt odesłania pokrywamy my: [instrukcja / etykieta zwrotna].`,
-        `Pieniądze zwrócimy tą samą metodą płatności po otrzymaniu routera lub dowodu jego odesłania.`,
-        ``,
-        `Pozdrawiamy,`,
-        `WhiteCat Family (Cluster s.r.o.)`,
+        ...suggestedReply(locale, ref, submitted_at.slice(0, 10)),
     ].join('\r\n'));
 
     const stream = new ReadableStream({

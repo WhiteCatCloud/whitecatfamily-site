@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Withdraw from contract – WhiteCat Family</title>
+        <meta name="description" content="Withdraw from your WhiteCat Family router purchase online. 30 days to return, return shipping at our cost.">
+        <link rel="canonical" href="https://whitecatfamily.com/en/withdraw">
+        <!-- HREFLANG -->
+        <link href="/assets/img/favicon.png" rel="icon">
+        <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/css/main.css" rel="stylesheet">
+            <!-- Google Consent Mode v2 — default deny; banner JS flips to granted on Accept -->
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+          (function(){
+            var m = document.cookie.match(/(?:^|; )wc_consent=([^;]+)/);
+            if (m && m[1] === 'granted') gtag('consent','update',{analytics_storage:'granted'});
+          })();
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6R7922H8N"></script>
+        <script>
+          gtag('js', new Date());
+          gtag('config', 'G-J6R7922H8N');
+        </script>
+        <link rel="stylesheet" href="/assets/css/wc-cookie.css">
+        <script defer src="/assets/js/wc-cookie.js"></script>
+    </head>
+    <body>
+        <header id="header" class="header d-flex align-items-center sticky-top">
+            <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+                <a href="/en/" class="logo d-flex align-items-center">
+                    <img src="/assets/img/logo.png" alt="WhiteCat Family" style="height:40px;">
+                    <h1 class="sitename">WhiteCat Family</h1><span>.</span>
+                </a>
+                <!-- LOCALE-SWITCH -->
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="section">
+                <div class="container" style="max-width:780px;">
+                    <h1 class="mb-3">Withdraw from contract</h1>
+                    <p>You have <strong>30 days</strong> from receiving the router to withdraw from the contract without giving a reason. Return shipping is at our cost. Details in the <a href="/en/terms-of-sale">terms of sale</a>.</p>
+
+                    <div id="wd-error" class="alert alert-danger" style="display:none;">The form could not be sent. Fill in all required fields or email <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a>.</div>
+                    <script>if (/[?&]error=1/.test(location.search)) document.getElementById('wd-error').style.display = 'block';</script>
+                    <form method="POST" action="/withdraw" class="mt-4">
+                        <input type="hidden" name="locale" value="en">
+                        <div class="mb-3">
+                            <label for="wd-name" class="form-label">Full name</label>
+                            <input type="text" class="form-control" id="wd-name" name="name" required maxlength="200" autocomplete="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="wd-email" class="form-label">Email used at checkout</label>
+                            <input type="email" class="form-control" id="wd-email" name="email" required maxlength="200" autocomplete="email">
+                            <div class="form-text">We will send the confirmation and return instructions to this address.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="wd-order" class="form-label">Order number or date of purchase</label>
+                            <input type="text" class="form-control" id="wd-order" name="order" required maxlength="200" placeholder="e.g. the number on your payment receipt, or 27.10.2026">
+                        </div>
+                        <div class="mb-3">
+                            <label for="wd-reason" class="form-label">Reason (optional)</label>
+                            <textarea class="form-control" id="wd-reason" name="reason" rows="3" maxlength="2000"></textarea>
+                        </div>
+                        <p class="small text-muted">By clicking the button below you withdraw from the contract of sale for the WhiteCat Family router.</p>
+                        <button type="submit" class="btn btn-primary">Confirm withdrawal</button>
+                    </form>
+
+                    <p class="small text-muted mt-4">Prefer email? Write to <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a>. Purchases on Amazon.de are returned through Amazon, and in-app subscriptions are cancelled in the App Store or Google Play.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <!-- COOKIE -->
+
+        <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
