@@ -213,12 +213,16 @@ function amazonUrlFor(env) {
 // Direct checkout for buyers outside Germany (AT, CZ, PL, SK). Until the Stripe
 // payment link exists, degrade to email rather than to a dead link.
 //
+// Poland has its own link: a native PLN price (299 zł) that ships to Poland
+// only, so the cheaper price cannot be bought for delivery elsewhere.
+//
 // Partner attribution: a visitor who lands with ?ref= or ?utm_source= gets
 // that label passed to Stripe as client_reference_id, so each payment in the
 // Stripe dashboard shows which partner link it came from. Nothing is stored
 // on the visitor's device, so the label only survives on the landing page.
-function stripeUrlFor(env, url) {
-  const base = env.WHITECAT_STRIPE_URL || 'mailto:sales@whitecatcloud.com';
+function stripeUrlFor(env, url, locale) {
+  const base = (locale === 'pl' && env.WHITECAT_STRIPE_URL_PL)
+    || env.WHITECAT_STRIPE_URL || 'mailto:sales@whitecatcloud.com';
   const ref = attributionFor(url);
   if (!ref || !base.startsWith('https://')) return base;
   const link = new URL(base);
@@ -372,7 +376,7 @@ export async function onRequest(context) {
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
     const cta = (partials[ctaFor(locale)] || '')
       .replaceAll('{{AMAZON_URL}}', amazonUrlFor(env))
-      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url));
+      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url, locale));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
