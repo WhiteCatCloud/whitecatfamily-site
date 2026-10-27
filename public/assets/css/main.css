@@ -223,6 +223,14 @@ h6 {
   }
 }
 
+/* Sticky headers (legal pages, guide, FAQ, imprint …) never get the
+   .scrolled background that main.js gives the fixed homepage header, so page
+   text showed through them while scrolling. Give them a solid background. */
+.header.sticky-top {
+  --background-color: var(--surface-color, #ffffff);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
 /* Pages without a navmenu (legal pages, guide, FAQ, imprint, 404 …) get the
    locale switcher injected straight into the header row. The rule above gives
    .logo `order: 1` below 992px, so the switcher (order 0) landed left of the
