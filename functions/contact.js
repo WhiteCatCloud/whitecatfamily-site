@@ -44,7 +44,10 @@ async function isHuman(env, token, request) {
         console.error('TURNSTILE_SECRET_KEY not set; accepting unverified submission');
         return true;
     }
-    if (!token) return false;
+    if (!token) {
+        console.warn('Turnstile token missing');
+        return false;
+    }
     try {
         const body = new FormData();
         body.append('secret', env.TURNSTILE_SECRET_KEY);
@@ -53,6 +56,7 @@ async function isHuman(env, token, request) {
         if (ip) body.append('remoteip', ip);
         const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
         const outcome = await res.json();
+        if (outcome.success !== true) console.warn('Turnstile rejected:', JSON.stringify(outcome['error-codes']));
         return outcome.success === true;
     } catch (err) {
         console.error('Turnstile verify failed:', err.message);
