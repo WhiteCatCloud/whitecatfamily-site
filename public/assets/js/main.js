@@ -168,6 +168,9 @@
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
+      // Turnstile is still deciding; the widget shows itself if it needs a click.
+      const token = this.querySelector('[name="cf-turnstile-response"]');
+      if (token && !token.value) return;
       fetch('/contact', { method: 'POST', body: new FormData(this) });
       this.style.display = 'none';
       document.getElementById('contactThanks').style.display = '';
