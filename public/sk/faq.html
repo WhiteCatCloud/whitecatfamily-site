@@ -282,8 +282,43 @@
                     </div>
                 </div>
             </section>
+            <section class="section pt-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="border rounded-3 p-4">
+                                <p class="fw-bold mb-3">Máte ešte otázku?</p>
+                                <form id="contactForm" method="POST" action="/contact">
+                                    <input type="hidden" name="locale" value="sk-SK">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label for="contactName" class="visually-hidden">Meno</label>
+                                            <input id="contactName" type="text" name="name" class="form-control" placeholder="Meno" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="contactEmail" class="visually-hidden">E-mail</label>
+                                            <input id="contactEmail" type="email" name="email" class="form-control" placeholder="E-mail" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="contactMessage" class="visually-hidden">Vaša otázka</label>
+                                            <textarea id="contactMessage" name="message" class="form-control" rows="3" placeholder="Vaša otázka" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="cf-turnstile mb-3" data-sitekey="0x4AAAAAAFtB5nvz7gy61rlf" data-appearance="interaction-only"></div>
+                                            <button type="submit" class="btn btn-primary px-4">Odoslať otázku</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="contactThanks" class="text-center text-success fw-bold mt-3" style="display:none;">Ďakujeme! Ozveme sa do 5 pracovných dní.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
         <!-- FOOTER -->
         <!-- COOKIE -->
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script src="/assets/js/contact-form.js"></script>
     </body>
 </html>

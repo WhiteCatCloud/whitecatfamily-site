@@ -334,11 +334,46 @@
                     <p class="mt-4 text-muted small">Masz inne pytanie? Napisz do nas: <a href="mailto:sales@whitecatcloud.com">sales@whitecatcloud.com</a></p>
                 </div>
             </section>
+            <section class="section pt-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="border rounded-3 p-4">
+                                <p class="fw-bold mb-3">Masz jeszcze pytanie?</p>
+                                <form id="contactForm" method="POST" action="/contact">
+                                    <input type="hidden" name="locale" value="pl-PL">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label for="contactName" class="visually-hidden">Imię</label>
+                                            <input id="contactName" type="text" name="name" class="form-control" placeholder="Imię" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="contactEmail" class="visually-hidden">E-mail</label>
+                                            <input id="contactEmail" type="email" name="email" class="form-control" placeholder="E-mail" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="contactMessage" class="visually-hidden">Twoje pytanie</label>
+                                            <textarea id="contactMessage" name="message" class="form-control" rows="3" placeholder="Twoje pytanie" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="cf-turnstile mb-3" data-sitekey="0x4AAAAAAFtB5nvz7gy61rlf" data-appearance="interaction-only"></div>
+                                            <button type="submit" class="btn btn-primary px-4">Wyślij pytanie</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="contactThanks" class="text-center text-success fw-bold mt-3" style="display:none;">Dziękujemy! Odpowiemy w ciągu 5 dni roboczych.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- FOOTER -->
         <!-- COOKIE -->
 
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script src="/assets/js/contact-form.js"></script>
     </body>
 </html>

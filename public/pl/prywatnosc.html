@@ -315,6 +315,7 @@
                             <div class="border rounded-3 p-4 mt-2">
                                 <p class="fw-bold mb-3">Pytania o prywatność?</p>
                                 <form id="contactForm" method="POST" action="/contact">
+                                    <input type="hidden" name="locale" value="pl-PL">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label for="contactName" class="visually-hidden">Imię</label>
@@ -389,6 +390,7 @@
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/assets/vendor/aos/aos.js"></script>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script src="/assets/js/contact-form.js"></script>
         <script src="/assets/js/main.js?v=6"></script>
             <!-- COOKIE -->
     </body>

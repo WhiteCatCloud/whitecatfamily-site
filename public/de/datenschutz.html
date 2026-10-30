@@ -200,11 +200,46 @@
                     <p>Für Datenschutzanfragen: <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a>. Wir antworten persönlich.</p>
                 </div>
             </section>
+            <section class="section pt-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="border rounded-3 p-4">
+                                <p class="fw-bold mb-3">Fragen zum Datenschutz?</p>
+                                <form id="contactForm" method="POST" action="/contact">
+                                    <input type="hidden" name="locale" value="de-DE">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label for="contactName" class="visually-hidden">Name</label>
+                                            <input id="contactName" type="text" name="name" class="form-control" placeholder="Name" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="contactEmail" class="visually-hidden">E-Mail</label>
+                                            <input id="contactEmail" type="email" name="email" class="form-control" placeholder="E-Mail" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="contactMessage" class="visually-hidden">Ihre Nachricht</label>
+                                            <textarea id="contactMessage" name="message" class="form-control" rows="3" placeholder="Ihre Nachricht" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="cf-turnstile mb-3" data-sitekey="0x4AAAAAAFtB5nvz7gy61rlf" data-appearance="interaction-only"></div>
+                                            <button type="submit" class="btn btn-primary px-4">Nachricht senden</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="contactThanks" class="text-center text-success fw-bold mt-3" style="display:none;">Danke! Wir melden uns innerhalb von 5 Werktagen.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- FOOTER -->
         <!-- COOKIE -->
 
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script src="/assets/js/contact-form.js"></script>
     </body>
 </html>
