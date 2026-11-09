@@ -244,14 +244,41 @@ function amazonUrlFor(env) {
 // that label passed to Stripe as client_reference_id, so each payment in the
 // Stripe dashboard shows which partner link it came from. Nothing is stored
 // on the visitor's device, so the label only survives on the landing page.
-function stripeUrlFor(env, url, locale) {
-  const base = (locale === 'pl' && env.WHITECAT_STRIPE_URL_PL)
+//
+// Slovakia (59 €) and Czechia (1 490 Kč) also have their own lower-priced
+// links that ship to that one country only. They follow the visitor's
+// country rather than the page language, because Czech visitors land on /en/.
+// The button price comes from the same choice (priceLabelFor), so the label
+// never shows a price that the linked checkout does not charge.
+function marketFor(env, locale, country) {
+  if (locale === 'pl' && env.WHITECAT_STRIPE_URL_PL) return 'PL';
+  if (country === 'SK' && env.WHITECAT_STRIPE_URL_SK) return 'SK';
+  if (country === 'CZ' && env.WHITECAT_STRIPE_URL_CZ) return 'CZ';
+  return '';
+}
+
+function stripeUrlFor(env, url, locale, country) {
+  const market = marketFor(env, locale, country);
+  const base = (market && env[`WHITECAT_STRIPE_URL_${market}`])
     || env.WHITECAT_STRIPE_URL || 'mailto:sales@whitecatcloud.com';
   const ref = attributionFor(url);
   if (!ref || !base.startsWith('https://')) return base;
   const link = new URL(base);
   link.searchParams.set('client_reference_id', ref);
   return link.toString();
+}
+
+// Fills {{STRIPE_PRICE}} in the EN, FR and SK buy buttons. The PL partial
+// carries its own złoty price and the DE one points at Amazon.
+const PRICE_LABELS = {
+  SK: { sk: '59&nbsp;&euro;', fr: '59&nbsp;&euro;', en: '&euro;59' },
+  CZ: { sk: '1&nbsp;490&nbsp;K&#269;', fr: '1&nbsp;490&nbsp;CZK', en: 'CZK&nbsp;1,490' },
+  '': { sk: '89&nbsp;&euro;', fr: '89&nbsp;&euro;', en: '&euro;89' },
+};
+
+function priceLabelFor(env, locale, country) {
+  const labels = PRICE_LABELS[marketFor(env, locale, country)] || PRICE_LABELS[''];
+  return labels[locale] || labels.en;
 }
 
 // Stripe accepts letters, digits, dashes and underscores, up to 200 chars.
@@ -338,6 +365,7 @@ export async function onRequest(context) {
   else if (url.pathname === '/pl' || url.pathname.startsWith('/pl/')) pathLocale = 'pl';
   else if (url.pathname === '/en' || url.pathname.startsWith('/en/')) pathLocale = 'en-EU';
   const locale = pathLocale || classifyLocale(request);
+  const country = (request.headers.get('cf-ipcountry') || '').toUpperCase();
 
   // Auto-redirect from root: send each visitor to their locale's homepage.
   // EU visitors → /en/ /de/ /fr/ /sk/ /pl/ (keeps US-USD site for US visitors only).
@@ -400,7 +428,8 @@ export async function onRequest(context) {
     html = html.replaceAll('<!-- FOOTER -->', partials[footerFor(locale)] || '');
     const cta = (partials[ctaFor(locale)] || '')
       .replaceAll('{{AMAZON_URL}}', amazonUrlFor(env))
-      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url, locale));
+      .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url, locale, country))
+      .replaceAll('{{STRIPE_PRICE}}', priceLabelFor(env, locale, country));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
