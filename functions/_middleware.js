@@ -246,14 +246,16 @@ function amazonUrlFor(env) {
 // on the visitor's device, so the label only survives on the landing page.
 //
 // Slovakia (59 €) and Czechia (1 490 Kč) also have their own lower-priced
-// links that ship to that one country only. They follow the visitor's
-// country rather than the page language, because Czech visitors land on /en/.
+// links that ship to that one country only. Czech visitors get the Czech link
+// on any page (they land on /sk/ or /en/). The /sk/ page otherwise always gets
+// the Slovak link, wherever the visitor is, so Slovaks abroad or on a VPN see
+// 59 € too. A Slovak visitor on another page still gets the Slovak link.
 // The button price comes from the same choice (priceLabelFor), so the label
 // never shows a price that the linked checkout does not charge.
 function marketFor(env, locale, country) {
   if (locale === 'pl' && env.WHITECAT_STRIPE_URL_PL) return 'PL';
-  if (country === 'SK' && env.WHITECAT_STRIPE_URL_SK) return 'SK';
   if (country === 'CZ' && env.WHITECAT_STRIPE_URL_CZ) return 'CZ';
+  if ((locale === 'sk' || country === 'SK') && env.WHITECAT_STRIPE_URL_SK) return 'SK';
   return '';
 }
 
