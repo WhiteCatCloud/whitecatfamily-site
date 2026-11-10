@@ -283,6 +283,29 @@ function priceLabelFor(env, locale, country) {
   return labels[locale] || labels.en;
 }
 
+// Fills {{SUB_PRICE}} and {{SUB_YEAR}}, the Family plan price on the EN and SK
+// homepages. Slovakia and Czechia have lower store prices (set in App Store
+// and Google Play), shown to the same visitors who get the lower router link.
+const SUB_LABELS = {
+  SK: {
+    sk: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
+    en: ['<span class="currency">€</span><span class="amount">3.49</span>', '€34.99'],
+  },
+  CZ: {
+    sk: ['<span class="amount">89</span><span class="currency">&nbsp;K&#269;</span>', '899&nbsp;K&#269;'],
+    en: ['<span class="currency">CZK&nbsp;</span><span class="amount">89</span>', 'CZK&nbsp;899'],
+  },
+  '': {
+    sk: ['<span class="currency">€</span><span class="amount">5,99</span>', '49,99&nbsp;€'],
+    en: ['<span class="currency">€</span><span class="amount">5.99</span>', '€49.99'],
+  },
+};
+
+function subLabelsFor(env, locale, country) {
+  const labels = SUB_LABELS[marketFor(env, locale, country)] || SUB_LABELS[''];
+  return labels[locale] || labels.en;
+}
+
 // Stripe accepts letters, digits, dashes and underscores, up to 200 chars.
 function attributionFor(url) {
   const clean = (v) => (v || '').toLowerCase().replace(/[^a-z0-9-]+/g, '-')
@@ -433,6 +456,8 @@ export async function onRequest(context) {
       .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url, locale, country))
       .replaceAll('{{STRIPE_PRICE}}', priceLabelFor(env, locale, country));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
+    const [subPrice, subYear] = subLabelsFor(env, locale, country);
+    html = html.replaceAll('{{SUB_PRICE}}', subPrice).replaceAll('{{SUB_YEAR}}', subYear);
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
 
