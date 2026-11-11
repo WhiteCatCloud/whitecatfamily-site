@@ -275,7 +275,7 @@ function stripeUrlFor(env, url, locale, country) {
 const PRICE_LABELS = {
   SK: { sk: '59&nbsp;&euro;', fr: '59&nbsp;&euro;', en: '&euro;59' },
   CZ: { sk: '1&nbsp;490&nbsp;K&#269;', fr: '1&nbsp;490&nbsp;CZK', en: 'CZK&nbsp;1,490' },
-  '': { sk: '89&nbsp;&euro;', fr: '89&nbsp;&euro;', en: '&euro;89' },
+  '': { sk: '69&nbsp;&euro;', fr: '69&nbsp;&euro;', en: '&euro;69' },
 };
 
 function priceLabelFor(env, locale, country) {
