@@ -283,26 +283,22 @@ function priceLabelFor(env, locale, country) {
   return labels[locale] || labels.en;
 }
 
-// Fills {{SUB_PRICE}} and {{SUB_YEAR}}, the Family plan price on the EN and SK
-// homepages. Slovakia and Czechia have lower store prices (set in App Store
-// and Google Play), shown to the same visitors who get the lower router link.
-const SUB_LABELS = {
-  SK: {
-    sk: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
-    en: ['<span class="currency">€</span><span class="amount">3.49</span>', '€34.99'],
-  },
-  CZ: {
-    sk: ['<span class="amount">89</span><span class="currency">&nbsp;K&#269;</span>', '899&nbsp;K&#269;'],
-    en: ['<span class="currency">CZK&nbsp;</span><span class="amount">89</span>', 'CZK&nbsp;899'],
-  },
-  '': {
-    sk: ['<span class="currency">€</span><span class="amount">5,99</span>', '49,99&nbsp;€'],
-    en: ['<span class="currency">€</span><span class="amount">5.99</span>', '€49.99'],
-  },
+// Fills {{SUB_PRICE}} and {{SUB_YEAR}}, the Family plan price on the EN, DE, FR
+// and SK homepages. Euro countries pay 3,49 € (set in App Store and Google
+// Play); Czech visitors, who get the Czech router link, see the koruna price.
+const EUR_LABELS = {
+  sk: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
+  de: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
+  fr: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
+  en: ['<span class="currency">€</span><span class="amount">3.49</span>', '€34.99'],
+};
+const CZK_LABELS = {
+  sk: ['<span class="amount">89</span><span class="currency">&nbsp;K&#269;</span>', '899&nbsp;K&#269;'],
+  en: ['<span class="currency">CZK&nbsp;</span><span class="amount">89</span>', 'CZK&nbsp;899'],
 };
 
 function subLabelsFor(env, locale, country) {
-  const labels = SUB_LABELS[marketFor(env, locale, country)] || SUB_LABELS[''];
+  const labels = marketFor(env, locale, country) === 'CZ' ? CZK_LABELS : EUR_LABELS;
   return labels[locale] || labels.en;
 }
 
