@@ -13,7 +13,12 @@
 // Deliberately NOT box-printed. /guide and /doc are the immovable URLs; this
 // one is free to change.
 
+// Two parent apps since 2026-11: the US, Mexico and Canada get WhiteCat
+// Parental Control (no router, Apple Screen Time); everyone else gets the
+// router app. The US app is only on sale in those three storefronts.
 const IOS_URL = 'https://apps.apple.com/app/id6754770126';
+const IOS_US_URL = 'https://apps.apple.com/app/id6834835936';
+const US_STOREFRONTS = new Set(['US', 'MX', 'CA']);
 const PLAY_URL =
   'https://play.google.com/store/apps/details?id=com.whitecatcloud.app';
 
@@ -27,8 +32,10 @@ export function onRequestGet(context) {
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
   const isAndroid = /Android/i.test(ua);
 
+  const country = (context.request.headers.get('cf-ipcountry') || '').toUpperCase();
+
   let target = '/';
-  if (isIOS) target = IOS_URL;
+  if (isIOS) target = US_STOREFRONTS.has(country) ? IOS_US_URL : IOS_URL;
   else if (isAndroid) target = PLAY_URL;
 
   return new Response(null, {
@@ -38,7 +45,7 @@ export function onRequestGet(context) {
       // Per-device answer — never let a CDN or browser cache one platform's
       // redirect and serve it to the other.
       'cache-control': 'no-store',
-      vary: 'User-Agent',
+      vary: 'User-Agent, CF-IPCountry',
     },
   });
 }

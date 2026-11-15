@@ -77,7 +77,7 @@
             <section class="section light-background">
                 <div class="container section-title" data-aos="fade-up">
                     <h2>Privacy Policy</h2>
-                    <p>Last updated: September 2026 &nbsp;·&nbsp; We don't sell your data. Ever.</p>
+                    <p>Last updated: November 2026 &nbsp;·&nbsp; We don't sell your data. Ever.</p>
                 </div>
             </section>
 
@@ -93,6 +93,7 @@
                                 </div>
                                 <p>WhiteCat is a tool for parents, built by parents. The thing most people worry about — a record of every site your family looks up — is <strong>switched off when the router leaves the factory</strong>. You turn it on yourself, in the app, and it fails closed: unless the router can positively read "on", it records nothing.</p>
                                 <p>What the router sends us by default is duller: which devices are on your network, what those devices call themselves, and whether the router is healthy. It goes every 30 to 60 seconds, which means that kept together over a day it does show when each device was at home. Below we list all of it, name every company that receives any of it, and say how long we keep it.</p>
+                                <p>Using WhiteCat without a router, on your kids' iPhone and iPad? Then the router part doesn't apply to you: <a href="#apps">this section</a> lists everything the two apps send us. What your kid does inside apps stays with Apple's Screen Time on the device.</p>
                                 <p>We don't sell data to advertisers, and we never see the content of what your family reads, types or watches. Full stop.</p>
                             </div>
 
@@ -103,6 +104,64 @@
                                 <p>For customers in the US and rest of world: White Cat Cloud Inc., 8 The Green, Dover, DE 19901, USA.<br>
                                 For customers in the EU/EEA: Cluster s.r.o., Rusovská cesta 15, 851 01 Bratislava, Slovak Republic — see <a href="#gdpr">the GDPR section</a> below.<br>
                                 Questions? Email us at <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a></p>
+                            </div>
+
+                            <!-- Added 2026-11-15: the router-less product (US, Mexico, Canada).
+                                 Must match the App Privacy labels filed in App Store Connect:
+                                 WhiteCat Parental Control 6834835936 = name, email, purchase
+                                 history, other user content, user ID, device ID (all app
+                                 functionality, linked, no tracking); WhiteCat Kids 6829137355 =
+                                 product interaction, device ID, other data (same). -->
+                            <div class="mb-5" id="apps">
+                                <h4><i class="bi bi-phone text-primary me-2"></i>WhiteCat Parental Control and WhiteCat Kids (iPhone and iPad)</h4>
+                                <p>Without a router, WhiteCat is two apps: <strong>WhiteCat Parental Control</strong> on a parent's iPhone and the free <strong>WhiteCat Kids</strong> on a child's iPhone or iPad. The rules run on the child's device with Apple's Screen Time technology (Family Controls). There is no router in this setup, so none of the network data described further down is collected.</p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mt-3">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>What</th>
+                                                <th>Why</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Your Sign in with Apple account identifier, and the name and email address Apple shares with us (this can be Apple's private relay address)</td>
+                                                <td>To create your account and sign you in</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Your family's name, your kids' first names and whether each is a kid or a teen, as you type them</td>
+                                                <td>To show your family in the app</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Your schedules, time limits, the apps you always allow, Party time, and your Parent PIN (stored only as a salted hash)</td>
+                                                <td>To send your rules to your kids' devices. Apps and categories you pick in Apple's app list reach us only as Apple's encrypted codes; we cannot tell which app they stand for</td>
+                                            </tr>
+                                            <tr>
+                                                <td>For each linked kid device: the name and model the device reports (for example "Emma's iPad", "iPad Air"), when it last checked in, whether Screen Time protection is on, and a push notification token</td>
+                                                <td>To show which devices are linked and working, and to deliver rule changes within seconds</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Asks for more time: which schedule or app (as Apple's code), how long, when, and your answer</td>
+                                                <td>To bring the ask to you and your answer back to your kid's device</td>
+                                            </tr>
+                                            <tr>
+                                                <td>The other parent you invite: their sign-in, name and email as above</td>
+                                                <td>So both parents can run the family</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Subscription status from Apple</td>
+                                                <td>To start and keep your plan</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Crash and error reports from both apps</td>
+                                                <td>To find and fix faults. They carry an identifier for the app install, and for the parent app your account identifier</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mt-3"><strong>What never reaches us:</strong> what your kid does inside apps, the minutes, apps, websites and pickups shown under <em>Usage details</em> (Apple's Screen Time draws them on the device itself), browsing history, location, contacts, photos, messages, and your kid's Apple Account. Your kid has no WhiteCat account and never gives us an email address.</p>
+                                <p><strong>Who else receives any of it:</strong> Apple (Sign in with Apple, push notifications and App Store purchases), Google Firebase (sign-in and push delivery), Sentry (crash reports), Expo (app updates), DigitalOcean (our servers) and Cloudflare (the network in front of our servers) — the same companies, under the same terms, as in the table further down. Nothing goes to advertisers, and neither app contains advertising or tracking code.</p>
+                                <p><strong>How long we keep it:</strong> for as long as your account exists. <em>Delete account</em> in the app's Settings deletes your family, your kids, their schedules, asks and device links. Monthly backups follow the same rule as below.</p>
                             </div>
 
                             <div class="mb-5">
@@ -270,7 +329,8 @@
 
                             <div class="mb-5">
                                 <h4><i class="bi bi-people text-primary me-2"></i>Children's privacy</h4>
-                                <p>WhiteCat is operated by parents — accounts are created and managed by adults only. We do not knowingly collect personal information directly from children under 13. A family member profile in the app (for example "Emma, age 8") is created by you and holds only a name and an icon.</p>
+                                <p>WhiteCat is operated by parents — accounts are created and managed by adults only. A family member profile in the app (for example "Emma") is created by you and holds only what you type: a name, and an icon or whether they are a kid or a teen.</p>
+                                <p><strong>WhiteCat Kids runs on your child's iPhone or iPad.</strong> A parent installs it and links it with a code from the parent's app, and the child's device must be in the parent's Apple Family Sharing group. WhiteCat Kids never asks a child for their name, email address or any other personal information, and contains no advertising or tracking. It sends us only what the service you set up needs: the device's name and model, check-ins, and the asks your child sends you, as listed in <a href="#apps">the apps section</a> above. You can see all of it in your app, remove a device or a kid at any time, delete your account in the app, or email us to delete everything.</p>
                                 <p>One thing worth knowing: a phone usually announces its own name on the network, and people name phones after their owner. So a child's first name commonly reaches us as part of a device name, and is included in the device-naming step described above. You can rename or delete any device in the app. If you believe we hold data from a child that we should not, email <a href="mailto:privacy@whitecatcloud.com">privacy@whitecatcloud.com</a> and we will delete it.</p>
                             </div>
 

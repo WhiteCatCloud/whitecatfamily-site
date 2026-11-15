@@ -107,6 +107,13 @@ const LEGAL_PAGE_GROUPS = [
   { 'en-EU': '/en/withdraw-sent', sk: '/sk/odstupenie-odoslane', pl: '/pl/odstapienie-wyslane' },
   { 'en-EU': '/en/thank-you', sk: '/sk/dakujeme', pl: '/pl/dziekujemy' },
   { 'en-US': '/privacy', de: '/de/datenschutz', sk: '/sk/ochrana-sukromia', pl: '/pl/prywatnosc' },
+  // Two different FAQs since 2026-11-15. /faq is the US app's FAQ (WhiteCat
+  // Parental Control + WhiteCat Kids, no router); it is the App Store Support
+  // URL of both US apps, so it must stay at /faq(.html). The router FAQ moved
+  // to /en/faq and pairs with its translations. They are different products,
+  // so they must never point at each other as hreflang alternates.
+  { 'en-US': '/faq' },
+  { 'en-EU': '/en/faq', de: '/de/faq', fr: '/fr/faq', sk: '/sk/faq', pl: '/pl/faq' },
 ];
 
 function legalGroupFor(pathname) {
@@ -115,7 +122,7 @@ function legalGroupFor(pathname) {
   if (!group) return null;
   return {
     'en-US': group['en-US'] || null, 'en-EU': group['en-EU'] || null,
-    de: group.de || null, fr: null, sk: group.sk || null, pl: group.pl || null,
+    de: group.de || null, fr: group.fr || null, sk: group.sk || null, pl: group.pl || null,
   };
 }
 
@@ -406,6 +413,15 @@ export async function onRequest(context) {
         },
       });
     }
+  }
+
+  // English-speaking EU visitors own the router; /faq is the US app's FAQ.
+  // The EU app and old emails still link to /faq, so send them to /en/faq.
+  if (!pathLocale && locale === 'en-EU' && /^\/faq(\.html)?$/.test(url.pathname)) {
+    return new Response(null, {
+      status: 302,
+      headers: { location: '/en/faq' + (url.search || ''), 'cache-control': 'private, max-age=0' },
+    });
   }
 
   const isRoot = url.pathname === '/' || url.pathname === '/index.html';

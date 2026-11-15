@@ -81,12 +81,11 @@
     </url>
     <url>
         <loc>https://whitecatfamily.com/pl/faq</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://whitecatfamily.com/faq"/>
+        <xhtml:link rel="alternate" hreflang="en-gb" href="https://whitecatfamily.com/en/faq"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://whitecatfamily.com/de/faq"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://whitecatfamily.com/fr/faq"/>
         <xhtml:link rel="alternate" hreflang="sk" href="https://whitecatfamily.com/sk/faq"/>
         <xhtml:link rel="alternate" hreflang="pl" href="https://whitecatfamily.com/pl/faq"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://whitecatfamily.com/faq"/>
         <lastmod>2026-10-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -106,8 +105,18 @@
     <url>
         <loc>https://whitecatfamily.com/faq</loc>
         <xhtml:link rel="alternate" hreflang="en" href="https://whitecatfamily.com/faq"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://whitecatfamily.com/de/faq"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://whitecatfamily.com/faq"/>
+        <lastmod>2026-06-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://whitecatfamily.com/en/faq</loc>
+        <xhtml:link rel="alternate" hreflang="en-gb" href="https://whitecatfamily.com/en/faq"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://whitecatfamily.com/de/faq"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://whitecatfamily.com/fr/faq"/>
+        <xhtml:link rel="alternate" hreflang="sk" href="https://whitecatfamily.com/sk/faq"/>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://whitecatfamily.com/pl/faq"/>
         <lastmod>2026-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -189,9 +198,11 @@
     </url>
     <url>
         <loc>https://whitecatfamily.com/de/faq</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://whitecatfamily.com/faq"/>
+        <xhtml:link rel="alternate" hreflang="en-gb" href="https://whitecatfamily.com/en/faq"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://whitecatfamily.com/de/faq"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://whitecatfamily.com/faq"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://whitecatfamily.com/fr/faq"/>
+        <xhtml:link rel="alternate" hreflang="sk" href="https://whitecatfamily.com/sk/faq"/>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://whitecatfamily.com/pl/faq"/>
         <lastmod>2026-06-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
