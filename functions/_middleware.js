@@ -290,18 +290,27 @@ function priceLabelFor(env, locale, country) {
   return labels[locale] || labels.en;
 }
 
-// Fills {{SUB_PRICE}} and {{SUB_YEAR}}, the Family plan price on the EN, DE, FR
-// and SK homepages. Euro countries pay 3,49 € (set in App Store and Google
-// Play); Czech visitors, who get the Czech router link, see the koruna price.
+// Fills {{SUB_PRICE}}/{{SUB_YEAR}} (Family, with the router) and
+// {{ANY_PRICE}}/{{ANY_YEAR}} (Anywhere, iPhone/iPad without a router) on the
+// EN, DE, FR and SK homepages. Set in App Store and Google Play on 2026-11-15
+// for all 27 EU countries (Apple from 2026-11-17): Family 2,99 € / 24,99 €,
+// Anywhere 0,99 € / 9,99 €. Czech visitors, who get the Czech router link, see
+// the koruna prices. The PL page carries its own złoty prices.
 const EUR_LABELS = {
-  sk: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
-  de: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
-  fr: ['<span class="currency">€</span><span class="amount">3,49</span>', '34,99&nbsp;€'],
-  en: ['<span class="currency">€</span><span class="amount">3.49</span>', '€34.99'],
+  sk: ['<span class="currency">€</span><span class="amount">2,99</span>', '24,99&nbsp;€',
+       '<span class="currency">€</span><span class="amount">0,99</span>', '9,99&nbsp;€'],
+  de: ['<span class="currency">€</span><span class="amount">2,99</span>', '24,99&nbsp;€',
+       '<span class="currency">€</span><span class="amount">0,99</span>', '9,99&nbsp;€'],
+  fr: ['<span class="currency">€</span><span class="amount">2,99</span>', '24,99&nbsp;€',
+       '<span class="currency">€</span><span class="amount">0,99</span>', '9,99&nbsp;€'],
+  en: ['<span class="currency">€</span><span class="amount">2.99</span>', '€24.99',
+       '<span class="currency">€</span><span class="amount">0.99</span>', '€9.99'],
 };
 const CZK_LABELS = {
-  sk: ['<span class="amount">89</span><span class="currency">&nbsp;K&#269;</span>', '899&nbsp;K&#269;'],
-  en: ['<span class="currency">CZK&nbsp;</span><span class="amount">89</span>', 'CZK&nbsp;899'],
+  sk: ['<span class="amount">79</span><span class="currency">&nbsp;K&#269;</span>', '599&nbsp;K&#269;',
+       '<span class="amount">25</span><span class="currency">&nbsp;K&#269;</span>', '249&nbsp;K&#269;'],
+  en: ['<span class="currency">CZK&nbsp;</span><span class="amount">79</span>', 'CZK&nbsp;599',
+       '<span class="currency">CZK&nbsp;</span><span class="amount">25</span>', 'CZK&nbsp;249'],
 };
 
 function subLabelsFor(env, locale, country) {
@@ -468,8 +477,9 @@ export async function onRequest(context) {
       .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url, locale, country))
       .replaceAll('{{STRIPE_PRICE}}', priceLabelFor(env, locale, country));
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
-    const [subPrice, subYear] = subLabelsFor(env, locale, country);
-    html = html.replaceAll('{{SUB_PRICE}}', subPrice).replaceAll('{{SUB_YEAR}}', subYear);
+    const [subPrice, subYear, anyPrice, anyYear] = subLabelsFor(env, locale, country);
+    html = html.replaceAll('{{SUB_PRICE}}', subPrice).replaceAll('{{SUB_YEAR}}', subYear)
+      .replaceAll('{{ANY_PRICE}}', anyPrice).replaceAll('{{ANY_YEAR}}', anyYear);
     html = html.replaceAll('<!-- CTA-SUBSCRIBE -->', partials[subscribeFor(locale)] || '');
     html = html.replaceAll('<!-- COOKIE -->', partials[cookieFor(locale)] || '');
 
