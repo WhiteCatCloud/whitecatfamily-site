@@ -51,6 +51,7 @@
     if (window.fbq) window.fbq('consent', 'revoke');
     dropCookie('_fbp');
     dropCookie('_fbc');
+    dropCookie('wc_checkout');
     document.cookie.split('; ').forEach(function (c) {
       var name = c.split('=')[0];
       if (name === '_ga' || name.indexOf('_ga_') === 0) dropCookie(name);
@@ -68,6 +69,14 @@
     var value = parseFloat(el.getAttribute('data-wc-value')) || 0;
     var currency = el.getAttribute('data-wc-currency') || 'EUR';
     var via = el.getAttribute('data-wc-buy');
+    // Stripe checkout: remember this order so the thank-you page can report
+    // the purchase with the same price (see reportPurchase). Amazon sales
+    // never come back to us, so nothing to remember there.
+    if (via === 'stripe') {
+      var orderId = 'wc-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+      document.cookie = 'wc_checkout=' + orderId + '.' + value + '.' + currency +
+        '; max-age=' + 2 * 24 * 3600 + '; path=/; samesite=lax';
+    }
     if (window.fbq) {
       window.fbq('track', 'InitiateCheckout', {
         value: value, currency: currency, num_items: 1,
@@ -91,9 +100,39 @@
     setTimeout(function () { location.href = href; }, 300);
   }
 
+  // Thank-you page after a Stripe payment (functions/order-complete.js adds
+  // ?paid=1): report Purchase to Meta and purchase to Google Analytics, once.
+  // Needs consent and the wc_checkout cookie from the Buy click; both the flag
+  // and the cookie are cleared so a reload or a later visit does not count again.
+  function reportPurchase() {
+    var params = new URLSearchParams(location.search);
+    if (params.get('paid') !== '1') return;
+    params.delete('paid');
+    var qs = params.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    var m = document.cookie.match(/(?:^|; )wc_checkout=([^;]+)/);
+    if (!m || read() !== 'granted') return;
+    dropCookie('wc_checkout');
+    var parts = m[1].split('.');
+    var orderId = parts[0], value = parseFloat(parts[1]) || 0, currency = parts[2] || 'EUR';
+    if (window.fbq) {
+      window.fbq('track', 'Purchase', {
+        value: value, currency: currency, num_items: 1,
+        content_ids: ['WCC-AX3000'], content_type: 'product', content_name: 'WhiteCat router',
+      }, { eventID: orderId });
+    }
+    if (window.gtag) {
+      gtag('event', 'purchase', {
+        transaction_id: orderId, value: value, currency: currency,
+        items: [{ item_id: 'WCC-AX3000', item_name: 'WhiteCat router', price: value, quantity: 1 }],
+      });
+    }
+  }
+
   function init() {
     if (read() === 'granted') loadMetaPixel();
     document.addEventListener('click', onBuyClick);
+    reportPurchase();
 
     var banner = document.getElementById('wc-cookie-banner');
     if (!banner) return;
