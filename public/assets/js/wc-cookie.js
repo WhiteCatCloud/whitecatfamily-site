@@ -57,8 +57,43 @@
     });
   }
 
+  // Buy buttons (partials/cta-amazon-*.html, data-wc-buy) report a checkout
+  // conversion: InitiateCheckout to Meta, begin_checkout to Google Analytics.
+  // Only with consent; without it the click is a plain link, untouched.
+  function onBuyClick(e) {
+    var el = e.target && e.target.closest && e.target.closest('a[data-wc-buy]');
+    if (!el || read() !== 'granted') return;
+    var href = el.getAttribute('href') || '';
+    if (href.indexOf('https://') !== 0) return; // mailto fallback: not a checkout
+    var value = parseFloat(el.getAttribute('data-wc-value')) || 0;
+    var currency = el.getAttribute('data-wc-currency') || 'EUR';
+    var via = el.getAttribute('data-wc-buy');
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        value: value, currency: currency, num_items: 1,
+        content_ids: ['WCC-AX3000'], content_type: 'product',
+        content_name: 'WhiteCat router', checkout: via,
+      });
+    }
+    if (window.gtag) {
+      gtag('event', 'begin_checkout', {
+        value: value, currency: currency, checkout: via, transport_type: 'beacon',
+        items: [{ item_id: 'WCC-AX3000', item_name: 'WhiteCat router', price: value, quantity: 1 }],
+      });
+    }
+    // A same-tab link (Stripe) would unload the page before the events go
+    // out, so hold the navigation briefly. New-tab links (Amazon) and
+    // modifier clicks are left alone.
+    var newTab = el.target === '_blank' || e.button !== 0 ||
+      e.metaKey || e.ctrlKey || e.shiftKey || e.altKey;
+    if (newTab || e.defaultPrevented) return;
+    e.preventDefault();
+    setTimeout(function () { location.href = href; }, 300);
+  }
+
   function init() {
     if (read() === 'granted') loadMetaPixel();
+    document.addEventListener('click', onBuyClick);
 
     var banner = document.getElementById('wc-cookie-banner');
     if (!banner) return;

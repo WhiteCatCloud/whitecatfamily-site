@@ -290,6 +290,19 @@ function priceLabelFor(env, locale, country) {
   return labels[locale] || labels.en;
 }
 
+// Fills {{STRIPE_VALUE}}/{{STRIPE_CURRENCY}} on the buy button, so the
+// checkout conversion sent to Meta and Google carries the price this visitor
+// is actually charged. Must match PRICE_LABELS (and the Stripe links).
+const PRICE_VALUES = {
+  SK: ['59', 'EUR'],
+  CZ: ['1490', 'CZK'],
+  '': ['69', 'EUR'],
+};
+
+function priceValueFor(env, locale, country) {
+  return PRICE_VALUES[marketFor(env, locale, country)] || PRICE_VALUES[''];
+}
+
 // Fills {{SUB_PRICE}}/{{SUB_YEAR}} (Family, with the router) and
 // {{ANY_PRICE}}/{{ANY_YEAR}} (Anywhere, iPhone/iPad without a router) on the
 // EN, DE, FR and SK homepages. Set in App Store and Google Play on 2026-11-15
@@ -475,7 +488,9 @@ export async function onRequest(context) {
     const cta = (partials[ctaFor(locale)] || '')
       .replaceAll('{{AMAZON_URL}}', amazonUrlFor(env))
       .replaceAll('{{STRIPE_URL}}', stripeUrlFor(env, url, locale, country))
-      .replaceAll('{{STRIPE_PRICE}}', priceLabelFor(env, locale, country));
+      .replaceAll('{{STRIPE_PRICE}}', priceLabelFor(env, locale, country))
+      .replaceAll('{{STRIPE_VALUE}}', priceValueFor(env, locale, country)[0])
+      .replaceAll('{{STRIPE_CURRENCY}}', priceValueFor(env, locale, country)[1]);
     html = html.replaceAll('<!-- CTA-AMAZON -->', cta);
     const [subPrice, subYear, anyPrice, anyYear] = subLabelsFor(env, locale, country);
     html = html.replaceAll('{{SUB_PRICE}}', subPrice).replaceAll('{{SUB_YEAR}}', subYear)
