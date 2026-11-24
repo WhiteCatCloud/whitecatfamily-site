@@ -4,3 +4,10 @@ pages_build_output_dir = "public"
 [[queues.producers]]
 binding = "LEADS_QUEUE"
 queue = "preorder-leads"
+
+# Cookie banner counts (functions/consent.js, migrations/). Read with:
+#   npx wrangler d1 execute whitecat-site-stats --remote --command "SELECT ..."
+[[d1_databases]]
+binding = "DB"
+database_name = "whitecat-site-stats"
+database_id = "69450ea9-8e3a-4915-ac61-b1a660c7ea8d"

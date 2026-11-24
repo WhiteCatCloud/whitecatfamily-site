@@ -200,6 +200,15 @@
     io.observe(target);
   }
 
+  // Acceptance rate: one beacon per banner outcome to functions/consent.js,
+  // which only adds to a daily count per country. No cookie, no ID, nothing
+  // about the visitor, so it is sent whatever they choose.
+  function count(event) {
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon('/consent', event);
+    } catch (e) { /* counting must never break the banner */ }
+  }
+
   function init() {
     if (read() === 'granted') loadMetaPixel();
     document.addEventListener('click', onBuyClick);
@@ -210,13 +219,17 @@
 
     var banner = document.getElementById('wc-cookie-banner');
     if (!banner) return;
-    if (!read()) banner.hidden = false;
+    if (!read()) {
+      banner.hidden = false;
+      count('shown');
+    }
     var accept = document.getElementById('wc-cookie-accept');
     var reject = document.getElementById('wc-cookie-reject');
     if (accept) {
       accept.addEventListener('click', function () {
         set('granted');
         banner.hidden = true;
+        count('accept');
         grant();
       });
     }
@@ -225,6 +238,7 @@
         var was = read();
         set('denied');
         banner.hidden = true;
+        count('reject');
         if (was === 'granted') revoke();
       });
     }
